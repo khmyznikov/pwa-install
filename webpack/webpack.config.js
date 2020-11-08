@@ -11,7 +11,16 @@ module.exports = {
         test: /\.ts?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
-      }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: 'lit-scss-loader',
+          options: {
+            minify: true,
+          },
+        }, 'extract-loader', 'css-loader', 'sass-loader'],
+      },
     ]
   },
   plugins: [

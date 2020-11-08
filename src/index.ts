@@ -1,19 +1,12 @@
-import { customElement, LitElement, html, css } from 'lit-element';
+import { customElement, LitElement, html } from 'lit-element';
+
+import styles from './styles.scss';
 
 @customElement('root-el')
 export class RootElement extends LitElement {
 
   static get styles() {
-    return css`
-      h1 {
-        font-family: serif;
-        color: green;
-      }
-      h3 {
-        font-family: Arial, Helvetica, sans-serif;
-        color: red;
-      }
-    `
+    return styles;
   }
 
   render() {
