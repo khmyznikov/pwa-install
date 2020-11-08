@@ -1,0 +1,27 @@
+{
+  "name": "pwa-install",
+  "version": "0.0.1",
+  "description": "A lit-element typescript boilerplate, packed with webpack",
+  "repository": "github:khmyznikov/pwa-install",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "webpack --config webpack/webpack.config.js --mode=production",
+    "test": "npm run build && node ./webpack/serve.js",
+    "dev": "webpack serve --config webpack/webpack.config.js --mode=development"
+  },
+  "author": "khmyznikov",
+  "license": "Unlicense",
+  "devDependencies": {
+    "@types/node": "^14.14.6",
+    "ts-loader": "8.0.10",
+    "express": "^4.17.1",
+    "eslint": "^7.13.0",
+    "typescript": "^4.0.5",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0"
+  }
+}
