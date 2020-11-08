@@ -1,6 +1,7 @@
 import { customElement, LitElement, html } from 'lit-element';
 
 import styles from './styles.scss';
+import template from './template';
 
 @customElement('root-el')
 export class RootElement extends LitElement {
@@ -10,8 +11,6 @@ export class RootElement extends LitElement {
   }
 
   render() {
-    return html`
-      <h3>Test drive</h3> <h1>Hello World</h1>
-    `
+    return html`${template('Hello', 'World')}`;
   }
 }
