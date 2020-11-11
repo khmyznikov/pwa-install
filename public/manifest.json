@@ -1,0 +1,51 @@
+{
+    "name": "Progressive Web Application",
+    "short_name": "PWA",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#E4866D",
+    "description": "Installation component for Progressive Web Application DEMO",
+    "icons": [
+        {
+            "src": "icons/icon@192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/icon@512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "icons/maskable_icon@192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+			"purpose": "maskable"
+        },
+        {
+            "src": "icons/maskable_icon@512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+			"purpose": "maskable"
+        }
+    ],
+	"related_applications": [
+		{
+			"platform": "play",
+			"id": "com.learnpwa.app",
+			"url": "https://play.google.com/store/apps/details?id=com.learnpwa.app"
+		},
+		{
+			"platform": "webapp",
+			"url": "./manifest.json"
+		}
+	],
+	"screenshots": [
+		{
+			"src": "/images/screenshots/android-mobile-1.jpg",
+			"sizes": "1440x2880",
+			"type": "image/jpg"
+		}
+	]
+  }

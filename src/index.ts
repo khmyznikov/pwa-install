@@ -68,9 +68,13 @@ export class PWAInstallElement extends LitElement {
 		window.sessionStorage.setItem('pwa-hide-install', 'true');
 	}
 
-	public howTo() {
-		this.howToRequested = !this.howToRequested;
-	}
+	public howTo = {
+        handleEvent: () => { 
+			this.howToRequested = !this.howToRequested;
+			this.requestUpdate();
+        },
+        passive: true
+    }
 
 	private isAppleMobile() {
 		if (
@@ -101,13 +105,14 @@ export class PWAInstallElement extends LitElement {
 				setTimeout(
 					() => {
 						this.appleInstallAvailable = true;
+						this.requestUpdate()
 					},
 					300
 				);
 		}
 	}
 
-	private created = () => {
+	private init = () => {
 		window.deferredEvent = null;
 
 		this.checkInstalled();
@@ -151,11 +156,19 @@ export class PWAInstallElement extends LitElement {
 	};
 
 	connectedCallback() {
-		this.created();
+		this.init();
 		super.connectedCallback();
 	}
 
 	render() {
-		return html`${template(this.name, this.description)}`;
+		return html`${template(
+			this.name, 
+			this.description, 
+			this.icon, 
+			this.installAvailable,
+			this.appleInstallAvailable,
+			this.howTo,
+			this.howToRequested
+		)}`;
 	}
 }

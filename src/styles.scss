@@ -1,5 +1,7 @@
 #pwa-install{
     .install-dialog{
+        font-family: BlinkMacSystemFont, system-ui, -apple-system, "Roboto", "Segoe UI";
+
         position: fixed;
         display: inline-block;
 
@@ -20,7 +22,6 @@
         background-color: #fff;
         box-shadow: 0 5px 15px rgba(0,0,0,.3);
 
-        font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
         font-size: 15px;
         color: #333;
         border-radius: 3px;
@@ -131,6 +132,7 @@
                     height: 64px;
 
                     margin: 0 auto;
+                    border-radius: 6px;
                 }
             }
 

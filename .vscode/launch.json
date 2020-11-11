@@ -4,17 +4,6 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-      {
-        "name": "Launch via npm",
-        "type": "node",
-        "request": "launch",
-        "cwd": "${workspaceFolder}",
-        "runtimeExecutable": "npm",
-        "runtimeArgs": [
-            "run-script", "build"
-        ],
-        "port": 9229
-    },
     {
       "type": "chrome",
       "request": "launch",
