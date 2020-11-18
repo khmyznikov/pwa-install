@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en" class="notranslate" translate="no">
 
 <head>
-  <meta charset="UTF-8">
-  <title>PWA Install Demo</title>
-  <script type="module" src="/bundle.js"></script>
+	<meta charset="UTF-8">
+	<title>PWA Install Demo</title>
+
+	<meta name="viewport"
+		content="user-scalable=no, width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<link rel="manifest" href="/manifest.json">
+	<script type="module" src="/bundle.js"></script>
+	<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-  <pwa-install></pwa-install>
+	<script type="text/javascript">
+		if ("serviceWorker" in navigator) {
+			if (navigator.serviceWorker.controller) {
+				console.log("Active service worker found, no need to register");
+			} else {
+				navigator.serviceWorker.register('/service-worker.js').then(function (reg) {
+					console.log("Service worker registered");
+				});
+			}
+		}
+	</script>
+
+	</script>
+	<pwa-install></pwa-install>
 </body>
 
 </html>

@@ -128,7 +128,8 @@ export class PWAInstallElement extends LitElement {
 			} else {
 				this.installAvailable = true;
 			}
-
+			
+			this.requestUpdate();
 		});
 
 		window.addEventListener('appinstalled', (e) => {
