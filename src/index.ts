@@ -2,6 +2,8 @@ import { customElement, LitElement, html, property } from 'lit-element';
 
 import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types/pwa-install.types';
 
+import Utils from './utils';
+
 declare const window: IWindow;
 
 declare global {
@@ -35,72 +37,62 @@ export class PWAInstallElement extends LitElement {
 	private hideInstall: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
 	private installAvailable = false;
 	private appleInstallAvailable = false;
-	private applePlatform = false;
+	private appleMobilePlatform = false;
 	private howToRequested = false;
 	private isUnderStandaloneMode = false;
 	private isRelatedAppsInstalled = false;
 
-	public install() {
-		if (window.deferredEvent) {
-			window.deferredEvent.prompt();
-			window.deferredEvent.userChoice
-				.then((choiceResult: IChoiceResult) => {
-					this.userChoiceResult = choiceResult.outcome;
-					/**
-					 * @event pwa-install-install
-					 */
-					console.log(choiceResult);
-				})
-				.catch((error) => {
-					/**
-					 * @event pwa-install-error
-					 */
-				});
-			window.deferredEvent = null;
+	public install = {
+		handleEvent: () => { 
+			if (window.deferredEvent) {
+				window.deferredEvent.prompt();
+				window.deferredEvent.userChoice
+					.then((choiceResult: IChoiceResult) => {
+						this.userChoiceResult = choiceResult.outcome;
+						/**
+						 * @event pwa-install-install
+						 */
+						console.log(choiceResult);
+					})
+					.catch((error) => {
+						/**
+						 * @event pwa-install-error
+						 */
+					});
+				window.deferredEvent = null;
+				this.installAvailable = false;
+			}
+		},
+		passive: true
+	}
+
+	public hideDialog = {
+		handleEvent: () => { 
 			this.installAvailable = false;
-		}
+			this.appleInstallAvailable = false;
+			this.hideInstall = true;
+			window.sessionStorage.setItem('pwa-hide-install', 'true');
+
+			this.requestUpdate();
+		},
+		passive: true
 	}
 
-	public hide() {
-		this.installAvailable = false;
-		this.appleInstallAvailable = false;
-		this.hideInstall = true;
-		window.sessionStorage.setItem('pwa-hide-install', 'true');
-	}
-
-	public howTo = {
+	public howToForApple = {
         handleEvent: () => { 
 			this.howToRequested = !this.howToRequested;
+			
 			this.requestUpdate();
         },
         passive: true
     }
 
-	private isAppleMobile() {
-		if (
-			(
-				['iPhone', 'iPad', 'iPod'].includes(navigator.platform) ||
-				(navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
-			)
-			&& ('serviceWorker' in navigator))
-			return true;
-		return false;
-	}
-	private isStandalone() {
-		if (window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone === true))
-			return true;
-		return false;
-	}
-	private checkInstalled() {
-		this.isUnderStandaloneMode = this.isStandalone();
+	private async checkInstalled() {
+		this.isUnderStandaloneMode = Utils.isStandalone();
+		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
+		this.appleMobilePlatform = Utils.isAppleMobile();
 
-		if ('getInstalledRelatedApps' in navigator)
-			(navigator as any).getInstalledRelatedApps().then((relatedApps: IRelatedApp[]) => {
-				this.isRelatedAppsInstalled = relatedApps.find((app: IRelatedApp) => app.id === 'com.hostmeapp.hostmepanel') ? true : false;
-			});
-
-		if (this.isAppleMobile()) {
-			this.applePlatform = true;
+		if (this.appleMobilePlatform) {
 			if (!this.hideInstall && !this.isUnderStandaloneMode)
 				setTimeout(
 					() => {
@@ -128,13 +120,15 @@ export class PWAInstallElement extends LitElement {
 			} else {
 				this.installAvailable = true;
 			}
-			
+
 			this.requestUpdate();
 		});
 
 		window.addEventListener('appinstalled', (e) => {
 			window.deferredEvent = null;
 			this.installAvailable = false;
+
+			this.requestUpdate();
 		});
 
 		if (!this.name || !this.icon) {
@@ -168,7 +162,9 @@ export class PWAInstallElement extends LitElement {
 			this.icon, 
 			this.installAvailable,
 			this.appleInstallAvailable,
-			this.howTo,
+			this.hideDialog,
+			this.install,
+			this.howToForApple,
 			this.howToRequested
 		)}`;
 	}

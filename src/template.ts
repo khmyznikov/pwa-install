@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 import {classMap} from 'lit-html/directives/class-map.js';
 
-const template = (name: string, description: string, icon: string, installAvailable: any, appleInstallAvailable: any, howTo: any, howToRequested: boolean) => {
+const template = (name: string, description: string, icon: string, installAvailable: any, appleInstallAvailable: any, hideDialog: any, install: any, howToForApple: any, howToRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable }};
     const installDialogClassesApple = () => { return {available: appleInstallAvailable, 'how-to': howToRequested}};
 
@@ -17,8 +17,8 @@ const template = (name: string, description: string, icon: string, installAvaila
                         <div class="description">${description}</div>
                     </div>
                     <div class="action-buttons">
-                        <button class="material-button secondary cancel" @click='hide()'>Hide</button>
-                        <button class="material-button primary install" @click='install()'>Install</button>
+                        <button class="material-button secondary cancel" @click='${hideDialog}'>Hide</button>
+                        <button class="material-button primary install" @click='${install}'>Install</button>
                     </div>
                 </div>
             </div>
@@ -33,8 +33,8 @@ const template = (name: string, description: string, icon: string, installAvaila
                         <div class="description">${description}</div>
                     </div>
                     <div class="action-buttons">
-                        <button class="button install" @click=${howTo}>Install</button>
-                        <button class="button cancel" @click='hide()'>Hide</button>
+                        <button class="button install" @click=${howToForApple}>Install</button>
+                        <button class="button cancel" @click='${hideDialog}'>Hide</button>
                     </div>
                 </div>
                 <div class="how-to-body">
