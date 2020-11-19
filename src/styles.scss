@@ -1,6 +1,6 @@
 #pwa-install{
     .install-dialog{
-        font-family: BlinkMacSystemFont, system-ui, -apple-system, "Roboto", "Segoe UI";
+        
 
         position: fixed;
         display: inline-block;
@@ -11,6 +11,8 @@
         z-index: 5;
     }
     .install-dialog.chrome{
+        font-family: "Roboto", "Segoe UI";
+
         max-width: 380px;
         width: 90%;
         min-height: 90px;
@@ -95,22 +97,26 @@
     }
     .install-dialog.apple{
 
+        font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont;
+
+        display: inline-grid;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 15px;
+
         max-width: 380px;
-        width: 90%;
-        min-height: 90px;
-        max-height: 90px;
+        width: auto;
+        
+        min-height: 245px;
+        max-height: 245px;
         height: fit-content;
         margin: 0 auto;
+        padding: 15px;
 
         right: 0;
         left: 0;
 
-        background-color:rgba(251, 251, 251, 0.9);
-        box-shadow: 0 5px 15px rgba(0,0,0,.3);
-
         font-size: 15px;
         color: #333;
-        border-radius: 8px;
 
         bottom: -100px;
 
@@ -121,13 +127,28 @@
         .dialog-body{
             display: grid;
 
-            grid-template-columns: 90px 1fr 100px;
+            grid-template-columns: 95px 1fr;
+            grid-template-rows: 1fr auto;
+
+            grid-template-areas:
+              "icon description"
+              "button button";
+
+            border-radius: 15px;
+
             border-bottom: 1px solid transparent;
             transition: border .35s ease-in-out;
+
+            background-color:rgba(251, 251, 251, 0.8);
+            box-shadow: 0 5px 15px rgba(0,0,0,.2);
 
             .icon{
                 display: flex;
                 align-items: center;
+
+                grid-area: icon;
+
+                border-bottom: 1px solid  rgba(0,0,0, .1);
  
                 .icon-image{
                     width: 64px;
@@ -140,58 +161,84 @@
 
             .about {
                 display: grid;
-                grid-template-rows: 30px 60px;
+                grid-template-rows: 35px 60px;
+
+                border-bottom: 1px solid  rgba(0,0,0, .1);
+
+                grid-area: description;
 
                 .name, .description{ 
-                    padding: 5px 10px;
-                    padding-left: 5px;
+                    padding-right: 12px;
                     overflow: hidden;
                 }
                 .name{
-                    font-weight: 400;
-                    padding-top: 7px;
+                    font-weight: 600;
+                    padding-top: 15px;
+                    line-height: 15px;
                 }
                 .description{
                     font-size: 12px;
                     line-height: 15px;
 
-                    padding-bottom: 0;
-                    margin-bottom: 10px;
+                    margin-bottom: 15px;
+                    overflow-y: auto;
                 }
             }
+        }
+        .dialog-button{
+            display: grid;
+            // grid-template-rows: 45px 45px;
 
-            .action-buttons{
-                display: grid;
-                grid-template-rows: 45px 45px;
-                border-left: 1px solid #e0e0e0;
+            height: 50px;
+            line-height: 50px;
 
-                .button{
-                    background: transparent;
-                    border: none;
-                    outline: none;
 
-                    cursor: pointer;
 
-                    user-select: none;
+            border-radius: 8px;
 
-                    font-size: 14px;
-                    line-height: 31px;
-                    padding: 0;
-                    margin: 0;
+            &.button{
+                // background: transparent;
+                border: none;
+                outline: none;
 
-                    &.install{
-                        border-bottom: 1px solid #e0e0e0;
-                        border-top-right-radius: 8px;
-                        font-weight: 400;
-                    }
-                    &.cancel{
-                        border-bottom-right-radius: 8px;
-                        opacity: .5;
-                    }
+                font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont;
 
-                    &:active{
-                        background-color: #f1f1f1;
-                    }
+                cursor: pointer;
+
+                user-select: none;
+                font-weight: 400;
+                font-size: 17px;
+                // line-height: 31px;
+                padding: 0;
+                margin: 0;
+
+                // border-radius: 8px;
+
+                // background-color:rgba(251, 251, 251, 0.9);
+                // box-shadow: 0 5px 15px rgba(0,0,0,.3);
+
+                &.install{
+                    
+                    // border-top: 1px solid #e0e0e0;
+
+                    margin: 15px;
+                    background-color: #fff;
+
+                    grid-area: button;
+                }
+                &.cancel{
+                    // border-bottom-right-radius: 8px;
+
+                    margin: 0 15px;
+                    
+                    opacity: .5;
+
+                    background-color:rgba(251, 251, 251, 0.9);
+                    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+                }
+
+                &:active{
+                    background-color: #f1f1f1;
                 }
             }
         }
@@ -360,7 +407,7 @@
             transition: top .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height .35s ease-in-out;
 
             &.available {
-                top: 25px;
+                top: 28px;
             }
         }
     }

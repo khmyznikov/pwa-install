@@ -14,6 +14,7 @@ declare global {
 
 import styles from './styles.scss';
 import template from './template';
+import templateApple from './template_apple';
 
 @customElement('pwa-install')
 export class PWAInstallElement extends LitElement {
@@ -36,7 +37,6 @@ export class PWAInstallElement extends LitElement {
 	private userChoiceResult = '';
 	private hideInstall: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
 	private installAvailable = false;
-	private appleInstallAvailable = false;
 	private appleMobilePlatform = false;
 	private howToRequested = false;
 	private isUnderStandaloneMode = false;
@@ -69,7 +69,6 @@ export class PWAInstallElement extends LitElement {
 	public hideDialog = {
 		handleEvent: () => { 
 			this.installAvailable = false;
-			this.appleInstallAvailable = false;
 			this.hideInstall = true;
 			window.sessionStorage.setItem('pwa-hide-install', 'true');
 
@@ -96,7 +95,7 @@ export class PWAInstallElement extends LitElement {
 			if (!this.hideInstall && !this.isUnderStandaloneMode)
 				setTimeout(
 					() => {
-						this.appleInstallAvailable = true;
+						this.installAvailable = true;
 						this.requestUpdate()
 					},
 					300
@@ -156,16 +155,24 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	render() {
-		return html`${template(
-			this.name, 
-			this.description, 
-			this.icon, 
-			this.installAvailable,
-			this.appleInstallAvailable,
-			this.hideDialog,
-			this.install,
-			this.howToForApple,
-			this.howToRequested
-		)}`;
+		if (this.appleMobilePlatform)
+			return html`${templateApple(
+				this.name, 
+				this.description, 
+				this.icon, 
+				this.installAvailable,
+				this.hideDialog,
+				this.howToForApple,
+				this.howToRequested
+			)}`;
+		else
+			return html`${template(
+				this.name, 
+				this.description, 
+				this.icon, 
+				this.installAvailable,
+				this.hideDialog,
+				this.install
+			)}`;
 	}
 }
