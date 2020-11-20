@@ -100,15 +100,15 @@
         font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont;
 
         display: inline-grid;
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr auto;
         grid-gap: 15px;
 
         max-width: 380px;
         width: auto;
         
-        min-height: 245px;
-        max-height: 245px;
-        height: fit-content;
+        // min-height: 245px;
+        // max-height: 245px;
+        // height: fit-content;
         margin: 0 auto;
         padding: 15px;
 
@@ -124,14 +124,19 @@
 
         overflow: hidden;
 
+        will-change: opacity, visibility, bottom, top;
+
         .dialog-body{
             display: grid;
 
-            grid-template-columns: 95px 1fr;
+            grid-template-columns: 95px auto 1fr;
             grid-template-rows: 1fr auto;
+
+            // gap: 15px 0px;
 
             grid-template-areas:
               "icon description"
+              "how-to how-to"
               "button button";
 
             border-radius: 15px;
@@ -243,9 +248,16 @@
             }
         }
         .how-to-body{
-            padding: 15px;
+            // padding: 15px;
             opacity: 0;
-            transition: opacity .35s ease-in-out .2s;
+            max-height: 0px;
+
+            overflow: hidden;
+
+            transition: opacity ease-in-out .5s, max-height .5s ease-in-out;
+
+            grid-area: how-to;
+
             .how-to-description{
                 display: grid;
                 user-select: none;
@@ -256,12 +268,19 @@
                 grid-template-areas:
                     "title title"
                     ". .";
+
+                padding: 15px;
+                padding-bottom: 0;
+
                 .description-title{
-                    font-size: 14px;
+                    font-size: 16px;
                     grid-area: title;
                     text-align: center;
                     font-weight: 400;
                     padding-bottom: 5px;
+
+                    width: 85%;
+                    margin: 0 auto;
                 }
                 .description-step{
                     display: inline-flex;
@@ -302,12 +321,15 @@
             visibility: visible;
         }
         &.how-to{
-            max-height: 265px;
+            // max-height: 365px;
             .dialog-body{
                 border-bottom: 1px solid #e0e0e0;
             }
             .how-to-body{
                 opacity: 1;
+                max-height: 400px;
+
+                transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
             }
         }
     }
@@ -408,6 +430,7 @@
 
             &.available {
                 top: 28px;
+                bottom: auto;
             }
         }
     }
