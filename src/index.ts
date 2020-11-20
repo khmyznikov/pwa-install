@@ -19,6 +19,9 @@ import templateApple from './template_apple';
 @customElement('pwa-install')
 export class PWAInstallElement extends LitElement {
 	private manifest: IManifest = new Manifest();
+	
+	@property()
+	'manifest-url' = '/manifest.json';
 
 	@property()
 	icon = '';
@@ -131,7 +134,7 @@ export class PWAInstallElement extends LitElement {
 		});
 
 		if (!this.name || !this.icon) {
-			fetch('/manifest.json').then((response: Response) => {
+			fetch(this['manifest-url']).then((response: Response) => {
 				if (response.ok)
 					response.json().then((_json) => {
 						this.icon = _json.icons[0].src;
