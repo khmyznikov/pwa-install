@@ -10,7 +10,22 @@ module.exports = {
 	module: {
 		rules: [{
 				test: /\.ts?$/,
-				loader: 'ts-loader',
+				use: [
+					{
+						loader: 'minify-lit-html-loader',
+						options: {
+						  htmlMinifier: {
+							ignoreCustomFragments: [
+							  /<\s/,
+							  /<=/
+							]
+						  }
+						}
+					},
+					{
+					  loader: 'ts-loader'
+					},
+				  ],
 				exclude: /node_modules/,
 			},
 			{

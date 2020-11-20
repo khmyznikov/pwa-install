@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "extract-loader": "^5.1.0",
     "lit-scss-loader": "^1.0.1",
+    "minify-lit-html-loader": "0.0.3",
     "sass": "^1.29.0",
     "sass-loader": "^10.0.5",
     "terser-webpack-plugin": "^5.0.3",
