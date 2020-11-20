@@ -89,7 +89,7 @@ export class PWAInstallElement extends LitElement {
 	private async checkInstalled() {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
-		this.appleMobilePlatform = !Utils.isAppleMobile();
+		this.appleMobilePlatform = Utils.isAppleMobile();
 
 		if (this.appleMobilePlatform) {
 			if (!this.hideInstall && !this.isUnderStandaloneMode)
