@@ -1,8 +1,11 @@
 {
   "name": "pwa-install",
   "version": "0.0.1",
-  "description": "A lit-element typescript boilerplate, packed with webpack",
-  "repository": "github:khmyznikov/pwa-install",
+  "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khmyznikov/pwa-install.git"
+  },
   "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.js --mode=production",
@@ -29,5 +32,13 @@
   },
   "dependencies": {
     "lit-element": "^2.4.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/khmyznikov/pwa-install/issues"
+  },
+  "homepage": "https://github.com/khmyznikov/pwa-install#readme",
+  "keywords": [
+    "PWA",
+    "lit-element"
+  ]
 }
