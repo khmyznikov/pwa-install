@@ -110,15 +110,21 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 
-		if (this.isAppleMobilePlatform && !this.isUnderStandaloneMode) {
-			setTimeout(
-				() => {
-					this.isInstallAvailable = true;
-					this.requestUpdate()
-				},
-				300
-			);
+		if (this.isAppleMobilePlatform) {
+			if (!this.isUnderStandaloneMode)
+				setTimeout(
+					() => {
+						this.isInstallAvailable = true;
+						this.requestUpdate()
+					},
+					300
+				);
+			else
+				Utils.appInstalledEvent(this);
 		}
+		else
+			if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode)
+				Utils.appInstalledEvent(this);
 	}
 
 	private _init = () => {
@@ -134,12 +140,16 @@ export class PWAInstallElement extends LitElement {
 
 			if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
 				this.isInstallAvailable = false;
+				Utils.appInstalledEvent(this);
 			} else {
 				this.isInstallAvailable = true;
 			}
 
-			if (this.userChoiceResult === 'accepted')
+			if (this.userChoiceResult === 'accepted'){
 				this.isDialogHidden = true;
+				Utils.appInstalledEvent(this);
+			}
+				
 
 			this.requestUpdate();
 		});

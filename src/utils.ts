@@ -26,4 +26,14 @@ export default class Utils {
             });
         return false;
     }
+
+    static appInstalledEvent(_element: Element) {
+        const event  = new CustomEvent('app-installed-event', {
+            detail: {
+              message: 'Application is installed'
+            }
+        });
+        _element.dispatchEvent(event);
+    }
+    
 }
