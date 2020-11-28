@@ -36,16 +36,18 @@ export class PWAInstallElement extends LitElement {
 		return styles;
 	}
 
-	private platforms = '';
-	private userChoiceResult = '';
-	private hideInstall: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
-	private installAvailable = false;
-	private appleMobilePlatform = false;
-	private howToRequested = false;
-	private isUnderStandaloneMode = false;
-	private isRelatedAppsInstalled = false;
+	public platforms = '';
+	public userChoiceResult = '';
 
-	public install = {
+	public isInstallHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	public isInstallAvailable = false;
+	public isAppleMobilePlatform = false;
+	public isUnderStandaloneMode = false;
+	public isRelatedAppsInstalled = false;
+
+	private _howToRequested = false;
+
+	private _install = {
 		handleEvent: () => { 
 			if (window.deferredEvent) {
 				window.deferredEvent.prompt();
@@ -55,7 +57,6 @@ export class PWAInstallElement extends LitElement {
 						/**
 						 * @event pwa-install-install
 						 */
-						console.log(choiceResult);
 					})
 					.catch((error) => {
 						/**
@@ -63,53 +64,61 @@ export class PWAInstallElement extends LitElement {
 						 */
 					});
 				window.deferredEvent = null;
-				this.installAvailable = false;
 			}
 		},
 		passive: true
 	}
+	public install = () => {
+		if (this.isAppleMobilePlatform) {
+			this._howToRequested = true;
+			this.requestUpdate();
+		}
+		else
+			this._install.handleEvent();
+	}
 
-	public hideDialog = {
+	private _hideDialog = {
 		handleEvent: () => { 
-			this.installAvailable = false;
-			this.hideInstall = true;
+			this.isInstallHidden = true;
 			window.sessionStorage.setItem('pwa-hide-install', 'true');
 
 			this.requestUpdate();
 		},
 		passive: true
 	}
+	public hideDialog = () => {
+		this._hideDialog.handleEvent();
+	}
 
-	public howToForApple = {
+	private _howToForApple = {
         handleEvent: () => { 
-			this.howToRequested = !this.howToRequested;
+			this._howToRequested = !this._howToRequested;
 			
 			this.requestUpdate();
         },
         passive: true
     }
 
-	private async checkInstalled() {
+	private async _checkInstalled() {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
-		this.appleMobilePlatform = Utils.isAppleMobile();
+		this.isAppleMobilePlatform = Utils.isAppleMobile();
 
-		if (this.appleMobilePlatform) {
-			if (!this.hideInstall && !this.isUnderStandaloneMode)
-				setTimeout(
-					() => {
-						this.installAvailable = true;
-						this.requestUpdate()
-					},
-					300
-				);
+		if (this.isAppleMobilePlatform && !this.isUnderStandaloneMode) {
+			setTimeout(
+				() => {
+					this.isInstallAvailable = true;
+					this.requestUpdate()
+				},
+				300
+			);
 		}
 	}
 
-	private init = () => {
+	private _init = () => {
 		window.deferredEvent = null;
 
-		this.checkInstalled();
+		this._checkInstalled();
 
 		window.addEventListener('beforeinstallprompt', (e: IBeforeInstallPromptEvent) => {
 			window.deferredEvent = e;
@@ -117,65 +126,67 @@ export class PWAInstallElement extends LitElement {
 
 			this.platforms = e.platforms;
 
-			if (this.userChoiceResult === 'dismissed' || this.userChoiceResult === 'accepted' || this.hideInstall || this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
-				this.installAvailable = false;
+			if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
+				this.isInstallAvailable = false;
 			} else {
-				this.installAvailable = true;
+				this.isInstallAvailable = true;
 			}
+
+			if (this.userChoiceResult === 'accepted')
+				this.isInstallHidden = true;
 
 			this.requestUpdate();
 		});
 
 		window.addEventListener('appinstalled', (e) => {
 			window.deferredEvent = null;
-			this.installAvailable = false;
+			this.isInstallAvailable = false;
 
 			this.requestUpdate();
 		});
 
-		if (!this.name || !this.icon) {
-			fetch(this['manifest-url']).then((response: Response) => {
-				if (response.ok)
-					response.json().then((_json) => {
-						this.icon = _json.icons[0].src;
-						this.name = _json['short_name'] || _json.name;
-						this.description = _json.description;
 
-						this.manifest = _json;
-					});
-				else {
-					this.icon = this.manifest.icons[0].src;
-					this.name = this.manifest['short_name'];
-					this.description = this.manifest.description;
-				}
-			});
-		}
+		fetch(this['manifest-url']).then((response: Response) => {
+			if (response.ok)
+				response.json().then((_json) => {
+					this.icon = this.icon || _json.icons[0].src;
+					this.name = this.name || _json['short_name'] || _json.name;
+					this.description = this.description || _json.description;
+
+					this.manifest = _json;
+				});
+			else {
+				this.icon = this.icon || this.manifest.icons[0].src;
+				this.name = this.name || this.manifest['short_name'];
+				this.description = this.description || this.manifest.description;
+			}
+		});
 	};
 
 	connectedCallback() {
-		this.init();
+		this._init();
 		super.connectedCallback();
 	}
 
 	render() {
-		if (this.appleMobilePlatform)
+		if (this.isAppleMobilePlatform)
 			return html`${templateApple(
 				this.name, 
 				this.description, 
 				this.icon, 
-				this.installAvailable,
-				this.hideDialog,
-				this.howToForApple,
-				this.howToRequested
+				this.isInstallAvailable && !this.isInstallHidden,
+				this._hideDialog,
+				this._howToForApple,
+				this._howToRequested
 			)}`;
 		else
 			return html`${template(
 				this.name, 
 				this.description, 
 				this.icon, 
-				this.installAvailable,
-				this.hideDialog,
-				this.install
+				this.isInstallAvailable && !this.isInstallHidden,
+				this._hideDialog,
+				this._install
 			)}`;
 	}
 }

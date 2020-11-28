@@ -24,15 +24,18 @@
 			if (navigator.serviceWorker.controller) {
 				console.log("Active service worker found, no need to register");
 			} else {
-				navigator.serviceWorker.register('/service-worker.js').then(function (reg) {
+				navigator.serviceWorker.register('/service-worker.js', {scope: '/'}).then(function (reg) {
 					console.log("Service worker registered");
 				});
 			}
 		}
 	</script>
 
+	<pwa-install id="pwa-install" manifest-url="manifest.json"></pwa-install>
+
+	<script type="text/javascript">
+		var pwaInstall = document.getElementById("pwa-install");
 	</script>
-	<pwa-install manifest-url="manifest.json"></pwa-install>
 </body>
 
 </html>
