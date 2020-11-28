@@ -39,7 +39,7 @@ export class PWAInstallElement extends LitElement {
 	public platforms = '';
 	public userChoiceResult = '';
 
-	public isInstallHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isUnderStandaloneMode = false;
@@ -79,7 +79,7 @@ export class PWAInstallElement extends LitElement {
 
 	private _hideDialog = {
 		handleEvent: () => { 
-			this.isInstallHidden = true;
+			this.isDialogHidden = true;
 			window.sessionStorage.setItem('pwa-hide-install', 'true');
 
 			this.requestUpdate();
@@ -88,6 +88,12 @@ export class PWAInstallElement extends LitElement {
 	}
 	public hideDialog = () => {
 		this._hideDialog.handleEvent();
+	}
+	public showDialog = () => {
+		this.isDialogHidden = false;
+		this.isInstallAvailable = true;
+
+		this.requestUpdate();
 	}
 
 	private _howToForApple = {
@@ -133,7 +139,7 @@ export class PWAInstallElement extends LitElement {
 			}
 
 			if (this.userChoiceResult === 'accepted')
-				this.isInstallHidden = true;
+				this.isDialogHidden = true;
 
 			this.requestUpdate();
 		});
@@ -174,7 +180,7 @@ export class PWAInstallElement extends LitElement {
 				this.name, 
 				this.description, 
 				this.icon, 
-				this.isInstallAvailable && !this.isInstallHidden,
+				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialog,
 				this._howToForApple,
 				this._howToRequested
@@ -184,7 +190,7 @@ export class PWAInstallElement extends LitElement {
 				this.name, 
 				this.description, 
 				this.icon, 
-				this.isInstallAvailable && !this.isInstallHidden,
+				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialog,
 				this._install
 			)}`;
