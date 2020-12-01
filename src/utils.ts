@@ -18,13 +18,18 @@ export default class Utils {
 			return true;
 		return false;
     }
-    
-    static async isRelatedAppsInstalled(): Promise<boolean> {
+
+    static async getInstalledRelatedApps(): Promise<IRelatedApp[]> {
         if ('getInstalledRelatedApps' in navigator)
             await (navigator as any).getInstalledRelatedApps().then((relatedApps: IRelatedApp[]) => {
-				return relatedApps.find((app: IRelatedApp) => app.id === 'com.learnpwa.app') ? true : false;
+				return relatedApps;
             });
-        return false;
+        return [];
+    }
+    
+    static async isRelatedAppsInstalled(): Promise<boolean> {
+        const _relatedApps = await this.getInstalledRelatedApps();
+        return _relatedApps.length? true : false;
     }
 
     static appInstalledEvent(_element: Element) {
