@@ -36,8 +36,8 @@
 	<script type="text/javascript">
 		var pwaInstall = document.getElementById("pwa-install");
 
-		pwaInstall.addEventListener('pwa-installed-success-event', (event) => {console.log(event.detail.message)});
-		pwaInstall.addEventListener('pwa-installed-fail-event', (event) => {console.log(event.detail.message)});
+		pwaInstall.addEventListener('pwa-install-success-event', (event) => {console.log(event.detail.message)});
+		pwaInstall.addEventListener('pwa-install-fail-event', (event) => {console.log(event.detail.message)});
 		pwaInstall.addEventListener('pwa-user-choice-result-event', (event) => {console.log(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-available-event', (event) => {console.log(event.detail.message)});
 	</script>

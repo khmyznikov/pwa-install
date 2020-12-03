@@ -47,16 +47,16 @@ import '../node_modules/@khmyznikov/pwa-install/dist/bundle.js';
 ---
 
 ## Supported events
-- pwa-installed-success-event
-- pwa-installed-fail-event
-- pwa-user-choice-result-event
+- pwa-install-success-event
+- pwa-install-fail-event
 - pwa-install-available-event
+- pwa-user-choice-result-event
 
 ```html
 <script type="text/javascript">
   var pwaInstall = document.getElementsByTagName('pwa-install')[0];
 
-  pwaInstall.addEventListener('pwa-installed-success-event', (event) => {console.log(event.detail.message)});
+  pwaInstall.addEventListener('pwa-install-success-event', (event) => {console.log(event.detail.message)});
 </script>
 ```
 

@@ -41,10 +41,10 @@ export default class Utils {
     }
 
     static eventInstalledSuccess(_element: Element) {
-        _eventDispatcher(_element, 'pwa-installed-success-event', 'Application installation successfully processed (Chromium/Android only)');
+        _eventDispatcher(_element, 'pwa-install-success-event', 'Application installation successfully processed (Chromium/Android only)');
     }
     static eventInstalledFail(_element: Element) {
-        _eventDispatcher(_element, 'pwa-installed-fail-event', 'Application installation failed (Chromium/Android only)');
+        _eventDispatcher(_element, 'pwa-install-fail-event', 'Application installation failed (Chromium/Android only)');
     }
     static eventUserChoiceResult(_element: Element, message: string) {
         _eventDispatcher(_element, 'pwa-user-choice-result-event', message);
