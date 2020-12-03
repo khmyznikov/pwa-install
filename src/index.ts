@@ -20,17 +20,10 @@ import templateApple from './template_apple';
 export class PWAInstallElement extends LitElement {
 	private manifest: IManifest = new Manifest();
 	
-	@property()
-	'manifest-url' = '/manifest.json';
-
-	@property()
-	icon = '';
-
-	@property()
-	name = '';
-
-	@property()
-	description = '';
+	@property() 'manifest-url' = '/manifest.json';
+	@property() icon = '';
+	@property() name = '';
+	@property() description = '';
 
 	static get styles() {
 		return styles;
@@ -54,14 +47,10 @@ export class PWAInstallElement extends LitElement {
 				window.deferredEvent.userChoice
 					.then((choiceResult: IChoiceResult) => {
 						this.userChoiceResult = choiceResult.outcome;
-						/**
-						 * @event pwa-install-install
-						 */
+						Utils.eventUserChoiceResult(this, this.userChoiceResult);
 					})
 					.catch((error) => {
-						/**
-						 * @event pwa-install-error
-						 */
+						Utils.eventInstalledFail(this);
 					});
 				window.deferredEvent = null;
 			}
@@ -81,7 +70,6 @@ export class PWAInstallElement extends LitElement {
 		handleEvent: () => { 
 			this.isDialogHidden = true;
 			window.sessionStorage.setItem('pwa-hide-install', 'true');
-
 			this.requestUpdate();
 		},
 		passive: true
@@ -92,14 +80,16 @@ export class PWAInstallElement extends LitElement {
 	public showDialog = () => {
 		this.isDialogHidden = false;
 		this.isInstallAvailable = true;
-
 		this.requestUpdate();
+	}
+
+	public getInstalledRelatedApps = async (): Promise<IRelatedApp[]> => {
+		return await Utils.getInstalledRelatedApps();
 	}
 
 	private _howToForApple = {
         handleEvent: () => { 
 			this._howToRequested = !this._howToRequested;
-			
 			this.requestUpdate();
         },
         passive: true
@@ -116,15 +106,11 @@ export class PWAInstallElement extends LitElement {
 					() => {
 						this.isInstallAvailable = true;
 						this.requestUpdate()
+						Utils.eventInstallAvailable(this);
 					},
 					300
 				);
-			else
-				Utils.appInstalledEvent(this);
 		}
-		else
-			if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode)
-				Utils.appInstalledEvent(this);
 	}
 
 	private _init = () => {
@@ -140,16 +126,15 @@ export class PWAInstallElement extends LitElement {
 
 			if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
 				this.isInstallAvailable = false;
-				Utils.appInstalledEvent(this);
 			} else {
 				this.isInstallAvailable = true;
+				Utils.eventInstallAvailable(this);
 			}
 
 			if (this.userChoiceResult === 'accepted'){
 				this.isDialogHidden = true;
-				Utils.appInstalledEvent(this);
+				Utils.eventInstalledSuccess(this);
 			}
-				
 
 			this.requestUpdate();
 		});
@@ -159,6 +144,7 @@ export class PWAInstallElement extends LitElement {
 			this.isInstallAvailable = false;
 
 			this.requestUpdate();
+			Utils.eventInstalledSuccess(this);
 		});
 
 
