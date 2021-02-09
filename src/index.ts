@@ -1,6 +1,6 @@
 import { customElement, LitElement, html, property } from 'lit-element';
 
-import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types/pwa-install.types';
+import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './pwa-install.types';
 
 import Utils from './utils';
 

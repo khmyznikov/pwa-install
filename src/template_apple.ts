@@ -1,5 +1,5 @@
 import { html } from 'lit-element';
-import {classMap} from 'lit-html/directives/class-map.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
 const template = (name: string, description: string, icon: string, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested}};

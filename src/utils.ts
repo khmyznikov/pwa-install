@@ -1,4 +1,4 @@
-import { IRelatedApp } from './types/pwa-install.types';
+import { IRelatedApp } from './pwa-install.types';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {
@@ -50,7 +50,7 @@ export default class Utils {
         _eventDispatcher(_element, 'pwa-user-choice-result-event', message);
     }
     static eventInstallAvailable(_element: Element) {
-        _eventDispatcher(_element, 'pwa-install-available-event', 'Application installation is available');
+        _eventDispatcher(_element, 'pwa-install-available-event', 'Application installation available');
     }
     
 }

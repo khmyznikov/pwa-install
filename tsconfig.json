@@ -6,7 +6,9 @@
       "esnext",
       "dom"
     ],
-    "outDir": "./dist",
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "./dist/types",
     "rootDir": "./src",
     "removeComments": true,
     "strict": true,

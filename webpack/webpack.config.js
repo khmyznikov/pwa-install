@@ -1,45 +1,41 @@
 const TerserPlugin = require('terser-webpack-plugin');
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { resolve } = require('path');
 
 module.exports = {
-	resolve: {
-		extensions: ['.ts', '.js']
-	},
-	devtool: 'source-map',
 	module: {
 		rules: [{
-				test: /\.ts?$/,
-				use: [
-					{
-						loader: 'minify-lit-html-loader',
-						options: {
-						  htmlMinifier: {
-							ignoreCustomFragments: [
-							  /<\s/,
-							  /<=/
-							]
-						  }
-						}
-					},
-					{
-					  loader: 'ts-loader'
-					},
-				  ],
-				exclude: /node_modules/,
-			},
-			{
-				test: /\.scss$/,
-				use: [{
-					loader: 'lit-scss-loader',
+			test: /\.ts?$/,
+			use: [
+				{
+					loader: 'minify-lit-html-loader',
 					options: {
-						minify: true,
-					},
-				}, 'extract-loader', 'css-loader', 'sass-loader'],
-			},
-		]
+						htmlMinifier: {
+						ignoreCustomFragments: [
+							/<\s/,
+							/<=/
+						]
+						}
+					}
+				},
+				{
+					loader: 'ts-loader'
+				},
+				],
+			exclude: /node_modules/,
+		},
+		{
+			test: /\.scss$/,
+			use: [{
+				loader: 'lit-scss-loader',
+				options: {
+					minify: true,
+				},
+			}, 'extract-loader', 'css-loader', 'sass-loader'],
+		},
+	]
 	},
-	plugins: [],
+	plugins: [new CleanWebpackPlugin()],
 	optimization: {
         minimize: true,
         minimizer: [
@@ -70,5 +66,9 @@ module.exports = {
 		compress: false,
 		host: '0.0.0.0',
 		port: 3000
+	},
+	devtool: 'source-map',
+	resolve: {
+		extensions: ['.ts', '.js']
 	}
 };
