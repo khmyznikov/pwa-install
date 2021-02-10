@@ -28,17 +28,20 @@ export interface IManifest {
     name: string;
     description: string;
     icons: IPWAIcon[];
+    screenshots?: IPWAIcon[] | null;
 }
 
 export class Manifest {
     constructor() {
         this.icons = [{ src: '' }];
+        this.screenshots = null;
         this.short_name = 'PWA';
         this.name = 'Progressive web application';
         this.description = 'Progressive web application';
     }
     short_name: string;
     icons: IPWAIcon[];
+    screenshots: IPWAIcon[] | null;
     name: string;
     description: string;
 }

@@ -1,4 +1,4 @@
-import { IRelatedApp } from './pwa-install.types';
+import { IRelatedApp } from './types';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {

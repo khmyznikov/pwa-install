@@ -23,11 +23,13 @@ export interface IManifest {
     name: string;
     description: string;
     icons: IPWAIcon[];
+    screenshots?: IPWAIcon[] | null;
 }
 export declare class Manifest {
     constructor();
     short_name: string;
     icons: IPWAIcon[];
+    screenshots: IPWAIcon[] | null;
     name: string;
     description: string;
 }

@@ -1,7 +1,8 @@
 import { html } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
+import { IManifest } from './types';
 
-const template = (name: string, description: string, icon: string, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean) => {
+const template = (name: string, description: string, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested}};
 
     return html`

@@ -1,5 +1,5 @@
 import { LitElement } from 'lit-element';
-import { IBeforeInstallPromptEvent, IRelatedApp } from './pwa-install.types';
+import { IBeforeInstallPromptEvent, IRelatedApp } from './types';
 declare global {
     interface WindowEventMap {
         beforeinstallprompt: IBeforeInstallPromptEvent;

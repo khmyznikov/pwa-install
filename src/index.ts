@@ -1,6 +1,8 @@
 import { customElement, LitElement, html, property } from 'lit-element';
 
-import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './pwa-install.types';
+import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types';
+
+import PWAGalleryElement from './gallery';
 
 import Utils from './utils';
 
@@ -167,6 +169,7 @@ export class PWAInstallElement extends LitElement {
 
 	connectedCallback() {
 		this._init();
+		PWAGalleryElement.finalized;
 		super.connectedCallback();
 	}
 
@@ -176,6 +179,7 @@ export class PWAInstallElement extends LitElement {
 				this.name, 
 				this.description, 
 				this.icon, 
+				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialog,
 				this._howToForApple,
@@ -186,6 +190,7 @@ export class PWAInstallElement extends LitElement {
 				this.name, 
 				this.description, 
 				this.icon, 
+				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialog,
 				this._install

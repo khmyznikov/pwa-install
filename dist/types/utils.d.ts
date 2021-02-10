@@ -1,4 +1,4 @@
-import { IRelatedApp } from './pwa-install.types';
+import { IRelatedApp } from './types';
 export default class Utils {
     static isAppleMobile(): boolean;
     static isStandalone(): boolean;

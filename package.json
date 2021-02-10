@@ -10,7 +10,8 @@
   "scripts": {
     "build": "webpack --config webpack/webpack.config.js --mode=production",
     "test": "npm run build && node ./webpack/serve.js",
-    "dev": "webpack serve --config webpack/webpack.config.js --mode=development"
+    "dev": "webpack serve --config webpack/webpack.config.js --mode=development",
+    "prepublish":"npm run build"
   },
   "author": "khmyznikov",
   "license": "Unlicense",

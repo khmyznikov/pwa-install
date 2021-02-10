@@ -54,10 +54,10 @@
 
             .about {
                 display: grid;
-                grid-template-rows: 32px auto;
+                grid-template-rows: 30px auto;
 
                 .name, .description{ 
-                    padding: 5px 15px;
+                    padding: 5px 10px;
                     padding-left: 5px;
                     overflow: hidden;
                 }
@@ -65,6 +65,12 @@
                     font-weight: 500;
                     padding-top: 10px;
                     font-size: 18px;
+
+                    line-height: 24px;
+                    padding: 5px 5px 0px;
+
+                    align-items: flex-start;
+                    display: flex;
                 }
                 .description{
                     font-size: 14px;
@@ -73,7 +79,8 @@
                     line-height: 20px;
 
                     padding-bottom: 0;
-                    margin-bottom: 10px;
+                    padding-right: 15px;
+                    margin-bottom: 3px;
                 }
             }
 
@@ -84,8 +91,15 @@
                 grid-column-start: 1;
                 grid-column-end: 3;
 
-                gap: 15px;
-                padding: 10px 15px;
+                gap: 10px;
+                padding: 10px 10px;
+                .primary{
+                    grid-column-start: 2;
+                }
+            }
+
+            pwa-gallery{
+                grid-column: 1 / 3;
             }
         }     
 
@@ -350,6 +364,19 @@
             }
             &:hover, &:active {
                 box-shadow: none;
+            }
+            &.close{
+                height: 25px;
+                min-width: 25px;
+                line-height: 0;
+
+                margin-right: 0;
+                margin-left: auto;
+                padding: 0;
+                &::after{
+                    width: 25px;
+                    height: 25px;
+                }
             }
         }
         &::before {
