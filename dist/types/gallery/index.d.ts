@@ -10,6 +10,7 @@ export default class PWAGalleryElement extends LitElement {
     scrollToNextPage: () => void;
     scrollToPrevPage: () => void;
     private _init;
+    firstUpdated(): void;
     connectedCallback(): void;
     render(): import("lit-element").TemplateResult;
 }

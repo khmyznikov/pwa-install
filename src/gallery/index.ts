@@ -55,6 +55,22 @@ export default class PWAGalleryElement extends LitElement {
 
 	
 	private _init = () => {
+		return;
+	}
+
+	firstUpdated () {
+		const _tools = this.calcScrollSize();
+		if (_tools)
+			setTimeout(
+				() => {
+					_tools.scroller.scrollTo({
+						top: 0,
+						left: 0
+					});
+				},
+				300
+			)
+			
 	}
 
 	connectedCallback() {

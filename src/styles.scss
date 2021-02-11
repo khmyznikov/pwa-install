@@ -114,6 +114,7 @@
                 transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
 
                 max-height: 70vh;
+                margin-top: 5px;
                 opacity: 1;
             }
         }
@@ -394,6 +395,10 @@
                 &::after{
                     width: 25px;
                     height: 25px;
+                    border-radius: 50%;
+                }
+                &::before{
+                    border-radius: 50%;
                 }
             }
         }
