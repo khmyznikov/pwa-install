@@ -20,6 +20,7 @@ export declare class PWAInstallElement extends LitElement {
     isUnderStandaloneMode: boolean;
     isRelatedAppsInstalled: boolean;
     private _howToRequested;
+    private _galleryRequested;
     private _install;
     install: () => void;
     private _hideDialog;
@@ -27,6 +28,7 @@ export declare class PWAInstallElement extends LitElement {
     showDialog: () => void;
     getInstalledRelatedApps: () => Promise<IRelatedApp[]>;
     private _howToForApple;
+    private _toggleGallery;
     private _checkInstalled;
     private _init;
     connectedCallback(): void;

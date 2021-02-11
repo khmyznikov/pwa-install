@@ -14,7 +14,7 @@ export default class PWAGalleryElement extends LitElement {
 		return styles;
 	}
 
-	public scrollToNextPage = () => {
+	public calcScrollSize = () => {
 		//@ts-ignore
 		const gallery = this.shadowRoot.querySelector('#paginated_gallery');
 		if (!gallery)
@@ -22,31 +22,35 @@ export default class PWAGalleryElement extends LitElement {
 		const gallery_scroller = gallery.querySelector('.gallery_scroller');
 		if (!gallery_scroller)
 			return;
-		const gallery_item = gallery_scroller.querySelector('img');
+		const gallery_items = Array.from(gallery_scroller.querySelectorAll('img'));
+		if (!gallery_items)
+			return;
+		const gallery_item = gallery_items.find((item) => { return (item.offsetWidth + item.offsetLeft) >= gallery_scroller.scrollLeft})
 		if (!gallery_item)
 			return;
-		gallery_scroller.scrollTo({
-			top: 0,
-			left: gallery_scroller.scrollLeft + gallery_item.clientWidth,
-			behavior: 'smooth'
-		  });
+		
+		return {
+			scroller: gallery_scroller,
+			amount: gallery_scroller.clientWidth < gallery_item.clientWidth? gallery_item.clientWidth / 2 + 20 :  gallery_item.clientWidth
+		}
+	}
+	public scrollToNextPage = () => {
+		const _tools = this.calcScrollSize();
+		if (_tools)
+			_tools.scroller.scrollTo({
+				top: 0,
+				left: _tools.scroller.scrollLeft + _tools.amount,
+				behavior: 'smooth'
+			});
 	}
 	public scrollToPrevPage = () => {
-		//@ts-ignore
-		const gallery = this.shadowRoot.querySelector('#paginated_gallery');
-		if (!gallery)
-			return;
-		const gallery_scroller = gallery.querySelector('.gallery_scroller');
-		if (!gallery_scroller)
-			return;
-		const gallery_item = gallery_scroller.querySelector('img');
-		if (!gallery_item)
-			return;
-		gallery_scroller.scrollTo({
-			top: 0,
-			left: gallery_scroller.scrollLeft - gallery_item.clientWidth,
-			behavior: 'smooth'
-		  });
+		const _tools = this.calcScrollSize();
+		if (_tools)
+			_tools.scroller.scrollTo({
+				top: 0,
+				left: _tools.scroller.scrollLeft - _tools.amount,
+				behavior: 'smooth'
+			});
 	}
 
 	

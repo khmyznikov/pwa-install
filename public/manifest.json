@@ -35,6 +35,16 @@
 			"src": "/screenshots/mobile-3.jpg",
 			"sizes": "518x922",
 			"type": "image/jpeg"
+		},
+        {
+			"src": "/screenshots/tablet-1.jpg",
+			"sizes": "1270x800",
+			"type": "image/jpeg"
+		},
+        {
+			"src": "/screenshots/tablet-2.jpg",
+			"sizes": "1274x792",
+			"type": "image/jpeg"
 		}
 	],
 	"related_applications": [

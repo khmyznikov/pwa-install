@@ -41,6 +41,7 @@ export class PWAInstallElement extends LitElement {
 	public isRelatedAppsInstalled = false;
 
 	private _howToRequested = false;
+	private _galleryRequested = false;
 
 	private _install = {
 		handleEvent: () => { 
@@ -92,6 +93,14 @@ export class PWAInstallElement extends LitElement {
 	private _howToForApple = {
         handleEvent: () => { 
 			this._howToRequested = !this._howToRequested;
+			this.requestUpdate();
+        },
+        passive: true
+    }
+
+	private _toggleGallery = {
+        handleEvent: () => { 
+			this._galleryRequested = !this._galleryRequested;
 			this.requestUpdate();
         },
         passive: true
@@ -193,7 +202,9 @@ export class PWAInstallElement extends LitElement {
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialog,
-				this._install
+				this._install,
+				this._toggleGallery,
+				this._galleryRequested
 			)}`;
 	}
 }
