@@ -8,10 +8,10 @@
   },
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "webpack --config webpack/webpack.config.js --mode=production",
+    "build": "webpack --config webpack/webpack.prod.js --mode=production",
     "test": "npm run build && node ./webpack/serve.js",
-    "dev": "webpack serve --config webpack/webpack.config.js --mode=development",
-    "prepublish":"npm run build"
+    "dev": "webpack serve --config webpack/webpack.dev.js --mode=development",
+    "prepublish": "npm run build"
   },
   "author": "khmyznikov",
   "license": "Unlicense",
@@ -32,7 +32,8 @@
     "typescript-lit-html-plugin": "^0.9.0",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "lit-element": "^2.4.0"
