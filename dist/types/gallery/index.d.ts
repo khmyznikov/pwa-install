@@ -5,7 +5,7 @@ export default class PWAGalleryElement extends LitElement {
     static get styles(): CSSStyleSheet;
     calcScrollSize: () => {
         scroller: Element;
-        amount: number;
+        item: HTMLImageElement;
     } | undefined;
     scrollToNextPage: () => void;
     scrollToPrevPage: () => void;

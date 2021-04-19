@@ -31,24 +31,24 @@ export default class PWAGalleryElement extends LitElement {
 		
 		return {
 			scroller: gallery_scroller,
-			amount: gallery_scroller.clientWidth < gallery_item.clientWidth? gallery_item.clientWidth / 2 + 20 :  gallery_item.clientWidth
+			item: gallery_item
 		}
 	}
 	public scrollToNextPage = () => {
 		const _tools = this.calcScrollSize();
-		if (_tools)
+		if (_tools && _tools.item.nextElementSibling)
 			_tools.scroller.scrollTo({
 				top: 0,
-				left: _tools.scroller.scrollLeft + _tools.amount,
+				left: _tools.scroller.scrollLeft + _tools.scroller.clientWidth + _tools.item.nextElementSibling.clientWidth,
 				behavior: 'smooth'
 			});
 	}
 	public scrollToPrevPage = () => {
 		const _tools = this.calcScrollSize();
-		if (_tools)
+		if (_tools && _tools.item.previousElementSibling)
 			_tools.scroller.scrollTo({
 				top: 0,
-				left: _tools.scroller.scrollLeft - _tools.amount,
+				left: _tools.scroller.scrollLeft - _tools.scroller.clientWidth - _tools.item.previousElementSibling.clientWidth,
 				behavior: 'smooth'
 			});
 	}
