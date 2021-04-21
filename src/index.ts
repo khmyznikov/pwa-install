@@ -93,6 +93,8 @@ export class PWAInstallElement extends LitElement {
 	private _howToForApple = {
         handleEvent: () => { 
 			this._howToRequested = !this._howToRequested;
+			if (this._howToRequested && this._galleryRequested)
+				this._galleryRequested = false;
 			this.requestUpdate();
         },
         passive: true
@@ -101,6 +103,8 @@ export class PWAInstallElement extends LitElement {
 	private _toggleGallery = {
         handleEvent: () => { 
 			this._galleryRequested = !this._galleryRequested;
+			if (this._howToRequested && this._galleryRequested)
+				this._howToRequested = false;
 			this.requestUpdate();
         },
         passive: true
@@ -192,7 +196,9 @@ export class PWAInstallElement extends LitElement {
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialog,
 				this._howToForApple,
-				this._howToRequested
+				this._howToRequested,
+				this._toggleGallery,
+				this._galleryRequested
 			)}`;
 		else
 			return html`${template(
