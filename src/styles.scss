@@ -128,15 +128,15 @@
 
         font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont, "Roboto", "Segoe UI";
 
-        display: inline-grid;
-        grid-template-rows: 1fr auto;
-        grid-gap: 15px;
+        // display: inline-grid;
+        // grid-template-rows: 1fr auto;
+        // grid-gap: 15px;
 
         max-width: 380px;
         width: auto;
 
         margin: 0 auto;
-        padding: 15px;
+        // padding: 15px;
 
         right: 0;
         left: 0;
@@ -146,13 +146,13 @@
 
         bottom: -100px;
 
-        transition: bottom .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height .35s ease-in-out;
+        transition: bottom .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height .35s ease-in-out, border .35s ease-in-out;
 
         overflow: hidden;
 
         will-change: opacity, visibility, bottom, top;
 
-        .dialog-body{
+        &.dialog-body{
             display: grid;
 
             grid-template-columns: 95px auto 1fr;
@@ -166,10 +166,11 @@
             border-radius: 15px;
 
             border-bottom: 1px solid transparent;
-            transition: border .35s ease-in-out;
+            // transition: border .35s ease-in-out;
 
-            background-color:rgba(251, 251, 251, 0.8);
-            box-shadow: 0 5px 15px rgba(0,0,0,.2);
+            background-color:rgba(255, 255, 255, 0.75);
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,.2));
+            backdrop-filter: blur(5px);
 
             .icon{
                 display: flex;
@@ -197,13 +198,17 @@
                 grid-area: description;
 
                 .name, .description{ 
-                    padding-right: 12px;
+                    padding-right: 15px;
                     overflow: hidden;
                 }
                 .name{
                     font-weight: 600;
-                    padding-top: 15px;
-                    line-height: 15px;
+                    padding-top: 10px;
+                    padding-right: 10px;
+                    line-height: 22px;
+
+                    align-items: flex-start;
+                    display: flex;
                 }
                 .description{
                     font-size: 12px;
@@ -211,6 +216,33 @@
 
                     margin-bottom: 15px;
                     overflow-y: auto;
+                }
+                .close{
+                    height: 25px;
+                    min-width: 25px;
+                    line-height: 0;
+
+                    margin-right: -3px;
+                    margin-top: -3px;
+                    margin-left: auto;
+
+                    padding: 0px;
+                    border-radius: 50%;
+
+                    opacity: .5;
+                    outline: none;
+
+                    border: none;
+                    background-color: transparent;
+
+                    cursor: pointer;
+
+                    transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+                    
+                    &:hover, &:active{
+                        opacity: 1;
+                        background-color: rgb(255, 255, 255);
+                    }
                 }
             }
         }
@@ -242,15 +274,6 @@
 
                     grid-area: button;
                 }
-                &.cancel{
-                    margin: 0 15px;
-                    
-                    opacity: .5;
-
-                    background-color:rgba(251, 251, 251, 0.9);
-                    box-shadow: 0 5px 15px rgba(0,0,0,.3);
-                }
-
                 &:active{
                     background-color: #f1f1f1;
                 }
@@ -291,12 +314,12 @@
                 display: grid;
                 user-select: none;
 
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
                 grid-template-rows: auto 1fr;
                 gap: 10px;
                 grid-template-areas:
-                    "title title"
-                    ". .";
+                    "title title title"
+                    ". . .";
 
                 padding: 15px;
                 padding-bottom: 0;
@@ -335,6 +358,9 @@
                         }
                         #pwa-add{
                             transform: scale(0.9);
+                        }
+                        #pwa-safari{
+                            transform: scale(0.5);
                         }
                     }
                     .step-text{
@@ -489,6 +515,21 @@
             .description-step .step-text{
                 font-size: 13px;
             }
+        }
+    }
+}
+@media (max-width: 420px) {
+    #pwa-install{
+        .install-dialog.apple{
+            max-width: 340px;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    #pwa-install{
+        .install-dialog.apple{
+            max-width: 300px;
         }
     }
 }
