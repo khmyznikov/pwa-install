@@ -1,0 +1,231 @@
+#pwa-install{
+    .install-dialog{
+        position: fixed;
+        display: inline-block;
+
+        opacity: 0;
+        visibility: hidden;
+        
+        z-index: 5;
+    }
+    .install-dialog.chrome{
+        font-family: "Roboto", "Segoe UI", system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont;
+
+        max-width: 380px;
+        width: 90%;
+        min-height: 90px;
+        margin: 0 auto;
+
+        right: 0;
+        left: 0;
+
+        background-color: #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,.3);
+
+        font-size: 15px;
+        color: #333;
+        border-radius: 3px;
+
+        top: -100px;
+
+        transition: top .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height 0.35s ease-in-out 0s;
+
+        .dialog-body{
+            display: grid;
+
+            grid-template-columns: 70px 1fr;
+
+            .icon{
+                display: flex;
+                align-items: flex-start;
+ 
+                .icon-image{
+                    width: 48px;
+                    height: 48px;
+
+                    margin: 0 auto;
+                    margin-top: 10px;
+
+                    border-radius: 3px;
+                }
+            }
+
+            .about {
+                display: grid;
+                grid-template-rows: 30px auto;
+
+                .name, .description{ 
+                    padding: 5px 10px;
+                    padding-left: 5px;
+                    overflow: hidden;
+                }
+                .name{
+                    font-weight: 500;
+                    padding-top: 10px;
+                    font-size: 18px;
+
+                    line-height: 24px;
+                    padding: 5px 5px 0px;
+
+                    align-items: flex-start;
+                    display: flex;
+                }
+                .description{
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 0.7;
+                    line-height: 20px;
+
+                    padding-bottom: 0;
+                    padding-right: 15px;
+                    margin-bottom: 3px;
+                }
+            }
+
+            .action-buttons{
+                display: grid;
+                grid-template-columns: 50% auto;
+
+                grid-column-start: 1;
+                grid-column-end: 3;
+
+                gap: 10px;
+                padding: 10px 10px;
+                .primary{
+                    grid-column-start: 2;
+                }
+            }
+
+            pwa-gallery{
+                grid-column: 1 / 3;
+
+                max-height: 0;
+                opacity: 0;
+
+                transition: opacity ease-in-out .5s, max-height .5s ease-in-out;
+                overflow: hidden;
+            }
+        }  
+        
+        &.gallery{
+            pwa-gallery{
+                transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
+
+                max-height: 70vh;
+                opacity: 1;
+            }
+        }
+
+        &.available {
+            opacity: 1;
+            top: 15px;
+            visibility: visible;
+        }
+    }
+    .material-button {
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        padding: 0 16px;
+        min-width: 64px;
+        height: 36px;
+        vertical-align: middle;
+        text-align: center;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        
+        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        
+        font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 37px;
+        overflow: hidden;  
+        outline: none;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+        &.primary{
+            color: #fff;
+            background-color: #4285F4;
+        }
+        &.secondary{
+            background-color: #fff;
+            color: #4285F4;
+            // border: 1px solid #4285F4;
+
+            box-shadow: none;
+            &::before, &::after{
+                background-color: #4285F4;
+            }
+            &:hover, &:active {
+                box-shadow: none;
+            }
+            &.close{
+                height: 25px;
+                min-width: 25px;
+                line-height: 0;
+
+                margin-right: 0;
+                margin-left: auto;
+                padding: 0;
+
+                border-radius: 50%;
+
+                &::after{
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                }
+                &::before{
+                    border-radius: 50%;
+                }
+            }
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            border-radius: 50%;
+            padding: 50%;
+            width: 32px;
+            height: 32px;
+            background-color: #fff;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1);
+            transition: opacity 1s, transform 0.5s;
+        }
+        &:hover {
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+            &::before {
+                opacity: 0.08;
+            }
+            &:focus {
+                &::before {
+                    opacity: 0.3;
+                }
+            }
+        }
+        &:active {
+            box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+            &::after {
+                opacity: 0.32;
+                transform: translate(-50%, -50%) scale(0);
+                transition: transform 0s;
+            }
+        }
+    }
+}

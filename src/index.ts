@@ -1,6 +1,6 @@
 import { customElement, LitElement, html, property } from 'lit-element';
 
-import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types';
+import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types/types';
 
 import PWAGalleryElement from './gallery';
 
@@ -14,9 +14,11 @@ declare global {
 	}
 }
 
-import styles from './styles.scss';
-import template from './template';
-import templateApple from './template_apple';
+import styles from './templates/chrome/styles.scss';
+import stylesApple from './templates/apple/styles-apple.scss';
+
+import template from './templates/chrome/template';
+import templateApple from './templates/apple/template-apple';
 
 @customElement('pwa-install')
 export class PWAInstallElement extends LitElement {
@@ -28,7 +30,7 @@ export class PWAInstallElement extends LitElement {
 	@property() description = '';
 
 	static get styles() {
-		return styles;
+		return [ styles, stylesApple ];
 	}
 
 	public platforms = '';

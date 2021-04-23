@@ -1,4 +1,4 @@
-import { IRelatedApp } from './types';
+import { IRelatedApp } from './types/types';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {

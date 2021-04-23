@@ -1,5 +1,5 @@
 import { customElement, LitElement, html, property } from 'lit-element';
-import { IWindow, IManifest } from '../types';
+import { IWindow, IManifest } from '../types/types';
 
 declare const window: IWindow;
 
