@@ -123,8 +123,6 @@
             }
         }
         .action-buttons{
-            display: grid;
-            grid-template-columns: 64px auto;
             grid-area: button;
 
             grid-column-start: 1;
@@ -138,6 +136,7 @@
             display: grid;
 
             height: 50px;
+            width: 100%;
             line-height: 50px;
 
             border-radius: 8px;
@@ -274,6 +273,10 @@
 
             transition: opacity ease-in-out .5s, max-height .5s ease-in-out;
             overflow: hidden;
+            & + .action-buttons{
+                display: grid;
+                grid-template-columns: 64px auto;
+            }
         }
         &.available {
             opacity: 1;
