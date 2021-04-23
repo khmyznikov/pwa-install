@@ -1,5 +1,5 @@
 import { LitElement } from 'lit-element';
-import { IBeforeInstallPromptEvent, IRelatedApp } from './types';
+import { IBeforeInstallPromptEvent, IRelatedApp } from './types/types';
 declare global {
     interface WindowEventMap {
         beforeinstallprompt: IBeforeInstallPromptEvent;
@@ -11,7 +11,7 @@ export declare class PWAInstallElement extends LitElement {
     icon: string;
     name: string;
     description: string;
-    static get styles(): CSSStyleSheet;
+    static get styles(): CSSStyleSheet[];
     platforms: string;
     userChoiceResult: string;
     isDialogHidden: boolean;

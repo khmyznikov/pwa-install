@@ -1,5 +1,5 @@
 import { LitElement } from 'lit-element';
-import { IManifest } from '../types';
+import { IManifest } from '../types/types';
 export default class PWAGalleryElement extends LitElement {
     screenshots: IManifest['screenshots'];
     static get styles(): CSSStyleSheet;

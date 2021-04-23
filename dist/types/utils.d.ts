@@ -1,4 +1,4 @@
-import { IRelatedApp } from './types';
+import { IRelatedApp } from './types/types';
 export default class Utils {
     static isAppleMobile(): boolean;
     static isStandalone(): boolean;
