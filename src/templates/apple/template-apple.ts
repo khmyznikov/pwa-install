@@ -25,7 +25,7 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                         </div>
                         <div class="description-step">
                             <div class="svg-wrap">
-                                <svg id="pwa-safari" viewBox="0 0 13.964 13.964">
+                                <svg id="pwa-safari" viewBox="0 0 13.964 13.964" width="24" height="24">
                                     <path d="M6.982 0A6.99 6.99 0 000 6.982a6.99 6.99 0 006.982 6.982 6.99 6.99 0 006.982-6.982A6.99 6.99 0 006.982 0zm0 1.074a5.9 5.9 0 015.908 5.908 5.9 5.9 0 01-5.908 5.908 5.9 5.9 0 01-5.908-5.908 5.9 5.9 0 015.908-5.908zm3.76 2.148L5.6 5.624l-2.379 5.117 5.165-2.354zM6.963 6.288a.795.795 0 11-.001 1.59.795.795 0 010-1.59z" font-weight="400" font-family="sans-serif" overflow="visible"/>
                                 </svg>
                             </div>
