@@ -1,4 +1,9 @@
 #pwa-install{
+    --text-color-normal: #333;
+    --background-color: #fff;
+
+    user-select: none;
+    
     .install-dialog{
         position: fixed;
         display: inline-block;
@@ -19,11 +24,11 @@
         right: 0;
         left: 0;
 
-        background-color: #fff;
+        background-color: var(--background-color);
         box-shadow: 0 5px 15px rgba(0,0,0,.3);
 
         font-size: 15px;
-        color: #333;
+        color: var(--text-color-normal);
         border-radius: 3px;
 
         top: -100px;
@@ -123,6 +128,10 @@
         }
     }
     .material-button {
+        --text-color-primary: #fff;
+        --text-color-secondary: #4285F4;
+        --background-color-primary: #4285F4;
+        --background-color-ripple: #fff;
         position: relative;
         display: inline-block;
         box-sizing: border-box;
@@ -147,17 +156,17 @@
         cursor: pointer;
         transition: box-shadow 0.2s;
         &.primary{
-            color: #fff;
-            background-color: #4285F4;
+            color: var(--text-color-primary);
+            background-color: var(--background-color-primary);
         }
         &.secondary{
-            background-color: #fff;
-            color: #4285F4;
+            background-color: transparent;
+            color:  var(--text-color-secondary);
             // border: 1px solid #4285F4;
 
             box-shadow: none;
             &::before, &::after{
-                background-color: #4285F4;
+                background-color: var(--background-color-primary);
             }
             &:hover, &:active {
                 box-shadow: none;
@@ -190,7 +199,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: #fff;
+            background-color: var(--background-color-ripple);
             opacity: 0;
             transition: opacity 0.2s;
         }
@@ -203,7 +212,7 @@
             padding: 50%;
             width: 32px;
             height: 32px;
-            background-color: #fff;
+            background-color: var(--background-color-ripple);
             opacity: 0;
             transform: translate(-50%, -50%) scale(1);
             transition: opacity 1s, transform 0.5s;
@@ -227,5 +236,12 @@
                 transition: transform 0s;
             }
         }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #pwa-install{
+        --text-color-normal: #fff;
+        --background-color: #424242;
     }
 }
