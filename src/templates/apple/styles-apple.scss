@@ -1,4 +1,12 @@
 #pwa-install{
+    --text-color-normal: #333;
+    --text-color-description: #333;    
+    --background-color: rgba(255, 255, 255, 0.75);
+    --text-color-button:#fff;
+    --background-color-button:#fff;
+    --background-color-button-active: #DBDAE0;
+    --border-bottom-color: rgba(0, 0, 0, 0.1);
+
     .install-dialog.apple{
 
         font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont, "Roboto", "Segoe UI";
@@ -17,7 +25,7 @@
         left: 0;
 
         font-size: 15px;
-        color: #333;
+        color: var(--text-color-normal);
 
         bottom: -100px;
 
@@ -44,7 +52,7 @@
             border-bottom: 1px solid transparent;
             // transition: border .35s ease-in-out;
 
-            background-color:rgba(255, 255, 255, 0.75);
+            background-color:var(--background-color);
             filter: drop-shadow(0 5px 15px rgba(0,0,0,.2));
             backdrop-filter: blur(5px);
 
@@ -54,7 +62,7 @@
 
                 grid-area: icon;
 
-                border-bottom: 1px solid  rgba(0,0,0, .1);
+                border-bottom: 1px solid var(--border-bottom-color);
  
                 .icon-image{
                     width: 64px;
@@ -69,7 +77,7 @@
                 display: grid;
                 grid-template-rows: 35px 60px;
 
-                border-bottom: 1px solid  rgba(0,0,0, .1);
+                border-bottom: 1px solid var(--border-bottom-color);
 
                 grid-area: description;
 
@@ -92,6 +100,8 @@
 
                     margin-bottom: 15px;
                     overflow-y: auto;
+
+                    color: var(--text-color-description);
                 }
                 .close{
                     height: 25px;
@@ -108,6 +118,8 @@
                     opacity: .5;
                     outline: none;
 
+                    color: var(--text-color-normal);
+
                     border: none;
                     background-color: transparent;
 
@@ -117,7 +129,7 @@
                     
                     &:hover, &:active{
                         opacity: 1;
-                        background-color: rgb(255, 255, 255);
+                        background-color: var(--background-color-button);
                     }
                 }
             }
@@ -141,6 +153,8 @@
 
             border-radius: 8px;
 
+            color: var(--text-color-normal);
+
             &.button{
                 border: none;
                 outline: none;
@@ -155,45 +169,22 @@
                 padding: 0;
                 margin: 0;
 
-                &.install, &.gallery{
-                    // margin: 15px;
-                    background-color: #fff; 
-                }
+                background-color: var(--background-color-button); 
+
                 &.gallery{
                     display: flex;
                     align-items: center;
                     #pwa-gallery{
                         margin: 0 auto;
                         width: 26px;
-                        fill: #000;
+                        fill: var(--text-color-normal);
                     }
                 }
                 &:active{
-                    background-color: #DBDAE0;
+                    background-color: var(--background-color-button-active);
                 }
             }
         }
-        // .dialog-bottom-buttons{
-        //     display: flex;
-        //     flex-direction: column;
-
-        //     border-radius: 8px;
-        //     box-shadow: 0 5px 15px rgba(0,0,0,.3);
-        //     .dialog-button{
-        //         border-radius: 0px;
-        //         &:first-child{
-        //             border-top-right-radius: 8px;
-        //             border-top-left-radius: 8px;
-        //             border-top: none;
-        //         }
-        //         &:last-child{
-        //             border-bottom-right-radius: 8px;
-        //             border-bottom-left-radius: 8px;
-
-        //             border-top: 1px solid rgba(0, 0, 0, 0.1);
-        //         }
-        //     }
-        // }
         .how-to-body{
             opacity: 0;
             max-height: 0px;
@@ -235,11 +226,12 @@
 
                     font-size: 14px;
                     .svg-wrap{
+                        position: relative;
                         display: inline-flex;
-                        background-color: #fff;
+                        background-color: var(--background-color-button);
 
-                        width: 48px;
-                        height: 48px;
+                        width: 50px;
+                        height: 50px;
                         align-items: center;
 
                         border-radius: 6px;
@@ -254,8 +246,15 @@
                             transform: scale(0.82);
                         }
                         #pwa-add{
-                            transform: scale(0.9);
-                            fill: #000;
+                            transform: scale(0.96);
+                            fill: var(--text-color-normal);
+                        }
+
+                        .step-count{
+                            position: absolute;
+                            line-height: 12px;
+                            top: 3px;
+                            left: 4px;
                         }
                     }
                     .step-text{
@@ -341,5 +340,16 @@
         .install-dialog.apple{
             max-width: 300px;
         }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #pwa-install{
+        --text-color-normal: #fff;
+        --text-color-description: #9E9AA1;    
+        --background-color: rgb(25 25 25 / 90%);
+        --background-color-button:#353535;
+        --background-color-button-active: #454545;
+        --border-bottom-color: #353535;
     }
 }
