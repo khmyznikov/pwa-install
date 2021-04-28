@@ -1,4 +1,4 @@
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { IManifest } from '../types/types';
 
 const template = (screenshots: IManifest['screenshots'], scrollToNextPage: any, scrollToPrevPage: any) => {
