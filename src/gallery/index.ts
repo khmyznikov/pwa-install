@@ -40,7 +40,7 @@ export default class PWAGalleryElement extends LitElement {
 		if (_tools && _tools.item.nextElementSibling)
 			_tools.scroller.scrollTo({
 				top: 0,
-				left: _tools.scroller.scrollLeft + _tools.scroller.clientWidth + _tools.item.nextElementSibling.clientWidth,
+				left: _tools.scroller.scrollLeft + _tools.scroller.clientWidth + _tools.item.nextElementSibling.clientWidth / 2,
 				behavior: 'smooth'
 			});
 	}
@@ -49,7 +49,7 @@ export default class PWAGalleryElement extends LitElement {
 		if (_tools && _tools.item.previousElementSibling)
 			_tools.scroller.scrollTo({
 				top: 0,
-				left: _tools.scroller.scrollLeft - _tools.scroller.clientWidth - _tools.item.previousElementSibling.clientWidth,
+				left: _tools.scroller.scrollLeft - _tools.scroller.clientWidth - _tools.item.previousElementSibling.clientWidth / 2,
 				behavior: 'smooth'
 			});
 	}
