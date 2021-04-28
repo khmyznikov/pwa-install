@@ -1,4 +1,4 @@
-import { LitElement } from 'lit-element';
+import { LitElement } from 'lit';
 import { IBeforeInstallPromptEvent, IRelatedApp } from './types/types';
 declare global {
     interface WindowEventMap {
@@ -32,5 +32,5 @@ export declare class PWAInstallElement extends LitElement {
     private _checkInstalled;
     private _init;
     connectedCallback(): void;
-    render(): import("lit-element").TemplateResult;
+    render(): import("lit-html").TemplateResult<1>;
 }

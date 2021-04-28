@@ -1,4 +1,4 @@
-import { LitElement } from 'lit-element';
+import { LitElement } from 'lit';
 import { IManifest } from '../types/types';
 export default class PWAGalleryElement extends LitElement {
     screenshots: IManifest['screenshots'];
@@ -12,5 +12,5 @@ export default class PWAGalleryElement extends LitElement {
     private _init;
     firstUpdated(): void;
     connectedCallback(): void;
-    render(): import("lit-element").TemplateResult;
+    render(): import("lit-html").TemplateResult<1>;
 }

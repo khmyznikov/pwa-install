@@ -1,5 +1,5 @@
-import { html, LitElement } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { html } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 import { IManifest } from '../../types/types';
 
 const template = (name: string, description: string, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
