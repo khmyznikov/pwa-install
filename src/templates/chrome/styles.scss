@@ -1,7 +1,4 @@
 #pwa-install{
-    --text-color-normal: #333;
-    --background-color: #fff;
-
     user-select: none;
     
     .install-dialog{
@@ -14,6 +11,9 @@
         z-index: 5;
     }
     .install-dialog.chrome{
+        --text-color-normal: #333;
+        --background-color: #fff;
+
         font-family: "Roboto", "Segoe UI", system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont;
 
         max-width: 380px;
@@ -240,8 +240,14 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    #pwa-install{
+    #pwa-install .install-dialog.chrome{
         --text-color-normal: #fff;
-        --background-color: #424242;
+        --background-color: #38373C;
+
+        .material-button{
+            --text-color-primary: #1B222C;
+            --text-color-secondary: #89B4F8;
+            --background-color-primary: #89B4F8;
+        }
     }
 }

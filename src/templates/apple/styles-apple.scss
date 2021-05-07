@@ -1,13 +1,12 @@
 #pwa-install{
-    --text-color-normal: #333;
-    --text-color-description: #333;    
-    --background-color: rgba(255, 255, 255, 0.75);
-    --text-color-button:#fff;
-    --background-color-button:#fff;
-    --background-color-button-active: #DBDAE0;
-    --border-bottom-color: rgba(0, 0, 0, 0.1);
-
     .install-dialog.apple{
+        --text-color-normal: #333;
+        --text-color-description: #333;    
+        --background-color: rgba(255, 255, 255, 0.75);
+        --text-color-button:#fff;
+        --background-color-button:#fff;
+        --background-color-button-active: #DBDAE0;
+        --border-bottom-color: rgba(0, 0, 0, 0.1);
 
         font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont, "Roboto", "Segoe UI";
 
@@ -345,11 +344,13 @@
 
 @media (prefers-color-scheme: dark) {
     #pwa-install{
-        --text-color-normal: #fff;
-        --text-color-description: #9E9AA1;    
-        --background-color: rgb(25 25 25 / 90%);
-        --background-color-button:#353535;
-        --background-color-button-active: #454545;
-        --border-bottom-color: #353535;
+        .install-dialog.apple {
+            --text-color-normal: #fff;
+            --text-color-description: #9E9AA1;    
+            --background-color: rgb(25 25 25 / 90%);
+            --background-color-button:#353535;
+            --background-color-button-active: #454545;
+            --border-bottom-color: #353535;
+        }
     }
 }
