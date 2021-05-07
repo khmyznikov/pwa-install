@@ -1,6 +1,6 @@
 [![Published on NPM](https://img.shields.io/npm/v/@khmyznikov/pwa-install.svg)](https://www.npmjs.com/package/@khmyznikov/pwa-install)
 
-## \<pwa-install\>
+## \<pwa-install\> - 13.5kB brotli compressed
 
 Installation dialog for Progressive web component. Provides more convenience user experience and fix lack of native dialogs in some browsers.
 
