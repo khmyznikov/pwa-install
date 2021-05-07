@@ -1,9 +1,8 @@
 [![Published on NPM](https://img.shields.io/npm/v/@khmyznikov/pwa-install.svg)](https://www.npmjs.com/package/@khmyznikov/pwa-install)
 
-## \<pwa-install\> - 13.5kB brotli compressed
+## \<pwa-install\>
 
-Installation dialog for Progressive web component. Provides more convenience user experience and fix lack of native dialogs in some browsers.
-
+Installation dialog for Progressive web component. Provides more convenience user experience and fix lack of native dialogs in some browsers. **13.5kB brotli** compressed bundle.
 ## Gallery
 | iOS | iOS install | iOS gallery |
 |---|---|---|
@@ -103,7 +102,6 @@ import '../node_modules/@khmyznikov/pwa-install/dist/bundle.js';
 ---
 
 ## ROADMAP
-- dark theme
 - more params/methods/events
 - translation
 - manual mode
