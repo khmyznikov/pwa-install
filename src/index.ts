@@ -4,6 +4,7 @@ import { property, customElement } from 'lit/decorators.js';
 import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types/types';
 
 import PWAGalleryElement from './gallery';
+import PWABottomSheetElement from './templates/chrome/bottom-sheet';
 
 import Utils from './utils';
 
@@ -181,13 +182,20 @@ export class PWAInstallElement extends LitElement {
 				this.description = this.description || this.manifest.description;
 			}
 		});
+
+		
 	};
 
 	connectedCallback() {
 		this._init();
 		PWAGalleryElement.finalized;
+		PWABottomSheetElement.finalized;
 		super.connectedCallback();
 	}
+
+	// firstUpdated() {
+	// 	return;
+	// }
 
 	render() {
 		if (this.isAppleMobilePlatform)

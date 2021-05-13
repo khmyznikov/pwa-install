@@ -2,6 +2,11 @@
     user-select: none;
     
     .install-dialog{
+        --text-color-normal: #333;
+        --background-color: #fff;
+
+        font-family: "Roboto", "Segoe UI", system-ui;
+
         position: fixed;
         display: inline-block;
 
@@ -11,11 +16,6 @@
         z-index: 5;
     }
     .install-dialog.chrome{
-        --text-color-normal: #333;
-        --background-color: #fff;
-
-        font-family: "Roboto", "Segoe UI", system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont;
-
         max-width: 380px;
         width: 90%;
         min-height: 90px;
@@ -25,7 +25,7 @@
         left: 0;
 
         background-color: var(--background-color);
-        box-shadow: 0 5px 15px rgba(0,0,0,.3);
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,.3));
 
         font-size: 15px;
         color: var(--text-color-normal);
@@ -125,6 +125,64 @@
             opacity: 1;
             top: 15px;
             visibility: visible;
+        }
+    }
+    .install-dialog.mobile{
+        top: auto;
+
+        bottom: auto;
+
+        // transition: bottom .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height 0.35s ease-in-out 0s;
+
+        transition: none;
+        transform: translateY(100vh);
+
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+
+        .dialog-body{
+            grid-template-columns: 1fr;
+
+            .body-header{
+                display: grid;
+                grid-template-columns: max-content 1fr max-content;
+                grid-gap: 10px;
+    
+                padding: 15px 15px;
+    
+                .install{
+                    text-transform: capitalize;
+                }
+
+                .about{
+                    grid-template-rows: 15px auto;
+                    grid-gap: 5px;
+
+                    .name{
+                        padding: 0;
+                        line-height: 15px;
+                    }
+
+                    .description{
+                        padding: 0;
+                    }
+                }
+    
+                .icon .icon-image{
+                    margin: 0;
+                }
+            }
+        }
+
+        &.available {
+            --translateY: translateY(calc(100vh - 100px));
+
+            opacity: 1;
+            top: auto;
+            
+            visibility: visible;
+            
+            transform: var(--translateY);
         }
     }
     .material-button {
@@ -248,6 +306,27 @@
             --text-color-primary: #1B222C;
             --text-color-secondary: #89B4F8;
             --background-color-primary: #89B4F8;
+        }
+    }
+}
+
+@media (max-width: 768px - 1px) {
+    #pwa-install{
+        .install-dialog.chrome.mobile{
+            display: inline-block;
+        }
+        .install-dialog.chrome{
+            display: none;
+        }
+    }
+}
+@media (min-width: 768px) {
+    #pwa-install{
+        .install-dialog.chrome.mobile{
+            display: none;
+        }
+        .install-dialog.chrome{
+            display: inline-block;
         }
     }
 }

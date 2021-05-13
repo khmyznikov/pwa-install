@@ -26,6 +26,11 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                     </div>
                 </div>
             </div>
+            <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
+                <pwa-bottom-sheet .props=${{name, icon, description}} .install=${install}>
+                </pwa-bottom-sheet>
+                ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+            </div>
         </div>`;
 };
 export default template;
