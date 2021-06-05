@@ -10,17 +10,18 @@ module.exports = {
 						loader: 'minify-lit-html-loader',
 						options: {
 							htmlMinifier: {
-							ignoreCustomFragments: [
-								/<\s/,
-								/<=/
-							]
-							}
-						}
+								ignoreCustomFragments: [
+									/<\s/,
+									/<=/,
+								]
+							},
+							include: '/src/**/template-*.ts'
+						},
 					},
 					{
 						loader: 'ts-loader'
 					},
-					],
+				],
 				exclude: /node_modules/,
 			},
 			{
