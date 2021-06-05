@@ -128,7 +128,7 @@
         }
     }
     .install-dialog.mobile{
-        top: auto;
+        top: 0px;
 
         bottom: auto;
 
@@ -137,18 +137,44 @@
         transition: none;
         transform: translateY(100vh);
 
+        border-radius: 0;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
+
+        padding-bottom: 35px;
 
         .dialog-body{
             grid-template-columns: 1fr;
 
+            .touch-header{
+                height: 20px;
+                width: 100%;
+                padding-top: 8px;
+                box-sizing: border-box;
+
+                cursor: grab;
+                &:active{
+                    cursor: grabbing; 
+                }
+                &::before{
+                    content:'';
+                    width: 35px;
+                    height: 3px;
+                    border-radius: 3px;
+                    background: #DBDCE0;
+                    margin: 0 auto;
+                    display: block;
+                }
+            }
             .body-header{
                 display: grid;
                 grid-template-columns: max-content 1fr max-content;
                 grid-gap: 10px;
     
                 padding: 15px 15px;
+                padding-top: 0;
+
+                border-bottom: 1px solid #504F54;
     
                 .install{
                     text-transform: capitalize;
@@ -178,7 +204,7 @@
             --translateY: translateY(calc(100vh - 100px));
 
             opacity: 1;
-            top: auto;
+            top: 0px;
             
             visibility: visible;
             

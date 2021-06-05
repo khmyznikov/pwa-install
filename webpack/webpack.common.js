@@ -12,18 +12,26 @@ module.exports = {
 							htmlMinifier: {
 								ignoreCustomFragments: [
 									/<\s/,
-									/<=/,
+									/<=/
 								]
 							},
-							include: '/src/**/template-*.ts'
+							
 						},
-					},
+					}
+				],
+				exclude: /node_modules/,
+				include: [/template-.*\.ts$/, /template\.ts/]
+			},
+			{
+				test: /\.ts?$/,
+				use: [
 					{
 						loader: 'ts-loader'
 					},
 				],
 				exclude: /node_modules/,
 			},
+
 			{
 				test: /\.scss$/,
 				use: [{

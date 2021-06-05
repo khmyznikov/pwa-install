@@ -24,11 +24,12 @@ export default class PWABottomSheetElement extends LitElement {
     @property() install = () => {};
 	
 	private _init = () => {
-		const dragMobileSheet = (element: HTMLElement | null) => {
-			if (!element)
+		const dragMobileSheet = (element: HTMLElement | null, touchTargetElement: HTMLElement | undefined) => {
+			if (!element || !touchTargetElement)
 				return
 
 			let dragOffset = 0;
+			const bounceOffset = 35;
 
 			const getYCoord = (e: MouseEvent | TouchEvent): number => {
 				return (e as MouseEvent).clientY || ((e as TouchEvent).changedTouches && (e as TouchEvent).changedTouches.length? (e as TouchEvent).changedTouches[0].clientY : 0);
@@ -51,7 +52,7 @@ export default class PWABottomSheetElement extends LitElement {
 				// call a function whenever the cursor moves:
 				// document.onmousemove = elementDrag;
 
-				dragOffset = getYCoord(e) - element.getBoundingClientRect().top + 10;
+				dragOffset = getYCoord(e) - touchTargetElement.getBoundingClientRect().top;
 			}
 			const dragMouseUp = (e: MouseEvent | TouchEvent) => {
 				// e.preventDefault();
@@ -60,16 +61,16 @@ export default class PWABottomSheetElement extends LitElement {
 					closeDragElement(e, window.innerHeight + 50);
 					return
 				}
-				if (window.innerHeight - getYCoord(e) > element.clientHeight / 2){
+				if (window.innerHeight - getYCoord(e)  > element.clientHeight / 2){
 					closeDragElement(e, window.innerHeight - element.clientHeight);
 					return
 				}
 				else {
-					closeDragElement(e, window.innerHeight - 100);
+					closeDragElement(e, window.innerHeight - 100 - bounceOffset);
 					return
 				}
 				
-				closeDragElement(e);
+				// closeDragElement(e);
 			}
 			
 			const dragMouseMove = (e: MouseEvent | TouchEvent) => {
@@ -83,8 +84,8 @@ export default class PWABottomSheetElement extends LitElement {
 				// element.style.top = (element.offsetTop - pos2) + "px";
 				// elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
 
-				if (currentY <= (window.innerHeight - element.clientHeight)) {
-					closeDragElement(e, window.innerHeight - element.clientHeight);
+				if (currentY <= (window.innerHeight - element.clientHeight + dragOffset)) {
+					// closeDragElement(e, window.innerHeight - element.clientHeight);
 					return
 				}
 
@@ -118,19 +119,19 @@ export default class PWABottomSheetElement extends LitElement {
 				else				
 					element.style.setProperty(
 						"--translateY",
-						`translateY(${(toPoint || getYCoord(e)) - dragOffset + 35}px)`
+						`translateY(${(toPoint || getYCoord(e)) + bounceOffset}px)`
 					);
 
 				element.style.setProperty(
 					"transition",
-					`transform 150ms ease-in-out`
+					`transform 500ms cubic-bezier(0.4, 0, 0, 1) 0s`
 				);
 			}
 
-			element.addEventListener('mousedown', dragMouseDown);
-			element.addEventListener('touchstart', dragMouseDown);
+			touchTargetElement.addEventListener('mousedown', dragMouseDown);
+			touchTargetElement.addEventListener('touchstart', dragMouseDown);
 		}
-		dragMobileSheet(this.parentElement);
+		dragMobileSheet(this.parentElement, this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement);
 		return;
 	}
 
