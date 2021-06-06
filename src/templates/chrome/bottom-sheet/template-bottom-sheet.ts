@@ -13,7 +13,7 @@ const template = (name: string, description: string, icon: string, install: any)
                     <div class="name">
                         ${name}
                     </div>
-                    <div class="description">${description}</div>
+                    <div class="hostname">${location.hostname}</div>
                 </div>
                 <button class="material-button primary install" @click='${install}'>Install</button>
             </div>
