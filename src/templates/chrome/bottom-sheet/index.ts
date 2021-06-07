@@ -25,12 +25,13 @@ export default class PWABottomSheetElement extends LitElement {
 	
 	private _init = () => {
 		const _saveBodyStyle = document.body.style.overscrollBehaviorY;
-		const dragMobileSheet = (element: HTMLElement | null, touchTargetElement: HTMLElement | undefined) => {
-			if (!element || !touchTargetElement)
+		const dragMobileSheet = (element: HTMLElement | null, touchTargetElement: HTMLElement | undefined, infoElement: HTMLElement | undefined) => {
+			if (!element || !touchTargetElement || !infoElement)
 				return
 
 			let dragOffset = 0;
 			const bounceOffset = 35;
+			const bottomSize = touchTargetElement.clientHeight + infoElement.clientHeight;
 
 			const getYCoord = (e: MouseEvent | TouchEvent): number => {
 				return (e as MouseEvent).clientY || ((e as TouchEvent).changedTouches && (e as TouchEvent).changedTouches.length? (e as TouchEvent).changedTouches[0].clientY : 0);
@@ -71,7 +72,7 @@ export default class PWABottomSheetElement extends LitElement {
 					return
 				}
 				else {
-					closeDragElement(e, window.innerHeight - 100 - bounceOffset);
+					closeDragElement(e, window.innerHeight - bottomSize - bounceOffset);
 					return
 				}
 				
@@ -116,10 +117,10 @@ export default class PWABottomSheetElement extends LitElement {
 				window.removeEventListener('touchend', dragMouseUp);
 				window.removeEventListener('touchmove', dragMouseMove);
 
-				if (!toPoint && getYCoord(e) >= window.innerHeight - 100)
+				if (!toPoint && getYCoord(e) >= window.innerHeight - bottomSize)
 					element.style.setProperty(
 						"--translateY",
-						`translateY(calc(100vh - 100px))`
+						`translateY(calc(100vh - ${bottomSize}px))`
 					);
 				else				
 					element.style.setProperty(
@@ -135,8 +136,13 @@ export default class PWABottomSheetElement extends LitElement {
 
 			touchTargetElement.addEventListener('mousedown', dragMouseDown);
 			touchTargetElement.addEventListener('touchstart', dragMouseDown);
+
+			closeDragElement(new MouseEvent('mouseup'), window.innerHeight - bottomSize - bounceOffset);
 		}
-		dragMobileSheet(this.parentElement, this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement);
+		dragMobileSheet(
+			this.parentElement, 
+			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement, 
+			this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
 
 		return;
 	}

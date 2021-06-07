@@ -216,7 +216,7 @@
         }
 
         &.available {
-            --translateY: translateY(calc(100vh - 100px));
+            --translateY: translateY(calc(100vh - 85px));
 
             opacity: 1;
             top: 0px;
