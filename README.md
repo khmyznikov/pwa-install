@@ -6,9 +6,13 @@ Installation dialog for Progressive web component. Provides more convenience use
 ## Gallery
 | iOS | iOS install | iOS gallery |
 |---|---|---|
-|![IMG_0345-min](https://user-images.githubusercontent.com/6115884/115908516-f0e99900-a472-11eb-87cc-2474246141a4.jpg)|![IMG_0347-min](https://user-images.githubusercontent.com/6115884/115908574-0494ff80-a473-11eb-8842-4a9e5a62ee7a.jpg)|![IMG_0346-min](https://user-images.githubusercontent.com/6115884/115908559-fe068800-a472-11eb-823f-f56cc7028145.jpg)|
-| Android | Android gallery |
-|![Screenshot_20210423-201134-min](https://user-images.githubusercontent.com/6115884/115908742-3a39e880-a473-11eb-90b0-e8ded05a9509.jpg)|![Screenshot_20210423-201144-min](https://user-images.githubusercontent.com/6115884/115908762-3f973300-a473-11eb-8feb-d895433fd2f3.jpg)|
+|![IMG_0345-min](https://user-images.githubusercontent.com/6115884/115908516-f0e99900-a472-11eb-87cc-2474246141a4.jpg)|![IMG_1541-min](https://user-images.githubusercontent.com/6115884/122636524-6203a080-d0f2-11eb-8ace-6af6f9f78d7b.jpg)|![IMG_0346-min](https://user-images.githubusercontent.com/6115884/115908559-fe068800-a472-11eb-823f-f56cc7028145.jpg)|
+| Android | Android gallery | Dark theme |
+|![Screenshot_20210619-152257-min](https://user-images.githubusercontent.com/6115884/122636298-2c11ec80-d0f1-11eb-9cbe-6332e1816f52.jpg)|![Screenshot_20210619-152248-min](https://user-images.githubusercontent.com/6115884/122636302-3207cd80-d0f1-11eb-8fbd-28be5e32bc00.jpg)|![Screenshot_20210619-151933-min](https://user-images.githubusercontent.com/6115884/122636317-51065f80-d0f1-11eb-8729-8403f430e534.jpg)|
+
+| Chrome | Chrome gallery |
+|---|---|
+|![Screenshot 2021-06-19 153758-min](https://user-images.githubusercontent.com/6115884/122636673-21585700-d0f3-11eb-823a-ff470f31abd4.jpg)|![Screenshot 2021-06-19 153810-min](https://user-images.githubusercontent.com/6115884/122636677-24ebde00-d0f3-11eb-9b62-2897d6da2176.jpg)|
 
 ## Install
 
