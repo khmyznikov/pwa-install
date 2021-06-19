@@ -146,8 +146,8 @@
     .install-dialog.mobile{
         top: 0px;
 
-        max-width: 395px;
-        width: 95%;
+        max-width: 414px;
+        width: 100%;
 
         bottom: auto;
 
@@ -177,8 +177,8 @@
                 }
                 &::before{
                     content:'';
-                    width: 35px;
-                    height: 3px;
+                    width: 40px;
+                    height: 5px;
                     border-radius: 3px;
                     background: #DBDCE0;
                     margin: 0 auto;
@@ -198,6 +198,7 @@
                 .install{
                     text-transform: capitalize;
                     height: 40px;
+                    padding: 0 23px;
                 }
 
                 .about{
