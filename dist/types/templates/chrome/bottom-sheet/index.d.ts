@@ -6,7 +6,12 @@ declare type IProps = {
 };
 export default class PWABottomSheetElement extends LitElement {
     props: IProps;
-    install: () => void;
+    install: {
+        handleEvent: () => void;
+    };
+    hideDialog: {
+        handleEvent: () => void;
+    };
     private _init;
     firstUpdated(): void;
     createRenderRoot(): this;
