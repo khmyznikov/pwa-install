@@ -90,6 +90,9 @@ export default class PWABottomSheetElement extends LitElement {
 				window.removeEventListener('touchend', dragMouseUp);
 				window.removeEventListener('touchmove', dragMouseMove);
 
+				if (window.innerWidth >= 768)
+					return
+
 				if (!toPoint && getYCoord(e) >= window.innerHeight - bottomSize)
 					element.style.setProperty(
 						"--translateY",
@@ -118,10 +121,16 @@ export default class PWABottomSheetElement extends LitElement {
 
 			closeDragElement(new MouseEvent('mouseup'), window.innerHeight - bottomSize - bounceOffset);
 		}
-		dragMobileSheet(
-			this.parentElement?.parentElement, 
-			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement, 
-			this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
+		
+		const setupAppearence = () => {
+			dragMobileSheet(
+				this.parentElement?.parentElement, 
+				this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement, 
+				this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
+		}
+		setupAppearence();
+
+		window.addEventListener('resize', setupAppearence);
 
 		return;
 	}

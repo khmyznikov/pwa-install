@@ -166,9 +166,9 @@
             grid-template-columns: 1fr;
 
             .touch-header{
-                height: 25px;
+                height: 30px;
                 width: 100%;
-                padding-top: 8px;
+                padding-top: 10px;
                 box-sizing: border-box;
 
                 cursor: grab;
@@ -190,7 +190,7 @@
                 grid-template-columns: max-content 1fr max-content;
                 grid-gap: 15px;
     
-                padding: 15px 20px;
+                padding: 18px 20px;
                 padding-top: 0;
 
                 border-bottom: 1px solid var(--border-bottom-color);
@@ -237,7 +237,7 @@
                 margin-bottom: 15px;
 
                 display: -webkit-box;
-                -webkit-line-clamp: 7;
+                -webkit-line-clamp: 6;
                 -webkit-box-orient: vertical;
 
                 max-height: 150px;
@@ -389,7 +389,7 @@
     }
 }
 
-@media (max-width: 768px - 1px) {
+@media (max-width: 768px - 1px) and (min-height: 495px) {
     #pwa-install{
         .install-dialog.chrome.mobile{
             display: inline-block;
@@ -399,13 +399,22 @@
         }
     }
 }
-@media (min-width: 768px) {
+@media (min-width: 768px), (max-height: 495px) {
     #pwa-install{
         .install-dialog.chrome.mobile{
             display: none;
         }
         .install-dialog.chrome{
             display: inline-block;
+        }
+    }
+}
+
+@media (max-height: 420px) {
+    #pwa-install{
+        .install-dialog.chrome .dialog-body .about .description{
+            -webkit-line-clamp: 3;
+            max-height: 70px;
         }
     }
 }
