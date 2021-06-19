@@ -14,7 +14,7 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                     </div>
                     <div class="about">
                         <div class="name">
-                            ${name}
+                            <label>${name}</label>
                             <button class="material-button secondary close" @click='${hideDialog}'>&#10005;</button>
                         </div>
                         <div class="description">${description}</div>
@@ -27,9 +27,11 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                 </div>
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
-                <pwa-bottom-sheet .props=${{name, icon, description}} .install=${install}>
-                </pwa-bottom-sheet>
-                ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+                <div class="dialog-body">
+                    <pwa-bottom-sheet .props=${{name, icon, description}} .install=${install} .hideDialog=${hideDialog}>
+                    </pwa-bottom-sheet>
+                    ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+                </div>
             </div>
         </div>`;
 };

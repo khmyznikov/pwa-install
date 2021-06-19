@@ -4,6 +4,7 @@
     .install-dialog{
         --text-color-normal: #333;
         --background-color: #fff;
+        --border-bottom-color: #DBDCDE;
 
         font-family: "Roboto", "Segoe UI", system-ui;
 
@@ -74,6 +75,13 @@
 
                     align-items: flex-start;
                     display: flex;
+
+                    label{
+                        text-overflow: ellipsis;
+                        word-break: break-all;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
                 }
                 .description{
                     font-size: 14px;
@@ -84,6 +92,14 @@
                     padding-bottom: 0;
                     padding-right: 15px;
                     margin-bottom: 3px;
+
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    max-height: 115px;
+                    overflow: hidden;
+                    overflow-y: auto;
+                    text-overflow: ellipsis;
                 }
             }
 
@@ -177,7 +193,7 @@
                 padding: 15px 20px;
                 padding-top: 0;
 
-                border-bottom: 1px solid #504F54;
+                border-bottom: 1px solid var(--border-bottom-color);
     
                 .install{
                     text-transform: capitalize;
@@ -185,12 +201,13 @@
                 }
 
                 .about{
-                    grid-template-rows: 15px auto;
-                    grid-gap: 10px;
+                    grid-template-rows: auto auto;
+                    grid-gap: 6px;
 
                     .name{
                         padding: 0;
-                        line-height: 15px;
+                        line-height: 20px;
+                        font-size: 16px;
                     }
 
                     .hostname{
@@ -212,6 +229,26 @@
                     width: 45px;
                     height: 45px;
                 }
+            }
+            .description{
+                font-size: 14px;
+                font-weight: normal;
+                padding: 15px 20px 0px;
+                margin-bottom: 15px;
+
+                display: -webkit-box;
+                -webkit-line-clamp: 7;
+                -webkit-box-orient: vertical;
+
+                max-height: 150px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        
+            pwa-gallery{
+                max-height: 100%;
+                padding-bottom: 15px;
+                opacity: 1;
             }
         }
 
@@ -339,9 +376,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    #pwa-install .install-dialog.chrome{
+    #pwa-install .install-dialog{
         --text-color-normal: #fff;
         --background-color: #38373C;
+        --border-bottom-color: #504F54;
 
         .material-button{
             --text-color-primary: #1B222C;

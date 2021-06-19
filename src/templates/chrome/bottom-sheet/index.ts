@@ -21,11 +21,12 @@ export default class PWABottomSheetElement extends LitElement {
         description: '',
         icon: ''
     };
-    @property() install = () => {};
+    @property() install = {handleEvent: () => {}};
+	@property() hideDialog = {handleEvent: () => {}};
 	
 	private _init = () => {
 		const _saveBodyStyle = document.body.style.overscrollBehaviorY;
-		const dragMobileSheet = (element: HTMLElement | null, touchTargetElement: HTMLElement | undefined, infoElement: HTMLElement | undefined) => {
+		const dragMobileSheet = (element: HTMLElement | null | undefined, touchTargetElement: HTMLElement | undefined, infoElement: HTMLElement | undefined) => {
 			if (!element || !touchTargetElement || !infoElement)
 				return
 
@@ -38,33 +39,21 @@ export default class PWABottomSheetElement extends LitElement {
 			}
 			
 			const dragMouseDown = (e: MouseEvent | TouchEvent) => {
-				// e.preventDefault();
-				// get the mouse cursor position at startup:
-				// pos3 = e.clientX;
-				// pos4 = e.clientY;
 				window.addEventListener('mouseup', dragMouseUp);
 				window.addEventListener('mousemove', dragMouseMove);
 
 				window.addEventListener('touchend', dragMouseUp);
 				window.addEventListener('touchmove', dragMouseMove);
 
-				// document.onmouseup = dragMouseUp;
-				// document.ontouchend = dragMouseUp;
-				// element.onmouseout = closeDragElement;
-				// call a function whenever the cursor moves:
-				// document.onmousemove = elementDrag;
-
 				dragOffset = getYCoord(e) - touchTargetElement.getBoundingClientRect().top;
 
 				document.body.style.overscrollBehaviorY = 'contain';
 			}
 			const dragMouseUp = (e: MouseEvent | TouchEvent) => {
-				// e.preventDefault();
-
 				document.body.style.overscrollBehaviorY = _saveBodyStyle;
 
 				if (getYCoord(e) >= window.innerHeight - 25){
-					closeDragElement(e, window.innerHeight + 50);
+					closeDragElement(e, window.innerHeight + 50, true);
 					return
 				}
 				if (window.innerHeight - getYCoord(e)  > element.clientHeight / 2.5){
@@ -75,23 +64,12 @@ export default class PWABottomSheetElement extends LitElement {
 					closeDragElement(e, window.innerHeight - bottomSize - bounceOffset);
 					return
 				}
-				
-				// closeDragElement(e);
 			}
 			
 			const dragMouseMove = (e: MouseEvent | TouchEvent) => {
-				// e.preventDefault();
-				// calculate the new cursor position:
-				// pos1 = pos3 - e.clientX;
-				// pos2 = pos4 - e.clientY;
-				// pos3 = e.clientX;
 				const currentY = getYCoord(e);
-				// set the element's new position:
-				// element.style.top = (element.offsetTop - pos2) + "px";
-				// elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
 
 				if (currentY <= (window.innerHeight - element.clientHeight + dragOffset)) {
-					// closeDragElement(e, window.innerHeight - element.clientHeight);
 					return
 				}
 
@@ -104,14 +82,9 @@ export default class PWABottomSheetElement extends LitElement {
 					"--translateY",
 					`translateY(${currentY - dragOffset}px)`
 				);
-				// console.log(e.clientY);
 			}
 			
-			const closeDragElement = (e: MouseEvent | TouchEvent, toPoint?: number) => {
-				/* stop moving when mouse button is released:*/
-				// document.onmouseup = null;
-				// document.onmousemove = null;
-
+			const closeDragElement = (e: MouseEvent | TouchEvent, toPoint?: number, hideDialog?: boolean) => {
 				window.removeEventListener('mouseup', dragMouseUp);
 				window.removeEventListener('mousemove', dragMouseMove);
 				window.removeEventListener('touchend', dragMouseUp);
@@ -132,6 +105,12 @@ export default class PWABottomSheetElement extends LitElement {
 					"transition",
 					`transform 500ms cubic-bezier(0.4, 0, 0, 1) 0s`
 				);
+
+				hideDialog &&
+					setTimeout(
+						this.hideDialog.handleEvent,
+						250
+					);
 			}
 
 			touchTargetElement.addEventListener('mousedown', dragMouseDown);
@@ -140,7 +119,7 @@ export default class PWABottomSheetElement extends LitElement {
 			closeDragElement(new MouseEvent('mouseup'), window.innerHeight - bottomSize - bounceOffset);
 		}
 		dragMobileSheet(
-			this.parentElement, 
+			this.parentElement?.parentElement, 
 			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement, 
 			this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
 
