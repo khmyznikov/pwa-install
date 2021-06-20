@@ -88,6 +88,7 @@ export class PWAInstallElement extends LitElement {
 	public showDialog = () => {
 		this.isDialogHidden = false;
 		this.isInstallAvailable = true;
+		window.sessionStorage.setItem('pwa-hide-install', 'false');
 		this.requestUpdate();
 	}
 
