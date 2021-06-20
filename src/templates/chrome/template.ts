@@ -17,8 +17,10 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                             <label>${name}</label>
                             <button class="material-button secondary close" @click='${hideDialog}'>&#10005;</button>
                         </div>
-                        <div class="description">${description}</div>
+                        <div class="hostname">${location.hostname}</div>
+                        
                     </div>
+                    <div class="description">${description}</div>
                     ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                     <div class="action-buttons">
                         ${manifest.screenshots && manifest.screenshots.length? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?'Less':'More'}</button>`:''}

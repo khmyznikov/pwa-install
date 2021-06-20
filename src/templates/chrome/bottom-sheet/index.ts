@@ -23,6 +23,11 @@ export default class PWABottomSheetElement extends LitElement {
     };
     @property() install = {handleEvent: () => {}};
 	@property() hideDialog = {handleEvent: () => {}};
+
+	private _callInstall = () => {
+		this.install.handleEvent();
+		// this.hideDialog.handleEvent();
+	}
 	
 	private _init = () => {
 		const _saveBodyStyle = document.body.style.overscrollBehaviorY;
@@ -150,6 +155,6 @@ export default class PWABottomSheetElement extends LitElement {
 	}
 
 	render() {
-        return html`${template(this.props.name, this.props.description, this.props.icon, this.install)}`;
+        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall)}`;
 	}
 }

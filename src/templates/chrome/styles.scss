@@ -5,6 +5,7 @@
         --text-color-normal: #333;
         --background-color: #fff;
         --border-bottom-color: #DBDCDE;
+        --scrollbar-background-color: #fff;
 
         font-family: "Roboto", "Segoe UI", system-ui;
 
@@ -60,7 +61,7 @@
                 display: grid;
                 grid-template-rows: 30px auto;
 
-                .name, .description{ 
+                .name, .hostname{ 
                     padding: 5px 10px;
                     padding-left: 5px;
                     overflow: hidden;
@@ -83,23 +84,54 @@
                         overflow: hidden;
                     }
                 }
-                .description{
+                
+                .hostname{
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 0.7;
-                    line-height: 20px;
 
-                    padding-bottom: 0;
-                    padding-right: 15px;
-                    margin-bottom: 3px;
+                    line-height: 14px;
 
-                    display: -webkit-box;
-                    -webkit-line-clamp: 5;
-                    -webkit-box-orient: vertical;
-                    max-height: 115px;
-                    overflow: hidden;
-                    overflow-y: auto;
+                    overflow-x: hidden;
                     text-overflow: ellipsis;
+                    word-break: break-all;
+                    white-space: nowrap;
+                }
+            }
+
+            .description{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+
+                grid-column: 1 / 3;
+                padding: 0px 5px;
+                margin: 10px 5px 5px;
+
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+                max-height: 115px;
+                overflow: hidden;
+                overflow-y: auto;
+                text-overflow: ellipsis;
+
+                &::-webkit-scrollbar {
+                    width: 4px;
+                    height: 4px;
+                }
+            
+                &::-webkit-scrollbar-thumb {
+                    background: rgb(146, 146, 146);
+                    border-radius: 4px;
+                    &:hover{
+                        background: rgb(100, 100, 100);
+                    }
+                }
+            
+                &::-webkit-scrollbar-track {
+                    background: var(--scrollbar-background-color);
+                    border-radius: 4px;
                 }
             }
 
@@ -222,6 +254,8 @@
                         text-overflow: ellipsis;
                         word-break: break-all;
                         white-space: nowrap;
+
+                        padding: 0;
                     }
                 }
     
@@ -232,18 +266,19 @@
                 }
             }
             .description{
-                font-size: 14px;
-                font-weight: normal;
+                // font-size: 14px;
+                // font-weight: normal;
                 padding: 15px 20px 0px;
+                margin: 0;
                 margin-bottom: 15px;
 
-                display: -webkit-box;
+                // display: -webkit-box;
                 -webkit-line-clamp: 6;
-                -webkit-box-orient: vertical;
+                // -webkit-box-orient: vertical;
 
                 max-height: 150px;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                // overflow: hidden;
+                // text-overflow: ellipsis;
             }
         
             pwa-gallery{
@@ -381,6 +416,7 @@
         --text-color-normal: #fff;
         --background-color: #38373C;
         --border-bottom-color: #504F54;
+        --scrollbar-background-color: #424242;
 
         .material-button{
             --text-color-primary: #1B222C;
@@ -413,9 +449,16 @@
 
 @media (max-height: 420px) {
     #pwa-install{
-        .install-dialog.chrome .dialog-body .about .description{
+        .install-dialog.chrome .dialog-body .description{
             -webkit-line-clamp: 3;
             max-height: 70px;
         }
+    }
+}
+@media(hover: none) and (pointer: coarse){
+	#pwa-install{
+        .install-dialog.chrome .dialog-body .description::-webkit-scrollbar{
+		    display: none;
+	    }
     }
 }

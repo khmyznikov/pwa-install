@@ -50,6 +50,7 @@ export class PWAInstallElement extends LitElement {
 	private _install = {
 		handleEvent: () => { 
 			if (window.deferredEvent) {
+				this.hideDialog();
 				window.deferredEvent.prompt();
 				window.deferredEvent.userChoice
 					.then((choiceResult: IChoiceResult) => {
