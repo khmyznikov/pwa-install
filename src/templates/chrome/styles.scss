@@ -35,7 +35,7 @@
 
         top: -100px;
 
-        transition: top .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height 0.35s ease-in-out 0s;
+        transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height 0.35s ease-in-out;
 
         .dialog-body{
             display: grid;

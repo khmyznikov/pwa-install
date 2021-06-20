@@ -36,10 +36,12 @@
 			<legend>
 				Dialog manual control
 			</legend>
-			<button onclick="setTimeout(pwaInstall.showDialog, 1500)">Show (1.5s)</button>
-			<button onclick="pwaInstall.hideDialog()">Hide</button><br><hr>
+			<button onclick="pwaInstall.showDialog()">Show</button>
+			<button onclick="pwaInstall.hideDialog()">Hide</button><hr>
 			<button onclick="pwaInstall.install()">Install</button>
-			<button onclick="getRelated()">Get related apps</button>
+			<button onclick="getRelated()">Get related apps</button><hr>
+			<button onclick="forceApple()">Force apple</button>
+			<button onclick="forceApple(false)">Force chrome</button>
 		</fieldset>
 		<fieldset>
 			<legend>
@@ -68,6 +70,12 @@
 					logMessage(result.toString() || 'None');
 				}
 			)
+		}
+
+		const forceApple = (apple = true) => {
+			pwaInstall.isAppleMobilePlatform = apple;
+			pwaInstall.hideDialog();
+			pwaInstall.showDialog();
 		}
 
 		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});
