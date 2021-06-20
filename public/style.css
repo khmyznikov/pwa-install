@@ -3,3 +3,42 @@ html{
     width: 100%;
     height: 100%;
 }
+body{
+    height: 100%;
+    margin: 0;
+}
+.control-panel{
+    font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont, "Roboto", "Segoe UI";
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.control-panel fieldset{
+    color: #fff;
+    margin: 30px;
+    border-color: #FFF;
+    border-style: dotted;
+}
+.control-panel textarea{
+    color: #fff;
+    background: transparent;
+    min-width: 300px;
+    border: transparent;
+}
+.control-panel button{
+    background: transparent;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid #fff;
+
+    padding: 5px 10px;
+}
+.control-panel button:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.control-panel hr{
+    border: 2px dotted #fff;
+    border-bottom: none;
+}

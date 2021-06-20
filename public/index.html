@@ -31,15 +31,49 @@
 		}
 	</script>
 
+	<section class="control-panel">
+		<fieldset>
+			<legend>
+				Dialog manual control
+			</legend>
+			<button onclick="setTimeout(pwaInstall.showDialog, 1500)">Show (1.5s)</button>
+			<button onclick="pwaInstall.hideDialog()">Hide</button><br><hr>
+			<button onclick="pwaInstall.install()">Install</button>
+			<button onclick="getRelated()">Get related apps</button>
+		</fieldset>
+		<fieldset>
+			<legend>
+				Events
+			</legend>
+			<textarea readonly id="events-area" rows="10">
+
+			</textarea>
+		</fieldset>
+	</section>
+
 	<pwa-install id="pwa-install" manifest-url="manifest.json"></pwa-install>
 
 	<script type="text/javascript">
 		var pwaInstall = document.getElementById("pwa-install");
 
-		pwaInstall.addEventListener('pwa-install-success-event', (event) => {console.log(event.detail.message)});
-		pwaInstall.addEventListener('pwa-install-fail-event', (event) => {console.log(event.detail.message)});
-		pwaInstall.addEventListener('pwa-user-choice-result-event', (event) => {console.log(event.detail.message)});
-		pwaInstall.addEventListener('pwa-install-available-event', (event) => {console.log(event.detail.message)});
+		document.getElementById('events-area').value = "";
+		const logMessage = (message) => {
+			console.log(message);
+			document.getElementById('events-area').value+=`>: ${message}\r\n`;
+		}
+
+		const getRelated = () => {
+			pwaInstall.getInstalledRelatedApps().then(
+				(result) => {
+					logMessage(result.toString() || 'None');
+				}
+			)
+		}
+
+		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});
+		pwaInstall.addEventListener('pwa-install-fail-event', (event) => {logMessage(event.detail.message)});
+		pwaInstall.addEventListener('pwa-user-choice-result-event', (event) => {logMessage(event.detail.message)});
+		pwaInstall.addEventListener('pwa-install-available-event', (event) => {logMessage(event.detail.message)});
 	</script>
 </body>
 
