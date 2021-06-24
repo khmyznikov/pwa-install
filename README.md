@@ -44,7 +44,11 @@ import '../node_modules/@khmyznikov/pwa-install/dist/bundle.js';
 
 ## Supported params
 ```html
-<pwa-install       
+<pwa-install
+  manual-apple="true"
+  manual-chrome="true"
+  disable-chrome="true"
+
   manifest-url="/manifest.json"
   name="PWA"
   description="Progressive web application"
@@ -108,5 +112,4 @@ import '../node_modules/@khmyznikov/pwa-install/dist/bundle.js';
 ## ROADMAP
 - more params/methods/events
 - translation
-- manual mode
 - style customization
