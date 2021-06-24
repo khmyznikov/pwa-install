@@ -28,7 +28,7 @@
 
         bottom: -100px;
 
-        transition: bottom .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height .35s ease-in-out, border .35s ease-in-out;
+        transition: bottom .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out, border .35s ease-in-out;
 
         overflow: hidden;
 
@@ -308,7 +308,7 @@
             top: -100px;
             bottom: unset;
 
-            transition: top .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height .35s ease-in-out;
+            transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
 
             &.available {
                 top: 28px;
