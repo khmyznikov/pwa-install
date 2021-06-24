@@ -22,21 +22,24 @@ export default class PWABottomSheetElement extends LitElement {
         icon: ''
     };
     @property() install = {handleEvent: () => {}};
-	@property() hideDialog = {handleEvent: () => {}};
+	@property() hideDialog = () => {};
 
 	private _callInstall = () => {
 		this.install.handleEvent();
 	}
 
 	private _callHide = () => { 
-		this.hideDialog.handleEvent();
+		this.hideDialog();
 		this.setupAppearence();
 	}
 	
+	private bindedElement: {
+		touchElement: HTMLElement, 
+		listener: any }| null = null;
 	private readonly _saveBodyStyle = document.body.style.overscrollBehaviorY;
 	private dragMobileSheet = (element: HTMLElement | null | undefined, touchTargetElement: HTMLElement | undefined, infoElement: HTMLElement | undefined) => {
 		if (!element || !touchTargetElement || !infoElement)
-			return
+			return null;
 
 		let dragOffset = 0;
 		const bounceOffset = 35;
@@ -49,7 +52,6 @@ export default class PWABottomSheetElement extends LitElement {
 		const dragMouseDown = (e: MouseEvent | TouchEvent) => {
 			window.addEventListener('mouseup', dragMouseUp);
 			window.addEventListener('mousemove', dragMouseMove);
-
 			window.addEventListener('touchend', dragMouseUp);
 			window.addEventListener('touchmove', dragMouseMove);
 
@@ -117,21 +119,36 @@ export default class PWABottomSheetElement extends LitElement {
 				`transform 500ms cubic-bezier(0.4, 0, 0, 1) 0s`
 			);
 
-			hideDialog &&
+			if (hideDialog){
+				touchTargetElement.removeEventListener('mousedown', dragMouseDown);
+				touchTargetElement.removeEventListener('touchstart', dragMouseDown);
+
 				setTimeout(
 					this._callHide,
 					250
 				);
+			}
+				
 		}
 
 		touchTargetElement.addEventListener('mousedown', dragMouseDown);
-		touchTargetElement.addEventListener('touchstart', dragMouseDown);
+		touchTargetElement.addEventListener('touchstart', dragMouseDown, {passive: true});
 
 		closeDragElement(new MouseEvent('mouseup'), window.innerHeight - bottomSize - bounceOffset);
+
+		return {
+			touchElement: touchTargetElement, 
+			listener: dragMouseDown
+		}
 	}
 	
 	private setupAppearence = () => {
-		this.dragMobileSheet(
+		if (this.bindedElement) {
+			this.bindedElement.touchElement.removeEventListener('mousedown', this.bindedElement.listener);
+			this.bindedElement.touchElement.removeEventListener('touchstart', this.bindedElement.listener);
+		}
+		
+		this.bindedElement = this.dragMobileSheet(
 			this.parentElement?.parentElement, 
 			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement, 
 			this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
