@@ -7,10 +7,13 @@ declare global {
 }
 export declare class PWAInstallElement extends LitElement {
     private manifest;
-    'manifest-url': string;
+    manifestUrl: string;
     icon: string;
     name: string;
     description: string;
+    manualApple: boolean;
+    manualChrome: boolean;
+    disableChrome: boolean;
     static get styles(): CSSStyleSheet[];
     platforms: string;
     userChoiceResult: string;
@@ -24,8 +27,9 @@ export declare class PWAInstallElement extends LitElement {
     private _install;
     install: () => void;
     private _hideDialog;
+    private _hideDialogUser;
     hideDialog: () => void;
-    showDialog: () => void;
+    showDialog: (forced?: boolean) => void;
     getInstalledRelatedApps: () => Promise<IRelatedApp[]>;
     private _howToForApple;
     private _toggleGallery;

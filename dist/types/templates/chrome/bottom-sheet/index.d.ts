@@ -12,6 +12,11 @@ export default class PWABottomSheetElement extends LitElement {
     hideDialog: {
         handleEvent: () => void;
     };
+    private _callInstall;
+    private _callHide;
+    private readonly _saveBodyStyle;
+    private dragMobileSheet;
+    private setupAppearence;
     private _init;
     firstUpdated(): void;
     createRenderRoot(): this;
