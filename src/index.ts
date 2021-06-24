@@ -26,10 +26,13 @@ import templateApple from './templates/apple/template-apple';
 export class PWAInstallElement extends LitElement {
 	private manifest: IManifest = new Manifest();
 	
-	@property() 'manifest-url' = '/manifest.json';
+	@property({attribute: 'manifest-url'}) manifestUrl = '/manifest.json';
 	@property() icon = '';
 	@property() name = '';
 	@property() description = '';
+	@property({attribute: 'manual-apple'}) manualApple = false;
+	@property({attribute: 'manual-chrome'}) manualChrome = false;
+	@property({attribute: 'disable-chrome'}) disableChrome = false;
 
 	static get styles() {
 		return [ styles, stylesApple ];
@@ -82,12 +85,17 @@ export class PWAInstallElement extends LitElement {
 		},
 		passive: true
 	}
+	private _hideDialogUser = () => {
+		Utils.eventUserChoiceResult(this, 'dismissed');
+		this.hideDialog();
+	}
 	public hideDialog = () => {
 		this._hideDialog.handleEvent();
 	}
-	public showDialog = () => {
+	public showDialog = (forced = false) => {
 		this.isDialogHidden = false;
-		this.isInstallAvailable = true;
+		if (forced)
+			this.isInstallAvailable = true;
 		window.sessionStorage.setItem('pwa-hide-install', 'false');
 		this.requestUpdate();
 	}
@@ -122,7 +130,8 @@ export class PWAInstallElement extends LitElement {
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 
 		if (this.isAppleMobilePlatform) {
-			if (!this.isUnderStandaloneMode)
+			if (!this.isUnderStandaloneMode) {
+				this.manualApple && this.hideDialog();
 				setTimeout(
 					() => {
 						this.isInstallAvailable = true;
@@ -131,6 +140,10 @@ export class PWAInstallElement extends LitElement {
 					},
 					300
 				);
+			}
+		}
+		else {
+			this.manualChrome && this.hideDialog();
 		}
 	}
 
@@ -139,26 +152,27 @@ export class PWAInstallElement extends LitElement {
 
 		this._checkInstalled();
 
-		window.addEventListener('beforeinstallprompt', (e: IBeforeInstallPromptEvent) => {
-			window.deferredEvent = e;
-			e.preventDefault();
+		if (!this.disableChrome)
+			window.addEventListener('beforeinstallprompt', (e: IBeforeInstallPromptEvent) => {
+				window.deferredEvent = e;
+				e.preventDefault();
 
-			this.platforms = e.platforms;
+				this.platforms = e.platforms;
 
-			if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
-				this.isInstallAvailable = false;
-			} else {
-				this.isInstallAvailable = true;
-				Utils.eventInstallAvailable(this);
-			}
+				if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
+					this.isInstallAvailable = false;
+				} else {
+					this.isInstallAvailable = true;
+					Utils.eventInstallAvailable(this);
+				}
 
-			if (this.userChoiceResult === 'accepted'){
-				this.isDialogHidden = true;
-				Utils.eventInstalledSuccess(this);
-			}
+				if (this.userChoiceResult === 'accepted'){
+					this.isDialogHidden = true;
+					Utils.eventInstalledSuccess(this);
+				}
 
-			this.requestUpdate();
-		});
+				this.requestUpdate();
+			});
 
 		window.addEventListener('appinstalled', (e) => {
 			window.deferredEvent = null;
@@ -169,7 +183,7 @@ export class PWAInstallElement extends LitElement {
 		});
 
 
-		fetch(this['manifest-url']).then((response: Response) => {
+		fetch(this.manifestUrl).then((response: Response) => {
 			if (response.ok)
 				response.json().then((_json) => {
 					this.icon = this.icon || _json.icons[0].src;
@@ -207,7 +221,7 @@ export class PWAInstallElement extends LitElement {
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
-				this._hideDialog,
+				this._hideDialogUser,
 				this._howToForApple,
 				this._howToRequested,
 				this._toggleGallery,
@@ -220,7 +234,7 @@ export class PWAInstallElement extends LitElement {
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
-				this._hideDialog,
+				this._hideDialogUser,
 				this._install,
 				this._toggleGallery,
 				this._galleryRequested
