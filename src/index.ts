@@ -30,9 +30,9 @@ export class PWAInstallElement extends LitElement {
 	@property() icon = '';
 	@property() name = '';
 	@property() description = '';
-	@property({attribute: 'manual-apple'}) manualApple = false;
-	@property({attribute: 'manual-chrome'}) manualChrome = false;
-	@property({attribute: 'disable-chrome'}) disableChrome = false;
+	@property({attribute: 'manual-apple', type: Boolean}) manualApple = false;
+	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
+	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
 
 	static get styles() {
 		return [ styles, stylesApple ];
