@@ -27,7 +27,7 @@ Alternatively, you can use [unpkg](https://unpkg.com).
 ## Import
 
 ```js
-import '../node_modules/@khmyznikov/pwa-install/dist/bundle.js';
+import '@khmyznikov/pwa-install';
 ```
 
 ---
