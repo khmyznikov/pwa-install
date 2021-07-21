@@ -1,5 +1,5 @@
 [![Published on NPM](https://img.shields.io/npm/v/@khmyznikov/pwa-install.svg)](https://www.npmjs.com/package/@khmyznikov/pwa-install)
-
+![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
 Installation dialog for Progressive web component. Provides more convenience user experience and fix lack of native dialogs in some browsers. **13.5kB brotli** compressed bundle.
