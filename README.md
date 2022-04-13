@@ -2,7 +2,7 @@
 ![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
-Installation dialog for Progressive web component. Provides more convenience user experience and fix lack of native dialogs in some browsers. **13.5kB brotli** compressed bundle.
+Installation dialog for Progressive web application. Provides more convenience user experience and fix lack of native dialogs in some browsers. **13.5kB brotli** compressed bundle.
 
 Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
 ## Gallery

@@ -8,7 +8,9 @@ module.exports = merge(common, {
         minimize: false,
     },
 	devServer: {
-		contentBase: resolve(__dirname, '../public'),
+		static: {
+			directory: resolve(__dirname, '../public')
+		},
 		compress: false,
 		host: '0.0.0.0',
 		port: 3000
