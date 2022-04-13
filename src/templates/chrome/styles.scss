@@ -31,7 +31,7 @@
 
         font-size: 15px;
         color: var(--text-color-normal);
-        border-radius: 3px;
+        border-radius: 8px;
 
         top: -100px;
 
@@ -176,6 +176,7 @@
         }
     }
     .install-dialog.mobile{
+        --touch-header-color: #DBDCE0;
         top: 0px;
 
         max-width: 414px;
@@ -212,7 +213,7 @@
                     width: 40px;
                     height: 5px;
                     border-radius: 3px;
-                    background: #DBDCE0;
+                    background: var(--touch-header-color);
                     margin: 0 auto;
                     display: block;
                 }
@@ -288,6 +289,10 @@
             }
         }
 
+        .material-button{
+            border-radius: 20px;
+        }
+
         &.available {
             --translateY: translateY(calc(100vh - 85px));
 
@@ -301,14 +306,14 @@
     }
     .material-button {
         --text-color-primary: #fff;
-        --text-color-secondary: #4285F4;
-        --background-color-primary: #4285F4;
+        --text-color-secondary: #374fc6;
+        --background-color-primary: #374fc6;
         --background-color-ripple: #fff;
         position: relative;
         display: inline-block;
         box-sizing: border-box;
         border: none;
-        border-radius: 4px;
+        border-radius: 6px;
         padding: 0 16px;
         min-width: 64px;
         height: 36px;
@@ -414,19 +419,23 @@
 @media (prefers-color-scheme: dark) {
     #pwa-install .install-dialog{
         --text-color-normal: #fff;
-        --background-color: #38373C;
-        --border-bottom-color: #504F54;
+        --background-color: #1e1e1e;
+        --border-bottom-color: #404140;
         --scrollbar-background-color: #424242;
+
+        &.mobile{
+            --touch-header-color: #3f403f;
+        }
 
         .material-button{
             --text-color-primary: #1B222C;
-            --text-color-secondary: #89B4F8;
-            --background-color-primary: #89B4F8;
+            --text-color-secondary: #a7c7fa;
+            --background-color-primary: #a7c7fa;
         }
     }
 }
 
-@media (max-width: 768px - 1px) and (min-height: 495px) {
+@media (max-width: (768px - 1px)) and (min-height: 495px) {
     #pwa-install{
         .install-dialog.chrome.mobile{
             display: inline-block;
