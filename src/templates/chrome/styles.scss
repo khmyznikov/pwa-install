@@ -23,8 +23,8 @@
         min-height: 90px;
         margin: 0 auto;
 
-        right: 0;
-        left: 0;
+        right: 150px;
+        left: auto;
 
         background-color: var(--background-color);
         filter: drop-shadow(0 5px 15px rgba(0,0,0,.3));
@@ -183,6 +183,8 @@
         width: 100%;
 
         bottom: auto;
+        left: 0px;
+        right: 0px;
 
         // transition: bottom .5s ease-in-out 1s, opacity 1.3s ease-in-out .8s, max-height 0.35s ease-in-out 0s;
 
