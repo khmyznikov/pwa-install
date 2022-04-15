@@ -46,7 +46,7 @@
               "gallery gallery"
               "button button";
 
-            border-radius: 15px;
+            border-radius: 10px;
 
             border-bottom: 1px solid transparent;
             // transition: border .35s ease-in-out;
@@ -54,6 +54,21 @@
             background-color:var(--background-color);
             filter: drop-shadow(0 5px 15px rgba(0,0,0,.2));
             backdrop-filter: blur(5px);
+
+            // header{
+            //     grid-area: header;
+
+            //     display: flex;
+            //     flex-flow: row nowrap;
+            //     justify-content: space-between;
+
+            //     h2{ 
+            //         font-size: 18px;
+            //         font-weight: 500;
+            //         line-height: 1.125;
+            //         margin: 0;
+            //     }
+            // }
 
             .icon{
                 display: flex;
@@ -141,7 +156,6 @@
 
             gap: 15px;
             padding: 15px;
-
         }
         .dialog-button{
             display: grid;
@@ -173,9 +187,13 @@
                 &.gallery{
                     display: flex;
                     align-items: center;
+
+                    min-width: 64px;
+                    width: auto;
+
                     #pwa-gallery{
                         margin: 0 auto;
-                        width: 26px;
+                        width: 24px;
                         fill: var(--text-color-normal);
                     }
                 }
@@ -272,8 +290,8 @@
             transition: opacity ease-in-out .5s, max-height .5s ease-in-out;
             overflow: hidden;
             & + .action-buttons{
-                display: grid;
-                grid-template-columns: 64px auto;
+                display: flex;
+                // grid-template-columns: 64px auto;
             }
         }
         &.available {
@@ -317,7 +335,7 @@
         }
     }
 }
-@media (max-width: 768px - 1px) {
+@media (max-width: (768px - 1px)) {
     #pwa-install{
         .install-dialog.apple{
             .description-step .step-text{
@@ -328,19 +346,29 @@
 }
 @media (max-width: 420px) {
     #pwa-install{
-        .install-dialog.apple{
-            max-width: 340px;
+        .install-dialog.apple.dialog-body{
+            max-width: 100vw;
+            .action-buttons{
+                padding-bottom: max(15px, env(safe-area-inset-bottom))
+            }
+            &.available {
+                bottom: 0px;
+            }
+          
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            
         }
     }
 }
 
-@media (max-width: 370px) {
-    #pwa-install{
-        .install-dialog.apple{
-            max-width: 300px;
-        }
-    }
-}
+// @media (max-width: 370px) {
+//     #pwa-install{
+//         .install-dialog.apple{
+//             max-width: 300px;
+//         }
+//     }
+// }
 
 @media (prefers-color-scheme: dark) {
     #pwa-install{

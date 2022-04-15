@@ -6,22 +6,22 @@ const template = (name: string, description: string, icon: string, manifest: IMa
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested }};
 
     return html`
-        <div id="pwa-install">
-            <div class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
+        <aside id="pwa-install">
+            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image">
                 </div>
                 <div class="about">
                     <div class="name">
                         ${name}
-                        <button class="close" @click='${hideDialog}'>&#10005;</button>
+                        <button type="button" class="close" @click='${hideDialog}'>&#10005;</button>
                     </div>
                     <div class="description">${description}</div>
                 </div>
                 <div class="how-to-body">
                     <div class="how-to-description">
                         <div class="description-title">
-                            Add this Web App to your Home Screen for quick and easy access.
+                            This website has app functionality. Add it to your Home Screen for quick and easy access.
                         </div>
                         <div class="description-step">
                             <div class="svg-wrap">
@@ -59,7 +59,7 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                     </button>`:''}
                     <button class="dialog-button button install" @click=${howToForApple}>Install</button>
                 </div>
-            </div>
-        </div>`;
+            </article>
+        </aside>`;
 };
 export default template;
