@@ -42,6 +42,7 @@
 
             grid-template-areas:
               "icon description"
+              "welcome welcome"
               "how-to how-to"
               "gallery gallery"
               "button button";
@@ -147,6 +148,19 @@
                     }
                 }
             }
+
+            .welcome-to-install{
+                font-size: 15px;
+                // grid-area: title;
+                grid-area: welcome;
+
+                text-align: left;
+                font-weight: 400;
+                padding: 15px;
+                width: auto;
+
+                border-bottom: 1px solid var(--border-bottom-color);
+            }
         }
         .action-buttons{
             grid-area: button;
@@ -184,16 +198,44 @@
 
                 background-color: var(--background-color-button); 
 
+                &.install{
+                    padding: 0 15px;
+                    text-align: left;
+                    display: inline-flex;
+
+                    span{
+                        opacity: 0;
+
+                        transition: opacity .4s ease-in-out 0.1s;
+                        
+                        &.show{
+                            opacity: 1;
+
+                            visibility: visible;
+                            width: auto;
+                            height: auto;
+                        }
+                        &.hide{
+                            opacity: 0;
+                            position: absolute;
+
+                            width: 0px;
+                            height: 0px;
+                            visibility: hidden;
+                        }
+                    }
+                }
+
                 &.gallery{
                     display: flex;
                     align-items: center;
 
-                    min-width: 64px;
+                    min-width: 50px;
                     width: auto;
 
                     #pwa-gallery{
                         margin: 0 auto;
-                        width: 24px;
+                        width: 23px;
                         fill: var(--text-color-normal);
                     }
                 }
@@ -216,36 +258,32 @@
                 display: grid;
                 user-select: none;
 
-                grid-template-columns: 1fr 1fr 1fr;
-                grid-template-rows: auto 1fr;
+                grid-auto-columns: 1fr; 
+                grid-template-rows: 1fr 1fr 1fr;
+
+                // grid-template-columns: 1fr 1fr 1fr;
+                // grid-template-rows: auto 1fr;
                 gap: 10px;
-                grid-template-areas:
-                    "title title title"
-                    ". . .";
+                // grid-template-areas:
+                //     "title title title"
+                //     ". . .";
 
                 padding: 15px;
                 padding-bottom: 0;
 
-                .description-title{
-                    font-size: 16px;
-                    grid-area: title;
-                    text-align: center;
-                    font-weight: 400;
-                    padding-bottom: 5px;
 
-                    width: 85%;
-                    margin: 0 auto;
-                }
                 .description-step{
                     display: inline-flex;
-                    flex-direction: column;
+                    flex-direction: row;
+                    gap: 15px;
                     align-items: center;
 
                     font-size: 14px;
                     .svg-wrap{
                         position: relative;
                         display: inline-flex;
-                        background-color: var(--background-color-button);
+                        flex-shrink: 0;
+                        // background-color: var(--background-color-button);
 
                         width: 50px;
                         height: 50px;
@@ -275,8 +313,9 @@
                         }
                     }
                     .step-text{
-                        margin-top: 5px;
-                        text-align: center;
+                        // margin-top: 5px;
+                        font-weight: 600;
+                        text-align: left;
                     }
                 }
             }
