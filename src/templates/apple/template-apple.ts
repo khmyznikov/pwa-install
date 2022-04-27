@@ -59,8 +59,13 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                         <svg id="pwa-gallery" width="26" height="26" viewBox="0 0 23.538 18.022"><path d="M2.79 18.022h17.958c1.834 0 2.79-.969 2.79-2.778V2.791C23.538.969 22.582 0 20.748 0H2.791C.956 0 0 .956 0 2.79v12.454c0 1.835.956 2.778 2.79 2.778zM.879 2.83C.878 1.55 1.55.88 2.816.88h17.906c1.228 0 1.938.671 1.938 1.95v12.067L16.756 9.47c-.517-.414-.995-.685-1.615-.685-.607 0-1.085.22-1.576.672L8.927 13.59l-1.938-1.796c-.426-.387-.853-.607-1.382-.607-.504 0-.879.207-1.305.594L.878 14.986zm6.46 6.356a2.39 2.39 0 002.377-2.39c0-1.304-1.072-2.39-2.377-2.39a2.401 2.401 0 00-2.39 2.39 2.393 2.393 0 002.39 2.39z"/></svg>
                     </button>`:''}
                     <button class="dialog-button button install" @click=${howToForApple}>
-                        <span class="${howToRequested? 'show': 'hide'}">Hide Instruction</span>
-                        <span class="${howToRequested? 'hide': 'show'}">Add to Home Screen</span>
+                        <span class="button-text ${howToRequested? 'show': 'hide'}">Hide Instruction</span>
+                        <span class="button-text ${howToRequested? 'hide': 'show'}">
+                            <span>Add to Home Screen</span>
+                            <svg width="25" height="25">
+                                <use href="#pwa-add"></use>
+                            </svg>
+                        </span>
                     </button>
                 </div>
             </article>

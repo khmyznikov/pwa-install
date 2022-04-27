@@ -13,7 +13,7 @@ module.exports = merge(common, {
 		},
 		compress: false,
 		host: '0.0.0.0',
-		port: 3000
+		port: 6001
 	},
 	devtool: 'source-map',
 });
