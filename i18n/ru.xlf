@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="ru" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s6196153c4b0c1ea0">
+  <source>Install</source>
+</trans-unit>
+<trans-unit id="sa5ef80b4bb9b39f8">
+  <source>Less</source>
+</trans-unit>
+<trans-unit id="s37a9e8aec5713460">
+  <source>More</source>
+</trans-unit>
+<trans-unit id="s4ecf53922dd8ea6e">
+  <source>This website has app functionality. Add it to your Home Screen for reach experience and easy access.</source>
+</trans-unit>
+<trans-unit id="sdfe23506a3b0cdc8">
+  <source>1) Open in Safari browser</source>
+</trans-unit>
+<trans-unit id="s1b9047d53d9f9d22">
+  <source>2) Press Share in Navigation bar</source>
+</trans-unit>
+<trans-unit id="s5c6aad7a7e4a1437">
+  <source>3) Press Add to Home Screen</source>
+</trans-unit>
+<trans-unit id="sc79fd7641eb9a975">
+  <source>Hide Instruction</source>
+</trans-unit>
+<trans-unit id="scdaf4bbff76674c8">
+  <source>Add to Home Screen</source>
+</trans-unit>
+</body>
+</file>
+</xliff>

@@ -8,7 +8,9 @@
   },
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "webpack --config webpack/webpack.prod.js --mode=production",
+    "build": "webpack --config webpack/webpack.prod.js --mode=production && npm run localize && npm run localize-build",
+    "localize": "lit-localize extract",
+		"localize-build": "lit-localize build",
     "test": "npm run build && node ./webpack/serve.js",
     "dev": "webpack serve --config webpack/webpack.dev.js --mode=development",
     "prepublish": "npm run build"
@@ -16,6 +18,7 @@
   "author": "khmyznikov",
   "license": "Unlicense",
   "devDependencies": {
+    "@lit/localize-tools": "^0.6.3",
     "@types/node": "^16.*",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "^6.7.1",
@@ -36,6 +39,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@lit/localize": "^0.11.2",
     "lit": "^2.2.2"
   },
   "bugs": {

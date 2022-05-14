@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import { IManifest } from '../../../types/types';
+import { msg } from '@lit/localize';
 
 const template = (name: string, description: string, icon: string, install: any) => {
     return html`
@@ -14,7 +15,7 @@ const template = (name: string, description: string, icon: string, install: any)
                 </div>
                 <div class="hostname">${location.hostname}</div>
             </div>
-            <button class="material-button primary install" @click='${install}'>Install</button>
+            <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
         </div>
         <div class="description">${description}</div>
     `;

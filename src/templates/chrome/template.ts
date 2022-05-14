@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { IManifest } from '../../types/types';
+import { msg } from '@lit/localize';
 
 const template = (name: string, description: string, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
@@ -23,8 +24,8 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                     <div class="description">${description}</div>
                     ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                     <div class="action-buttons">
-                        ${manifest.screenshots && manifest.screenshots.length? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?'Less':'More'}</button>`:''}
-                        <button class="material-button primary install" @click='${install}'>Install</button>
+                        ${manifest.screenshots && manifest.screenshots.length? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
+                        <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
                     </div>
                 </div>
             </div>
