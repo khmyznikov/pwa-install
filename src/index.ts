@@ -1,5 +1,7 @@
 import { LitElement, html } from 'lit';
+import { localized } from '@lit/localize';
 import { property, customElement } from 'lit/decorators.js';
+import { changeLocale } from './localization';
 
 import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types/types';
 
@@ -22,6 +24,8 @@ import stylesApple from './templates/apple/styles-apple.scss';
 import template from './templates/chrome/template';
 import templateApple from './templates/apple/template-apple';
 
+
+@localized()
 @customElement('pwa-install')
 export class PWAInstallElement extends LitElement {
 	private manifest: IManifest = new Manifest();
@@ -204,6 +208,7 @@ export class PWAInstallElement extends LitElement {
 	};
 
 	connectedCallback() {
+		changeLocale(navigator.language);
 		this._init();
 		PWAGalleryElement.finalized;
 		PWABottomSheetElement.finalized;

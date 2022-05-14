@@ -11,6 +11,7 @@ export declare class PWAInstallElement extends LitElement {
     icon: string;
     name: string;
     description: string;
+    installDescription: string;
     manualApple: boolean;
     manualChrome: boolean;
     disableChrome: boolean;

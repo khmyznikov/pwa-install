@@ -4,30 +4,43 @@
 <body>
 <trans-unit id="s6196153c4b0c1ea0">
   <source>Install</source>
+  <target>Установить</target>
+</trans-unit>
+<trans-unit id="sdca23702207fba73">
+  <source>This site has app functionality. Install it on your device for extensive experience and easy access.</source>
+  <target>Этот веб-сайт имеет функционал приложения. Установите его, чтобы получить дополнительные возможности и удобство использования.</target>
 </trans-unit>
 <trans-unit id="sa5ef80b4bb9b39f8">
   <source>Less</source>
+  <target>Свернуть</target>
 </trans-unit>
 <trans-unit id="s37a9e8aec5713460">
   <source>More</source>
+  <target>Подробнее</target>
 </trans-unit>
-<trans-unit id="s4ecf53922dd8ea6e">
-  <source>This website has app functionality. Add it to your Home Screen for reach experience and easy access.</source>
+<trans-unit id="s8d0173763d91830c">
+  <source>This site has app functionality. Add it to your Home Screen for extensive experience and easy access.</source>
+  <target>Этот веб-сайт имеет функционал приложения. Добавьте его на экран «Домой», чтобы получить дополнительные возможности и удобство использования.</target>
 </trans-unit>
 <trans-unit id="sdfe23506a3b0cdc8">
   <source>1) Open in Safari browser</source>
+  <target>1) Открыть в Safari браузере</target>
 </trans-unit>
 <trans-unit id="s1b9047d53d9f9d22">
   <source>2) Press Share in Navigation bar</source>
+  <target>2) Нажать "Поделиться"</target>
 </trans-unit>
 <trans-unit id="s5c6aad7a7e4a1437">
   <source>3) Press Add to Home Screen</source>
+  <target>3) Нажать "На экран «Домой»"</target>
 </trans-unit>
 <trans-unit id="sc79fd7641eb9a975">
   <source>Hide Instruction</source>
+  <target>Спрятать Инструкцию</target>
 </trans-unit>
 <trans-unit id="scdaf4bbff76674c8">
   <source>Add to Home Screen</source>
+  <target>На экран «Домой»</target>
 </trans-unit>
 </body>
 </file>
