@@ -3,11 +3,11 @@ import { classMap } from 'lit/directives/class-map.js';
 import { IManifest } from '../../types/types';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested }};
 
     return html`
-        <aside id="pwa-install">
+        <aside id="pwa-install-element">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image">
@@ -20,7 +20,7 @@ const template = (name: string, description: string, icon: string, manifest: IMa
                     <div class="description">${description}</div>
                 </div>
                 <div class="welcome-to-install">
-                    ${msg('This website has app functionality. Add it to your Home Screen for reach experience and easy access.')}
+                    ${installDescription? installDescription: msg('This site has app functionality. Add it to your Home Screen for extensive experience and easy access.')}
                 </div>
                 <div class="how-to-body">
                     <div class="how-to-description">

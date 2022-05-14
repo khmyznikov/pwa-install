@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
 import { IWindow, IManifest } from '../../../types/types';
 
-import TouchDragListener from "./touch-listener";
+// import TouchDragListener from "./touch-listener";
 
 declare const window: IWindow;
 
@@ -57,7 +57,7 @@ export default class PWABottomSheetElement extends LitElement {
 
 			dragOffset = getYCoord(e) - touchTargetElement.getBoundingClientRect().top;
 
-			document.body.style.overscrollBehaviorY = 'contain';
+			document.body.style.overscrollBehaviorY = 'none';
 		}
 		const dragMouseUp = (e: MouseEvent | TouchEvent) => {
 			document.body.style.overscrollBehaviorY = this._saveBodyStyle;

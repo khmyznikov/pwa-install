@@ -1,8 +1,8 @@
-#pwa-install{
+#pwa-install-element{
     user-select: none;
     
     .install-dialog{
-        --text-color-normal: #333;
+        --text-color-normal: #212121;
         --background-color: #fff;
         --border-bottom-color: #DBDCDE;
         --scrollbar-background-color: #fff;
@@ -37,6 +37,13 @@
 
         transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height 0.35s ease-in-out;
 
+        
+        &.available {
+            opacity: 1;
+            top: 28px;
+            visibility: visible;
+        }
+
         .dialog-body{
             display: grid;
 
@@ -62,17 +69,19 @@
                 grid-template-rows: 30px auto;
 
                 .name, .hostname{ 
-                    padding: 5px 10px;
-                    padding-left: 5px;
+                    padding: 0px 5px;
+                    // padding-left: 5px;
                     overflow: hidden;
                 }
                 .name{
                     font-weight: 500;
-                    padding-top: 10px;
+                    // padding-top: 10px;
                     font-size: 18px;
 
                     line-height: 24px;
-                    padding: 5px 5px 0px;
+                    // padding: 5px 0px;
+                    margin-top: 5px;
+                    
 
                     align-items: flex-start;
                     display: flex;
@@ -86,7 +95,7 @@
                 }
                 
                 .hostname{
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 400;
                     opacity: 0.7;
 
@@ -100,12 +109,11 @@
             }
 
             .description{
-                font-size: 14px;
                 font-weight: 400;
                 line-height: 20px;
 
                 grid-column: 1 / 3;
-                padding: 0px 5px;
+                padding: 0px 6px;
                 margin: 10px 5px 5px;
 
                 display: -webkit-box;
@@ -115,6 +123,11 @@
                 overflow: hidden;
                 overflow-y: auto;
                 text-overflow: ellipsis;
+            }
+
+            .app-description{
+                font-size: 13px;
+                margin-bottom: 10px;
 
                 &::-webkit-scrollbar {
                     width: 4px;
@@ -133,6 +146,24 @@
                     background: var(--scrollbar-background-color);
                     border-radius: 4px;
                 }
+            }
+
+            .install-description{
+                font-size: 14px;
+            }
+
+            hr{
+                height: 1px;
+                width: 100%;
+                grid-column: 1 / 3;
+
+                background-color: var(--border-bottom-color);
+                border: none;
+
+                margin: 0;
+                // & + .description{
+
+                // }
             }
 
             .action-buttons{
@@ -167,12 +198,6 @@
                 max-height: 70vh;
                 opacity: 1;
             }
-        }
-
-        &.available {
-            opacity: 1;
-            top: 15px;
-            visibility: visible;
         }
     }
     .install-dialog.mobile{
@@ -419,7 +444,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    #pwa-install .install-dialog{
+    #pwa-install-element .install-dialog{
         --text-color-normal: #fff;
         --background-color: #1e1e1e;
         --border-bottom-color: #404140;
@@ -438,7 +463,7 @@
 }
 
 @media (max-width: (768px - 1px)) and (min-height: 495px) {
-    #pwa-install{
+    #pwa-install-element{
         .install-dialog.chrome.mobile{
             display: inline-block;
         }
@@ -448,7 +473,7 @@
     }
 }
 @media (min-width: 768px), (max-height: 495px) {
-    #pwa-install{
+    #pwa-install-element{
         .install-dialog.chrome.mobile{
             display: none;
         }
@@ -459,7 +484,7 @@
 }
 
 @media (max-height: 420px) {
-    #pwa-install{
+    #pwa-install-element{
         .install-dialog.chrome .dialog-body .description{
             -webkit-line-clamp: 3;
             max-height: 70px;
@@ -467,7 +492,7 @@
     }
 }
 @media(hover: none) and (pointer: coarse){
-	#pwa-install{
+	#pwa-install-element{
         .install-dialog.chrome .dialog-body .description::-webkit-scrollbar{
 		    display: none;
 	    }

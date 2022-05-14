@@ -30,6 +30,7 @@ export class PWAInstallElement extends LitElement {
 	@property() icon = '';
 	@property() name = '';
 	@property() description = '';
+	@property({attribute: 'install-description'}) installDescription = '';
 	@property({attribute: 'manual-apple', type: Boolean}) manualApple = false;
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
@@ -218,6 +219,7 @@ export class PWAInstallElement extends LitElement {
 			return html`${templateApple(
 				this.name, 
 				this.description, 
+				this.installDescription,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
@@ -231,6 +233,7 @@ export class PWAInstallElement extends LitElement {
 			return html`${template(
 				this.name, 
 				this.description, 
+				this.installDescription,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,

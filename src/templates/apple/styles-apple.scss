@@ -1,4 +1,4 @@
-#pwa-install{
+#pwa-install-element{
     .install-dialog.apple{
         --text-color-normal: #333;
         --text-color-description: #333;    
@@ -378,10 +378,13 @@
     }
 }
 @media (min-width: 768px) {
-    #pwa-install{
+    #pwa-install-element{
         .install-dialog.apple{
             top: -100px;
             bottom: unset;
+
+            right: 150px;
+            left: auto;
 
             transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
 
@@ -392,8 +395,18 @@
         }
     }
 }
+
+@media (min-width: 768px) and (max-width: 1366px) {
+    #pwa-install-element{
+        .install-dialog.apple{
+            right: 28px;
+            left: auto;
+        }
+    }
+}
+
 @media (max-width: (768px - 1px)) {
-    #pwa-install{
+    #pwa-install-element{
         .install-dialog.apple{
             .description-step .step-text{
                 font-size: 13px;
@@ -401,8 +414,8 @@
         }
     }
 }
-@media (max-width: 420px) {
-    #pwa-install{
+@media (max-width: 428px) {
+    #pwa-install-element{
         .install-dialog.apple.dialog-body{
             max-width: 100vw;
             .action-buttons{
@@ -420,7 +433,7 @@
 }
 
 // @media (max-width: 370px) {
-//     #pwa-install{
+//     #pwa-install-element{
 //         .install-dialog.apple{
 //             max-width: 300px;
 //         }
@@ -428,7 +441,7 @@
 // }
 
 @media (prefers-color-scheme: dark) {
-    #pwa-install{
+    #pwa-install-element{
         .install-dialog.apple {
             --text-color-normal: #fff;
             --text-color-description: #9E9AA1;    
