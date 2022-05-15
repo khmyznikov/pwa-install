@@ -3,9 +3,11 @@ const { merge } = require('webpack-merge');
 
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { resolve } = require('path');
 
 module.exports = merge(common, {
+    output: {
+        filename: 'pwa-install.bundle.js',
+    },
 	plugins: [new CleanWebpackPlugin()],
 	optimization: {
         minimize: true,
@@ -22,8 +24,7 @@ module.exports = merge(common, {
                     output: {
                         comments: false,
                         beautify: false,
-                    },
-                    safari10: true,
+                    }
                 },
             })
         ],

@@ -44,7 +44,7 @@ module.exports = {
 		]
 	},
 	output: {
-		filename: 'bundle.js',
+		filename: 'pwa-install.bundle.js',
 		path: resolve(__dirname, '../dist'),
 		publicPath: ''
 	},
