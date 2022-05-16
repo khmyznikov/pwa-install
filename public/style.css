@@ -1,9 +1,11 @@
 html{
-    background: linear-gradient(90deg, rgba(144,92,180,1) 0%, rgba(255,90,152,1) 50%, rgba(255,201,124,1) 100%);
+    background-color: #82307b;
     width: 100%;
     height: 100%;
 }
 body{
+    /* background: linear-gradient(90deg, rgba(144,92,180,1) 0%, rgba(255,90,152,1) 50%, rgba(255,201,124,1) 100%); */
+
     height: 100%;
     margin: 0;
 }
@@ -23,7 +25,13 @@ body{
     margin: 30px;
     border-color: #FFF;
     border-style: dotted;
+
+    opacity: .5;
 }
+.control-panel fieldset:hover{ 
+    opacity: 1;
+}
+
 .control-panel textarea{
     color: #fff;
     background: transparent;
