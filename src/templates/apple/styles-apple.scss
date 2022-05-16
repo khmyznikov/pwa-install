@@ -119,8 +119,8 @@
                     color: var(--text-color-description);
                 }
                 .close{
-                    height: 25px;
-                    min-width: 25px;
+                    height: 26px;
+                    min-width: 26px;
                     line-height: 0;
 
                     margin-right: -3px;
@@ -141,6 +141,11 @@
                     cursor: pointer;
 
                     transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+
+                    svg{
+                        fill: var(--text-color-normal);
+                        width: 18px;
+                    }
                     
                     &:hover, &:active{
                         opacity: 1;

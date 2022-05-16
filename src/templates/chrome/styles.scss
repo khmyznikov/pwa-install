@@ -376,8 +376,8 @@
                 box-shadow: none;
             }
             &.close{
-                height: 25px;
-                min-width: 25px;
+                height: 26px;
+                min-width: 26px;
                 line-height: 0;
 
                 margin-right: 0;
@@ -385,6 +385,11 @@
                 padding: 0;
 
                 border-radius: 50%;
+
+                svg{
+                    width: 16px;
+                    fill:  var(--text-color-secondary);
+                }
 
                 &::after{
                     width: 25px;
