@@ -4,7 +4,7 @@
     "start_url": "/",
     "display": "standalone",
     "background_color": "#fff",
-    "theme_color": "#E4866D",
+    "theme_color": "#82307b",
     "description": "Installation component for Progressive Web Application DEMO",
     "icons": [
         {
