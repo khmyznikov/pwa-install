@@ -2,7 +2,7 @@
 ![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
-Installation dialog for Progressive web application. Provides more convenience user experience and fix lack of native dialogs in some browsers. **13.5kB brotli** compressed bundle.
+Installation dialog for Progressive web application. Provides more convenience user experience and fix lack of native dialogs in some browsers. **13.5kB brotli** compressed bundle. Translation/localization is supported.
 
 Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
 ## Gallery
@@ -118,7 +118,11 @@ import '@khmyznikov/pwa-install';
 
 ---
 
+## Supported localization
+
+At this time *EN* and *RU* languages available. Language should change automatically based on browser settings. Please create the issue if you want to help with translation to your language. It an easy process.
+
+---
+
 ## ROADMAP
-- more params/methods/events
-- translation
 - style customization
