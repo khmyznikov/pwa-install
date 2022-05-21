@@ -1,8 +1,13 @@
-const common = require('./webpack.common.js');
-const { merge } = require('webpack-merge');
-const { resolve } = require('path');
+import common from './webpack.common.js';
 
-module.exports = merge(common, {
+import { merge }  from 'webpack-merge';
+import path, { resolve }  from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default merge(common, {
 	plugins: [],
 	optimization: {
         minimize: false,

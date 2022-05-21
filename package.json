@@ -6,9 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/khmyznikov/pwa-install.git"
   },
+  "type": "module",
   "main": "dist/pwa-install.es.js",
   "scripts": {
-    "build": "npm run build-noloc && npm run localize && npm run localize-build",
+    "build": "npm run localize && npm run localize-build && npm run build-noloc",
     "build-noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production",
     "localize": "lit-localize extract",
     "localize-build": "lit-localize build",

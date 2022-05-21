@@ -1,14 +1,21 @@
-const common = require('./webpack.common.js');
-const { merge } = require('webpack-merge');
+import common from './webpack.common.js';
+import webpack from 'webpack';
+import { merge }  from 'webpack-merge';
 
-const TerserPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+import TerserPlugin from 'terser-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
-module.exports = merge(common, {
+export default merge(common, {
     output: {
         filename: 'pwa-install.bundle.js',
+        library: 'PWAInstallComponent'
     },
-	plugins: [new CleanWebpackPlugin()],
+	plugins: [
+        new CleanWebpackPlugin(),   
+        new webpack.optimize.LimitChunkCountPlugin({
+            maxChunks: 1
+        })
+    ],
 	optimization: {
         minimize: true,
         minimizer: [

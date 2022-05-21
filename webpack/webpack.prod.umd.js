@@ -1,14 +1,14 @@
-const prod = require('./webpack.prod');
-const { merge } = require('webpack-merge');
-const externals = require('./externals');
+import prod from './webpack.prod.js';
+import { merge } from 'webpack-merge';
+import externals from './externals.js';
 
 delete prod.plugins;
 
-module.exports = merge(prod, {
+export default merge(prod, {
     output: {
         filename: 'pwa-install.umd.js',
         library: {
-            name: 'PWAInstall',
+            name: 'PWAInstallComponent',
             type: 'umd',
         }
     },
