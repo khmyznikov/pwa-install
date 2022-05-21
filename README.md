@@ -6,15 +6,21 @@ Installation dialog for Progressive web application. Provides more convenience u
 
 Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
 ## Gallery
-| iOS | iOS install | iOS gallery |
-|---|---|---|
-|![IMG_0345-min](https://user-images.githubusercontent.com/6115884/115908516-f0e99900-a472-11eb-87cc-2474246141a4.jpg)|![IMG_1541-min](https://user-images.githubusercontent.com/6115884/122636524-6203a080-d0f2-11eb-8ace-6af6f9f78d7b.jpg)|![IMG_0346-min](https://user-images.githubusercontent.com/6115884/115908559-fe068800-a472-11eb-823f-f56cc7028145.jpg)|
-| Android | Android gallery | Dark theme |
-|![Screenshot_20210619-152257-min](https://user-images.githubusercontent.com/6115884/122636298-2c11ec80-d0f1-11eb-9cbe-6332e1816f52.jpg)|![Screenshot_20210619-152248-min](https://user-images.githubusercontent.com/6115884/122636302-3207cd80-d0f1-11eb-8fbd-28be5e32bc00.jpg)|![Screenshot_20210619-151933-min](https://user-images.githubusercontent.com/6115884/122636317-51065f80-d0f1-11eb-8729-8403f430e534.jpg)|
+| iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+|-|-|-|
+|![iOS example default](https://user-images.githubusercontent.com/6115884/169653932-5a9916b6-8d1f-4320-a595-86c3b797ae86.jpg)|![iOS example install instruction](https://user-images.githubusercontent.com/6115884/169654013-7d144d66-0021-44d8-8f1d-9a7d2c71cb07.jpg)|![iOS example gallery](https://user-images.githubusercontent.com/6115884/169654077-f48c9b63-2b6e-4291-a0e3-b33daf86d468.jpg)|
 
-| Chrome | Chrome gallery |
+| iPadOS |
+|---|
+|![iPadOS example white](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
+
+| Android | App gallery&nbsp;&nbsp; | White theme&nbsp;&nbsp; |
+|-|-|-|
+|![Android example default](https://user-images.githubusercontent.com/6115884/169654789-41fb88b3-97b2-4992-aab5-0def6015be21.jpg)|![Android example gallery](https://user-images.githubusercontent.com/6115884/169654833-b09c1eff-cfea-41c8-b2d0-66515cd1bc2c.jpg)|![Android example white](https://user-images.githubusercontent.com/6115884/169654871-33f30d44-b70c-4912-a678-3d97fd0d80a8.jpg)|
+
+| Chrome&nbsp; | App Gallery&nbsp;&nbsp; |
 |---|---|
-|![Screenshot 2021-06-19 153758-min](https://user-images.githubusercontent.com/6115884/122636673-21585700-d0f3-11eb-823a-ff470f31abd4.jpg)|![Screenshot 2021-06-19 153810-min](https://user-images.githubusercontent.com/6115884/122636677-24ebde00-d0f3-11eb-9b62-2897d6da2176.jpg)|
+|![Chrome example default](https://user-images.githubusercontent.com/6115884/169655166-07f02a6b-a72a-4eb8-8ae1-e5a32fcac530.jpg)|![Chrome example gallery](https://user-images.githubusercontent.com/6115884/169655205-34b9b1a8-328b-45f8-8cd2-f6524e82469e.jpg)|
 
 ## Install
 
