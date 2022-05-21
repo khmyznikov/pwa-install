@@ -60,6 +60,7 @@ import '@khmyznikov/pwa-install';
   manifest-url="/manifest.json"
   name="PWA"
   description="Progressive web application"
+  install-description="Custom call to install text"           
   icon="/icon.png">
 </pwa-install>
 ```
