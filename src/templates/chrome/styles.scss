@@ -103,6 +103,7 @@
 
                     overflow-x: hidden;
                     text-overflow: ellipsis;
+                    text-align: left;
                     word-break: break-all;
                     white-space: nowrap;
                 }
@@ -123,6 +124,7 @@
                 overflow: hidden;
                 overflow-y: auto;
                 text-overflow: ellipsis;
+                text-align: left;
             }
 
             .app-description{
