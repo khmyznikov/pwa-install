@@ -4,11 +4,17 @@ import {
 	targetLocales,
 } from './locale-codes';
 
+import * as ru from './locales/ru';
+
+const localizedTemplates = new Map([
+	['ru', ru]
+])
+
 export const { getLocale, setLocale } = configureLocalization({
 	sourceLocale,
 	targetLocales,
-	loadLocale: (lang: string) =>
-		import(`./${lang}.ts`),
+	// @ts-ignore
+	loadLocale: async (lang: string) => localizedTemplates.get(lang)
 });
 
 export const changeLocale = (lang: string) => {
