@@ -65,9 +65,12 @@ import '@khmyznikov/pwa-install';
   description="Progressive web application"         
   icon="/icon.png">
 </pwa-install>
+<!-- 
+  manual-apple/chrome params means you want to show the Dialog manually by showDialog().
+  disable-chrome param is for completely disabling custom logic and interception for Chominum browsers (will work built-in browser logic).
+--->
 ```
-*Make a good manifest file and don't use name/descr/icon params*
-*Boolean attributes needs to be removed to act like 'false'*
+*Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
 
 ---
 
@@ -84,6 +87,7 @@ import '@khmyznikov/pwa-install';
   pwaInstall.addEventListener('pwa-install-success-event', (event) => {console.log(event.detail.message)});
 </script>
 ```
+*⚠️ success/fail/choice events is Chromium only, iOS don't have them.*
 
 ---
 
@@ -102,7 +106,6 @@ import '@khmyznikov/pwa-install';
   console.log(pwaInstall.isUnderStandaloneMode);
 </script>
 ```
-
 ---
 
 ## Supported methods
@@ -118,6 +121,8 @@ import '@khmyznikov/pwa-install';
   pwaInstall.install();
 </script>
 ```
+
+*getInstalledRelatedApps is Chromium only, always empty on iOS.*
 
 ---
 
