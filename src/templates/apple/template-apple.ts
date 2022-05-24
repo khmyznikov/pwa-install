@@ -3,7 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { IManifest } from '../../types/types';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, installDescription: string, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested }};
 
     return html`
@@ -19,11 +19,11 @@ const template = (name: string, description: string, installDescription: string,
                             <svg viewBox="0 0 24 24"><path d="M5.3 18.7c.2.2.4.3.7.3s.5-.1.7-.3l5.3-5.3 5.3 5.3a1.08 1.08 0 0 0 .7.3 1.08 1.08 0 0 0 .7-.3c.4-.4.4-1 0-1.4L13.4 12l5.3-5.3c.4-.4.4-1 0-1.4s-1-.4-1.4 0L12 10.6 6.7 5.3c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l5.3 5.3-5.3 5.3c-.4.4-.4 1 0 1.4z"/></svg>
                         </button>
                     </div>
-                    <div class="description">${description}</div>
+                    <div class="description">${description || location.hostname}</div>
                 </div>
-                <div class="welcome-to-install">
-                    ${installDescription? installDescription: msg('This site has app functionality. Add it to your Home Screen for extensive experience and easy access.')}
-                </div>
+                ${!disableDescription? html`<div class="welcome-to-install">
+                    ${installDescription? installDescription: msg('This site has app functionality. Add it to your Home Screen for extensive experience and easy access.')}</div>` 
+                : '' }
                 <div class="how-to-body">
                     <div class="how-to-description">
                     

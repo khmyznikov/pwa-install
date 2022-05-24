@@ -17,7 +17,7 @@ const template = (name: string, description: string, icon: string, install: any)
             </div>
             <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
         </div>
-        <div class="description">${description}</div>
+        ${description ? html `<div class="description">${description}</div>`: ''}
     `;
 };
 export default template;

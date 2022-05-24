@@ -57,14 +57,17 @@ import '@khmyznikov/pwa-install';
   manual-chrome="true"
   disable-chrome="true"
 
+  install-description="Custom call to install text"
+  disable-install-description="true"
+
   manifest-url="/manifest.json"
   name="PWA"
-  description="Progressive web application"
-  install-description="Custom call to install text"           
+  description="Progressive web application"         
   icon="/icon.png">
 </pwa-install>
 ```
 *Make a good manifest file and don't use name/descr/icon params*
+*Boolean attributes needs to be removed to act like 'false'*
 
 ---
 

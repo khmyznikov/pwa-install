@@ -3,7 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { IManifest } from '../../types/types';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, installDescription: string, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
 
     return html`
@@ -23,8 +23,10 @@ const template = (name: string, description: string, installDescription: string,
                         <div class="hostname">${location.hostname}</div>
                         
                     </div>
-                    ${description ? html `<div class="description app-description">${description}</div><hr>`: ''}
-                    <div class="description install-description">${installDescription? installDescription: msg('This site has app functionality. Install it on your device for extensive experience and easy access.')}</div>
+                    ${description ? html `<div class="description app-description">${description}</div>`: ''}
+                    ${!disableDescription? 
+                        html`<hr><div class="description install-description">${installDescription? installDescription: msg('This site has app functionality. Install it on your device for extensive experience and easy access.')}</div>` 
+                        : ''}
                     ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                     <div class="action-buttons">
                         ${manifest.screenshots && manifest.screenshots.length? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}

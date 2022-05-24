@@ -35,6 +35,7 @@ export class PWAInstallElement extends LitElement {
 	@property() name = '';
 	@property() description = '';
 	@property({attribute: 'install-description'}) installDescription = '';
+	@property({attribute: 'disable-install-description', type: Boolean}) disableDescription = false;
 	@property({attribute: 'manual-apple', type: Boolean}) manualApple = false;
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
@@ -194,7 +195,6 @@ export class PWAInstallElement extends LitElement {
 					this.icon = this.icon || _json.icons[0].src;
 					this.name = this.name || _json['short_name'] || _json.name;
 					this.description = this.description || _json.description;
-
 					this.manifest = _json;
 				});
 			else {
@@ -225,6 +225,7 @@ export class PWAInstallElement extends LitElement {
 				this.name, 
 				this.description, 
 				this.installDescription,
+				this.disableDescription,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
@@ -239,6 +240,7 @@ export class PWAInstallElement extends LitElement {
 				this.name, 
 				this.description, 
 				this.installDescription,
+				this.disableDescription,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
