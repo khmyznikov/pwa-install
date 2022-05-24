@@ -7,6 +7,7 @@
     "url": "git+https://github.com/khmyznikov/pwa-install.git"
   },
   "type": "module",
+  "types": "dist/types/index.d.ts",
   "main": "dist/es/pwa-install.es.js",
   "scripts": {
     "build": "npm run localize && npm run localize-build && npm run build-noloc",
