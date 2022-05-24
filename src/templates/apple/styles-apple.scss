@@ -28,9 +28,10 @@
 
         bottom: -100px;
 
-        transition: bottom .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out, border .35s ease-in-out;
+        // transition: bottom .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out, border .35s ease-in-out;
 
         overflow: hidden;
+        pointer-events: none;
 
         will-change: opacity, visibility, bottom, top;
 
@@ -365,6 +366,9 @@
             opacity: 1;
             bottom: 20px;
             visibility: visible;
+            pointer-events: unset;
+
+            transition: bottom .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out, border .35s ease-in-out;
         }
         &.gallery{
             pwa-gallery{
@@ -396,11 +400,13 @@
             right: 150px;
             left: auto;
 
-            transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
+            
 
             &.available {
                 top: 28px;
                 bottom: auto;
+
+                transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
             }
         }
     }
