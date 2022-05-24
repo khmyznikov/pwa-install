@@ -12,6 +12,7 @@ export declare class PWAInstallElement extends LitElement {
     name: string;
     description: string;
     installDescription: string;
+    disableDescription: boolean;
     manualApple: boolean;
     manualChrome: boolean;
     disableChrome: boolean;
