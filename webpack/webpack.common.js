@@ -1,6 +1,8 @@
 import path, { resolve }  from 'path';
 import { fileURLToPath } from 'url';
 
+import autoprefixer from 'autoprefixer';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -19,7 +21,6 @@ export default {
 									/<=/
 								]
 							},
-							
 						},
 					}
 				],
@@ -38,12 +39,26 @@ export default {
 
 			{
 				test: /\.scss$/,
-				use: [{
-					loader: 'lit-scss-loader',
-					options: {
-						minify: true,
+				use: [
+					{
+						loader: 'lit-scss-loader',
+						options: {
+							minify: true,
+							transform: (css, { filePath }) => processor.process(css, { from: filePath }).css
+						},
 					},
-				}, 'extract-loader', 'css-loader', 'sass-loader'],
+					'extract-loader',
+					'css-loader',
+					{
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions: {
+								plugins: [autoprefixer()],
+							},
+						},
+					},
+					'sass-loader',
+				],
 			},
 		]
 	},

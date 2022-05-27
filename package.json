@@ -23,6 +23,7 @@
   "devDependencies": {
     "@lit/localize-tools": "^0.6.3",
     "@types/node": "^16.*",
+    "autoprefixer": "^10.4.7",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.13.0",
@@ -30,6 +31,8 @@
     "extract-loader": "^5.1.0",
     "lit-scss-loader": "^1.1.0",
     "minify-lit-html-loader": "0.0.3",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^7.0.0",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
     "terser-webpack-plugin": "^5.3.1",
