@@ -1,13 +1,10 @@
 import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
-import { IWindow, IManifest } from '../../../types/types';
 
 // import TouchDragListener from "./touch-listener";
 
-declare const window: IWindow;
-
 type IProps = {
-    name: string, 
+    name: string,
     description: string,
     icon: string
 }
@@ -15,7 +12,7 @@ type IProps = {
 import template from './template-bottom-sheet';
 
 @customElement('pwa-bottom-sheet')
-export default class PWABottomSheetElement extends LitElement {	
+export default class PWABottomSheetElement extends LitElement {
 	@property() props: IProps = {
         name: '',
         description: '',
@@ -28,13 +25,13 @@ export default class PWABottomSheetElement extends LitElement {
 		this.install.handleEvent();
 	}
 
-	private _callHide = () => { 
+	private _callHide = () => {
 		this.hideDialog();
 		this.setupAppearence();
 	}
-	
+
 	private bindedElement: {
-		touchElement: HTMLElement, 
+		touchElement: HTMLElement,
 		listener: any }| null = null;
 	private readonly _saveBodyStyle = document.body.style.overscrollBehaviorY;
 	private dragMobileSheet = (element: HTMLElement | null | undefined, touchTargetElement: HTMLElement | undefined, infoElement: HTMLElement | undefined) => {
@@ -48,7 +45,7 @@ export default class PWABottomSheetElement extends LitElement {
 		const getYCoord = (e: MouseEvent | TouchEvent): number => {
 			return (e as MouseEvent).clientY || ((e as TouchEvent).changedTouches && (e as TouchEvent).changedTouches.length? (e as TouchEvent).changedTouches[0].clientY : 0);
 		}
-		
+
 		const dragMouseDown = (e: MouseEvent | TouchEvent) => {
 			window.addEventListener('mouseup', dragMouseUp);
 			window.addEventListener('mousemove', dragMouseMove);
@@ -75,7 +72,7 @@ export default class PWABottomSheetElement extends LitElement {
 				return
 			}
 		}
-		
+
 		const dragMouseMove = (e: MouseEvent | TouchEvent) => {
 			const currentY = getYCoord(e);
 
@@ -93,7 +90,7 @@ export default class PWABottomSheetElement extends LitElement {
 				`translateY(${currentY - dragOffset}px)`
 			);
 		}
-		
+
 		const closeDragElement = (e: MouseEvent | TouchEvent, toPoint?: number, hideDialog?: boolean) => {
 			window.removeEventListener('mouseup', dragMouseUp);
 			window.removeEventListener('mousemove', dragMouseMove);
@@ -108,7 +105,7 @@ export default class PWABottomSheetElement extends LitElement {
 					"--translateY",
 					`translateY(calc(100vh - ${bottomSize}px))`
 				);
-			else				
+			else
 				element.style.setProperty(
 					"--translateY",
 					`translateY(${(toPoint || getYCoord(e)) + bounceOffset}px)`
@@ -128,7 +125,7 @@ export default class PWABottomSheetElement extends LitElement {
 					250
 				);
 			}
-				
+
 		}
 
 		touchTargetElement.addEventListener('mousedown', dragMouseDown);
@@ -137,20 +134,20 @@ export default class PWABottomSheetElement extends LitElement {
 		closeDragElement(new MouseEvent('mouseup'), window.innerHeight - bottomSize - bounceOffset);
 
 		return {
-			touchElement: touchTargetElement, 
+			touchElement: touchTargetElement,
 			listener: dragMouseDown
 		}
 	}
-	
+
 	private setupAppearence = () => {
 		if (this.bindedElement) {
 			this.bindedElement.touchElement.removeEventListener('mousedown', this.bindedElement.listener);
 			this.bindedElement.touchElement.removeEventListener('touchstart', this.bindedElement.listener);
 		}
-		
+
 		this.bindedElement = this.dragMobileSheet(
-			this.parentElement?.parentElement, 
-			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement, 
+			this.parentElement?.parentElement,
+			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement,
 			this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
 	}
 	private _init = () => {

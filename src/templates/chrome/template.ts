@@ -1,9 +1,9 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { IManifest } from '../../types/types';
+import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, icon: string, manifest: IManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
 
     return html`
