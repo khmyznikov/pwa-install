@@ -394,19 +394,17 @@
 @media (min-width: 768px) {
     #pwa-install-element{
         .install-dialog.apple{
-            top: -100px;
+            top: 0px;
             bottom: unset;
+            transform: translateY(-100%);
 
             right: 150px;
             left: auto;
 
-
-
             &.available {
                 top: 28px;
                 bottom: auto;
-
-                transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
+                // transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
             }
         }
     }
@@ -426,6 +424,9 @@
         .install-dialog.apple{
             .description-step .step-text{
                 font-size: 13px;
+            }
+            &.available{
+                bottom: 20px;
             }
         }
     }
