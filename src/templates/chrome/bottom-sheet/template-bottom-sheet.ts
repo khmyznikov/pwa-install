@@ -1,5 +1,4 @@
 import { html } from 'lit';
-import { IManifest } from '../../../types/types';
 import { msg } from '@lit/localize';
 
 const template = (name: string, description: string, icon: string, install: any) => {

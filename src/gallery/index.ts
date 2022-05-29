@@ -1,15 +1,13 @@
 import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
-import { IWindow, IManifest } from '../types/types';
-
-declare const window: IWindow;
+import { WebAppManifest } from 'web-app-manifest';
 
 import styles from './styles-gallery.scss';
 import template from './template-gallery';
 
 @customElement('pwa-gallery')
-export default class PWAGalleryElement extends LitElement {	
-	@property() screenshots: IManifest['screenshots'] = [];
+export default class PWAGalleryElement extends LitElement {
+	@property() screenshots: WebAppManifest['screenshots'] = [];
 
 	static get styles() {
 		return styles;
@@ -29,7 +27,7 @@ export default class PWAGalleryElement extends LitElement {
 		const gallery_item = gallery_items.find((item) => { return (item.offsetWidth + item.offsetLeft) >= gallery_scroller.scrollLeft})
 		if (!gallery_item)
 			return;
-		
+
 		return {
 			scroller: gallery_scroller,
 			item: gallery_item
@@ -54,7 +52,7 @@ export default class PWAGalleryElement extends LitElement {
 			});
 	}
 
-	
+
 	private _init = () => {
 		return;
 	}
@@ -71,7 +69,7 @@ export default class PWAGalleryElement extends LitElement {
 				},
 				300
 			)
-			
+
 	}
 
 	connectedCallback() {

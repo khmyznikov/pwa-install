@@ -21,8 +21,10 @@
   "license": "Unlicense",
   "devDependencies": {
     "@lit/localize-tools": "^0.6.3",
+    "@types/dom-chromium-installation-events": "^101.0.0",
     "@types/node": "^16.*",
     "autoprefixer": "^10.4.7",
+    "@types/web-app-manifest": "^1.0.2",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.13.0",

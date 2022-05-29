@@ -1,9 +1,10 @@
 import { LitElement, html } from 'lit';
 import { localized } from '@lit/localize';
 import { property, customElement } from 'lit/decorators.js';
+import { WebAppManifest } from 'web-app-manifest';
 import { changeLocale } from './localization';
 
-import { IBeforeInstallPromptEvent, IRelatedApp, IChoiceResult, IManifest, Manifest, IWindow } from './types/types';
+import { IRelatedApp, Manifest, IWindow } from './types/types';
 
 import PWAGalleryElement from './gallery';
 import PWABottomSheetElement from './templates/chrome/bottom-sheet';
@@ -11,12 +12,6 @@ import PWABottomSheetElement from './templates/chrome/bottom-sheet';
 import Utils from './utils';
 
 declare const window: IWindow;
-
-declare global {
-	interface WindowEventMap {
-		beforeinstallprompt: IBeforeInstallPromptEvent
-	}
-}
 
 import styles from './templates/chrome/styles.scss';
 import stylesApple from './templates/apple/styles-apple.scss';
@@ -28,8 +23,8 @@ import templateApple from './templates/apple/template-apple';
 @localized()
 @customElement('pwa-install')
 export class PWAInstallElement extends LitElement {
-	private manifest: IManifest = new Manifest();
-	
+	private manifest: WebAppManifest = new Manifest();
+
 	@property({attribute: 'manifest-url'}) manifestUrl = '/manifest.json';
 	@property() icon = '';
 	@property() name = '';
@@ -44,7 +39,7 @@ export class PWAInstallElement extends LitElement {
 		return [ styles, stylesApple ];
 	}
 
-	public platforms = '';
+	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
 
 	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
@@ -57,12 +52,12 @@ export class PWAInstallElement extends LitElement {
 	private _galleryRequested = false;
 
 	private _install = {
-		handleEvent: () => { 
+		handleEvent: () => {
 			if (window.deferredEvent) {
 				this.hideDialog();
 				window.deferredEvent.prompt();
 				window.deferredEvent.userChoice
-					.then((choiceResult: IChoiceResult) => {
+					.then((choiceResult: PromptResponseObject) => {
 						this.userChoiceResult = choiceResult.outcome;
 						Utils.eventUserChoiceResult(this, this.userChoiceResult);
 					})
@@ -84,7 +79,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	private _hideDialog = {
-		handleEvent: () => { 
+		handleEvent: () => {
 			this.isDialogHidden = true;
 			window.sessionStorage.setItem('pwa-hide-install', 'true');
 			this.requestUpdate();
@@ -111,7 +106,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	private _howToForApple = {
-        handleEvent: () => { 
+        handleEvent: () => {
 			this._howToRequested = !this._howToRequested;
 			if (this._howToRequested && this._galleryRequested)
 				this._galleryRequested = false;
@@ -121,7 +116,7 @@ export class PWAInstallElement extends LitElement {
     }
 
 	private _toggleGallery = {
-        handleEvent: () => { 
+        handleEvent: () => {
 			this._galleryRequested = !this._galleryRequested;
 			if (this._howToRequested && this._galleryRequested)
 				this._howToRequested = false;
@@ -159,7 +154,7 @@ export class PWAInstallElement extends LitElement {
 		this._checkInstalled();
 
 		if (!this.disableChrome)
-			window.addEventListener('beforeinstallprompt', (e: IBeforeInstallPromptEvent) => {
+			window.addEventListener('beforeinstallprompt', (e: BeforeInstallPromptEvent) => {
 				window.deferredEvent = e;
 				e.preventDefault();
 
@@ -198,13 +193,13 @@ export class PWAInstallElement extends LitElement {
 					this.manifest = _json;
 				});
 			else {
-				this.icon = this.icon || this.manifest.icons[0].src;
-				this.name = this.name || this.manifest['short_name'];
-				this.description = this.description || this.manifest.description;
+				this.icon = this.icon || this.manifest.icons?.[0].src || '';
+				this.name = this.name || this.manifest['short_name'] || '';
+				this.description = this.description || this.manifest.description || '';
 			}
 		});
 
-		
+
 	};
 
 	connectedCallback() {
