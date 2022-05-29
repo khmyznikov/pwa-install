@@ -34,7 +34,7 @@
         pointer-events: none;
         opacity: 1;
         visibility: visible;
-        transform: translateY(100%);
+        transform: translateY(110%);
         will-change: transform;
 
         &.dialog-body{
@@ -396,7 +396,7 @@
         .install-dialog.apple{
             top: 0px;
             bottom: unset;
-            transform: translateY(-100%);
+            transform: translateY(-110%);
 
             right: 150px;
             left: auto;
