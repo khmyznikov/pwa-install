@@ -15,8 +15,7 @@
     "localize": "lit-localize extract",
     "localize-build": "lit-localize build",
     "test": "npm run build-noloc && node ./webpack/serve.js",
-    "dev": "webpack serve --config webpack/webpack.dev.js --mode=development",
-    "prepublish": "npm run build"
+    "dev": "webpack serve --config webpack/webpack.dev.js --mode=development"
   },
   "author": "khmyznikov",
   "license": "Unlicense",
@@ -24,6 +23,7 @@
     "@lit/localize-tools": "^0.6.3",
     "@types/dom-chromium-installation-events": "^101.0.0",
     "@types/node": "^16.*",
+    "autoprefixer": "^10.4.7",
     "@types/web-app-manifest": "^1.0.2",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "^6.7.1",
@@ -32,6 +32,8 @@
     "extract-loader": "^5.1.0",
     "lit-scss-loader": "^1.1.0",
     "minify-lit-html-loader": "0.0.3",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^7.0.0",
     "sass": "^1.50.0",
     "sass-loader": "^12.6.0",
     "terser-webpack-plugin": "^5.3.1",
@@ -40,7 +42,7 @@
     "typescript-lit-html-plugin": "^0.9.0",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.8.1",
+    "webpack-dev-server": "^4.9.0",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
