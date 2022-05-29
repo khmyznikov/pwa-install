@@ -10,7 +10,7 @@
   "types": "dist/types/index.d.ts",
   "main": "dist/es/pwa-install.es.js",
   "scripts": {
-    "build": "npm run localize && npm run localize-build && npm run build-noloc",
+    "build": "npm run localize && npm run localize-build && npm run build-noloc && cem analyze",
     "build-noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production",
     "localize": "lit-localize extract",
     "localize-build": "lit-localize build",
@@ -20,11 +20,13 @@
   "author": "khmyznikov",
   "license": "Unlicense",
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.6.2",
     "@lit/localize-tools": "^0.6.3",
     "@types/dom-chromium-installation-events": "^101.0.0",
     "@types/node": "^16.*",
-    "autoprefixer": "^10.4.7",
     "@types/web-app-manifest": "^1.0.2",
+    "autoprefixer": "^10.4.7",
+    "cem-plugin-reactify": "^0.0.2",
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.13.0",
