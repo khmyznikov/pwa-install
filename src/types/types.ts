@@ -10,6 +10,20 @@ export interface IWindow extends Window {
     deferredEvent: BeforeInstallPromptEvent | null;
 }
 
+type Booleanish = 'true' | 'false';
+
+export interface PWAInstallAttributes {
+    ['manual-apple']?: Booleanish;
+    ['manual-chrome']?: Booleanish;
+    ['disable-chrome']?: Booleanish;
+    ['install-description']?: string;
+    ['disable-install-description']?: Booleanish;
+    ['manifest-url']?: string;
+    name?: string;
+    description?: string;
+    icon?: string;
+}
+
 export class Manifest {
     constructor() {
         this.icons = [{ src: '' }];

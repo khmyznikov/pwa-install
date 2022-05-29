@@ -4,7 +4,7 @@ import { property, customElement } from 'lit/decorators.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { changeLocale } from './localization';
 
-import { IRelatedApp, Manifest, IWindow } from './types/types';
+import { IRelatedApp, Manifest, IWindow, PWAInstallAttributes } from './types/types';
 
 import PWAGalleryElement from './gallery';
 import PWABottomSheetElement from './templates/chrome/bottom-sheet';
@@ -246,3 +246,5 @@ export class PWAInstallElement extends LitElement {
 			)}`;
 	}
 }
+
+export { PWAInstallAttributes };
