@@ -1,7 +1,7 @@
 import { LitElement } from 'lit';
-import { IManifest } from '../types/types';
+import { WebAppManifest } from 'web-app-manifest';
 export default class PWAGalleryElement extends LitElement {
-    screenshots: IManifest['screenshots'];
+    screenshots: WebAppManifest['screenshots'];
     static get styles(): CSSStyleSheet;
     calcScrollSize: () => {
         scroller: Element;

@@ -1,10 +1,6 @@
+/// <reference types="dom-chromium-installation-events" />
 import { LitElement } from 'lit';
-import { IBeforeInstallPromptEvent, IRelatedApp } from './types/types';
-declare global {
-    interface WindowEventMap {
-        beforeinstallprompt: IBeforeInstallPromptEvent;
-    }
-}
+import { IRelatedApp } from './types/types';
 export declare class PWAInstallElement extends LitElement {
     private manifest;
     manifestUrl: string;
@@ -17,7 +13,7 @@ export declare class PWAInstallElement extends LitElement {
     manualChrome: boolean;
     disableChrome: boolean;
     static get styles(): CSSStyleSheet[];
-    platforms: string;
+    platforms: BeforeInstallPromptEvent['platforms'];
     userChoiceResult: string;
     isDialogHidden: boolean;
     isInstallAvailable: boolean;
