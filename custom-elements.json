@@ -351,6 +351,14 @@
             "name": "PWAInstallElement",
             "module": "src/index.ts"
           }
+        },
+        {
+          "kind": "js",
+          "name": "PWAInstallAttributes",
+          "declaration": {
+            "name": "PWAInstallAttributes",
+            "module": "src/index.ts"
+          }
         }
       ]
     }

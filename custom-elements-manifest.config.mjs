@@ -1,4 +1,4 @@
-import reactify from 'cem-plugin-reactify';
+// import reactify from 'cem-plugin-reactify';
 
 export default {
   /** Globs to analyze */
@@ -24,18 +24,18 @@ export default {
 //   /** Enable special handling for stencil */
 //   stencil: false,
 //   /** Provide custom plugins */
-  plugins: [
-    reactify({
-		/** Directory to write the React wrappers to, defaults to `legacy` */
-		outdir: 'dist/react',
+//   plugins: [
+//     reactify({
+// 		/** Directory to write the React wrappers to, defaults to `legacy` */
+// 		outdir: 'dist/react',
 		
-		/** Provide an attribute mapping to avoid using JS/React reserved keywords */
-		attributeMapping: {
-		  'for': '_for'
-		},
+// 		/** Provide an attribute mapping to avoid using JS/React reserved keywords */
+// 		attributeMapping: {
+// 		  'for': '_for'
+// 		},
   
-		// /** Array of classNames to exclude */
-		// exclude: ['PWAInstallElement']
-	  })
-  ]
+// 		// /** Array of classNames to exclude */
+// 		// exclude: ['PWAInstallElement']
+// 	  })
+//   ]
 }

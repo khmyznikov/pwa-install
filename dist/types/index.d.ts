@@ -1,6 +1,6 @@
 /// <reference types="dom-chromium-installation-events" />
 import { LitElement } from 'lit';
-import { IRelatedApp } from './types/types';
+import { IRelatedApp, PWAInstallAttributes } from './types/types';
 export declare class PWAInstallElement extends LitElement {
     private manifest;
     manifestUrl: string;
@@ -36,3 +36,4 @@ export declare class PWAInstallElement extends LitElement {
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
+export { PWAInstallAttributes };

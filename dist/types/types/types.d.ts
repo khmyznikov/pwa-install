@@ -8,6 +8,18 @@ export interface IRelatedApp {
 export interface IWindow extends Window {
     deferredEvent: BeforeInstallPromptEvent | null;
 }
+declare type Booleanish = 'true' | 'false';
+export interface PWAInstallAttributes {
+    ['manual-apple']?: Booleanish;
+    ['manual-chrome']?: Booleanish;
+    ['disable-chrome']?: Booleanish;
+    ['install-description']?: string;
+    ['disable-install-description']?: Booleanish;
+    ['manifest-url']?: string;
+    name?: string;
+    description?: string;
+    icon?: string;
+}
 export declare class Manifest {
     constructor();
     short_name: string;
@@ -16,3 +28,4 @@ export declare class Manifest {
     name: string;
     description: string;
 }
+export {};
