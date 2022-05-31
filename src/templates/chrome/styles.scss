@@ -1,6 +1,6 @@
 #pwa-install-element{
     user-select: none;
-    
+
     .install-dialog{
         --text-color-normal: #212121;
         --background-color: #fff;
@@ -14,8 +14,8 @@
 
         opacity: 0;
         visibility: hidden;
-        
-        z-index: 5;
+
+        z-index: 2147483001;
     }
     .install-dialog.chrome{
         max-width: 380px;
@@ -37,7 +37,7 @@
 
         transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height 0.35s ease-in-out;
 
-        
+
         &.available {
             opacity: 1;
             top: 28px;
@@ -52,7 +52,7 @@
             .icon{
                 display: flex;
                 align-items: flex-start;
- 
+
                 .icon-image{
                     width: 48px;
                     height: 48px;
@@ -68,7 +68,7 @@
                 display: grid;
                 grid-template-rows: 30px auto;
 
-                .name, .hostname{ 
+                .name, .hostname{
                     padding: 0px 5px;
                     // padding-left: 5px;
                     overflow: hidden;
@@ -81,7 +81,7 @@
                     line-height: 24px;
                     // padding: 5px 0px;
                     margin-top: 5px;
-                    
+
 
                     align-items: flex-start;
                     display: flex;
@@ -93,7 +93,7 @@
                         overflow: hidden;
                     }
                 }
-                
+
                 .hostname{
                     font-size: 13px;
                     font-weight: 400;
@@ -135,7 +135,7 @@
                     width: 4px;
                     height: 4px;
                 }
-            
+
                 &::-webkit-scrollbar-thumb {
                     background: rgb(146, 146, 146);
                     border-radius: 4px;
@@ -143,7 +143,7 @@
                         background: rgb(100, 100, 100);
                     }
                 }
-            
+
                 &::-webkit-scrollbar-track {
                     background: var(--scrollbar-background-color);
                     border-radius: 4px;
@@ -191,8 +191,8 @@
                 transition: opacity ease-in-out .5s, max-height .5s ease-in-out;
                 overflow: hidden;
             }
-        }  
-        
+        }
+
         &.gallery{
             pwa-gallery{
                 transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
@@ -235,7 +235,7 @@
 
                 cursor: grab;
                 &:active{
-                    cursor: grabbing; 
+                    cursor: grabbing;
                 }
                 &::before{
                     content:'';
@@ -251,12 +251,12 @@
                 display: grid;
                 grid-template-columns: max-content 1fr max-content;
                 grid-gap: 15px;
-    
+
                 padding: 18px 20px;
                 padding-top: 0;
 
                 border-bottom: 1px solid var(--border-bottom-color);
-    
+
                 .install{
                     text-transform: capitalize;
                     height: 40px;
@@ -288,7 +288,7 @@
                         padding: 0;
                     }
                 }
-    
+
                 .icon .icon-image{
                     margin: 0;
                     width: 45px;
@@ -310,7 +310,7 @@
                 // overflow: hidden;
                 // text-overflow: ellipsis;
             }
-        
+
             pwa-gallery{
                 max-height: 100%;
                 padding-bottom: 15px;
@@ -327,9 +327,9 @@
 
             opacity: 1;
             top: 0px;
-            
+
             visibility: visible;
-            
+
             transform: var(--translateY);
         }
     }
@@ -350,14 +350,14 @@
         text-align: center;
         text-overflow: ellipsis;
         text-transform: uppercase;
-        
+
         box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-        
+
         font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
         font-size: 14px;
         font-weight: 500;
         line-height: 37px;
-        overflow: hidden;  
+        overflow: hidden;
         outline: none;
         cursor: pointer;
         transition: box-shadow 0.2s;
