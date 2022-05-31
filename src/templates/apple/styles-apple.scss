@@ -375,6 +375,7 @@
                 transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
 
                 max-height: 70vh;
+                overflow-y: auto;
                 opacity: 1;
             }
         }
@@ -385,13 +386,17 @@
             .how-to-body{
                 opacity: 1;
                 max-height: 400px;
+                overflow-y: auto;
 
                 transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
             }
         }
     }
 }
-@media (min-width: 768px) {
+
+$phone-small-landscape: 667px;
+
+@media (min-width: $phone-small-landscape) {
     #pwa-install-element{
         .install-dialog.apple{
             top: 0px;
@@ -404,13 +409,14 @@
             &.available {
                 top: 28px;
                 bottom: auto;
+                max-height: calc(95vh - 28px);
                 // transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
             }
         }
     }
 }
 
-@media (min-width: 768px) and (max-width: 1366px) {
+@media (min-width: $phone-small-landscape) and (max-width: 1366px) {
     #pwa-install-element{
         .install-dialog.apple{
             right: 28px;
@@ -419,7 +425,7 @@
     }
 }
 
-@media (max-width: (768px - 1px)) {
+@media (max-width: ($phone-small-landscape - 1px)) {
     #pwa-install-element{
         .install-dialog.apple{
             .description-step .step-text{
@@ -427,6 +433,7 @@
             }
             &.available{
                 bottom: 20px;
+                max-height: calc(85vh - 20px);
             }
         }
     }
@@ -440,12 +447,23 @@
             }
             &.available {
                 bottom: 0px;
+                max-height: 85vh;
             }
 
                 border-bottom-left-radius: 0;
                 border-bottom-right-radius: 0;
 
         }
+    }
+}
+@media (max-height: 548px) {
+    #pwa-install-element{
+        .install-dialog.apple.dialog-body{
+            &.available {
+                overflow-y: auto;
+                max-height: calc(90vh - 28px - env(safe-area-inset-bottom, 0px));
+            }
+        } 
     }
 }
 
