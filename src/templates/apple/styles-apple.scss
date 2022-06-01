@@ -177,7 +177,7 @@
             grid-column-start: 1;
             grid-column-end: 3;
 
-            gap: 15px;
+            // gap: 15px;
             padding: 15px;
         }
         .dialog-button{
@@ -219,7 +219,6 @@
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        gap: 15px;
 
                         transition: opacity .4s ease-in-out 0.1s;
 
@@ -260,6 +259,8 @@
 
                     min-width: 50px;
                     width: auto;
+
+                    margin-right: 15px;
 
                     #pwa-gallery{
                         margin: 0 auto;
@@ -419,7 +420,7 @@ $phone-small-landscape: 667px;
 @media (min-width: $phone-small-landscape) and (max-width: 1366px) {
     #pwa-install-element{
         .install-dialog.apple{
-            right: 28px;
+            right: max(28px, env(safe-area-inset-right, 28px));
             left: auto;
         }
     }
