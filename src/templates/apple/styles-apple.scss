@@ -28,14 +28,14 @@
 
         bottom: 0;
 
-        transition: transform .4s cubic-bezier(.33,1,.66,1), border .35s ease-in-out;
+        transition: transform .4s cubic-bezier(.33,1,.66,1), opacity .5s cubic-bezier(1,0,1,-2), border .35s ease-in-out;
 
         overflow: hidden;
         pointer-events: none;
-        opacity: 1;
+        opacity: 0;
         visibility: visible;
         transform: translateY(100%);
-        will-change: transform;
+        will-change: opacity, transform;
 
         &.dialog-body{
             display: grid;
@@ -369,7 +369,7 @@
             opacity: 1;
             pointer-events: unset;
             transform: translateY(0);
-            transition-duration: .5s;
+            transition: transform .5s cubic-bezier(.33,1,.66,1), border .35s ease-in-out;
         }
         &.gallery{
             pwa-gallery{
@@ -464,7 +464,7 @@ $phone-small-landscape: 667px;
                 overflow-y: auto;
                 max-height: calc(90vh - 28px - env(safe-area-inset-bottom, 0px));
             }
-        } 
+        }
     }
 }
 
