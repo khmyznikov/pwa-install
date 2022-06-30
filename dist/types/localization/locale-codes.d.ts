@@ -1,3 +1,3 @@
 export declare const sourceLocale = "en";
-export declare const targetLocales: readonly ["ru"];
-export declare const allLocales: readonly ["en", "ru"];
+export declare const targetLocales: readonly ["ru", "tr"];
+export declare const allLocales: readonly ["en", "ru", "tr"];
