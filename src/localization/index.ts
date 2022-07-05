@@ -5,9 +5,11 @@ import {
 } from './locale-codes';
 
 import * as ru from './locales/ru';
+import * as tr from './locales/tr';
 
 const localizedTemplates = new Map([
-	['ru', ru]
+	['ru', ru],
+	['tr', tr]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
