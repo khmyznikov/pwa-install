@@ -188,7 +188,7 @@
                 "text": "object"
               },
               "privacy": "private",
-              "default": "{\r\n\t\thandleEvent: () => {\r\n\t\t\tif (window.deferredEvent) {\r\n\t\t\t\tthis.hideDialog();\r\n\t\t\t\twindow.deferredEvent.prompt();\r\n\t\t\t\twindow.deferredEvent.userChoice\r\n\t\t\t\t\t.then((choiceResult: PromptResponseObject) => {\r\n\t\t\t\t\t\tthis.userChoiceResult = choiceResult.outcome;\r\n\t\t\t\t\t\tUtils.eventUserChoiceResult(this, this.userChoiceResult);\r\n\t\t\t\t\t})\r\n\t\t\t\t\t.catch((error) => {\r\n\t\t\t\t\t\tUtils.eventInstalledFail(this);\r\n\t\t\t\t\t});\r\n\t\t\t\twindow.deferredEvent = null;\r\n\t\t\t}\r\n\t\t},\r\n\t\tpassive: true\r\n\t}"
+              "default": "{\n\t\thandleEvent: () => {\n\t\t\tif (window.deferredEvent) {\n\t\t\t\tthis.hideDialog();\n\t\t\t\twindow.deferredEvent.prompt();\n\t\t\t\twindow.deferredEvent.userChoice\n\t\t\t\t\t.then((choiceResult: PromptResponseObject) => {\n\t\t\t\t\t\tthis.userChoiceResult = choiceResult.outcome;\n\t\t\t\t\t\tUtils.eventUserChoiceResult(this, this.userChoiceResult);\n\t\t\t\t\t})\n\t\t\t\t\t.catch((error) => {\n\t\t\t\t\t\tUtils.eventInstalledFail(this);\n\t\t\t\t\t});\n\t\t\t\twindow.deferredEvent = null;\n\t\t\t}\n\t\t},\n\t\tpassive: true\n\t}"
             },
             {
               "kind": "field",
@@ -202,7 +202,7 @@
                 "text": "object"
               },
               "privacy": "private",
-              "default": "{\r\n\t\thandleEvent: () => {\r\n\t\t\tthis.isDialogHidden = true;\r\n\t\t\twindow.sessionStorage.setItem('pwa-hide-install', 'true');\r\n\t\t\tthis.requestUpdate();\r\n\t\t},\r\n\t\tpassive: true\r\n\t}"
+              "default": "{\n\t\thandleEvent: () => {\n\t\t\tthis.isDialogHidden = true;\n\t\t\twindow.sessionStorage.setItem('pwa-hide-install', 'true');\n\t\t\tthis.requestUpdate();\n\t\t},\n\t\tpassive: true\n\t}"
             },
             {
               "kind": "field",
@@ -231,7 +231,7 @@
                 "text": "object"
               },
               "privacy": "private",
-              "default": "{\r\n        handleEvent: () => {\r\n\t\t\tthis._howToRequested = !this._howToRequested;\r\n\t\t\tif (this._howToRequested && this._galleryRequested)\r\n\t\t\t\tthis._galleryRequested = false;\r\n\t\t\tthis.requestUpdate();\r\n        },\r\n        passive: true\r\n    }"
+              "default": "{\n        handleEvent: () => {\n\t\t\tthis._howToRequested = !this._howToRequested;\n\t\t\tif (this._howToRequested && this._galleryRequested)\n\t\t\t\tthis._galleryRequested = false;\n\t\t\tthis.requestUpdate();\n        },\n        passive: true\n    }"
             },
             {
               "kind": "field",
@@ -240,7 +240,7 @@
                 "text": "object"
               },
               "privacy": "private",
-              "default": "{\r\n        handleEvent: () => {\r\n\t\t\tthis._galleryRequested = !this._galleryRequested;\r\n\t\t\tif (this._howToRequested && this._galleryRequested)\r\n\t\t\t\tthis._howToRequested = false;\r\n\t\t\tthis.requestUpdate();\r\n        },\r\n        passive: true\r\n    }"
+              "default": "{\n        handleEvent: () => {\n\t\t\tthis._galleryRequested = !this._galleryRequested;\n\t\t\tif (this._howToRequested && this._galleryRequested)\n\t\t\t\tthis._howToRequested = false;\n\t\t\tthis.requestUpdate();\n        },\n        passive: true\n    }"
             },
             {
               "kind": "method",
