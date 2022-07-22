@@ -6,11 +6,12 @@ import {
 
 import * as ru from './locales/ru';
 import * as tr from './locales/tr';
+import * as de from "./locales/de"
 
 const localizedTemplates = new Map([
   ['ru', ru],
   ['tr', tr],
-  ['de', de],
+  ['de', de]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
