@@ -1,15 +1,19 @@
 {
-	"$schema": "https://raw.githubusercontent.com/lit/lit/main/packages/localize-tools/config.schema.json",
-	"sourceLocale": "en",
-	"targetLocales": ["ru", "tr"],
-	"tsConfig": "tsconfig.json",
-	"output": {
-	  "mode": "runtime",
-	  "outputDir": "src/localization/locales",
-	  "localeCodesModule": "src/localization/locale-codes.ts"
-	},
-	"interchange": {
-	  "format": "xliff",
-	  "xliffDir": "i18n/"
-	}
+  "$schema": "https://raw.githubusercontent.com/lit/lit/main/packages/localize-tools/config.schema.json",
+  "sourceLocale": "en",
+  "targetLocales": [
+    "ru",
+    "tr",
+    "de"
+  ],
+  "tsConfig": "tsconfig.json",
+  "output": {
+    "mode": "runtime",
+    "outputDir": "src/localization/locales",
+    "localeCodesModule": "src/localization/locale-codes.ts"
+  },
+  "interchange": {
+    "format": "xliff",
+    "xliffDir": "i18n/"
   }
+}
