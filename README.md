@@ -128,9 +128,13 @@ import '@khmyznikov/pwa-install';
 
 ## Supported localization
 
-At this time *EN*, *RU*, *TR* and *DE* languages available. Language should change automatically based on browser settings. Please create the issue/pull-request if you want to help with translation to your language. It an easy process.
+At this time *EN*, *RU*, *TR* and *DE* languages available. Language should change automatically based on browser settings. Please create the issue/pull-request if you want to help with translation to your language. It's an easy process.
 
 ---
 
 ## ROADMAP
 - style customization
+
+## How to Contribute
+
+[Contribution Guidelines](CONTRIBUTION.md)
