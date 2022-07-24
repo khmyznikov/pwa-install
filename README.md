@@ -137,4 +137,4 @@ At this time *EN*, *RU*, *TR* and *DE* languages available. Language should chan
 
 ## How to Contribute
 
-[Contribution Guidelines](CONTRIBUTION.md)
+[Contribution Guidelines](./CONTRIBUTION.md)
