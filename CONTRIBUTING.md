@@ -4,7 +4,7 @@
 
 If you are looking to help to with a code contribution our project uses *Lit, Typescript, SCSS*. If you don't feel ready to make a code contribution yet, no problem! You can also check out the [issues](https://github.com/khmyznikov/pwa-install/issues).
 
-If you are interested in making a code contribution and would like to learn more about the technologies that we use, check out the list below 👇
+If you are interested in making a code contribution and would like to learn more about the technologies that we use, check out the list below.
 
 - https://lit.dev/docs
 - https://web.dev/web-components
