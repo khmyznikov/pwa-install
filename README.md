@@ -22,6 +22,8 @@ Use it as [Web Component with any modern framework](https://academind.com/tutori
 |---|---|
 |![Chrome example default](https://user-images.githubusercontent.com/6115884/169655166-07f02a6b-a72a-4eb8-8ae1-e5a32fcac530.jpg)|![Chrome example gallery](https://user-images.githubusercontent.com/6115884/169655205-34b9b1a8-328b-45f8-8cd2-f6524e82469e.jpg)|
 
+<br>
+
 ## Install
 
 ```bash
@@ -30,15 +32,12 @@ npm i @khmyznikov/pwa-install
 
 Alternatively, you can use [unpkg](https://unpkg.com).
 
----
 
 ## Import
 
 ```js
 import '@khmyznikov/pwa-install';
 ```
-
----
 
 ## Use
 
@@ -48,7 +47,7 @@ import '@khmyznikov/pwa-install';
 
 ### **[Demo](https://www.khmyznikov.com/pwa-install/)**
 
----
+<br>
 
 ## Supported params
 ```html
@@ -72,7 +71,7 @@ import '@khmyznikov/pwa-install';
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
 
----
+<br>
 
 ## Supported events
 - pwa-install-success-event
@@ -89,7 +88,7 @@ import '@khmyznikov/pwa-install';
 ```
 *⚠️ success/fail/choice events is Chromium only, iOS don't have them.*
 
----
+<br>
 
 ## Supported properties (readonly)
 - userChoiceResult: string;
@@ -106,7 +105,7 @@ import '@khmyznikov/pwa-install';
   console.log(pwaInstall.isUnderStandaloneMode);
 </script>
 ```
----
+<br>
 
 ## Supported methods
 - install
@@ -124,7 +123,7 @@ import '@khmyznikov/pwa-install';
 
 *getInstalledRelatedApps is Chromium only, always empty on iOS.*
 
----
+<br>
 
 ## Supported localization
 
@@ -132,7 +131,7 @@ At this time *EN*, *RU*, *TR* and *DE* languages available. Language should chan
 
 [Contribution Guidelines](./CONTRIBUTING.md)
 
----
+<br>
 
 ## ROADMAP
 - style customization
