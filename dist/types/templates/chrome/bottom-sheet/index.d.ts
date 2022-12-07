@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-declare type IProps = {
+type IProps = {
     name: string;
     description: string;
     icon: string;

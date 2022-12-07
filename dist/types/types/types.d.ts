@@ -8,7 +8,7 @@ export interface IRelatedApp {
 export interface IWindow extends Window {
     deferredEvent: BeforeInstallPromptEvent | null;
 }
-declare type Booleanish = 'true' | 'false';
+type Booleanish = 'true' | 'false';
 export interface PWAInstallAttributes {
     ['manual-apple']?: Booleanish;
     ['manual-chrome']?: Booleanish;
