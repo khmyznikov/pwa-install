@@ -8,12 +8,14 @@ import * as ru from './locales/ru';
 import * as tr from './locales/tr';
 import * as de from "./locales/de"
 import * as es from "./locales/es"
+import * as nl from "./locales/nl"
 
 const localizedTemplates = new Map([
   ['ru', ru],
   ['tr', tr],
   ['de', de],
-  ['es', es]
+  ['es', es],
+  ['nl', nl]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({

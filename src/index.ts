@@ -48,9 +48,11 @@ export class PWAInstallElement extends LitElement {
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
+	/** @internal */
 	private _howToRequested = false;
+	/** @internal */
 	private _galleryRequested = false;
-
+	/** @internal */
 	private _install = {
 		handleEvent: () => {
 			if (window.deferredEvent) {
@@ -77,7 +79,7 @@ export class PWAInstallElement extends LitElement {
 		else
 			this._install.handleEvent();
 	}
-
+	/** @internal */
 	private _hideDialog = {
 		handleEvent: () => {
 			this.isDialogHidden = true;
@@ -86,6 +88,7 @@ export class PWAInstallElement extends LitElement {
 		},
 		passive: true
 	}
+	/** @internal */
 	private _hideDialogUser = () => {
 		Utils.eventUserChoiceResult(this, 'dismissed');
 		this.hideDialog();
@@ -104,7 +107,7 @@ export class PWAInstallElement extends LitElement {
 	public getInstalledRelatedApps = async (): Promise<IRelatedApp[]> => {
 		return await Utils.getInstalledRelatedApps();
 	}
-
+	/** @internal */
 	private _howToForApple = {
         handleEvent: () => {
 			this._howToRequested = !this._howToRequested;
@@ -114,7 +117,7 @@ export class PWAInstallElement extends LitElement {
         },
         passive: true
     }
-
+	/** @internal */
 	private _toggleGallery = {
         handleEvent: () => {
 			this._galleryRequested = !this._galleryRequested;
@@ -124,7 +127,7 @@ export class PWAInstallElement extends LitElement {
         },
         passive: true
     }
-
+	/** @internal */
 	private async _checkInstalled() {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
@@ -147,7 +150,7 @@ export class PWAInstallElement extends LitElement {
 			this.manualChrome && this.hideDialog();
 		}
 	}
-
+	/** @internal */
 	private _init = () => {
 		window.deferredEvent = null;
 

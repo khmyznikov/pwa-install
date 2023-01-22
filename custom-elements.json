@@ -165,49 +165,8 @@
             },
             {
               "kind": "field",
-              "name": "_howToRequested",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_galleryRequested",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_install",
-              "type": {
-                "text": "object"
-              },
-              "privacy": "private",
-              "default": "{\n\t\thandleEvent: () => {\n\t\t\tif (window.deferredEvent) {\n\t\t\t\tthis.hideDialog();\n\t\t\t\twindow.deferredEvent.prompt();\n\t\t\t\twindow.deferredEvent.userChoice\n\t\t\t\t\t.then((choiceResult: PromptResponseObject) => {\n\t\t\t\t\t\tthis.userChoiceResult = choiceResult.outcome;\n\t\t\t\t\t\tUtils.eventUserChoiceResult(this, this.userChoiceResult);\n\t\t\t\t\t})\n\t\t\t\t\t.catch((error) => {\n\t\t\t\t\t\tUtils.eventInstalledFail(this);\n\t\t\t\t\t});\n\t\t\t\twindow.deferredEvent = null;\n\t\t\t}\n\t\t},\n\t\tpassive: true\n\t}"
-            },
-            {
-              "kind": "field",
               "name": "install",
               "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "_hideDialog",
-              "type": {
-                "text": "object"
-              },
-              "privacy": "private",
-              "default": "{\n\t\thandleEvent: () => {\n\t\t\tthis.isDialogHidden = true;\n\t\t\twindow.sessionStorage.setItem('pwa-hide-install', 'true');\n\t\t\tthis.requestUpdate();\n\t\t},\n\t\tpassive: true\n\t}"
-            },
-            {
-              "kind": "field",
-              "name": "_hideDialogUser",
-              "privacy": "private"
             },
             {
               "kind": "field",
@@ -223,34 +182,6 @@
               "kind": "field",
               "name": "getInstalledRelatedApps",
               "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "_howToForApple",
-              "type": {
-                "text": "object"
-              },
-              "privacy": "private",
-              "default": "{\n        handleEvent: () => {\n\t\t\tthis._howToRequested = !this._howToRequested;\n\t\t\tif (this._howToRequested && this._galleryRequested)\n\t\t\t\tthis._galleryRequested = false;\n\t\t\tthis.requestUpdate();\n        },\n        passive: true\n    }"
-            },
-            {
-              "kind": "field",
-              "name": "_toggleGallery",
-              "type": {
-                "text": "object"
-              },
-              "privacy": "private",
-              "default": "{\n        handleEvent: () => {\n\t\t\tthis._galleryRequested = !this._galleryRequested;\n\t\t\tif (this._howToRequested && this._galleryRequested)\n\t\t\t\tthis._howToRequested = false;\n\t\t\tthis.requestUpdate();\n        },\n        passive: true\n    }"
-            },
-            {
-              "kind": "method",
-              "name": "_checkInstalled",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_init",
-              "privacy": "private"
             }
           ],
           "attributes": [
