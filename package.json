@@ -23,7 +23,7 @@
     "@custom-elements-manifest/analyzer": "^0.6.6",
     "@lit/localize-tools": "^0.6.5",
     "@types/dom-chromium-installation-events": "^101.0.0",
-    "@types/node": "^16.*",
+    "@types/node": "^18.11.18",
     "@types/web-app-manifest": "^1.0.2",
     "autoprefixer": "^10.4.13",
     "clean-webpack-plugin": "4.0.0",
@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@lit/localize": "^0.11.4",
-    "lit": "^2.5.0"
+    "lit": "^2.6.1"
   },
   "bugs": {
     "url": "https://github.com/khmyznikov/pwa-install/issues"
