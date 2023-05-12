@@ -127,7 +127,7 @@ import '@khmyznikov/pwa-install';
 
 ## Supported localization
 
-At this time *EN*, *RU*, *TR*, *DE*, *ES* and *NL* languages available. Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
+At this time *EN*, *RU*, *TR*, *DE*, *ES*, *NL* and *EL* languages available. Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
 [Contribution Guidelines](./CONTRIBUTING.md)
 

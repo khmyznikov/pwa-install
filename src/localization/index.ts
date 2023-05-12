@@ -9,13 +9,15 @@ import * as tr from './locales/tr';
 import * as de from "./locales/de"
 import * as es from "./locales/es"
 import * as nl from "./locales/nl"
+import * as el from "./locales/el"
 
 const localizedTemplates = new Map([
   ['ru', ru],
   ['tr', tr],
   ['de', de],
   ['es', es],
-  ['nl', nl]
+  ['nl', nl],
+  ['el', el]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
