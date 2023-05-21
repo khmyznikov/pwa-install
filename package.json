@@ -1,6 +1,6 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
@@ -21,19 +21,18 @@
   "license": "Unlicense",
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.2",
-    "@lit/localize-tools": "^0.6.9",
+    "@lit/localize-tools": "^0.7.0-pre.0",
     "@types/dom-chromium-installation-events": "^101.0.0",
     "@types/node": "^18.16.8",
     "@types/web-app-manifest": "^1.0.3",
     "autoprefixer": "^10.4.14",
     "clean-webpack-plugin": "4.0.0",
-    "css-loader": "^6.7.3",
     "eslint": "^8.40.0",
     "express": "^4.18.2",
-    "extract-loader": "^5.1.0",
     "lit-scss-loader": "^2.0.1",
     "minify-lit-html-loader": "0.0.3",
     "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
     "postcss-loader": "^7.3.0",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
@@ -47,8 +46,8 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@lit/localize": "^0.11.4",
-    "lit": "^2.7.4"
+    "@lit/localize": "^0.11.5-pre.0",
+    "lit": "^3.0.0-pre.0"
   },
   "bugs": {
     "url": "https://github.com/khmyznikov/pwa-install/issues"
