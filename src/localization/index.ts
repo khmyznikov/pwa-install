@@ -6,10 +6,11 @@ import {
 
 import * as ru from './locales/ru';
 import * as tr from './locales/tr';
-import * as de from "./locales/de"
-import * as es from "./locales/es"
-import * as nl from "./locales/nl"
-import * as el from "./locales/el"
+import * as de from "./locales/de";
+import * as es from "./locales/es";
+import * as nl from "./locales/nl";
+import * as el from "./locales/el";
+import * as fr from "./locales/fr";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -17,7 +18,8 @@ const localizedTemplates = new Map([
   ['de', de],
   ['es', es],
   ['nl', nl],
-  ['el', el]
+  ['el', el],
+  ['fr', fr]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="fr" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+  <body>
+    <trans-unit id="s6196153c4b0c1ea0">
+      <source>Install</source>
+      <target>Installer</target>
+    </trans-unit>
+    <trans-unit id="sdca23702207fba73">
+      <source>This site has app functionality. Install it on your device for extensive experience and easy access.</source>
+      <target>Ce site dispose d'une fonctionnalité d'application. Installez-la sur votre appareil
+        pour une expérience étendue et un accès facile.</target>
+    </trans-unit>
+    <trans-unit id="sa5ef80b4bb9b39f8">
+      <source>Less</source>
+      <target>Moins</target>
+    </trans-unit>
+    <trans-unit id="s37a9e8aec5713460">
+      <source>More</source>
+      <target>Plus</target>
+    </trans-unit>
+    <trans-unit id="s8d0173763d91830c">
+      <source>This site has app functionality. Add it to your Home Screen for extensive experience and easy access.</source>
+      <target>Ce site dispose d'une fonctionnalité d'application. Ajoutez-le à votre écran d'accueil
+        pour une expérience étendue et un accès facile.</target>
+    </trans-unit>
+    <trans-unit id="sdfe23506a3b0cdc8">
+      <source>1) Open in Safari browser</source>
+      <target>1) Ouvrir dans le navigateur Safari</target>
+    </trans-unit>
+    <trans-unit id="s1b9047d53d9f9d22">
+      <source>2) Press Share in Navigation bar</source>
+      <target>2) Appuyez sur Partager dans la barre de navigation</target>
+    </trans-unit>
+    <trans-unit id="s5c6aad7a7e4a1437">
+      <source>3) Press Add to Home Screen</source>
+      <target>3) Appuyez sur Ajouter à l'écran d'accueil</target>
+    </trans-unit>
+    <trans-unit id="sc79fd7641eb9a975">
+      <source>Hide Instruction</source>
+      <target>Masquer les instructions</target>
+    </trans-unit>
+    <trans-unit id="scdaf4bbff76674c8">
+      <source>Add to Home Screen</source>
+      <target>Ajouter à l'écran d'accueil</target>
+    </trans-unit>
+  </body>
+</file>
+</xliff>
