@@ -7,8 +7,7 @@
       <target>Installer</target>
     </trans-unit>
     <trans-unit id="sdca23702207fba73">
-      <source>This site has app functionality. Install it on your device for extensive experience
-        and easy access.</source>
+      <source>This site has app functionality. Install it on your device for extensive experience and easy access.</source>
       <target>Ce site dispose d'une fonctionnalité d'application. Installez-la sur votre appareil
         pour une expérience étendue et un accès facile.</target>
     </trans-unit>
@@ -21,8 +20,7 @@
       <target>Plus</target>
     </trans-unit>
     <trans-unit id="s8d0173763d91830c">
-      <source>This site has app functionality. Add it to your Home Screen for extensive experience
-        and easy access.</source>
+      <source>This site has app functionality. Add it to your Home Screen for extensive experience and easy access.</source>
       <target>Ce site dispose d'une fonctionnalité d'application. Ajoutez-le à votre écran d'accueil
         pour une expérience étendue et un accès facile.</target>
     </trans-unit>
@@ -48,3 +46,4 @@
     </trans-unit>
   </body>
 </file>
+</xliff>
