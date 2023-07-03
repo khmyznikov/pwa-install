@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@lit/localize": "^0.11.4",
-    "lit": "^2.7.4"
+    "lit": "^2.7.5"
   },
   "bugs": {
     "url": "https://github.com/khmyznikov/pwa-install/issues"
