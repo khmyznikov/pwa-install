@@ -2,7 +2,7 @@
     .install-dialog.apple{
         --text-color-normal: #333;
         --text-color-description: #333;
-        --background-color: rgba(255, 255, 255, 0.75);
+        --background-color: rgba(255, 255, 255, 0.8);
         --text-color-button:#fff;
         --background-color-button:#fff;
         --background-color-button-active: #DBDAE0;
@@ -56,9 +56,9 @@
             // transition: border .35s ease-in-out;
 
             background-color:var(--background-color);
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,.2));
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,.5));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
 
             // header{
             //     grid-area: header;
@@ -436,6 +436,9 @@ $phone-small-landscape: 667px;
                 bottom: 20px;
                 max-height: calc(85vh - 20px);
             }
+            &.dialog-body{
+                filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 0px 15px);
+            }
         }
     }
 }
@@ -443,6 +446,7 @@ $phone-small-landscape: 667px;
     #pwa-install-element{
         .install-dialog.apple.dialog-body{
             max-width: 100vw;
+            filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px -5px 10px);
             .action-buttons{
                 padding-bottom: max(15px, env(safe-area-inset-bottom))
             }
