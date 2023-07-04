@@ -20,18 +20,23 @@
 </trans-unit>
 <trans-unit id="s8d0173763d91830c">
   <source>This site has app functionality. Add it to your Home Screen for extensive experience and easy access.</source>
+  <target>Овај сајт има функционалност апликације. Додајте је на почетни екран за обогаћено искуство и једноставан приступ.</target>
 </trans-unit>
 <trans-unit id="sdfe23506a3b0cdc8">
   <source>1) Open in Safari browser</source>
+  <target>1) Отворите у Safari прегледачу</target>
 </trans-unit>
 <trans-unit id="s1b9047d53d9f9d22">
   <source>2) Press Share in Navigation bar</source>
+  <target>2) Притисните Share у навигационој траци</target>
 </trans-unit>
 <trans-unit id="s5c6aad7a7e4a1437">
   <source>3) Press Add to Home Screen</source>
+  <target>3) Притисните Add to Home Screen</target>
 </trans-unit>
 <trans-unit id="sc79fd7641eb9a975">
   <source>Hide Instruction</source>
+  <target>Сакриј упутство</target>
 </trans-unit>
 <trans-unit id="scdaf4bbff76674c8">
   <source>Add to Home Screen</source>
