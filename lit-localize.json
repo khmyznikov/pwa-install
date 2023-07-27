@@ -9,7 +9,8 @@
     "nl",
     "el",
     "fr",
-    "sr"
+    "sr",
+    "pl"
   ],
   "tsConfig": "tsconfig.json",
   "output": {
