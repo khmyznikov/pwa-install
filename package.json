@@ -19,7 +19,7 @@
     "dev": "webpack serve --config webpack/webpack.dev.js --mode=development"
   },
   "author": "khmyznikov",
-  "license": "Unlicense",
+  "license": "MIT",
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.8.4",
     "@lit/localize-tools": "^0.6.9",
