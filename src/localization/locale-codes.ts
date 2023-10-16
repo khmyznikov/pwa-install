@@ -20,7 +20,7 @@ export const targetLocales = [
   `ru`,
   `sr`,
   `tr`,
-  `zh-TW`,
+  `zh_tw`,
 ] as const;
 
 /**
@@ -37,5 +37,5 @@ export const allLocales = [
   `ru`,
   `sr`,
   `tr`,
-  `zh-TW`,
+  `zh_tw`,
 ] as const;
