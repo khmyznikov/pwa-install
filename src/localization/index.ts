@@ -26,6 +26,8 @@ const localizedTemplates = new Map([
   ['sr', sr],
   ['pl', pl],
   ['zh', zh],
+  ['zh-TW', zh],
+  ['zh_tw', zh],
 ])
 
 export const { getLocale, setLocale } = configureLocalization({

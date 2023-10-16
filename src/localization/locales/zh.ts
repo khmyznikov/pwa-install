@@ -18,6 +18,6 @@
 's1b9047d53d9f9d22': `2) 點擊列表上的分享按鈕`,
 's5c6aad7a7e4a1437': `3) 點擊加入主畫面`,
 'sc79fd7641eb9a975': `隱藏安裝流程`,
-'scdaf4bbff76674c8': `Add to Home Screen`,
+'scdaf4bbff76674c8': `將App加入主畫面`,
     };
   
