@@ -11,7 +11,8 @@
     "fr",
     "sr",
     "pl",
-    "zh"
+    "zh",
+    "zh-CN"
   ],
   "tsConfig": "tsconfig.json",
   "output": {
