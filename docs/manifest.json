@@ -22,27 +22,27 @@
     ],
 	"screenshots": [
 		{
-			"src": "/screenshots/mobile-1.jpg",
+			"src": "screenshots/mobile-1.jpg",
 			"sizes": "551x979",
 			"type": "image/jpeg"
 		},
         {
-			"src": "/screenshots/mobile-2.jpg",
+			"src": "screenshots/mobile-2.jpg",
 			"sizes": "518x922",
 			"type": "image/jpeg"
 		},
         {
-			"src": "/screenshots/mobile-3.jpg",
+			"src": "screenshots/mobile-3.jpg",
 			"sizes": "518x922",
 			"type": "image/jpeg"
 		},
         {
-			"src": "/screenshots/tablet-1.jpg",
+			"src": "screenshots/tablet-1.jpg",
 			"sizes": "1270x800",
 			"type": "image/jpeg"
 		},
         {
-			"src": "/screenshots/tablet-2.jpg",
+			"src": "screenshots/tablet-2.jpg",
 			"sizes": "1274x792",
 			"type": "image/jpeg"
 		}
@@ -55,7 +55,7 @@
 		},
 		{
 			"platform": "webapp",
-			"url": "./manifest.json"
+			"url": "manifest.json"
 		}
 	]
   }

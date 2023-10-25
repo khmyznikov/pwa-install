@@ -27,7 +27,7 @@
 			if (navigator.serviceWorker.controller) {
 				console.log("Active service worker found, no need to register");
 			} else {
-				navigator.serviceWorker.register('/service-worker.js', {scope: '/'}).then(function (reg) {
+				navigator.serviceWorker.register('service-worker.js', {scope: '/'}).then(function (reg) {
 					console.log("Service worker registered");
 				});
 			}
