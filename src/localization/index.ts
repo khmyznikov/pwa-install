@@ -15,6 +15,7 @@ import * as sr from "./locales/sr";
 import * as pl from "./locales/pl";
 import * as zh from "./locales/zh";
 import * as zhCN from "./locales/zh-CN";
+import * as it from "./locales/it";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -30,6 +31,7 @@ const localizedTemplates = new Map([
   ['zh-TW', zh],
   ['zh-HK', zh],
   ['zh-CN', zhCN],
+  ['it', it]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({

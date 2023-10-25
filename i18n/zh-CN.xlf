@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file target-language="zh-CN" source-language="en" original="lit-localize-inputs"
-    datatype="plaintext">
+  <file target-language="zh-CN" source-language="en" original="lit-localize-inputs" datatype="plaintext">
     <body>
       <trans-unit id="s6196153c4b0c1ea0">
         <source>Install</source>
         <target>安装</target>
       </trans-unit>
       <trans-unit id="sdca23702207fba73">
-        <source>This site has app functionality. Install it on your device for extensive experience
-          and easy access.</source>
+        <source>This site has app functionality. Install it on your device for extensive experience and easy access.</source>
         <target>以App的方式安装到装置，提高用户体验以及操作便捷性</target>
       </trans-unit>
       <trans-unit id="sa5ef80b4bb9b39f8">
@@ -21,8 +19,7 @@
         <target>详细资讯</target>
       </trans-unit>
       <trans-unit id="s8d0173763d91830c">
-        <source>This site has app functionality. Add it to your Home Screen for extensive experience
-          and easy access.</source>
+        <source>This site has app functionality. Add it to your Home Screen for extensive experience and easy access.</source>
         <target>以App的方式安装到主画面，提高用户体验以及操作便捷性</target>
       </trans-unit>
       <trans-unit id="sdfe23506a3b0cdc8">
