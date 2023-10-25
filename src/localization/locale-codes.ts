@@ -15,11 +15,14 @@ export const targetLocales = [
   `el`,
   `es`,
   `fr`,
+  `it`,
   `nl`,
   `pl`,
   `ru`,
   `sr`,
   `tr`,
+  `zh`,
+  `zh-CN`,
 ] as const;
 
 /**
@@ -31,9 +34,12 @@ export const allLocales = [
   `en`,
   `es`,
   `fr`,
+  `it`,
   `nl`,
   `pl`,
   `ru`,
   `sr`,
   `tr`,
+  `zh`,
+  `zh-CN`,
 ] as const;

@@ -13,6 +13,9 @@ import * as el from "./locales/el";
 import * as fr from "./locales/fr";
 import * as sr from "./locales/sr";
 import * as pl from "./locales/pl";
+import * as zh from "./locales/zh";
+import * as zhCN from "./locales/zh-CN";
+import * as it from "./locales/it";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -24,6 +27,9 @@ const localizedTemplates = new Map([
   ['fr', fr],
   ['sr', sr],
   ['pl', pl],
+  ['zh', zh],
+  ['zh-CN', zhCN],
+  ['it', it]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
@@ -35,7 +41,10 @@ export const { getLocale, setLocale } = configureLocalization({
 
 export const changeLocale = (lang: string) => {
   try {
-    setLocale(lang.slice(0, 2));
+    if (localizedTemplates.get(lang))
+      setLocale(lang);
+    else
+      setLocale(lang.slice(0, 2));
   }
   catch {
     console.warn(`pwa-install: translation error - unsupported locale: ${lang}`);
