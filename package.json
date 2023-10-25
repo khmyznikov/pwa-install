@@ -10,11 +10,11 @@
   "types": "dist/types/index.d.ts",
   "main": "dist/es/pwa-install.es.js",
   "scripts": {
-    "build": "npm run localize && npm run localize-build && npm run build-noloc && cem analyze",
+    "build": "npm run localize:extract && npm run localize:build && npm run build:noloc && cem analyze",
     "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production",
     "localize:extract": "lit-localize extract",
     "localize:build": "lit-localize build",
-    "test": "npm run build-noloc && node ./webpack/serve.js",
+    "test": "npm run build:noloc && node ./webpack/serve.js",
     "test:nobuild": "node ./webpack/serve.js",
     "dev": "webpack serve --config webpack/webpack.dev.js --mode=development"
   },
