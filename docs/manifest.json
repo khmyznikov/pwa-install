@@ -1,7 +1,7 @@
 {
     "name": "Progressive Web Application",
     "short_name": "PWA",
-    "start_url": "/",
+    "start_url": "/pwa-install/",
     "display": "standalone",
     "background_color": "#fff",
     "theme_color": "#82307b",
@@ -11,13 +11,13 @@
             "src": "icons/icon@192.png",
             "type": "image/png",
             "sizes": "192x192",
-            "purpose": "maskable any"
+            "purpose": "any"
         },
         {
             "src": "icons/icon@512.png",
             "type": "image/png",
             "sizes": "512x512",
-            "purpose": "maskable any"
+            "purpose": "any"
         }
     ],
 	"screenshots": [
@@ -39,12 +39,14 @@
         {
 			"src": "screenshots/tablet-1.jpg",
 			"sizes": "1270x800",
-			"type": "image/jpeg"
+			"type": "image/jpeg",
+			"form_factor": "wide"
 		},
         {
 			"src": "screenshots/tablet-2.jpg",
-			"sizes": "1274x792",
-			"type": "image/jpeg"
+			"sizes": "1270x800",
+			"type": "image/jpeg",
+			"form_factor": "wide"
 		}
 	],
 	"related_applications": [

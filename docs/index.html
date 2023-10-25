@@ -27,7 +27,7 @@
 			if (navigator.serviceWorker.controller) {
 				console.log("Active service worker found, no need to register");
 			} else {
-				navigator.serviceWorker.register('service-worker.js', {scope: '/'}).then(function (reg) {
+				navigator.serviceWorker.register('service-worker.js', {scope: '/pwa-install/'}).then(function (reg) {
 					console.log("Service worker registered");
 				});
 			}
@@ -51,7 +51,7 @@
 			<legend>
 				Events
 			</legend>
-			<textarea title="event-log" readonly id="events-area" rows="10">
+			<textarea readonly id="events-area" rows="10">
 
 			</textarea>
 		</fieldset>
