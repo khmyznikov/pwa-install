@@ -13,23 +13,25 @@ import * as el from "./locales/el";
 import * as fr from "./locales/fr";
 import * as sr from "./locales/sr";
 import * as pl from "./locales/pl";
+import * as uk from "./locales/pl";
 import * as zh from "./locales/zh";
 import * as zhCN from "./locales/zh-CN";
 import * as it from "./locales/it";
 
 const localizedTemplates = new Map([
-  ['ru', ru],
-  ['tr', tr],
-  ['de', de],
-  ['es', es],
-  ['nl', nl],
-  ['el', el],
-  ['fr', fr],
-  ['sr', sr],
-  ['pl', pl],
-  ['zh', zh],
-  ['zh-CN', zhCN],
-  ['it', it]
+	['ru', ru],
+	['tr', tr],
+	['de', de],
+	['es', es],
+	['nl', nl],
+	['el', el],
+	['fr', fr],
+	['sr', sr],
+	['pl', pl],
+	['uk', uk],
+	['zh', zh],
+	['zh-CN', zhCN],
+	['it', it]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
