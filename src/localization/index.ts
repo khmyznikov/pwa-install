@@ -19,19 +19,19 @@ import * as zhCN from "./locales/zh-CN";
 import * as it from "./locales/it";
 
 const localizedTemplates = new Map([
-	['ru', ru],
-	['tr', tr],
-	['de', de],
-	['es', es],
-	['nl', nl],
-	['el', el],
-	['fr', fr],
-	['sr', sr],
-	['pl', pl],
-	['uk', uk],
-	['zh', zh],
-	['zh-CN', zhCN],
-	['it', it]
+  ['ru', ru],
+  ['tr', tr],
+  ['de', de],
+  ['es', es],
+  ['nl', nl],
+  ['el', el],
+  ['fr', fr],
+  ['sr', sr],
+  ['pl', pl],
+  ['uk', uk],
+  ['zh', zh],
+  ['zh-CN', zhCN],
+  ['it', it]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
