@@ -13,7 +13,7 @@ import * as el from "./locales/el";
 import * as fr from "./locales/fr";
 import * as sr from "./locales/sr";
 import * as pl from "./locales/pl";
-import * as uk from "./locales/pl";
+import * as uk from "./locales/uk";
 import * as zh from "./locales/zh";
 import * as zhCN from "./locales/zh-CN";
 import * as it from "./locales/it";
