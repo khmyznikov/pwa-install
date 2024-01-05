@@ -91,6 +91,7 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _hideDialogUser = () => {
 		Utils.eventUserChoiceResult(this, 'dismissed');
+		this.userChoiceResult = 'dismissed';
 		this.hideDialog();
 	}
 	public hideDialog = () => {

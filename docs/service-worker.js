@@ -1,8 +1,8 @@
-var cacheName = 'hostmePWA' + Date.now();
+var cacheName = 'PWAinstallDemo' + Date.now();
 
 var filesToCache = [
-	'/',
-	// '/manifest.json',
+	'/pwa-install/',
+	'manifest.json',
 ];
 
 self.addEventListener('install', function (e) {

@@ -7,7 +7,14 @@
     "de",
     "es",
     "nl",
-    "el"
+    "el",
+    "fr",
+    "sr",
+    "pl",
+    "uk",
+    "zh",
+    "zh-CN",
+    "it"
   ],
   "tsConfig": "tsconfig.json",
   "output": {

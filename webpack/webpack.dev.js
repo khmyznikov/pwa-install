@@ -14,7 +14,7 @@ export default merge(common, {
     },
 	devServer: {
 		static: {
-			directory: resolve(__dirname, '../public')
+			directory: resolve(__dirname, '../docs')
 		},
 		compress: false,
 		host: '0.0.0.0',

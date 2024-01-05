@@ -6,10 +6,17 @@ import {
 
 import * as ru from './locales/ru';
 import * as tr from './locales/tr';
-import * as de from "./locales/de"
-import * as es from "./locales/es"
-import * as nl from "./locales/nl"
-import * as el from "./locales/el"
+import * as de from "./locales/de";
+import * as es from "./locales/es";
+import * as nl from "./locales/nl";
+import * as el from "./locales/el";
+import * as fr from "./locales/fr";
+import * as sr from "./locales/sr";
+import * as pl from "./locales/pl";
+import * as uk from "./locales/uk";
+import * as zh from "./locales/zh";
+import * as zhCN from "./locales/zh-CN";
+import * as it from "./locales/it";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -17,7 +24,14 @@ const localizedTemplates = new Map([
   ['de', de],
   ['es', es],
   ['nl', nl],
-  ['el', el]
+  ['el', el],
+  ['fr', fr],
+  ['sr', sr],
+  ['pl', pl],
+  ['uk', uk],
+  ['zh', zh],
+  ['zh-CN', zhCN],
+  ['it', it]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
@@ -29,7 +43,10 @@ export const { getLocale, setLocale } = configureLocalization({
 
 export const changeLocale = (lang: string) => {
   try {
-    setLocale(lang.slice(0, 2));
+    if (localizedTemplates.get(lang))
+      setLocale(lang);
+    else
+      setLocale(lang.slice(0, 2));
   }
   catch {
     console.warn(`pwa-install: translation error - unsupported locale: ${lang}`);
