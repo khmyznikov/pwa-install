@@ -92,6 +92,41 @@
                 }
             }
 
+            .close{
+                height: 26px;
+                min-width: 26px;
+                line-height: 0;
+
+                margin-right: -3px;
+                margin-top: -3px;
+                margin-left: auto;
+
+                padding: 0px;
+                border-radius: 50%;
+
+                opacity: .5;
+                outline: none;
+
+                color: var(--text-color-normal);
+
+                border: none;
+                background-color: transparent;
+
+                cursor: pointer;
+
+                transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+
+                svg{
+                    fill: var(--text-color-normal);
+                    width: 18px;
+                }
+
+                &:hover, &:active{
+                    opacity: 1;
+                    background-color: var(--background-color-button);
+                }
+            }
+
             .about {
                 display: grid;
                 grid-template-rows: 35px 60px;
@@ -122,40 +157,7 @@
 
                     color: var(--text-color-description);
                 }
-                .close{
-                    height: 26px;
-                    min-width: 26px;
-                    line-height: 0;
-
-                    margin-right: -3px;
-                    margin-top: -3px;
-                    margin-left: auto;
-
-                    padding: 0px;
-                    border-radius: 50%;
-
-                    opacity: .5;
-                    outline: none;
-
-                    color: var(--text-color-normal);
-
-                    border: none;
-                    background-color: transparent;
-
-                    cursor: pointer;
-
-                    transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
-
-                    svg{
-                        fill: var(--text-color-normal);
-                        width: 18px;
-                    }
-
-                    &:hover, &:active{
-                        opacity: 1;
-                        background-color: var(--background-color-button);
-                    }
-                }
+                
             }
 
             .welcome-to-install{
@@ -390,6 +392,155 @@
                 overflow-y: auto;
 
                 transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
+            }
+        }
+
+        &.desktop{
+            --text-color-normal: rgba(0, 0, 0, 0.85);
+            --text-color-description: rgba(0, 0, 0, 0.85);
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr auto;
+            grid-template-areas:
+                "icon"
+                "description"
+                "welcome"
+                "how-to"
+                "gallery"
+                "button";
+            gap: 0px;
+            column-gap: 0px;
+            padding: 16px;
+
+            max-width: 260px;
+            background: rgba(246, 246, 246, 0.60);
+
+            .icon {
+                height: 64px;
+                padding-bottom: 16px;
+                .icon-image{
+                    border-radius: 10px;
+                    width: 52px;
+                    height: 52px;
+                }
+            }
+            .close{
+                grid-area: icon;
+                background: rgba(0, 0, 0, 0.05);
+                opacity: 1;
+                height: 20px;
+                min-width: 20px;
+                svg{
+                    width: 14px;
+                }
+            }
+            .about{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                .name{
+                    font-size: 13px;
+                    line-height: 16px;
+                    font-weight: 700;
+                    padding: 0;
+                }
+                .description{
+                    padding: 16px 0px;
+                    margin: 0;
+                    
+                    padding-top: 10px;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                }
+            }
+            .welcome-to-install, .about .description{
+                text-align: center;
+                font-size: 11px;
+                line-height: 14px;
+            }
+            .welcome-to-install, .about, .icon{
+                border: none;
+            }
+            .welcome-to-install{
+                padding: 0;
+                padding-top: 16px;
+            }
+
+            .action-buttons{
+                padding: 0;
+                padding-top: 16px;
+                .dialog-button.button{
+                    font-size: 13px;
+                    font-weight: 400;
+                    padding: 6px 8px;
+                    border-radius: 5px;
+                    height: auto;
+                    // min-height: 32px;
+                    line-height: 20px;
+                    &.install{
+                        color: #FFF;
+                        background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.00) 100%), #007AFF;
+                        transition: background .3s ease-in-out  0.1s, color .3s ease-in-out;
+                        svg{
+                            transform: scale(0.85);
+                            height: 22px;
+                            align-self: center;
+                            margin-top: -2px;
+                        }
+                    }
+                    &.gallery{
+                        width: 32px;
+                        min-width: 32px;
+                        margin-right: 10px;
+                        background: rgba(0, 0, 0, 0.05);
+                        #pwa-gallery{
+                            width: 14px;
+                            transition: transform .4s ease-in-out;
+                        }
+                        // border-radius: 5px;
+                        // background: #FFF;
+                        // box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
+                        // padding: 5px;
+                    }
+                }
+            }
+
+            .how-to-body{
+                .how-to-description{
+                    padding: 0px;
+                    padding-top: 16px;
+                    grid-template-rows: 1fr 1fr;
+                    .description-step{
+                        font-size: 12px;
+                        gap: 10px;
+                        .svg-wrap{
+                            width: 32px;
+                            height: 32px;
+                            color: rgba(0, 0, 0, 0.50);
+                            #pwa-share{
+                                width: 18px;
+                                margin-bottom: 2px;
+                                transform: none;
+                            }
+                            #pwa-add{
+                                width: 21px;
+                                transform: none;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.gallery{
+                #pwa-gallery{
+                    transform: rotate(180deg);
+                }
+            }
+            &.how-to{
+                .action-buttons .dialog-button.button.install{
+                    color: var(--text-color-normal);
+                    background: rgba(0, 0, 0, 0.05);
+                }
             }
         }
     }

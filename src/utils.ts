@@ -20,6 +20,23 @@ export default class Utils {
 			return true;
 		return false;
     }
+
+    static isAppleDesktop(): boolean {
+        return true;
+        // check if it's a mac
+        // const userAgent = navigator.userAgent.toLowerCase();
+        // if (navigator.maxTouchPoints || !userAgent.match(/macintosh/))
+        //     return false;
+        // // check safari version >= 17
+        // const version = /version\/(\d{2})\./.exec(userAgent)
+        // if (!version || !version[1] || !(parseInt(version[1]) >= 17))
+        //     return false;
+        // // hacky way to detect Sonoma
+        // const audioCheck = document.createElement('audio').canPlayType('audio/wav; codecs="1"') ? true : false;
+        // const webGLCheck = new OffscreenCanvas(1, 1).getContext('webgl') ? true : false;
+
+        // return audioCheck && webGLCheck;
+    }
     
     static isStandalone() {
 		if (window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone === true))

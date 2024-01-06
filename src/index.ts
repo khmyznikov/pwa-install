@@ -45,6 +45,7 @@ export class PWAInstallElement extends LitElement {
 	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
+	public isAppleDesktopPlatform = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
@@ -72,7 +73,7 @@ export class PWAInstallElement extends LitElement {
 		passive: true
 	}
 	public install = () => {
-		if (this.isAppleMobilePlatform) {
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			this._howToRequested = true;
 			this.requestUpdate();
 		}
@@ -133,8 +134,9 @@ export class PWAInstallElement extends LitElement {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
+		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
 
-		if (this.isAppleMobilePlatform) {
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			if (!this.isUnderStandaloneMode) {
 				this.manualApple && this.hideDialog();
 				setTimeout(
@@ -219,7 +221,7 @@ export class PWAInstallElement extends LitElement {
 	// }
 
 	render() {
-		if (this.isAppleMobilePlatform)
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform)
 			return html`${templateApple(
 				this.name, 
 				this.description, 
@@ -230,6 +232,7 @@ export class PWAInstallElement extends LitElement {
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
 				this._howToForApple,
+				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
 				this._galleryRequested

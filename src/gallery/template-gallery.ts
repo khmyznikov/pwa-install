@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { WebAppManifest } from 'web-app-manifest';
 
-const template = (screenshots: WebAppManifest['screenshots'], scrollToNextPage: any, scrollToPrevPage: any) => {
+const template = (screenshots: WebAppManifest['screenshots'], theme: string, scrollToNextPage: any, scrollToPrevPage: any) => {
     return html`
         ${screenshots? html`
             <div id="paginated_gallery" class="gallery">
