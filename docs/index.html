@@ -43,9 +43,21 @@
 			<button onclick="pwaInstall.showDialog(true)">Show(forced)</button>
 			<button onclick="pwaInstall.hideDialog()">Hide</button><hr>
 			<button onclick="pwaInstall.install()">Install</button>
-			<button onclick="getRelated()">Get related apps</button><hr>
-			<button onclick="forceApple()">Force apple</button>
-			<button onclick="forceApple(false)">Force chrome</button>
+			<button onclick="getRelated()">Get related apps</button>
+		</fieldset>
+		<fieldset>
+			<legend>
+				Force Style
+			</legend>
+			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
+			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button>
+			<button onclick="forceStyle('chrome')">Chrome</button><hr>
+			<label>
+				<input type="checkbox" onchange="disableDescription(this)">
+				Hide Install Description
+			</label><br>
+			<input type="text" placeholder="Custom Description Text" onchange="pwaInstall.installDescription = this.value"><button>ok</button>
+			
 		</fieldset>
 		<fieldset>
 			<legend>
@@ -76,10 +88,28 @@
 			)
 		}
 
-		const forceApple = (apple = true) => {
-			pwaInstall.isAppleMobilePlatform = apple;
+		const forceStyle = (style) => {
+			switch (style) {
+				case 'apple-mobile':
+					pwaInstall.isAppleDesktopPlatform = false;
+					pwaInstall.isAppleMobilePlatform = true;
+					break;
+				case 'apple-desktop':
+					pwaInstall.isAppleMobilePlatform = false;
+					pwaInstall.isAppleDesktopPlatform = true;
+					break;
+				case 'chrome':
+					pwaInstall.isAppleMobilePlatform = false;
+					pwaInstall.isAppleDesktopPlatform = false;
+					break;
+			}
 			pwaInstall.hideDialog();
 			pwaInstall.showDialog();
+		}
+
+		const disableDescription = (cb) => {
+			pwaInstall.disableDescription = cb.checked;
+			console.log(pwaInstall.disableDescription);
 		}
 
 		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});

@@ -134,6 +134,9 @@
 		}
 		.btn{
 			// background-color: var(--scrollbar-background-color);
+			height: 26px;
+			width: 26px;
+			
 			box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px 1px;
 			&:hover{
 				box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px 1px;
@@ -148,7 +151,7 @@
 			}
             
 			svg{
-				width: 16px;
+				width: 12px;
 				height: auto;
 				opacity: 1;
 			}

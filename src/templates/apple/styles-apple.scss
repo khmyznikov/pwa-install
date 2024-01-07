@@ -209,13 +209,6 @@
 
                 background-color: var(--background-color-button);
 
-                &:active{
-                    filter: brightness(95%);
-                    .button-text{
-                        filter:brightness(110%)
-                    }
-                }
-
                 &.install{
                     padding: 0 15px;
                     text-align: left;
@@ -491,6 +484,7 @@
                     height: auto;
                     // min-height: 32px;
                     line-height: 20px;
+                    
                     &.install{
                         color: #FFF;
                         background: var(--background-color-button-active);
@@ -515,6 +509,15 @@
                         // background: #FFF;
                         // box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
                         // padding: 5px;
+                    }
+                }
+            }
+
+            .dialog-button.button, .close{
+                &:active{
+                    filter: brightness(105%);
+                    .button-text{
+                        filter:brightness(90%)
                     }
                 }
             }
@@ -662,7 +665,7 @@ $phone-small-landscape: 667px;
             --background-color-button-active: #454545;
             --border-bottom-color: #353535;
 
-            .dialog-button.button{
+            .dialog-button.button, .close{
                 &:active{
                     filter: brightness(105%);
                     .button-text{
