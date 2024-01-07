@@ -62,7 +62,7 @@ const template = (name: string, description: string, installDescription: string,
                         </div>
                     </div>
                 </div>
-                ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+                ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
                     ${manifest.screenshots && manifest.screenshots.length? html`<button class="dialog-button button gallery" @click=${toggleGallery}>
                         ${isDesktop? 
