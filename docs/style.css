@@ -38,7 +38,7 @@ body{
     min-width: 300px;
     border: transparent;
 }
-.control-panel button{
+.control-panel button, .control-panel input{
     background: transparent;
     color: #fff;
     border-radius: 3px;
@@ -46,6 +46,10 @@ body{
 
     padding: 5px 10px;
 }
+input::placeholder{
+    color: #fff;
+}
+
 .control-panel button:hover{
     background-color: rgba(255, 255, 255, 0.5);
 }

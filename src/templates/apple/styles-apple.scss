@@ -7,6 +7,7 @@
         --background-color-button:#fff;
         --background-color-button-active: #DBDAE0;
         --border-bottom-color: rgba(0, 0, 0, 0.1);
+        --icon-how-to-color: #527AFB;
 
         font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont, "Roboto", "Segoe UI";
 
@@ -40,7 +41,7 @@
         &.dialog-body{
             display: grid;
 
-            grid-template-columns: 95px auto 1fr;
+            grid-template-columns: 95px 1fr;
             grid-template-rows: 1fr auto;
 
             grid-template-areas:
@@ -59,21 +60,6 @@
             filter: drop-shadow(0 5px 15px rgba(0,0,0,.5));
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-
-            // header{
-            //     grid-area: header;
-
-            //     display: flex;
-            //     flex-flow: row nowrap;
-            //     justify-content: space-between;
-
-            //     h2{
-            //         font-size: 18px;
-            //         font-weight: 500;
-            //         line-height: 1.125;
-            //         margin: 0;
-            //     }
-            // }
 
             .icon{
                 display: flex;
@@ -97,8 +83,8 @@
                 min-width: 26px;
                 line-height: 0;
 
-                margin-right: -3px;
-                margin-top: -3px;
+                margin-right: 7px;
+                margin-top: 7px;
                 margin-left: auto;
 
                 padding: 0px;
@@ -115,6 +101,8 @@
                 cursor: pointer;
 
                 transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+
+                grid-area: description;
 
                 svg{
                     fill: var(--text-color-normal);
@@ -314,7 +302,7 @@
                         position: relative;
                         display: inline-flex;
                         flex-shrink: 0;
-                        // background-color: var(--background-color-button);
+                        color: var(--icon-how-to-color);
 
                         width: 50px;
                         height: 50px;
@@ -324,12 +312,12 @@
                         #pwa-share, #pwa-add, #pwa-safari{
                             margin: 0 auto;
                         }
-                        #pwa-safari, #pwa-share{
-                            fill: #527AFB;
-                        }
+                        // #pwa-safari, #pwa-share{
+                        //     color: #527AFB;
+                        // }
                         #pwa-share{
                             margin-bottom: 4px;
-                            transform: scale(0.75);
+                            transform: scale(0.9);
                         }
                         #pwa-add{
                             transform: scale(0.8);
@@ -437,6 +425,8 @@
                 opacity: 1;
                 height: 20px;
                 min-width: 20px;
+                margin-right: -5px;
+                margin-top: -5px;
                 svg{
                     width: 14px;
                 }
@@ -580,6 +570,9 @@ $phone-small-landscape: 667px;
                 top: 28px;
                 bottom: auto;
                 max-height: calc(95vh - 28px);
+                // &.desktop{
+                //     max-height: min(calc(95vh - 28px), );
+                // }
                 // transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
             }
         }

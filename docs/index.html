@@ -52,11 +52,11 @@
 			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
 			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button>
 			<button onclick="forceStyle('chrome')">Chrome</button><hr>
+			<input type="text" placeholder="Custom Description Text" onchange="pwaInstall.installDescription = this.value"><button>ok</button><br>
 			<label>
-				<input type="checkbox" onchange="disableDescription(this)">
+				<input type="checkbox" onchange="disableInstallDescription(this)">
 				Hide Install Description
-			</label><br>
-			<input type="text" placeholder="Custom Description Text" onchange="pwaInstall.installDescription = this.value"><button>ok</button>
+			</label>
 			
 		</fieldset>
 		<fieldset>
@@ -87,7 +87,7 @@
 				}
 			)
 		}
-
+		
 		const forceStyle = (style) => {
 			switch (style) {
 				case 'apple-mobile':
@@ -107,7 +107,8 @@
 			pwaInstall.showDialog();
 		}
 
-		const disableDescription = (cb) => {
+		// DON'T USE THIS AS A REAL EXAMPLE
+		const disableInstallDescription = (cb) => {
 			pwaInstall.disableDescription = cb.checked;
 			console.log(pwaInstall.disableDescription);
 		}
