@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file target-language="tr" source-language="en" original="lit-localize-inputs"
-    datatype="plaintext">
+  <file target-language="tr" source-language="en" original="lit-localize-inputs" datatype="plaintext">
     <body>
       <trans-unit id="s6196153c4b0c1ea0">
         <source>Install</source>
