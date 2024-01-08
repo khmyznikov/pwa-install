@@ -31,6 +31,7 @@ export class PWAInstallElement extends LitElement {
 	@property() description = '';
 	@property({attribute: 'install-description'}) installDescription = '';
 	@property({attribute: 'disable-install-description', type: Boolean}) disableDescription = false;
+	@property({attribute: 'disable-screenshots', type: Boolean}) disableScreenshots = false;
 	@property({attribute: 'manual-apple', type: Boolean}) manualApple = false;
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
@@ -204,9 +205,11 @@ export class PWAInstallElement extends LitElement {
 				this.description = this.description || this.manifest.description || '';
 			}
 		});
-
-
 	};
+	/** @internal */
+	private _requestUpdate = () => {
+		this.requestUpdate();
+	}
 
 	connectedCallback() {
 		changeLocale(navigator.language);
@@ -227,6 +230,7 @@ export class PWAInstallElement extends LitElement {
 				this.description, 
 				this.installDescription,
 				this.disableDescription,
+				this.disableScreenshots,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
@@ -243,6 +247,7 @@ export class PWAInstallElement extends LitElement {
 				this.description, 
 				this.installDescription,
 				this.disableDescription,
+				this.disableScreenshots,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,

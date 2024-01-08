@@ -3,8 +3,9 @@ import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
+    const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
     return html`
         <aside id="pwa-install-element">
@@ -62,9 +63,9 @@ const template = (name: string, description: string, installDescription: string,
                         </div>
                     </div>
                 </div>
-                ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}"></pwa-gallery>`: ''}
+                ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
-                    ${manifest.screenshots && manifest.screenshots.length? html`<button class="dialog-button button gallery" @click=${toggleGallery}>
+                    ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery}>
                         ${isDesktop? 
                             html`<svg id="pwa-gallery" viewBox="0 0 10 6"><path d="m1.102 2.21 3.169 3.24c.22.222.462.333.729.333a.94.94 0 0 0 .378-.083 1.19 1.19 0 0 0 .347-.25L8.89 2.21a.8.8 0 0 0 .246-.593.838.838 0 0 0-.118-.44.884.884 0 0 0-.312-.311.84.84 0 0 0-1.063.167L4.854 3.92h.299L2.359 1.033a.868.868 0 0 0-.642-.286.822.822 0 0 0-.43.119.935.935 0 0 0-.312.312.863.863 0 0 0-.115.44c0 .116.02.223.057.32a.898.898 0 0 0 .185.272Z"/>
                                 </svg>`:

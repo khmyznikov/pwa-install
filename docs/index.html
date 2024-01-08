@@ -51,13 +51,22 @@
 			</legend>
 			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
 			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button>
-			<button onclick="forceStyle('chrome')">Chrome</button><hr>
-			<input type="text" placeholder="Custom Description Text" onchange="pwaInstall.installDescription = this.value"><button>ok</button><br>
+			<button onclick="forceStyle('chrome')">Chrome</button><br>
+			<i>*end style depends on browser and OS</i>
+			<hr>
+
+			<input type="text" placeholder="Install description text" onchange="setAttr('install-description', this.value)"><br>
 			<label>
 				<input type="checkbox" onchange="disableInstallDescription(this)">
-				Hide Install Description
-			</label>
-			
+				Hide install description
+			</label><br>
+			<label>
+				<input type="checkbox" onchange="disableScreenshots(this)">
+				Hide screenshots
+			</label><hr>
+	
+			<input type="text" placeholder="App name text" onchange="setAttr('name', this.value)"><br>
+			<input type="text" placeholder="App description text" onchange="setAttr('description', this.value)"><br>
 		</fieldset>
 		<fieldset>
 			<legend>
@@ -107,10 +116,18 @@
 			pwaInstall.showDialog();
 		}
 
-		// DON'T USE THIS AS A REAL EXAMPLE
 		const disableInstallDescription = (cb) => {
-			pwaInstall.disableDescription = cb.checked;
-			console.log(pwaInstall.disableDescription);
+			cb.checked ? pwaInstall.setAttribute('disable-install-description', true) :
+			pwaInstall.removeAttribute('disable-install-description');
+		}
+		const disableScreenshots = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('disable-screenshots', true) :
+			pwaInstall.removeAttribute('disable-screenshots');
+		}
+		const setAttr = (attr, value) => {
+			value? pwaInstall.setAttribute(attr, value) :
+			pwaInstall.removeAttribute(attr);
+			pwaInstall._init();
 		}
 
 		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});
