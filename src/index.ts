@@ -110,6 +110,7 @@ export class PWAInstallElement extends LitElement {
 	public getInstalledRelatedApps = async (): Promise<IRelatedApp[]> => {
 		return await Utils.getInstalledRelatedApps();
 	}
+
 	/** @internal */
 	private _howToForApple = {
         handleEvent: () => {
@@ -117,6 +118,12 @@ export class PWAInstallElement extends LitElement {
 			if (this._howToRequested && this._galleryRequested)
 				this._galleryRequested = false;
 			this.requestUpdate();
+
+			if (this._howToRequested && this.manifest.start_url) {
+				try {
+					history.replaceState({}, '', this.manifest.start_url);
+				} catch (e) {}
+			}
         },
         passive: true
     }
