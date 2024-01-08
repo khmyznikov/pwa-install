@@ -76,6 +76,15 @@
             },
             {
               "kind": "field",
+              "name": "disableScreenshots",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-screenshots"
+            },
+            {
+              "kind": "field",
               "name": "manualApple",
               "type": {
                 "text": "boolean"
@@ -139,6 +148,15 @@
             {
               "kind": "field",
               "name": "isAppleMobilePlatform",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "isAppleDesktopPlatform",
               "type": {
                 "text": "boolean"
               },
@@ -232,6 +250,14 @@
               },
               "default": "false",
               "fieldName": "disableDescription"
+            },
+            {
+              "name": "disable-screenshots",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableScreenshots"
             },
             {
               "name": "manual-apple",
