@@ -40,13 +40,11 @@
       </trans-unit>
       <trans-unit id="se740f75b95a51807">
         <source>Add it to your Dock for extensive experience and easy access.</source>
-        <target>Fügen Sie es zu Ihrem Dock hinzu, um eine umfassende Erfahrung und einen leichten
-          Zugriff zu erhalten.</target>
+        <target>Fügen Sie es zu Ihrem Dock hinzu, um eine umfassende Erfahrung und einen leichten Zugriff zu erhalten.</target>
       </trans-unit>
       <trans-unit id="s182ab2d6c997515f">
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
-        <target>Fügen Sie es zu Ihrem Startbildschirm hinzu, um eine umfassende Erfahrung und einen
-          leichten Zugriff zu erhalten.</target>
+        <target>Fügen Sie es zu Ihrem Startbildschirm hinzu, um eine umfassende Erfahrung und einen leichten Zugriff zu erhalten.</target>
       </trans-unit>
       <trans-unit id="sa7551383d1897fcc">
         <source>2) Press Add to Dock</source>
@@ -58,8 +56,7 @@
       </trans-unit>
       <trans-unit id="sba52286c21552a4e">
         <source>Install it on your device for extensive experience and easy access.</source>
-        <target>Installieren Sie es auf Ihrem Gerät für eine umfassende Erfahrung und einen leichten
-          Zugriff.</target>
+        <target>Installieren Sie es auf Ihrem Gerät für eine umfassende Erfahrung und einen leichten Zugriff.</target>
       </trans-unit>
     </body>
   </file>

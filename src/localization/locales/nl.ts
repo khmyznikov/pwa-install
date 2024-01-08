@@ -9,8 +9,7 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Voeg het toe aan je startscherm voor een uitgebreide ervaring en gemakkelijke
-          toegang.`,
+      's182ab2d6c997515f': `Voeg het toe aan je startscherm voor een uitgebreide ervaring en gemakkelijke toegang.`,
 's1b9047d53d9f9d22': `2) Druk op delen in de navigatiebalk`,
 's37a9e8aec5713460': `Meer`,
 's5c6aad7a7e4a1437': `3) Druk op Toevoegen aan het startscherm`,
