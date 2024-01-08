@@ -9,6 +9,7 @@ export declare class PWAInstallElement extends LitElement {
     description: string;
     installDescription: string;
     disableDescription: boolean;
+    disableScreenshots: boolean;
     manualApple: boolean;
     manualChrome: boolean;
     disableChrome: boolean;
@@ -18,6 +19,7 @@ export declare class PWAInstallElement extends LitElement {
     isDialogHidden: boolean;
     isInstallAvailable: boolean;
     isAppleMobilePlatform: boolean;
+    isAppleDesktopPlatform: boolean;
     isUnderStandaloneMode: boolean;
     isRelatedAppsInstalled: boolean;
     private _howToRequested;
@@ -33,6 +35,7 @@ export declare class PWAInstallElement extends LitElement {
     private _toggleGallery;
     private _checkInstalled;
     private _init;
+    private _requestUpdate;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }

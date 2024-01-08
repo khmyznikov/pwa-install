@@ -1,6 +1,7 @@
 import { IRelatedApp } from './types/types';
 export default class Utils {
     static isAppleMobile(): boolean;
+    static isAppleDesktop(): boolean;
     static isStandalone(): boolean;
     static getInstalledRelatedApps(): Promise<IRelatedApp[]>;
     static isRelatedAppsInstalled(): Promise<boolean>;

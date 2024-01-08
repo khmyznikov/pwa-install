@@ -3,8 +3,9 @@ import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
+    const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
     return html`
         <div id="pwa-install-element">
@@ -25,11 +26,11 @@ const template = (name: string, description: string, installDescription: string,
                     </div>
                     ${description ? html `<div class="description app-description">${description}</div>`: ''}
                     ${!disableDescription? 
-                        html`<hr><div class="description install-description">${installDescription? installDescription: msg('This site has app functionality. Install it on your device for extensive experience and easy access.')}</div>` 
+                        html`<hr><div class="description install-description">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
                         : ''}
-                    ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                     <div class="action-buttons">
-                        ${manifest.screenshots && manifest.screenshots.length? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
+                        ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
                         <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
                     </div>
                 </div>
@@ -38,7 +39,7 @@ const template = (name: string, description: string, installDescription: string,
                 <div class="dialog-body">
                     <pwa-bottom-sheet .props=${{name, icon, description}} .install=${install} .hideDialog=${hideDialog}>
                     </pwa-bottom-sheet>
-                    ${manifest.screenshots && manifest.screenshots.length? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                 </div>
             </div>
         </div>`;
