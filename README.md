@@ -2,7 +2,7 @@
 ![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
-Installation dialog for Progressive web application. Provides more convenience user experience and fix lack of native dialogs in some browsers. **17.5kB brotli** compressed bundle. Translation/localization is supported.
+Installation dialog for Progressive web application (PWA) aka Web Apps. Provides more convenience user experience and fix lack of native dialogs in some browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
 
 Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
 ## Gallery
@@ -58,6 +58,7 @@ import '@khmyznikov/pwa-install';
 
   install-description="Custom call to install text"
   disable-install-description="true"
+  disable-screenshots="true"
 
   manifest-url="/manifest.json"
   name="PWA"
@@ -95,6 +96,7 @@ import '@khmyznikov/pwa-install';
 - isDialogHidden: boolean
 - isInstallAvailable: boolean
 - isAppleMobilePlatform: boolean
+- isAppleDesktopPlatform: boolean
 - isUnderStandaloneMode: boolean
 - isRelatedAppsInstalled: boolean
 
@@ -141,6 +143,7 @@ Translations available:
 - *ZH*/*ZH-CN*
 - *IT*
 - *UK*
+- *CS*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 

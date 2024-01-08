@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Aggiungilo alla schermata principale per un'esperienza più completa e un accesso facile.`,
+      's182ab2d6c997515f': `Aggiungilo alla schermata principale per un'esperienza più completa e un accesso
+          facile.`,
 's1b9047d53d9f9d22': `2) Premi Condividi nella barra di navigazione`,
 's37a9e8aec5713460': `Più`,
 's5c6aad7a7e4a1437': `3) Premi Aggiungi alla schermata principale`,

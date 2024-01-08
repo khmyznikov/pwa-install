@@ -17,7 +17,7 @@ import * as uk from "./locales/uk";
 import * as zh from "./locales/zh";
 import * as zhCN from "./locales/zh-CN";
 import * as it from "./locales/it";
-import * as csCZ from "./locales/cs-CZ";
+import * as cs from "./locales/cs";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -33,7 +33,7 @@ const localizedTemplates = new Map([
   ['zh', zh],
   ['zh-CN', zhCN],
   ['it', it],
-  ['cs-CZ', csCZ],
+  ['cs', cs]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
