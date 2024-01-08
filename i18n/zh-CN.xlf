@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file target-language="zh-CN" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+  <file target-language="zh-CN" source-language="en" original="lit-localize-inputs"
+    datatype="plaintext">
     <body>
       <trans-unit id="s6196153c4b0c1ea0">
         <source>Install</source>
@@ -34,30 +35,30 @@
         <source>Add to Home Screen</source>
         <target>将App加入主画面</target>
       </trans-unit>
-<trans-unit id="sfea652f6580ff086">
-  <source>This site has app functionality.</source>
-  <target>此网站具备app的功能性。</target>
-</trans-unit>
-<trans-unit id="se740f75b95a51807">
-  <source>Add it to your Dock for extensive experience and easy access.</source>
-  <target>将其添加到您的Dock，以享受更全面的体验并便于访问。</target>
-</trans-unit>
-<trans-unit id="s182ab2d6c997515f">
-  <source>Add it to your Home Screen for extensive experience and easy access.</source>
-  <target>将其添加到主屏幕，以享受更全面的体验并便于访问。</target>
-</trans-unit>
-<trans-unit id="sa7551383d1897fcc">
-  <source>2) Press Add to Dock</source>
-  <target>2) 按下添加到Dock</target>
-</trans-unit>
-<trans-unit id="s922329d6f6213590">
-  <source>Add to Dock</source>
-  <target>添加到Dock</target>
-</trans-unit>
-<trans-unit id="sba52286c21552a4e">
-  <source>Install it on your device for extensive experience and easy access.</source>
-  <target>在您的设备上安装，以享有更全面的体验和便捷的访问。</target>
-</trans-unit>
+      <trans-unit id="sfea652f6580ff086">
+        <source>This site has app functionality.</source>
+        <target>此网站具备app的功能性。</target>
+      </trans-unit>
+      <trans-unit id="se740f75b95a51807">
+        <source>Add it to your Dock for extensive experience and easy access.</source>
+        <target>将其添加到您的Dock，以享受更全面的体验并便于访问。</target>
+      </trans-unit>
+      <trans-unit id="s182ab2d6c997515f">
+        <source>Add it to your Home Screen for extensive experience and easy access.</source>
+        <target>将其添加到主屏幕，以享受更全面的体验并便于访问。</target>
+      </trans-unit>
+      <trans-unit id="sa7551383d1897fcc">
+        <source>2) Press Add to Dock</source>
+        <target>2) 按下添加到Dock</target>
+      </trans-unit>
+      <trans-unit id="s922329d6f6213590">
+        <source>Add to Dock</source>
+        <target>添加到Dock</target>
+      </trans-unit>
+      <trans-unit id="sba52286c21552a4e">
+        <source>Install it on your device for extensive experience and easy access.</source>
+        <target>在您的设备上安装，以享有更全面的体验和便捷的访问。</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
