@@ -2,9 +2,12 @@
 ![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
-Installation dialog for Progressive web application (PWA) aka Web Apps. Provides more convenience user experience and fix lack of native dialogs in some browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
+#### New to PWAs? Unsure how to create a Web App? Check out our resources for a quick start: [PWA Intro](https://docs.pwabuilder.com/#/home/pwa-intro), [PWA Starter](https://docs.pwabuilder.com/#/starter/quick-start), [PWA Builder](https://www.pwabuilder.com/)
+
+Installation dialog for Progressive Web Application (PWA) aka Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
 
 Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
+
 ## Gallery
 | iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |-|-|-|
