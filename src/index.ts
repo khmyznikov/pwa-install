@@ -119,11 +119,15 @@ export class PWAInstallElement extends LitElement {
 				this._galleryRequested = false;
 			this.requestUpdate();
 
-			if (this._howToRequested && this.manifest.start_url) {
-				try {
-					history.replaceState({}, '', this.manifest.start_url);
-				} catch (e) {}
-			}
+			if (this._howToRequested) {
+				Utils.eventInstallHowTo(this);
+				
+				if (this.manifest.start_url){
+					try {
+						history.replaceState({}, '', this.manifest.start_url);
+					} catch (e) {}
+				}
+			}				
         },
         passive: true
     }
@@ -133,6 +137,9 @@ export class PWAInstallElement extends LitElement {
 			this._galleryRequested = !this._galleryRequested;
 			if (this._howToRequested && this._galleryRequested)
 				this._howToRequested = false;
+
+			this._galleryRequested && Utils.eventGallery(this);
+
 			this.requestUpdate();
         },
         passive: true

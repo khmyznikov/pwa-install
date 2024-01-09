@@ -89,6 +89,8 @@ import '@khmyznikov/pwa-install';
 - pwa-install-fail-event
 - pwa-install-available-event
 - pwa-user-choice-result-event
+- pwa-install-how-to-event
+- pwa-install-gallery-event
 
 ```html
 <script type="text/javascript">
