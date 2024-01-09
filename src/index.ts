@@ -153,7 +153,7 @@ export class PWAInstallElement extends LitElement {
 						this.requestUpdate()
 						Utils.eventInstallAvailable(this);
 					},
-					300
+					1000
 				);
 			}
 		}

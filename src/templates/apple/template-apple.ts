@@ -11,7 +11,7 @@ const template = (name: string, description: string, installDescription: string,
         <aside id="pwa-install-element">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
                 <div class="icon">
-                    <img src="${icon}" alt="icon" class="icon-image">
+                    <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>
                 <button type="button" title="close" class="close" @click='${hideDialog}'>
                     <svg viewBox="0 0 24 24"><path d="M5.3 18.7c.2.2.4.3.7.3s.5-.1.7-.3l5.3-5.3 5.3 5.3a1.08 1.08 0 0 0 .7.3 1.08 1.08 0 0 0 .7-.3c.4-.4.4-1 0-1.4L13.4 12l5.3-5.3c.4-.4.4-1 0-1.4s-1-.4-1.4 0L12 10.6 6.7 5.3c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l5.3 5.3-5.3 5.3c-.4.4-.4 1 0 1.4z"/></svg>
@@ -77,7 +77,7 @@ const template = (name: string, description: string, installDescription: string,
                         <span class="button-text ${howToRequested? 'show': 'hide'}">${msg('Hide Instruction')}</span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
                             <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
-                            <svg width="25" height="25">
+                            <svg viewBox="0 0 25 25">
                                 <use href="#pwa-add"></use>
                             </svg>
                         </span>

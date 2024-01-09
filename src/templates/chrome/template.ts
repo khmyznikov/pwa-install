@@ -12,7 +12,7 @@ const template = (name: string, description: string, installDescription: string,
             <div class="install-dialog chrome ${classMap(installDialogClasses())}">
                 <div class="dialog-body">
                     <div class="icon">
-                        <img src="${icon}" alt="icon" class="icon-image">
+                        <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                     </div>
                     <div class="about">
                         <div class="name">
