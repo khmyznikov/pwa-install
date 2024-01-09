@@ -2,7 +2,7 @@
 ![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
-#### New to PWAs? Unsure how to create a Web App? Check out our resources for a quick start: [PWA Intro](https://docs.pwabuilder.com/#/home/pwa-intro), [PWA Starter](https://docs.pwabuilder.com/#/starter/quick-start), [PWA Builder](https://www.pwabuilder.com/)
+**New to PWAs? Unsure how to create a Web App? Check out these resources for a quick start: [PWA Intro](https://docs.pwabuilder.com/#/home/pwa-intro), [PWA Starter](https://docs.pwabuilder.com/#/starter/quick-start), [PWA Builder](https://www.pwabuilder.com/)**
 
 Installation dialog for Progressive Web Application (PWA) aka Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
 
@@ -13,9 +13,16 @@ Use it as [Web Component with any modern framework](https://academind.com/tutori
 |-|-|-|
 |![iOS example default](https://user-images.githubusercontent.com/6115884/169653932-5a9916b6-8d1f-4320-a595-86c3b797ae86.jpg)|![iOS example install instruction](https://user-images.githubusercontent.com/6115884/169654013-7d144d66-0021-44d8-8f1d-9a7d2c71cb07.jpg)|![iOS example gallery](https://user-images.githubusercontent.com/6115884/169654077-f48c9b63-2b6e-4291-a0e3-b33daf86d468.jpg)|
 
+| MacOS 14+ (Sonoma) | Install instruction |
+|---|---|
+|![sonoma_dialog-min](https://github.com/khmyznikov/pwa-install/assets/6115884/4ee02327-9abd-4d5e-a581-537dccb2187f)|![sonoma-dialog-open-min](https://github.com/khmyznikov/pwa-install/assets/6115884/6b147938-b55b-479a-85ea-1778868e6ff5)|
+
+
+
 | iPadOS |
 |---|
 |![iPadOS example white](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
+
 
 | Android | App gallery&nbsp;&nbsp; | White theme&nbsp;&nbsp; |
 |-|-|-|
