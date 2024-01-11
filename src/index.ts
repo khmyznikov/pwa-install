@@ -31,6 +31,7 @@ export class PWAInstallElement extends LitElement {
 	@property() description = '';
 	@property({attribute: 'install-description'}) installDescription = '';
 	@property({attribute: 'disable-install-description', type: Boolean}) disableDescription = false;
+	@property({attribute: 'disable-screenshots', type: Boolean}) disableScreenshots = false;
 	@property({attribute: 'manual-apple', type: Boolean}) manualApple = false;
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
@@ -45,6 +46,7 @@ export class PWAInstallElement extends LitElement {
 	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
+	public isAppleDesktopPlatform = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
@@ -72,7 +74,7 @@ export class PWAInstallElement extends LitElement {
 		passive: true
 	}
 	public install = () => {
-		if (this.isAppleMobilePlatform) {
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			this._howToRequested = true;
 			this.requestUpdate();
 		}
@@ -108,6 +110,7 @@ export class PWAInstallElement extends LitElement {
 	public getInstalledRelatedApps = async (): Promise<IRelatedApp[]> => {
 		return await Utils.getInstalledRelatedApps();
 	}
+
 	/** @internal */
 	private _howToForApple = {
         handleEvent: () => {
@@ -115,6 +118,16 @@ export class PWAInstallElement extends LitElement {
 			if (this._howToRequested && this._galleryRequested)
 				this._galleryRequested = false;
 			this.requestUpdate();
+
+			if (this._howToRequested) {
+				Utils.eventInstallHowTo(this);
+				
+				if (this.manifest.start_url){
+					try {
+						history.replaceState({}, '', this.manifest.start_url);
+					} catch (e) {}
+				}
+			}				
         },
         passive: true
     }
@@ -124,6 +137,9 @@ export class PWAInstallElement extends LitElement {
 			this._galleryRequested = !this._galleryRequested;
 			if (this._howToRequested && this._galleryRequested)
 				this._howToRequested = false;
+
+			this._galleryRequested && Utils.eventGallery(this);
+
 			this.requestUpdate();
         },
         passive: true
@@ -133,8 +149,9 @@ export class PWAInstallElement extends LitElement {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
+		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
 
-		if (this.isAppleMobilePlatform) {
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			if (!this.isUnderStandaloneMode) {
 				this.manualApple && this.hideDialog();
 				setTimeout(
@@ -143,7 +160,7 @@ export class PWAInstallElement extends LitElement {
 						this.requestUpdate()
 						Utils.eventInstallAvailable(this);
 					},
-					300
+					1000
 				);
 			}
 		}
@@ -202,9 +219,11 @@ export class PWAInstallElement extends LitElement {
 				this.description = this.description || this.manifest.description || '';
 			}
 		});
-
-
 	};
+	/** @internal */
+	private _requestUpdate = () => {
+		this.requestUpdate();
+	}
 
 	connectedCallback() {
 		changeLocale(navigator.language);
@@ -219,17 +238,19 @@ export class PWAInstallElement extends LitElement {
 	// }
 
 	render() {
-		if (this.isAppleMobilePlatform)
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform)
 			return html`${templateApple(
 				this.name, 
 				this.description, 
 				this.installDescription,
 				this.disableDescription,
+				this.disableScreenshots,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
 				this._howToForApple,
+				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
 				this._galleryRequested
@@ -240,6 +261,7 @@ export class PWAInstallElement extends LitElement {
 				this.description, 
 				this.installDescription,
 				this.disableDescription,
+				this.disableScreenshots,
 				this.icon, 
 				this.manifest,
 				this.isInstallAvailable && !this.isDialogHidden,

@@ -20,6 +20,22 @@ export default class Utils {
 			return true;
 		return false;
     }
+
+    static isAppleDesktop(): boolean {
+        // check if it's a mac
+        const userAgent = navigator.userAgent.toLowerCase();
+        if (navigator.maxTouchPoints || !userAgent.match(/macintosh/))
+            return false;
+        // check safari version >= 17
+        const version = /version\/(\d{2})\./.exec(userAgent)
+        if (!version || !version[1] || !(parseInt(version[1]) >= 17))
+            return false;
+        // hacky way to detect Sonoma
+        const audioCheck = document.createElement('audio').canPlayType('audio/wav; codecs="1"') ? true : false;
+        const webGLCheck = new OffscreenCanvas(1, 1).getContext('webgl') ? true : false;
+
+        return audioCheck && webGLCheck;
+    }
     
     static isStandalone() {
 		if (window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone === true))
@@ -41,16 +57,22 @@ export default class Utils {
     }
 
     static eventInstalledSuccess(_element: Element) {
-        _eventDispatcher(_element, 'pwa-install-success-event', 'Application installation successfully processed (Chromium/Android only)');
+        _eventDispatcher(_element, 'pwa-install-success-event', 'App install success (Chromium/Android only)');
     }
     static eventInstalledFail(_element: Element) {
-        _eventDispatcher(_element, 'pwa-install-fail-event', 'Application installation failed (Chromium/Android only)');
+        _eventDispatcher(_element, 'pwa-install-fail-event', 'App install failed (Chromium/Android only)');
     }
     static eventUserChoiceResult(_element: Element, message: string) {
         _eventDispatcher(_element, 'pwa-user-choice-result-event', message);
     }
     static eventInstallAvailable(_element: Element) {
-        _eventDispatcher(_element, 'pwa-install-available-event', 'Application installation available');
+        _eventDispatcher(_element, 'pwa-install-available-event', 'App install available');
+    }
+    static eventInstallHowTo(_element: Element) {
+        _eventDispatcher(_element, 'pwa-install-how-to-event', 'App install instruction showed');
+    }
+    static eventGallery(_element: Element) {
+        _eventDispatcher(_element, 'pwa-install-gallery-event', 'App install gallery showed');
     }
     
 }

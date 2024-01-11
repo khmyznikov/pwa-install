@@ -6,10 +6,6 @@
         <source>Install</source>
         <target>安裝</target>
       </trans-unit>
-      <trans-unit id="sdca23702207fba73">
-        <source>This site has app functionality. Install it on your device for extensive experience and easy access.</source>
-        <target>以App的方式安裝到裝置，提高用戶體驗以及操作便捷性</target>
-      </trans-unit>
       <trans-unit id="sa5ef80b4bb9b39f8">
         <source>Less</source>
         <target>簡短資訊</target>
@@ -17,10 +13,6 @@
       <trans-unit id="s37a9e8aec5713460">
         <source>More</source>
         <target>詳細資訊</target>
-      </trans-unit>
-      <trans-unit id="s8d0173763d91830c">
-        <source>This site has app functionality. Add it to your Home Screen for extensive experience and easy access.</source>
-        <target>以App的方式安裝到主畫面，提高用戶體驗以及操作便捷性</target>
       </trans-unit>
       <trans-unit id="sdfe23506a3b0cdc8">
         <source>1) Open in Safari browser</source>
@@ -41,6 +33,30 @@
       <trans-unit id="scdaf4bbff76674c8">
         <source>Add to Home Screen</source>
         <target>將App加入主畫面</target>
+      </trans-unit>
+      <trans-unit id="sfea652f6580ff086">
+        <source>This site has app functionality.</source>
+        <target>此網站具有應用程式功能。</target>
+      </trans-unit>
+      <trans-unit id="se740f75b95a51807">
+        <source>Add it to your Dock for extensive experience and easy access.</source>
+        <target>將其加入你的Dock欄，以獲得更豐富的體驗和便捷訪問。</target>
+      </trans-unit>
+      <trans-unit id="s182ab2d6c997515f">
+        <source>Add it to your Home Screen for extensive experience and easy access.</source>
+        <target>將其加入主屏幕，以獲得更豐富的體驗和便捷訪問。</target>
+      </trans-unit>
+      <trans-unit id="sa7551383d1897fcc">
+        <source>2) Press Add to Dock</source>
+        <target>2) 點選添加到Dock欄</target>
+      </trans-unit>
+      <trans-unit id="s922329d6f6213590">
+        <source>Add to Dock</source>
+        <target>添加到Dock欄</target>
+      </trans-unit>
+      <trans-unit id="sba52286c21552a4e">
+        <source>Install it on your device for extensive experience and easy access.</source>
+        <target>在您的裝置上安裝它，以獲得更豐富的體驗和便捷訪問。</target>
       </trans-unit>
     </body>
   </file>

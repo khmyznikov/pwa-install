@@ -7,6 +7,7 @@
         --background-color-button:#fff;
         --background-color-button-active: #DBDAE0;
         --border-bottom-color: rgba(0, 0, 0, 0.1);
+        --icon-how-to-color: #527AFB;
 
         font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont, "Roboto", "Segoe UI";
 
@@ -40,7 +41,7 @@
         &.dialog-body{
             display: grid;
 
-            grid-template-columns: 95px auto 1fr;
+            grid-template-columns: 95px 1fr;
             grid-template-rows: 1fr auto;
 
             grid-template-areas:
@@ -60,21 +61,6 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
 
-            // header{
-            //     grid-area: header;
-
-            //     display: flex;
-            //     flex-flow: row nowrap;
-            //     justify-content: space-between;
-
-            //     h2{
-            //         font-size: 18px;
-            //         font-weight: 500;
-            //         line-height: 1.125;
-            //         margin: 0;
-            //     }
-            // }
-
             .icon{
                 display: flex;
                 align-items: center;
@@ -89,6 +75,43 @@
 
                     margin: 0 auto;
                     border-radius: 6px;
+                }
+            }
+
+            .close{
+                height: 26px;
+                min-width: 26px;
+                line-height: 0;
+
+                margin-right: 7px;
+                margin-top: 7px;
+                margin-left: auto;
+
+                padding: 0px;
+                border-radius: 50%;
+
+                opacity: .5;
+                outline: none;
+
+                color: var(--text-color-normal);
+
+                border: none;
+                background-color: transparent;
+
+                cursor: pointer;
+
+                transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
+
+                grid-area: description;
+
+                svg{
+                    fill: var(--text-color-normal);
+                    width: 18px;
+                }
+
+                &:hover, &:active{
+                    opacity: 1;
+                    background-color: var(--background-color-button);
                 }
             }
 
@@ -122,40 +145,7 @@
 
                     color: var(--text-color-description);
                 }
-                .close{
-                    height: 26px;
-                    min-width: 26px;
-                    line-height: 0;
-
-                    margin-right: -3px;
-                    margin-top: -3px;
-                    margin-left: auto;
-
-                    padding: 0px;
-                    border-radius: 50%;
-
-                    opacity: .5;
-                    outline: none;
-
-                    color: var(--text-color-normal);
-
-                    border: none;
-                    background-color: transparent;
-
-                    cursor: pointer;
-
-                    transition: opacity .2s ease-in-out, background-color .2s ease-in-out;
-
-                    svg{
-                        fill: var(--text-color-normal);
-                        width: 18px;
-                    }
-
-                    &:hover, &:active{
-                        opacity: 1;
-                        background-color: var(--background-color-button);
-                    }
-                }
+                
             }
 
             .welcome-to-install{
@@ -232,7 +222,7 @@
 
                         > svg {
                             flex-shrink: 0;
-                            transform: scale(.8);
+                            width: 20px;
                         }
 
                         &.show{
@@ -312,7 +302,7 @@
                         position: relative;
                         display: inline-flex;
                         flex-shrink: 0;
-                        // background-color: var(--background-color-button);
+                        color: var(--icon-how-to-color);
 
                         width: 50px;
                         height: 50px;
@@ -322,12 +312,12 @@
                         #pwa-share, #pwa-add, #pwa-safari{
                             margin: 0 auto;
                         }
-                        #pwa-safari, #pwa-share{
-                            fill: #527AFB;
-                        }
+                        // #pwa-safari, #pwa-share{
+                        //     color: #527AFB;
+                        // }
                         #pwa-share{
                             margin-bottom: 4px;
-                            transform: scale(0.75);
+                            transform: scale(0.9);
                         }
                         #pwa-add{
                             transform: scale(0.8);
@@ -376,7 +366,6 @@
                 transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
 
                 max-height: 70vh;
-                overflow-y: auto;
                 opacity: 1;
             }
         }
@@ -392,6 +381,176 @@
                 transition: opacity .3s ease-in-out .2s, max-height .5s ease-in-out;
             }
         }
+
+        &.desktop{
+            --text-color-normal: rgba(0, 0, 0, 0.85);
+            --text-color-description: rgba(0, 0, 0, 0.85);
+            --icon-how-to-color: rgba(0, 0, 0, 0.50);
+            --background-color: rgb(246 246 246 / 85%);
+            --background-color-button: #c6c1c6;
+            --background-color-button-active: linear-gradient(0deg, rgba(64,121,250,1) 0%, rgba(84,144,251,1) 100%);
+            // --background-color-button-active: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.00) 100%), #007AFF;
+            --border-bottom-color: rgb(185 185 185);
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr auto;
+            grid-template-areas:
+                "icon"
+                "description"
+                "welcome"
+                "how-to"
+                "gallery"
+                "button";
+            gap: 0px;
+            column-gap: 0px;
+            padding: 16px;
+
+            max-width: 260px;
+            background: var(--background-color);
+            border: 1px solid var(--border-bottom-color);
+
+            .icon {
+                height: 64px;
+                padding-bottom: 16px;
+                .icon-image{
+                    border-radius: 10px;
+                    width: 52px;
+                    height: 52px;
+                    // box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.1);
+                    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.15));
+                }
+            }
+            .close{
+                grid-area: icon;
+                background: var(--background-color-button);
+                opacity: 1;
+                height: 20px;
+                min-width: 20px;
+                margin-right: -5px;
+                margin-top: -5px;
+                svg{
+                    width: 14px;
+                }
+            }
+            .about{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                .name{
+                    font-size: 13px;
+                    line-height: 16px;
+                    font-weight: 700;
+                    padding: 0;
+                }
+                .description{
+                    padding: 16px 0px;
+                    margin: 0;
+                    
+                    padding-top: 10px;
+                    border-bottom: 1px solid var(--border-bottom-color);
+                }
+            }
+            .welcome-to-install, .about .description{
+                text-align: center;
+                font-size: 11px;
+                line-height: 14px;
+            }
+            .welcome-to-install, .about, .icon{
+                border: none;
+            }
+            .welcome-to-install{
+                padding: 0;
+                padding-top: 16px;
+            }
+
+            .action-buttons{
+                padding: 0;
+                padding-top: 16px;
+                .dialog-button.button{
+                    font-size: 13px;
+                    font-weight: 400;
+                    padding: 6px 8px;
+                    border-radius: 6px;
+                    height: auto;
+                    // min-height: 32px;
+                    line-height: 18px;
+                    
+                    &.install{
+                        color: #FFF;
+                        background: var(--background-color-button-active);
+                        transition: background .3s ease-in-out  0.1s, color .3s ease-in-out;
+                        svg{
+                            transform: none;
+                            width: 18px;
+                            // align-self: center;
+                            // margin-top: -4px;
+                        }
+                    }
+                    &.gallery{
+                        width: 30px;
+                        min-width: 30px;
+                        margin-right: 10px;
+                        background: var(--background-color-button);
+                        #pwa-gallery{
+                            width: 14px;
+                            transition: transform .4s ease-in-out;
+                        }
+                        // border-radius: 5px;
+                        // background: #FFF;
+                        // box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
+                        // padding: 5px;
+                    }
+                }
+            }
+
+            .dialog-button.button, .close{
+                &:active{
+                    filter: brightness(105%);
+                    .button-text{
+                        filter:brightness(90%)
+                    }
+                }
+            }
+
+            .how-to-body{
+                .how-to-description{
+                    padding: 0px;
+                    padding-top: 16px;
+                    grid-template-rows: 1fr 1fr;
+                    .description-step{
+                        font-size: 12px;
+                        gap: 16px;
+                        .svg-wrap{
+                            width: 32px;
+                            height: 32px;
+                            color: var(--icon-how-to-color);
+                            #pwa-share{
+                                width: 16px;
+                                margin-bottom: 2px;
+                                transform: none;
+                            }
+                            #pwa-add{
+                                width: 18px;
+                                transform: none;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.gallery{
+                #pwa-gallery{
+                    transform: rotate(180deg);
+                }
+            }
+            &.how-to{
+                .action-buttons .dialog-button.button.install{
+                    color: var(--text-color-normal);
+                    background: var(--background-color-button);
+                }
+            }
+        }
     }
 }
 
@@ -404,13 +563,16 @@ $phone-small-landscape: 667px;
             bottom: unset;
             transform: translateY(calc(-100% - 40px));
 
-            right: 150px;
+            right: 28px;
             left: auto;
 
             &.available {
                 top: 28px;
                 bottom: auto;
                 max-height: calc(95vh - 28px);
+                // &.desktop{
+                //     max-height: min(calc(95vh - 28px), );
+                // }
                 // transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
             }
         }
@@ -472,6 +634,12 @@ $phone-small-landscape: 667px;
     }
 }
 
+@media (max-height: 600px) {
+    #pwa-install-element .install-dialog.apple pwa-gallery{
+        overflow-y: auto;
+    }
+}
+
 // @media (max-width: 370px) {
 //     #pwa-install-element{
 //         .install-dialog.apple{
@@ -482,13 +650,33 @@ $phone-small-landscape: 667px;
 
 @media (prefers-color-scheme: dark) {
     #pwa-install-element{
-        .install-dialog.apple {
+        .install-dialog.apple.dialog-body {
             --text-color-normal: #fff;
             --text-color-description: #9E9AA1;
             --background-color: rgb(25 25 25 / 90%);
             --background-color-button:#353535;
             --background-color-button-active: #454545;
             --border-bottom-color: #353535;
+
+            .dialog-button.button, .close{
+                &:active{
+                    filter: brightness(105%);
+                    .button-text{
+                        filter:brightness(90%)
+                    }
+                }
+            }
+            
+            &.desktop{
+                --text-color-description: var(--text-color-normal);
+                --icon-how-to-color: #bcb8b6; 
+                --background-color: rgb(45 45 45 / 90%);
+                --border-bottom-color: #5b5b5b;
+                --background-color-button:#6d6765;
+                --background-color-button-active: linear-gradient(0deg, rgba(59,108,200,1) 0%, rgba(66,123,250,1) 100%);
+                outline: 1px solid #1c1c1c;
+                color-scheme: dark;
+            }
         }
     }
 }

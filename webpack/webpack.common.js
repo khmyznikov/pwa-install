@@ -47,13 +47,13 @@ export default {
 							transform: (css, { filePath }) => processor.process(css, { from: filePath }).css
 						},
 					},
-					'extract-loader',
-					'css-loader',
+					// 'extract-loader',
+					// 'css-loader',
 					{
 						loader: 'postcss-loader',
 						options: {
 							postcssOptions: {
-								plugins: [autoprefixer()],
+								plugins: ['postcss-import', autoprefixer()],
 							},
 						},
 					},

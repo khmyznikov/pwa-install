@@ -2,19 +2,29 @@
 ![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
-Installation dialog for Progressive web application. Provides more convenience user experience and fix lack of native dialogs in some browsers. **13.5kB brotli** compressed bundle. Translation/localization is supported.
+**New to PWAs? Unsure how to create a Web App? Check out these resources for a quick start: [PWA Intro](https://docs.pwabuilder.com/#/home/pwa-intro), [PWA Starter](https://docs.pwabuilder.com/#/starter/quick-start), [PWA Builder](https://www.pwabuilder.com/)**
+
+Installation dialog for Progressive Web Application (PWA) aka Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
 
 Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
+
 ## Gallery
 | iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |-|-|-|
 |![iOS example default](https://user-images.githubusercontent.com/6115884/169653932-5a9916b6-8d1f-4320-a595-86c3b797ae86.jpg)|![iOS example install instruction](https://user-images.githubusercontent.com/6115884/169654013-7d144d66-0021-44d8-8f1d-9a7d2c71cb07.jpg)|![iOS example gallery](https://user-images.githubusercontent.com/6115884/169654077-f48c9b63-2b6e-4291-a0e3-b33daf86d468.jpg)|
 
+| MacOS 14+ (Sonoma) | Install instruction |
+|---|---|
+|![sonoma_dialog-min](https://github.com/khmyznikov/pwa-install/assets/6115884/4ee02327-9abd-4d5e-a581-537dccb2187f)|![sonoma-dialog-open-min](https://github.com/khmyznikov/pwa-install/assets/6115884/6b147938-b55b-479a-85ea-1778868e6ff5)|
+
+
+
 | iPadOS |
 |---|
-|![iPadOS example white](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
+|![iPadOS example light](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
 
-| Android | App gallery&nbsp;&nbsp; | White theme&nbsp;&nbsp; |
+
+| Android | App gallery&nbsp;&nbsp; | Light theme&nbsp;&nbsp; |
 |-|-|-|
 |![Android example default](https://user-images.githubusercontent.com/6115884/169654789-41fb88b3-97b2-4992-aab5-0def6015be21.jpg)|![Android example gallery](https://user-images.githubusercontent.com/6115884/169654833-b09c1eff-cfea-41c8-b2d0-66515cd1bc2c.jpg)|![Android example white](https://user-images.githubusercontent.com/6115884/169654871-33f30d44-b70c-4912-a678-3d97fd0d80a8.jpg)|
 
@@ -58,6 +68,7 @@ import '@khmyznikov/pwa-install';
 
   install-description="Custom call to install text"
   disable-install-description="true"
+  disable-screenshots="true"
 
   manifest-url="/manifest.json"
   name="PWA"
@@ -78,6 +89,8 @@ import '@khmyznikov/pwa-install';
 - pwa-install-fail-event
 - pwa-install-available-event
 - pwa-user-choice-result-event
+- pwa-install-how-to-event
+- pwa-install-gallery-event
 
 ```html
 <script type="text/javascript">
@@ -95,6 +108,7 @@ import '@khmyznikov/pwa-install';
 - isDialogHidden: boolean
 - isInstallAvailable: boolean
 - isAppleMobilePlatform: boolean
+- isAppleDesktopPlatform: boolean
 - isUnderStandaloneMode: boolean
 - isRelatedAppsInstalled: boolean
 
@@ -141,6 +155,7 @@ Translations available:
 - *ZH*/*ZH-CN*
 - *IT*
 - *UK*
+- *CS*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
@@ -149,4 +164,6 @@ Language should change automatically based on browser settings. Please create th
 <br>
 
 ## ROADMAP
+- support async load with external beforeinstallprompt catcher
+- legacy react wrap 
 - style customization

@@ -43,9 +43,30 @@
 			<button onclick="pwaInstall.showDialog(true)">Show(forced)</button>
 			<button onclick="pwaInstall.hideDialog()">Hide</button><hr>
 			<button onclick="pwaInstall.install()">Install</button>
-			<button onclick="getRelated()">Get related apps</button><hr>
-			<button onclick="forceApple()">Force apple</button>
-			<button onclick="forceApple(false)">Force chrome</button>
+			<button onclick="getRelated()">Get related apps</button>
+		</fieldset>
+		<fieldset>
+			<legend>
+				Force Style
+			</legend>
+			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
+			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button>
+			<button onclick="forceStyle('chrome')">Chrome</button><br>
+			<i>*end style depends on browser and OS</i>
+			<hr>
+
+			<input type="text" placeholder="Install description text" onchange="setAttr('install-description', this.value)"><br>
+			<label>
+				<input type="checkbox" onchange="disableInstallDescription(this)">
+				Hide install description
+			</label><br>
+			<label>
+				<input type="checkbox" onchange="disableScreenshots(this)">
+				Hide screenshots
+			</label><hr>
+	
+			<input type="text" placeholder="App name text" onchange="setAttr('name', this.value)"><br>
+			<input type="text" placeholder="App description text" onchange="setAttr('description', this.value)"><br>
 		</fieldset>
 		<fieldset>
 			<legend>
@@ -75,17 +96,46 @@
 				}
 			)
 		}
-
-		const forceApple = (apple = true) => {
-			pwaInstall.isAppleMobilePlatform = apple;
+		
+		const forceStyle = (style) => {
+			switch (style) {
+				case 'apple-mobile':
+					pwaInstall.isAppleDesktopPlatform = false;
+					pwaInstall.isAppleMobilePlatform = true;
+					break;
+				case 'apple-desktop':
+					pwaInstall.isAppleMobilePlatform = false;
+					pwaInstall.isAppleDesktopPlatform = true;
+					break;
+				case 'chrome':
+					pwaInstall.isAppleMobilePlatform = false;
+					pwaInstall.isAppleDesktopPlatform = false;
+					break;
+			}
 			pwaInstall.hideDialog();
 			pwaInstall.showDialog();
+		}
+
+		const disableInstallDescription = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('disable-install-description', true) :
+			pwaInstall.removeAttribute('disable-install-description');
+		}
+		const disableScreenshots = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('disable-screenshots', true) :
+			pwaInstall.removeAttribute('disable-screenshots');
+		}
+		const setAttr = (attr, value) => {
+			value? pwaInstall.setAttribute(attr, value) :
+			pwaInstall.removeAttribute(attr);
+			pwaInstall._init();
 		}
 
 		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-fail-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-user-choice-result-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-available-event', (event) => {logMessage(event.detail.message)});
+		pwaInstall.addEventListener('pwa-install-how-to-event', (event) => {logMessage(event.detail.message)});
+		pwaInstall.addEventListener('pwa-install-gallery-event', (event) => {logMessage(event.detail.message)});
 	</script>
 </body>
 

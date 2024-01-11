@@ -8,6 +8,7 @@ import template from './template-gallery';
 @customElement('pwa-gallery')
 export default class PWAGalleryElement extends LitElement {
 	@property() screenshots: WebAppManifest['screenshots'] = [];
+	@property() theme: 'default' | 'apple_desktop' | 'apple_mobile' = 'default';
 
 	static get styles() {
 		return styles;
@@ -80,6 +81,7 @@ export default class PWAGalleryElement extends LitElement {
 	render() {
         return html`${template(
             this.screenshots,
+			this.theme,
 			this.scrollToNextPage,
 			this.scrollToPrevPage
         )}`;

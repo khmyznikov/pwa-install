@@ -10,15 +10,16 @@ type IProps = {
 }
 
 import template from './template-bottom-sheet';
+import Utils from '../../../utils';
 
 @customElement('pwa-bottom-sheet')
 export default class PWABottomSheetElement extends LitElement {
-	@property() props: IProps = {
+	@property({type: Object}) props: IProps = {
         name: '',
         description: '',
         icon: ''
     };
-    @property() install = {handleEvent: () => {}};
+    @property({type: Object}) install = {handleEvent: () => {}};
 	@property() hideDialog = () => {};
 
 	private _callInstall = () => {
@@ -65,6 +66,10 @@ export default class PWABottomSheetElement extends LitElement {
 			}
 			if (window.innerHeight - getYCoord(e)  > element.clientHeight / 2.5){
 				closeDragElement(e, window.innerHeight - element.clientHeight);
+				
+				try {
+					Utils.eventGallery((this.getRootNode() as ShadowRoot).host);
+				} catch (e) {}
 				return
 			}
 			else {
