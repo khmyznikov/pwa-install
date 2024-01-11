@@ -21,10 +21,10 @@ Use it as [Web Component with any modern framework](https://academind.com/tutori
 
 | iPadOS |
 |---|
-|![iPadOS example white](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
+|![iPadOS example light](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
 
 
-| Android | App gallery&nbsp;&nbsp; | White theme&nbsp;&nbsp; |
+| Android | App gallery&nbsp;&nbsp; | Light theme&nbsp;&nbsp; |
 |-|-|-|
 |![Android example default](https://user-images.githubusercontent.com/6115884/169654789-41fb88b3-97b2-4992-aab5-0def6015be21.jpg)|![Android example gallery](https://user-images.githubusercontent.com/6115884/169654833-b09c1eff-cfea-41c8-b2d0-66515cd1bc2c.jpg)|![Android example white](https://user-images.githubusercontent.com/6115884/169654871-33f30d44-b70c-4912-a678-3d97fd0d80a8.jpg)|
 
@@ -164,4 +164,6 @@ Language should change automatically based on browser settings. Please create th
 <br>
 
 ## ROADMAP
+- support async load with external beforeinstallprompt catcher
+- legacy react wrap 
 - style customization
