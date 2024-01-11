@@ -8,6 +8,8 @@ Installation dialog for Progressive Web Application (PWA) aka Web Apps. This off
 
 Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
 
+## **[Demo](https://khmyznikov.com/pwa-install/)**
+
 ## Gallery
 | iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |-|-|-|
@@ -55,7 +57,7 @@ import '@khmyznikov/pwa-install';
 <pwa-install></pwa-install>
 ```
 
-### **[Demo](https://www.khmyznikov.com/pwa-install/)**
+### **[Demo](https://khmyznikov.com/pwa-install/)**
 
 <br>
 
