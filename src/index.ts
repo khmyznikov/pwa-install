@@ -122,11 +122,12 @@ export class PWAInstallElement extends LitElement {
 			if (this._howToRequested) {
 				Utils.eventInstallHowTo(this);
 				
-				if (this.manifest.start_url){
-					try {
-						history.replaceState({}, '', this.manifest.start_url);
-					} catch (e) {}
-				}
+				// Looks like it's not needed anymore
+				// if (this.manifest.start_url){
+				// 	try {
+				// 		history.replaceState({}, '', this.manifest.start_url);
+				// 	} catch (e) {}
+				// }
 			}				
         },
         passive: true
