@@ -1,6 +1,6 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
@@ -10,10 +10,11 @@
   "types": "dist/types/index.d.ts",
   "main": "dist/es/pwa-install.es.js",
   "scripts": {
-    "build": "npm run localize:extract && npm run localize:build && npm run build:noloc && cem analyze",
-    "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production",
+    "build": "npm run localize:extract && npm run localize:build && npm run build:noloc && npm run cem:analyze",
+    "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production && npx webpack --config webpack/webpack.prod.react.js --mode=production",
     "localize:extract": "lit-localize extract",
     "localize:build": "lit-localize build",
+    "cem:analyze": "cem analyze",
     "test": "npm run build:noloc && node ./webpack/serve.js",
     "test:nobuild": "node ./webpack/serve.js",
     "dev": "webpack serve --config webpack/webpack.dev.js --mode=development"
@@ -22,7 +23,9 @@
   "license": "MIT",
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.0",
+    "@lit/localize": "^0.12.1",
     "@lit/localize-tools": "^0.7.1",
+    "@lit/react": "^1.0.2",
     "@types/dom-chromium-installation-events": "^101.0.3",
     "@types/node": "^20.10.6",
     "@types/web-app-manifest": "^1.0.7",
@@ -34,6 +37,7 @@
     "filemanager-webpack-plugin": "^8.0.0",
     "lit-scss-loader": "^2.0.1",
     "minify-lit-html-loader": "github:khmyznikov/minify-lit-html-loader",
+    "null-loader": "^4.0.1",
     "postcss": "^8.4.33",
     "postcss-import": "^16.0.0",
     "postcss-loader": "^7.3.4",
@@ -49,7 +53,6 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
-    "@lit/localize": "^0.12.1",
     "lit": "^3.1.0"
   },
   "bugs": {

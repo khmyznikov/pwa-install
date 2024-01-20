@@ -2,7 +2,6 @@
 import { LitElement } from 'lit';
 import { IRelatedApp, PWAInstallAttributes } from './types/types';
 export declare class PWAInstallElement extends LitElement {
-    private manifest;
     manifestUrl: string;
     icon: string;
     name: string;
@@ -14,14 +13,15 @@ export declare class PWAInstallElement extends LitElement {
     manualChrome: boolean;
     disableChrome: boolean;
     static get styles(): CSSStyleSheet[];
-    platforms: BeforeInstallPromptEvent['platforms'];
-    userChoiceResult: string;
-    isDialogHidden: boolean;
-    isInstallAvailable: boolean;
-    isAppleMobilePlatform: boolean;
-    isAppleDesktopPlatform: boolean;
-    isUnderStandaloneMode: boolean;
-    isRelatedAppsInstalled: boolean;
+    protected platforms: BeforeInstallPromptEvent['platforms'];
+    protected userChoiceResult: string;
+    protected isDialogHidden: boolean;
+    protected isInstallAvailable: boolean;
+    protected isAppleMobilePlatform: boolean;
+    protected isAppleDesktopPlatform: boolean;
+    protected isUnderStandaloneMode: boolean;
+    protected isRelatedAppsInstalled: boolean;
+    private _manifest;
     private _howToRequested;
     private _galleryRequested;
     private _install;

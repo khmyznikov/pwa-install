@@ -19,12 +19,17 @@ import stylesApple from './templates/apple/styles-apple.scss';
 import template from './templates/chrome/template';
 import templateApple from './templates/apple/template-apple';
 
-
+/**
+ * @event {CustomEvent} pwa-install-success-event - App install success (Chromium/Android only)
+ * @event {CustomEvent} pwa-install-fail-event - App install failed (Chromium/Android only)
+ * @event {CustomEvent} pwa-user-choice-result-event - dismissed, accepted
+ * @event {CustomEvent} pwa-install-available-event - App install available
+ * @event {CustomEvent} pwa-install-how-to-event - App install instruction showed
+ * @event {CustomEvent} pwa-install-gallery-event - App install gallery showed
+ */
 @localized()
 @customElement('pwa-install')
 export class PWAInstallElement extends LitElement {
-	private manifest: WebAppManifest = new Manifest();
-
 	@property({attribute: 'manifest-url'}) manifestUrl = '/manifest.json';
 	@property() icon = '';
 	@property() name = '';
@@ -40,16 +45,18 @@ export class PWAInstallElement extends LitElement {
 		return [ styles, stylesApple ];
 	}
 
-	public platforms: BeforeInstallPromptEvent['platforms'] = [];
-	public userChoiceResult = '';
+	protected platforms: BeforeInstallPromptEvent['platforms'] = [];
+	protected userChoiceResult = '';
 
-	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
-	public isInstallAvailable = false;
-	public isAppleMobilePlatform = false;
-	public isAppleDesktopPlatform = false;
-	public isUnderStandaloneMode = false;
-	public isRelatedAppsInstalled = false;
+	protected isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	protected isInstallAvailable = false;
+	protected isAppleMobilePlatform = false;
+	protected isAppleDesktopPlatform = false;
+	protected isUnderStandaloneMode = false;
+	protected isRelatedAppsInstalled = false;
 
+	/** @internal */
+	private _manifest: WebAppManifest = new Manifest();
 	/** @internal */
 	private _howToRequested = false;
 	/** @internal */
@@ -123,9 +130,9 @@ export class PWAInstallElement extends LitElement {
 				Utils.eventInstallHowTo(this);
 				
 				// Looks like it's not needed anymore
-				// if (this.manifest.start_url){
+				// if (this._manifest.start_url){
 				// 	try {
-				// 		history.replaceState({}, '', this.manifest.start_url);
+				// 		history.replaceState({}, '', this._manifest.start_url);
 				// 	} catch (e) {}
 				// }
 			}				
@@ -212,12 +219,12 @@ export class PWAInstallElement extends LitElement {
 					this.icon = this.icon || _json.icons[0].src;
 					this.name = this.name || _json['short_name'] || _json.name;
 					this.description = this.description || _json.description;
-					this.manifest = _json;
+					this._manifest = _json;
 				});
 			else {
-				this.icon = this.icon || this.manifest.icons?.[0].src || '';
-				this.name = this.name || this.manifest['short_name'] || '';
-				this.description = this.description || this.manifest.description || '';
+				this.icon = this.icon || this._manifest.icons?.[0].src || '';
+				this.name = this.name || this._manifest['short_name'] || '';
+				this.description = this.description || this._manifest.description || '';
 			}
 		});
 	};
@@ -247,7 +254,7 @@ export class PWAInstallElement extends LitElement {
 				this.disableDescription,
 				this.disableScreenshots,
 				this.icon, 
-				this.manifest,
+				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
 				this._howToForApple,
@@ -264,7 +271,7 @@ export class PWAInstallElement extends LitElement {
 				this.disableDescription,
 				this.disableScreenshots,
 				this.icon, 
-				this.manifest,
+				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
 				this._install,

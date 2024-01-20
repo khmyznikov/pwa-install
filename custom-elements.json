@@ -202,6 +202,50 @@
               "privacy": "public"
             }
           ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "App install success (Chromium/Android only)",
+              "name": "pwa-install-success-event"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "App install failed (Chromium/Android only)",
+              "name": "pwa-install-fail-event"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "dismissed, accepted",
+              "name": "pwa-user-choice-result-event"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "App install available",
+              "name": "pwa-install-available-event"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "App install instruction showed",
+              "name": "pwa-install-how-to-event"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "App install gallery showed",
+              "name": "pwa-install-gallery-event"
+            }
+          ],
           "attributes": [
             {
               "name": "manifest-url",
