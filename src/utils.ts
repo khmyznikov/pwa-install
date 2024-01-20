@@ -45,9 +45,12 @@ export default class Utils {
 
     static async getInstalledRelatedApps(): Promise<IRelatedApp[]> {
         if ('getInstalledRelatedApps' in navigator)
-            await (navigator as any).getInstalledRelatedApps().then((relatedApps: IRelatedApp[]) => {
-				return relatedApps;
-            });
+            try{
+                await (navigator as any).getInstalledRelatedApps().then((relatedApps: IRelatedApp[]) => {
+                    return relatedApps;
+                });
+            } catch (e) {}
+            
         return [];
     }
     
