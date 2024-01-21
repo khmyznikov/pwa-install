@@ -6,8 +6,8 @@
 
 Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
 
-Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-vue). No polyfill is required.
-Addional [fallback for React](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx).
+Use it as [Web Component with any **modern** framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-vue). No polyfill is required.
+[React polyfill](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx).
 
 ## **[Demo](https://khmyznikov.com/pwa-install/)**
 
@@ -43,7 +43,7 @@ Addional [fallback for React](https://glitch.com/edit/#!/mango-shine-diagram?pat
 npm i @khmyznikov/pwa-install
 ```
 
-Alternatively, you can use [unpkg](https://unpkg.com).
+Alternatively, you can use [unpkg](https://unpkg.com) or [esm.sh](https://esm.sh).
 
 
 ## Import
@@ -57,7 +57,7 @@ import '@khmyznikov/pwa-install';
 ```html
 <pwa-install></pwa-install>
 ```
-[Fallback for React](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx)
+[React polyfill](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx)
 
 ### **[Demo](https://khmyznikov.com/pwa-install/)**
 
@@ -141,6 +141,27 @@ import '@khmyznikov/pwa-install';
 
 *getInstalledRelatedApps is Chromium only, always empty on iOS.*
 
+<br>
+
+## Async mode
+
+If you need to target Chromium browsers but you want to postpone component mounting, you can do it!
+But, need to capture *beforeinstallprompt* manually and pass it to the component's *externalPromptEvent* property(not attribute).
+
+```javascript
+// capture event asap, better right in index.html script tag
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  e.stopImmediatePropagation();
+
+  // save it somewhere
+  window.promptEvent = e;
+});
+
+// later render the component on demand and pass event
+document.getElementById("pwa-install").externalPromptEvent = window.promptEvent;
+```
 <br>
 
 ## Supported localization
