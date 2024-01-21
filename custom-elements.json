@@ -13,15 +13,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "manifest",
-              "type": {
-                "text": "WebAppManifest"
-              },
-              "privacy": "private",
-              "default": "new Manifest()"
-            },
-            {
-              "kind": "field",
               "name": "manifestUrl",
               "type": {
                 "text": "string"
@@ -112,11 +103,19 @@
             },
             {
               "kind": "field",
+              "name": "externalPromptEvent",
+              "type": {
+                "text": "BeforeInstallPromptEvent | null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
               "name": "platforms",
               "type": {
                 "text": "BeforeInstallPromptEvent['platforms']"
               },
-              "privacy": "public",
+              "privacy": "protected",
               "default": "[]"
             },
             {
@@ -125,7 +124,7 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "public",
+              "privacy": "protected",
               "default": "''"
             },
             {
@@ -134,7 +133,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public"
+              "privacy": "protected"
             },
             {
               "kind": "field",
@@ -142,7 +141,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
+              "privacy": "protected",
               "default": "false"
             },
             {
@@ -151,7 +150,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
+              "privacy": "protected",
               "default": "false"
             },
             {
@@ -160,7 +159,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
+              "privacy": "protected",
               "default": "false"
             },
             {
@@ -169,7 +168,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
+              "privacy": "protected",
               "default": "false"
             },
             {
@@ -178,7 +177,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "public",
+              "privacy": "protected",
               "default": "false"
             },
             {

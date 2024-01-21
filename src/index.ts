@@ -1,6 +1,6 @@
-import { LitElement, html } from 'lit';
+import { LitElement, PropertyValues, html } from 'lit';
 import { localized } from '@lit/localize';
-import { property, customElement } from 'lit/decorators.js';
+import { property, state, customElement } from 'lit/decorators.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { changeLocale } from './localization';
 
@@ -45,6 +45,8 @@ export class PWAInstallElement extends LitElement {
 		return [ styles, stylesApple ];
 	}
 
+	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
+
 	protected platforms: BeforeInstallPromptEvent['platforms'] = [];
 	protected userChoiceResult = '';
 
@@ -64,10 +66,10 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _install = {
 		handleEvent: () => {
-			if (window.deferredEvent) {
+			if (window.defferedPromptEvent) {
 				this.hideDialog();
-				window.deferredEvent.prompt();
-				window.deferredEvent.userChoice
+				window.defferedPromptEvent.prompt();
+				window.defferedPromptEvent.userChoice
 					.then((choiceResult: PromptResponseObject) => {
 						this.userChoiceResult = choiceResult.outcome;
 						Utils.eventUserChoiceResult(this, this.userChoiceResult);
@@ -75,7 +77,7 @@ export class PWAInstallElement extends LitElement {
 					.catch((error) => {
 						Utils.eventInstalledFail(this);
 					});
-				window.deferredEvent = null;
+				window.defferedPromptEvent = null;
 			}
 		},
 		passive: true
@@ -177,14 +179,14 @@ export class PWAInstallElement extends LitElement {
 		}
 	}
 	/** @internal */
-	private _init = () => {
-		window.deferredEvent = null;
+	private _init = async () => {
+		window.defferedPromptEvent = null;
 
 		this._checkInstalled();
 
-		if (!this.disableChrome)
-			window.addEventListener('beforeinstallprompt', (e: BeforeInstallPromptEvent) => {
-				window.deferredEvent = e;
+		if (!this.disableChrome) {
+			const _promptHandler = (e: BeforeInstallPromptEvent) => {
+				window.defferedPromptEvent = e;
 				e.preventDefault();
 
 				this.platforms = e.platforms;
@@ -202,10 +204,15 @@ export class PWAInstallElement extends LitElement {
 				}
 
 				this.requestUpdate();
-			});
+			}
+			if (this.externalPromptEvent != null)
+				setTimeout(() => _promptHandler(this.externalPromptEvent!), 300);
+			else
+				window.addEventListener('beforeinstallprompt', _promptHandler);
+		}
 
 		window.addEventListener('appinstalled', (e) => {
-			window.deferredEvent = null;
+			window.defferedPromptEvent = null;
 			this.isInstallAvailable = false;
 
 			this.requestUpdate();
@@ -213,20 +220,22 @@ export class PWAInstallElement extends LitElement {
 		});
 
 
-		fetch(this.manifestUrl).then((response: Response) => {
-			if (response.ok)
-				response.json().then((_json) => {
-					this.icon = this.icon || _json.icons[0].src;
-					this.name = this.name || _json['short_name'] || _json.name;
-					this.description = this.description || _json.description;
-					this._manifest = _json;
-				});
-			else {
-				this.icon = this.icon || this._manifest.icons?.[0].src || '';
-				this.name = this.name || this._manifest['short_name'] || '';
-				this.description = this.description || this._manifest.description || '';
-			}
-		});
+		try{
+			const _response = await fetch(this.manifestUrl);
+			const _json = await _response.json() as WebAppManifest;
+			if (!_response.ok || !_json || !Object.keys(_json))
+				throw new Error('Manifest not found');
+			
+			this.icon = this.icon || _json.icons?.length ? _json.icons![0].src : '';
+			this.name = this.name || _json['short_name'] || _json.name || '';
+			this.description = this.description || _json.description || '';
+			this._manifest = _json;
+		}
+		catch(e) {
+			this.icon = this.icon || this._manifest.icons?.[0].src || '';
+			this.name = this.name || this._manifest['short_name'] || '';
+			this.description = this.description || this._manifest.description || '';
+		}
 	};
 	/** @internal */
 	private _requestUpdate = () => {
@@ -239,6 +248,11 @@ export class PWAInstallElement extends LitElement {
 		PWAGalleryElement.finalized;
 		PWABottomSheetElement.finalized;
 		super.connectedCallback();
+	}
+	willUpdate(changedProperties: PropertyValues<this>) {
+		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
+		  this._init();
+		}
 	}
 
 	// firstUpdated() {

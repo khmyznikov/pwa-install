@@ -6,7 +6,8 @@
 
 Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
 
-Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-react). No polyfill is required.
+Use it as [Web Component with any modern framework](https://academind.com/tutorials/web-components-introduction/#consuming-the-web-component-in-vue). No polyfill is required.
+Addional [fallback for React](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx).
 
 ## **[Demo](https://khmyznikov.com/pwa-install/)**
 
@@ -56,6 +57,7 @@ import '@khmyznikov/pwa-install';
 ```html
 <pwa-install></pwa-install>
 ```
+[Fallback for React](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx)
 
 ### **[Demo](https://khmyznikov.com/pwa-install/)**
 

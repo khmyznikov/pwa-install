@@ -1,5 +1,5 @@
 /// <reference types="dom-chromium-installation-events" />
-import { LitElement } from 'lit';
+import { LitElement, PropertyValues } from 'lit';
 import { IRelatedApp, PWAInstallAttributes } from './types/types';
 export declare class PWAInstallElement extends LitElement {
     manifestUrl: string;
@@ -13,6 +13,7 @@ export declare class PWAInstallElement extends LitElement {
     manualChrome: boolean;
     disableChrome: boolean;
     static get styles(): CSSStyleSheet[];
+    externalPromptEvent: BeforeInstallPromptEvent | null;
     protected platforms: BeforeInstallPromptEvent['platforms'];
     protected userChoiceResult: string;
     protected isDialogHidden: boolean;
@@ -37,6 +38,7 @@ export declare class PWAInstallElement extends LitElement {
     private _init;
     private _requestUpdate;
     connectedCallback(): void;
+    willUpdate(changedProperties: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 export { PWAInstallAttributes };

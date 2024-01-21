@@ -7,7 +7,7 @@ export interface IRelatedApp {
 }
 
 export interface IWindow extends Window {
-    deferredEvent: BeforeInstallPromptEvent | null;
+    defferedPromptEvent: BeforeInstallPromptEvent | null;
 }
 
 type Booleanish = 'true' | 'false';

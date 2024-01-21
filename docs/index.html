@@ -91,6 +91,20 @@
 		</fieldset>
 	</section>
 
+	<!-- <script>
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+			e.stopPropagation();
+			e.stopImmediatePropagation();
+			window.promptEvent = e;
+
+			document.getElementById("pwa-install").externalPromptEvent = window.promptEvent;
+        });
+		// var pwaInstallEl = document.createElement('pwa-install');
+		// pwaInstallEl.id = "pwa-install";
+		// document.body.appendChild(pwaInstallEl);
+    </script> -->
+
 	<pwa-install id="pwa-install" manifest-url="manifest.json"></pwa-install>
 
 	<script type="text/javascript">
