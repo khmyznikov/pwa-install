@@ -10,15 +10,13 @@ const _eventDispatcher = (_element: Element, name: string, message: string) => {
 }
 export default class Utils {
     static isAppleMobile(): boolean {
-		if (
-                (
-                    ['iPhone', 'iPad', 'iPod'].includes(navigator.platform) ||
-                    (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
-                )
-                && ('serviceWorker' in navigator)
+	return (
+            (
+                ['iPhone', 'iPad', 'iPod'].includes(navigator.platform) ||
+                (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
             )
-			return true;
-		return false;
+            && ('serviceWorker' in navigator)
+        );
     }
 
     static isAppleDesktop(): boolean {
@@ -38,9 +36,7 @@ export default class Utils {
     }
     
     static isStandalone() {
-		if (window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone === true))
-			return true;
-		return false;
+	    return (window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone === true));
     }
 
     static async getInstalledRelatedApps(): Promise<IRelatedApp[]> {
