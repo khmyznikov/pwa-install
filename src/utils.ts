@@ -10,13 +10,12 @@ const _eventDispatcher = (_element: Element, name: string, message: string) => {
 }
 export default class Utils {
     static isAppleMobile(): boolean {
-	return (
+	    return (
             (
                 ['iPhone', 'iPad', 'iPod'].includes(navigator.platform) ||
                 (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
             )
-            && ('serviceWorker' in navigator)
-        );
+            && ('serviceWorker' in navigator) || false);
     }
 
     static isAppleDesktop(): boolean {
