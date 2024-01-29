@@ -189,6 +189,6 @@ Language should change automatically based on browser settings. Please create th
 <br>
 
 ## ROADMAP
-- support async load with external beforeinstallprompt catcher
-- legacy react wrap 
-- style customization
+- samsung mobile support
+- mozilla mobile support
+- manual theme
