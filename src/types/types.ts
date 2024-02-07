@@ -16,6 +16,7 @@ export interface PWAInstallAttributes {
     ['manual-apple']?: Booleanish;
     ['manual-chrome']?: Booleanish;
     ['disable-chrome']?: Booleanish;
+    ['language']?: string;
     ['install-description']?: string;
     ['disable-install-description']?: Booleanish;
     ['manifest-url']?: string;

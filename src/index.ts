@@ -34,6 +34,7 @@ export class PWAInstallElement extends LitElement {
 	@property() icon = '';
 	@property() name = '';
 	@property() description = '';
+	@property({attribute: 'language'}) language = navigator.language;
 	@property({attribute: 'install-description'}) installDescription = '';
 	@property({attribute: 'disable-install-description', type: Boolean}) disableDescription = false;
 	@property({attribute: 'disable-screenshots', type: Boolean}) disableScreenshots = false;
@@ -180,6 +181,7 @@ export class PWAInstallElement extends LitElement {
 	}
 	/** @internal */
 	private _init = async () => {
+		changeLocale(this.language)
 		window.defferedPromptEvent = null;
 
 		this._checkInstalled();
@@ -243,7 +245,6 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	connectedCallback() {
-		changeLocale(navigator.language);
 		this._init();
 		PWAGalleryElement.finalized;
 		PWABottomSheetElement.finalized;

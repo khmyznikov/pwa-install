@@ -70,6 +70,8 @@ import '@khmyznikov/pwa-install';
   manual-chrome="true"
   disable-chrome="true"
 
+  language="en"
+
   install-description="Custom call to install text"
   disable-install-description="true"
   disable-screenshots="true"

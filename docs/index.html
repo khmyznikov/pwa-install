@@ -79,7 +79,28 @@
 			</label><hr>
 	
 			<input type="text" placeholder="App name text" onchange="setAttr('name', this.value)"><br>
-			<input type="text" placeholder="App description text" onchange="setAttr('description', this.value)"><br>
+			<input type="text" placeholder="App description text" onchange="setAttr('description', this.value)"><br><hr>
+
+			<label>
+				<select id="language" onchange="setAttr('language', this.value)">
+					<option value="en" selected>en</option>
+					<option value="ru">ru</option>
+					<option value="tr">tr</option>
+					<option value="de">de</option>
+					<option value="es">es</option>
+					<option value="nl">nl</option>
+					<option value="el">el</option>
+					<option value="fr">fr</option>
+					<option value="sr">sr</option>
+					<option value="pl">pl</option>
+					<option value="uk">uk</option>
+					<option value="zh">zh</option>
+					<option value="zh-CN">zh-CN</option>
+					<option value="it">it</option>
+					<option value="cs">cs</option>					
+				</select>
+				Language
+			</label>
 		</fieldset>
 		<fieldset>
 			<legend>
