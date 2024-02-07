@@ -34,5 +34,6 @@
         "name": "typescript-lit-html-plugin"
       }
     ]
-  }
+  },
+  "exclude": ["src/fallback"]
 }

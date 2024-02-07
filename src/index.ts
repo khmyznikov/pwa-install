@@ -27,14 +27,15 @@ import templateApple from './templates/apple/template-apple';
  * @event {CustomEvent} pwa-install-how-to-event - App install instruction showed
  * @event {CustomEvent} pwa-install-gallery-event - App install gallery showed
  */
-@localized()
+
 @customElement('pwa-install')
+@localized()
 export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manifest-url'}) manifestUrl = '/manifest.json';
 	@property() icon = '';
 	@property() name = '';
 	@property() description = '';
-	@property({attribute: 'language'}) language = navigator.language;
+	@property() language = navigator.language;
 	@property({attribute: 'install-description'}) installDescription = '';
 	@property({attribute: 'disable-install-description', type: Boolean}) disableDescription = false;
 	@property({attribute: 'disable-screenshots', type: Boolean}) disableScreenshots = false;
@@ -181,7 +182,6 @@ export class PWAInstallElement extends LitElement {
 	}
 	/** @internal */
 	private _init = async () => {
-		changeLocale(this.language)
 		window.defferedPromptEvent = null;
 
 		this._checkInstalled();
@@ -245,12 +245,16 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	connectedCallback() {
+		changeLocale(this.language);
 		this._init();
 		PWAGalleryElement.finalized;
 		PWABottomSheetElement.finalized;
 		super.connectedCallback();
 	}
 	willUpdate(changedProperties: PropertyValues<this>) {
+		if (changedProperties.has('language')) {
+			changeLocale(this.language);
+		}
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
 		  this._init();
 		}

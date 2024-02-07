@@ -83,7 +83,8 @@
 
 			<label>
 				<select id="language" onchange="setAttr('language', this.value)">
-					<option value="en" selected>en</option>
+					<option disabled selected>Language override</option>
+					<option value="en">en</option>
 					<option value="ru">ru</option>
 					<option value="tr">tr</option>
 					<option value="de">de</option>
@@ -98,8 +99,8 @@
 					<option value="zh-CN">zh-CN</option>
 					<option value="it">it</option>
 					<option value="cs">cs</option>					
-				</select>
-				Language
+				</select><br>
+				Don't recommend to use in prod
 			</label>
 		</fieldset>
 		<fieldset>
@@ -175,7 +176,7 @@
 		const setAttr = (attr, value) => {
 			value? pwaInstall.setAttribute(attr, value) :
 			pwaInstall.removeAttribute(attr);
-			pwaInstall._init();
+			attr != 'language' && pwaInstall._init();
 		}
 
 		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});
