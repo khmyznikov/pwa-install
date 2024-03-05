@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="no" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s6196153c4b0c1ea0">
+  <source>Install</source>
+  <target>Installer</target>
+</trans-unit>
+<trans-unit id="sfea652f6580ff086">
+  <source>This site has app functionality.</source>
+  <target>Denne siden har app-funksjonalitet.</target>
+</trans-unit>
+<trans-unit id="sba52286c21552a4e">
+  <source>Install it on your device for extensive experience and easy access.</source>
+  <target>Installer den på enheten din for å få en bedre brukeropplevelse og raskere tilgang.</target>
+</trans-unit>
+<trans-unit id="sa5ef80b4bb9b39f8">
+  <source>Less</source>
+  <target>Mindre</target>
+</trans-unit>
+<trans-unit id="s37a9e8aec5713460">
+  <source>More</source>
+  <target>Mer</target>
+</trans-unit>
+<trans-unit id="se740f75b95a51807">
+  <source>Add it to your Dock for extensive experience and easy access.</source>
+  <target>Legg den til i Docken din for å få en bedre brukeropplevelse og raskere tilgang.</target>
+</trans-unit>
+<trans-unit id="s182ab2d6c997515f">
+  <source>Add it to your Home Screen for extensive experience and easy access.</source>
+  <target>Legg den til på Hjem-skjermen din for å få en bedre brukeropplevelse og raskere tilgang.</target>
+</trans-unit>
+<trans-unit id="sdfe23506a3b0cdc8">
+  <source>1) Open in Safari browser</source>
+  <target>1) Åpne i Safari</target>
+</trans-unit>
+<trans-unit id="s1b9047d53d9f9d22">
+  <source>2) Press Share in Navigation bar</source>
+  <target>2) Trykk på Del-knappen i navigasjonslinjen</target>
+</trans-unit>
+<trans-unit id="sa7551383d1897fcc">
+  <source>2) Press Add to Dock</source>
+  <target>2) Velg Legg til i Dock</target>
+</trans-unit>
+<trans-unit id="s5c6aad7a7e4a1437">
+  <source>3) Press Add to Home Screen</source>
+  <target>3) Velg Legg til på Hjem-skjerm</target>
+</trans-unit>
+<trans-unit id="sc79fd7641eb9a975">
+  <source>Hide Instruction</source>
+  <target>Skjul instruksjoner</target>
+</trans-unit>
+<trans-unit id="s922329d6f6213590">
+  <source>Add to Dock</source>
+  <target>Legg til i Dock</target>
+</trans-unit>
+<trans-unit id="scdaf4bbff76674c8">
+  <source>Add to Home Screen</source>
+  <target>Legg til på Hjem-skjerm</target>
+</trans-unit>
+</body>
+</file>
+</xliff>
