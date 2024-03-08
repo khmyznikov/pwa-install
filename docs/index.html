@@ -76,6 +76,10 @@
 			<label>
 				<input type="checkbox" onchange="disableScreenshots(this)">
 				Hide screenshots
+			</label><br>
+			<label>
+				<input type="checkbox" onchange="disableClose(this)">
+				Disable Close
 			</label><hr>
 	
 			<input type="text" placeholder="App name text" onchange="setAttr('name', this.value)"><br>
@@ -150,6 +154,10 @@
 		const disableScreenshots = (cb) => {
 			cb.checked ? pwaInstall.setAttribute('disable-screenshots', true) :
 			pwaInstall.removeAttribute('disable-screenshots');
+		}
+		const disableClose = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('disable-close', true) :
+			pwaInstall.removeAttribute('disable-close');
 		}
 		const setAttr = (attr, value) => {
 			value? pwaInstall.setAttribute(attr, value) :

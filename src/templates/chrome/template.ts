@@ -3,7 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
@@ -37,7 +37,7 @@ const template = (name: string, description: string, installDescription: string,
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
                 <div class="dialog-body">
-                    <pwa-bottom-sheet .props=${{name, icon, description}} .install=${install} .hideDialog=${hideDialog}>
+                    <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog}>
                     </pwa-bottom-sheet>
                     ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                 </div>

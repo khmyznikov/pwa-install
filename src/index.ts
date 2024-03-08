@@ -40,6 +40,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manual-apple', type: Boolean}) manualApple = false;
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
+	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
 
 	static get styles() {
 		return [ styles, stylesApple ];
@@ -267,6 +268,7 @@ export class PWAInstallElement extends LitElement {
 				this.installDescription,
 				this.disableDescription,
 				this.disableScreenshots,
+				this.disableClose,
 				this.icon, 
 				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
@@ -284,6 +286,7 @@ export class PWAInstallElement extends LitElement {
 				this.installDescription,
 				this.disableDescription,
 				this.disableScreenshots,
+				this.disableClose,
 				this.icon, 
 				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
