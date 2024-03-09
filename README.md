@@ -69,6 +69,7 @@ import '@khmyznikov/pwa-install';
   manual-apple="true"
   manual-chrome="true"
   disable-chrome="true"
+  disable-close="true"
 
   install-description="Custom call to install text"
   disable-install-description="true"
@@ -181,6 +182,7 @@ Translations available:
 - *IT*
 - *UK*
 - *CS*
+- *NO*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
