@@ -10,6 +10,7 @@ export default class PWABottomSheetElement extends LitElement {
         handleEvent: () => void;
     };
     hideDialog: () => void;
+    disableClose: boolean;
     private _callInstall;
     private _callHide;
     private bindedElement;

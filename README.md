@@ -69,6 +69,7 @@ import '@khmyznikov/pwa-install';
   manual-apple="true"
   manual-chrome="true"
   disable-chrome="true"
+  disable-close="true"
 
   install-description="Custom call to install text"
   disable-install-description="true"

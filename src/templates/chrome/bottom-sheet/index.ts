@@ -21,6 +21,7 @@ export default class PWABottomSheetElement extends LitElement {
     };
     @property({type: Object}) install = {handleEvent: () => {}};
 	@property() hideDialog = () => {};
+	@property() disableClose = false;
 
 	private _callInstall = () => {
 		this.install.handleEvent();
@@ -60,11 +61,12 @@ export default class PWABottomSheetElement extends LitElement {
 		const dragMouseUp = (e: MouseEvent | TouchEvent) => {
 			document.body.style.overscrollBehaviorY = this._saveBodyStyle;
 
-			if (getYCoord(e) >= window.innerHeight - 25){
+			if (!this.disableClose && getYCoord(e) >= window.innerHeight - 25) {
 				closeDragElement(e, window.innerHeight + 50, true);
 				return
 			}
-			if (window.innerHeight - getYCoord(e)  > element.clientHeight / 2.5){
+
+			if (window.innerHeight - getYCoord(e)  > element.clientHeight / 2.5) {
 				closeDragElement(e, window.innerHeight - element.clientHeight);
 				
 				try {
@@ -81,6 +83,10 @@ export default class PWABottomSheetElement extends LitElement {
 		const dragMouseMove = (e: MouseEvent | TouchEvent) => {
 			const currentY = getYCoord(e);
 
+			if (this.disableClose && window.innerHeight - currentY < 70) {
+				return
+			}
+			
 			if (currentY <= (window.innerHeight - element.clientHeight + dragOffset)) {
 				return
 			}

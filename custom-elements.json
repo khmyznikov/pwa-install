@@ -103,6 +103,15 @@
             },
             {
               "kind": "field",
+              "name": "disableClose",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-close"
+            },
+            {
+              "kind": "field",
               "name": "externalPromptEvent",
               "type": {
                 "text": "BeforeInstallPromptEvent | null"
@@ -325,6 +334,14 @@
               },
               "default": "false",
               "fieldName": "disableChrome"
+            },
+            {
+              "name": "disable-close",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableClose"
             }
           ],
           "superclass": {

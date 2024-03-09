@@ -12,6 +12,7 @@ export declare class PWAInstallElement extends LitElement {
     manualApple: boolean;
     manualChrome: boolean;
     disableChrome: boolean;
+    disableClose: boolean;
     static get styles(): CSSStyleSheet[];
     externalPromptEvent: BeforeInstallPromptEvent | null;
     protected platforms: BeforeInstallPromptEvent['platforms'];
