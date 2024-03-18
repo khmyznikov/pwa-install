@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file target-language="pt" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+    <body>
+      <trans-unit id="s6196153c4b0c1ea0">
+        <source>Install</source>
+        <target>Instalar</target>
+      </trans-unit>
+      <trans-unit id="sfea652f6580ff086">
+        <source>This site has app functionality.</source>
+        <target>Este site possui funcionalidade de aplicativo.</target>
+      </trans-unit>
+      <trans-unit id="sba52286c21552a4e">
+        <source>Install it on your device for extensive experience and easy access.</source>
+        <target>Instale no dispositivo para uma melhor experiência e mais fácil acesso.</target>
+      </trans-unit>
+      <trans-unit id="sa5ef80b4bb9b39f8">
+        <source>Less</source>
+        <target>Menos</target>
+      </trans-unit>
+      <trans-unit id="s37a9e8aec5713460">
+        <source>More</source>
+        <target>Mais</target>
+      </trans-unit>
+      <trans-unit id="se740f75b95a51807">
+        <source>Add it to your Dock for extensive experience and easy access.</source>
+        <target>Adicione ao Dock para uma melhor experiência e mais fácil acesso.</target>
+      </trans-unit>
+      <trans-unit id="s182ab2d6c997515f">
+        <source>Add it to your Home Screen for extensive experience and easy access.</source>
+        <target>Adicione à Tela de Início para uma melhor experiência e mais fácil acesso.</target>
+      </trans-unit>
+      <trans-unit id="sdfe23506a3b0cdc8">
+        <source>1) Open in Safari browser</source>
+        <target>1) Abra no navegador Safari</target>
+      </trans-unit>
+      <trans-unit id="s1b9047d53d9f9d22">
+        <source>2) Press Share in Navigation bar</source>
+        <target>2) Pressione Compartilhar na barra de endereço</target>
+      </trans-unit>
+      <trans-unit id="sa7551383d1897fcc">
+        <source>2) Press Add to Dock</source>
+        <target>2) Pressione Adicionar ao Dock</target>
+      </trans-unit>
+      <trans-unit id="s5c6aad7a7e4a1437">
+        <source>3) Press Add to Home Screen</source>
+        <target>3) Pressione Adicionar à Tela de Início</target>
+      </trans-unit>
+      <trans-unit id="sc79fd7641eb9a975">
+        <source>Hide Instruction</source>
+        <target>Ocultar Instruções</target>
+      </trans-unit>
+      <trans-unit id="s922329d6f6213590">
+        <source>Add to Dock</source>
+        <target>Adicionar ao Dock</target>
+      </trans-unit>
+      <trans-unit id="scdaf4bbff76674c8">
+        <source>Add to Home Screen</source>
+        <target>Adicionar à Tela de Início</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
