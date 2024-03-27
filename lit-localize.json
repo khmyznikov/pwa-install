@@ -17,7 +17,8 @@
     "it",
     "cs",
     "no",
-    "pt"
+    "pt",
+    "ja"
   ],
   "tsConfig": "tsconfig.json",
   "output": {

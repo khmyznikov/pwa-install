@@ -107,6 +107,10 @@
                     word-break: break-all;
                     white-space: nowrap;
                 }
+
+                & + hr{
+                    margin-top: 10px;
+                }
             }
 
             .description{
