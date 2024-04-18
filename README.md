@@ -198,4 +198,6 @@ Language should change automatically based on browser settings. Please create th
 - manual theme
 
 
-<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/20fb1771-f6a4-43f1-81a9-15e0c735943d" width="200">
+[<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
+[<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)
+
