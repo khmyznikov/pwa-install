@@ -196,3 +196,6 @@ Language should change automatically based on browser settings. Please create th
 - samsung mobile support
 - mozilla mobile support
 - manual theme
+
+
+<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/20fb1771-f6a4-43f1-81a9-15e0c735943d" width="200">
