@@ -19,7 +19,9 @@ export default {
 								ignoreCustomFragments: [
 									/<\s/,
 									/<=/
-								]
+								],
+								collapseInlineTagWhitespace: true,
+								noNewlinesBeforeTagClose: true
 							},
 						},
 					}
