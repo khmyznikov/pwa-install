@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="ko" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s6196153c4b0c1ea0">
+  <source>Install</source>
+  <target>설치</target>
+</trans-unit>
+<trans-unit id="sfea652f6580ff086">
+  <source>This site has app functionality.</source>
+  <target>이 사이트는 앱 기능을 가지고 있습니다.</target>
+</trans-unit>
+<trans-unit id="sba52286c21552a4e">
+  <source>Install it on your device for extensive experience and easy access.</source>
+  <target>더 많은 기능과 쉬운 접근을 위해 기기에 설치해주세요.</target>
+</trans-unit>
+<trans-unit id="sa5ef80b4bb9b39f8">
+  <source>Less</source>
+  <target>닫기</target>
+</trans-unit>
+<trans-unit id="s37a9e8aec5713460">
+  <source>More</source>
+  <target>더보기</target>
+</trans-unit>
+<trans-unit id="se740f75b95a51807">
+  <source>Add it to your Dock for extensive experience and easy access.</source>
+  <target>더 많은 기능과 쉬운 접근을 위해 Dock에 추가해주세요.</target>
+</trans-unit>
+<trans-unit id="s182ab2d6c997515f">
+  <source>Add it to your Home Screen for extensive experience and easy access.</source>
+  <target>더 많은 기능과 쉬운 접근을 위해 홈 화면에 추가해주세요.</target>
+</trans-unit>
+<trans-unit id="sdfe23506a3b0cdc8">
+  <source>1) Open in Safari browser</source>
+  <target>1) Safari 브라우저에서 열기</target>
+</trans-unit>
+<trans-unit id="s1b9047d53d9f9d22">
+  <source>2) Press Share in Navigation bar</source>
+  <target>2) 내비게이션 바에서 공유 버튼 누르기</target>
+</trans-unit>
+<trans-unit id="sa7551383d1897fcc">
+  <source>2) Press Add to Dock</source>
+  <target>2) Dock에 추가 버튼 누르기</target>
+</trans-unit>
+<trans-unit id="s5c6aad7a7e4a1437">
+  <source>3) Press Add to Home Screen</source>
+  <target>3) 홈 화면에 추가 버튼 누르기</target>
+</trans-unit>
+<trans-unit id="sc79fd7641eb9a975">
+  <source>Hide Instruction</source>
+  <target>안내 숨기기</target>
+</trans-unit>
+<trans-unit id="s922329d6f6213590">
+  <source>Add to Dock</source>
+  <target>Dock에 추가</target>
+</trans-unit>
+<trans-unit id="scdaf4bbff76674c8">
+  <source>Add to Home Screen</source>
+  <target>홈 화면에 추가</target>
+</trans-unit>
+</body>
+</file>
+</xliff>
