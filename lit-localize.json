@@ -19,7 +19,8 @@
     "no",
     "sv",
     "pt",
-    "ja"
+    "ja",
+    "ko"
   ],
   "tsConfig": "tsconfig.json",
   "output": {
