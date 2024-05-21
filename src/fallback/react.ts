@@ -1,6 +1,5 @@
 
-// @ts-ignore
-import  { PWAInstallElement } from '@khmyznikov/pwa-install';
+import { PWAInstallElement } from '../index';
 import { createComponent } from '@lit/react';
 import react from 'react';
 
