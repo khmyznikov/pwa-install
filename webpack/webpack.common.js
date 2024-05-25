@@ -36,7 +36,7 @@ export default {
 						loader: 'ts-loader'
 					},
 				],
-				exclude: [/node_modules/, /src\/fallback/],
+				exclude: [/node_modules/],
 			},
 
 			{
