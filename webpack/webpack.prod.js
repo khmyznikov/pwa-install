@@ -20,6 +20,7 @@ export default merge(common, {
   output: {
     filename: "pwa-install.bundle.js",
     library: "PWAInstallComponent",
+    path: resolve(__dirname, '../dist/'),
   },
   plugins: [
     new CleanWebpackPlugin(),
