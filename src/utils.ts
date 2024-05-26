@@ -1,3 +1,4 @@
+import { WebAppManifest } from 'web-app-manifest';
 import { IRelatedApp } from './types/types';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
@@ -77,5 +78,11 @@ export default class Utils {
     static eventGallery(_element: Element) {
         _eventDispatcher(_element, 'pwa-install-gallery-event', 'App install gallery showed');
     }
-    
+
+    static normalizeManifestAssetUrls(manifest: WebAppManifest, manifestUrl: string) {
+        const normalizedManifestUrl = new URL(manifestUrl, document.location.href);
+        [...manifest.icons || [], ...manifest.screenshots || []].forEach(asset => {
+            asset.src = new URL(asset.src, normalizedManifestUrl).href;
+        })
+    }
 }

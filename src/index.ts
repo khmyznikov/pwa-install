@@ -226,6 +226,7 @@ export class PWAInstallElement extends LitElement {
 			const _json = await _response.json() as WebAppManifest;
 			if (!_response.ok || !_json || !Object.keys(_json))
 				throw new Error('Manifest not found');
+			Utils.normalizeManifestAssetUrls(_json, this.manifestUrl);
 			
 			this.icon = this.icon || _json.icons?.length ? _json.icons![0].src : '';
 			this.name = this.name || _json['short_name'] || _json.name || '';

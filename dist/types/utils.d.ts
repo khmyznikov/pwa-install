@@ -1,3 +1,4 @@
+import { WebAppManifest } from 'web-app-manifest';
 import { IRelatedApp } from './types/types';
 export default class Utils {
     static isAppleMobile(): boolean;
@@ -11,4 +12,5 @@ export default class Utils {
     static eventInstallAvailable(_element: Element): void;
     static eventInstallHowTo(_element: Element): void;
     static eventGallery(_element: Element): void;
+    static normalizeManifestAssetUrls(manifest: WebAppManifest, manifestUrl: string): void;
 }
