@@ -12,13 +12,13 @@ delete prod.plugins;
 // delete prod.module;
 
 export default merge(prod, {
-	entry: resolve(__dirname, '../src/fallback/react.ts'),
+	entry: resolve(__dirname, '../src/react-legacy/pwa-install.react-legacy.ts'),
     output: {
-        filename: 'pwa-install.react.js',
+        filename: 'pwa-install.react-legacy.js',
         library: {
             type: 'module'
         },
-        path: resolve(__dirname, '../dist/'),
+        path: resolve(__dirname, '../dist/react-legacy/'),
     },
 	// module: {
 	// 	rules: [
@@ -29,12 +29,12 @@ export default merge(prod, {
 	// 					loader: 'ts-loader'
 	// 				},
 	// 			],
-	// 			include: resolve(__dirname, '../src/fallback'),
+	// 			include: resolve(__dirname, '../src/react-legacy'),
 	// 		},
 	// 		{
 	// 			test: /\.(scss|ts)$/,
 	// 			use: 'null-loader',
-	// 			exclude: resolve(__dirname, '../src/fallback'),
+	// 			exclude: resolve(__dirname, '../src/react-legacy'),
 	// 		}
 	// 	]
 	// },

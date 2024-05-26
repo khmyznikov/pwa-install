@@ -16,7 +16,7 @@ export default merge(prod, {
         library: {
             type: 'module',
         },
-        path: resolve(__dirname, '../dist/es'),
+        path: resolve(__dirname, '../dist/'),
     },
     
     externals,
