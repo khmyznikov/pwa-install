@@ -24,6 +24,7 @@ import * as ja from "./locales/ja";
 import * as sv from "./locales/sv";
 import * as ko from "./locales/ko";
 import * as km from "./locales/km";
+import * as faIR from "./locales/fa-IR";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -45,7 +46,8 @@ const localizedTemplates = new Map([
   ['ja', ja],
   ['sv', sv],
   ['ko', ko],
-  ['km', km]
+  ['km', km],
+  ['fa-IR', faIR]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({

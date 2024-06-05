@@ -21,7 +21,8 @@
     "pt",
     "ja",
     "ko",
-    "km"
+    "km",
+    "fa-IR"
   ],
   "tsConfig": "tsconfig.json",
   "output": {
