@@ -1,4 +1,3 @@
-/// <reference types="dom-chromium-installation-events" />
 import { LitElement, PropertyValues } from 'lit';
 import { IRelatedApp, PWAInstallAttributes } from './types/types';
 export declare class PWAInstallElement extends LitElement {
