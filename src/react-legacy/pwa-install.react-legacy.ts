@@ -1,6 +1,6 @@
 
 import { PWAInstallElement } from '../index';
-import { createComponent } from '@lit/react';
+import { createComponent, ReactWebComponent } from '@lit/react';
 import react from 'react';
 
 const PWAInstall = createComponent({
@@ -15,6 +15,6 @@ const PWAInstall = createComponent({
 	  onPwaInstallHowToEvent: 'pwa-install-how-to-event',
 	  onPwaInstallGalleryEvent: 'pwa-install-gallery-event'
 	}
-  });
+});
 
 export default PWAInstall;
