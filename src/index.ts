@@ -48,15 +48,15 @@ export class PWAInstallElement extends LitElement {
 
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
 
-	protected platforms: BeforeInstallPromptEvent['platforms'] = [];
-	protected userChoiceResult = '';
+	public platforms: BeforeInstallPromptEvent['platforms'] = [];
+	public userChoiceResult = '';
 
-	protected isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
-	protected isInstallAvailable = false;
-	protected isAppleMobilePlatform = false;
-	protected isAppleDesktopPlatform = false;
-	protected isUnderStandaloneMode = false;
-	protected isRelatedAppsInstalled = false;
+	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	public isInstallAvailable = false;
+	public isAppleMobilePlatform = false;
+	public isAppleDesktopPlatform = false;
+	public isUnderStandaloneMode = false;
+	public isRelatedAppsInstalled = false;
 
 	/** @internal */
 	private _manifest: WebAppManifest = new Manifest();
