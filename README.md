@@ -75,6 +75,8 @@ import '@khmyznikov/pwa-install';
   install-description="Custom call to install text"
   disable-install-description="true"
   disable-screenshots="true"
+  disable-screenshots-apple="true"
+  disable-screenshots-chrome="true"
 
   manifest-url="/manifest.json"
   name="PWA"
@@ -183,7 +185,7 @@ Translations available:
 - *IT*
 - *UK*
 - *CS*
-- *NO*
+- *NO/NB*
 - *PT*
 - *JA*
 - *SV*
