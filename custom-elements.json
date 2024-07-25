@@ -76,6 +76,24 @@
             },
             {
               "kind": "field",
+              "name": "disableScreenshotsApple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-screenshots-apple"
+            },
+            {
+              "kind": "field",
+              "name": "disableScreenshotsChrome",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-screenshots-chrome"
+            },
+            {
+              "kind": "field",
               "name": "manualApple",
               "type": {
                 "text": "boolean"
@@ -124,7 +142,7 @@
               "type": {
                 "text": "BeforeInstallPromptEvent['platforms']"
               },
-              "privacy": "protected",
+              "privacy": "public",
               "default": "[]"
             },
             {
@@ -133,7 +151,7 @@
               "type": {
                 "text": "string"
               },
-              "privacy": "protected",
+              "privacy": "public",
               "default": "''"
             },
             {
@@ -142,7 +160,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "protected"
+              "privacy": "public"
             },
             {
               "kind": "field",
@@ -150,7 +168,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "protected",
+              "privacy": "public",
               "default": "false"
             },
             {
@@ -159,7 +177,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "protected",
+              "privacy": "public",
               "default": "false"
             },
             {
@@ -168,7 +186,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "protected",
+              "privacy": "public",
               "default": "false"
             },
             {
@@ -177,7 +195,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "protected",
+              "privacy": "public",
               "default": "false"
             },
             {
@@ -186,7 +204,7 @@
               "type": {
                 "text": "boolean"
               },
-              "privacy": "protected",
+              "privacy": "public",
               "default": "false"
             },
             {
@@ -310,6 +328,22 @@
               },
               "default": "false",
               "fieldName": "disableScreenshots"
+            },
+            {
+              "name": "disable-screenshots-apple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableScreenshotsApple"
+            },
+            {
+              "name": "disable-screenshots-chrome",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableScreenshotsChrome"
             },
             {
               "name": "manual-apple",
