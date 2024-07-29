@@ -53,6 +53,14 @@ Alternatively, you can use [unpkg](https://unpkg.com) or [esm.sh](https://esm.sh
 import '@khmyznikov/pwa-install';
 ```
 
+## TS Config
+```json
+"compilerOptions": {
+  "moduleResolution": "Bundler",
+  "types": ["dom-chromium-installation-events", "web-app-manifest"]
+}
+```
+
 ## Use
 
 ```html
