@@ -24,7 +24,7 @@
       </trans-unit>
       <trans-unit id="s5c6aad7a7e4a1437">
         <source>3) Press Add to Home Screen</source>
-        <target>3) 点击加入主画面</target>
+        <target>3) 点击加入主屏幕</target>
       </trans-unit>
       <trans-unit id="sc79fd7641eb9a975">
         <source>Hide Instruction</source>
@@ -32,7 +32,7 @@
       </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
         <source>Add to Home Screen</source>
-        <target>将App加入主画面</target>
+        <target>将App加入主屏幕</target>
       </trans-unit>
       <trans-unit id="sfea652f6580ff086">
         <source>This site has app functionality.</source>
