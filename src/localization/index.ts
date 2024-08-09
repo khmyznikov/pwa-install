@@ -57,7 +57,7 @@ export const { getLocale, setLocale } = configureLocalization({
 
 export const changeLocale = (lang: string) => {
   // Norwegian Bokmål is same as Norwegian
-  switch (lang) {
+  switch (lang.slice(0, 2)) {
     case 'nb':
       lang = 'no';
       break;
