@@ -1,6 +1,6 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@lit/localize": "^0.12.2",
-    "@lit/localize-tools": "^0.7.2",
+    "@lit/localize-tools": "^0.8.0",
     "@types/node": "^20.14.10",
     "autoprefixer": "^10.4.19",
     "clean-webpack-plugin": "4.0.0",
@@ -63,7 +63,7 @@
     "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",
     "sass": "^1.77.8",
-    "sass-loader": "^14.2.1",
+    "sass-loader": "^16.0.2",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "9.5.1",
     "typescript": "^5.5.4",
