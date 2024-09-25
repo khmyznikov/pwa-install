@@ -6,7 +6,8 @@ import { msg } from '@lit/localize';
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-
+    const currentLanguage = navigator.language;
+    const isRTL = ['ar', 'he', 'fa', 'ur'].includes(currentLanguage.substring(0, 2));
     return html`
         <div id="pwa-install-element">
             <div class="install-dialog chrome ${classMap(installDialogClasses())}">
