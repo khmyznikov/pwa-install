@@ -11,7 +11,7 @@ const template = (name: string, description: string, installDescription: string,
     return html`
         <div id="pwa-install-element">
             <div class="install-dialog chrome ${classMap(installDialogClasses())}">
-                <div class="dialog-body">
+                <div class="dialog-body${isRTL ? '-RTL' : ''}">
                     <div class="icon">
                         <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                     </div>
@@ -27,7 +27,7 @@ const template = (name: string, description: string, installDescription: string,
                     </div>
                     ${description ? html `<div class="description app-description">${description}</div>`: ''}
                     ${!disableDescription? 
-                        html`<hr><div class="description install-description">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
+                        html`<hr><div class="description install-description" dir="${isRTL ? 'rtl' : ''}">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
                         : ''}
                     ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                     <div class="action-buttons">

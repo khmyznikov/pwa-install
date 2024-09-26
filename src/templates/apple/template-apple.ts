@@ -6,7 +6,8 @@ import { msg } from '@lit/localize';
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-
+    const currentLanguage = navigator.language;
+    const isRTL = ['ar', 'he', 'fa', 'ur'].includes(currentLanguage.substring(0, 2));
     return html`
         <aside id="pwa-install-element">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
@@ -22,7 +23,7 @@ const template = (name: string, description: string, installDescription: string,
                     </div>
                     <div class="description">${description || location.hostname}</div>
                 </div>
-                ${!disableDescription? html`<div class="welcome-to-install">
+                ${!disableDescription? html`<div class="welcome-to-install${isRTL ? '-RTL' : ''}" dir="${isRTL ? 'rtl' : ''}">
                     ${installDescription? installDescription: `${msg('This site has app functionality.')} ${isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.')}`}</div>` 
                 : '' }
                 <div class="how-to-body">
@@ -76,7 +77,7 @@ const template = (name: string, description: string, installDescription: string,
                     <button class="dialog-button button install" @click=${howToForApple}>
                         <span class="button-text ${howToRequested? 'show': 'hide'}">${msg('Hide Instruction')}</span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
-                            <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
+                            <span dir="${isRTL ? 'rtl' : ''}" >${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
                             <svg viewBox="0 0 25 25">
                                 <use href="#pwa-add"></use>
                             </svg>
