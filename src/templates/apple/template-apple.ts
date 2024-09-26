@@ -27,7 +27,7 @@ const template = (name: string, description: string, installDescription: string,
                     ${installDescription? installDescription: `${msg('This site has app functionality.')} ${isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.')}`}</div>` 
                 : '' }
                 <div class="how-to-body">
-                    <div class="how-to-description">
+                    <div class="how-to-description" dir="${isRTL ? 'rtl' : ''}">
 
                         ${!isDesktop? html`
                         <div class="description-step">
