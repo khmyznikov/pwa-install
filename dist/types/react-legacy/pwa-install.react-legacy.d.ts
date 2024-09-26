@@ -1,5 +1,6 @@
 import { PWAInstallElement } from '../index';
-declare const PWAInstall: import("@lit/react").ReactWebComponent<PWAInstallElement, {
+import { ReactWebComponent } from '@lit/react';
+declare const PWAInstall: ReactWebComponent<PWAInstallElement, {
     onPwaInstallSuccessEvent: string;
     onPwaInstallFailEvent: string;
     onPwaUserChoiceResultEvent: string;

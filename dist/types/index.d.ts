@@ -1,4 +1,3 @@
-/// <reference types="dom-chromium-installation-events" />
 import { LitElement, PropertyValues } from 'lit';
 import { IRelatedApp, PWAInstallAttributes } from './types/types';
 export declare class PWAInstallElement extends LitElement {
@@ -9,20 +8,22 @@ export declare class PWAInstallElement extends LitElement {
     installDescription: string;
     disableDescription: boolean;
     disableScreenshots: boolean;
+    disableScreenshotsApple: boolean;
+    disableScreenshotsChrome: boolean;
     manualApple: boolean;
     manualChrome: boolean;
     disableChrome: boolean;
     disableClose: boolean;
     static get styles(): CSSStyleSheet[];
     externalPromptEvent: BeforeInstallPromptEvent | null;
-    protected platforms: BeforeInstallPromptEvent['platforms'];
-    protected userChoiceResult: string;
-    protected isDialogHidden: boolean;
-    protected isInstallAvailable: boolean;
-    protected isAppleMobilePlatform: boolean;
-    protected isAppleDesktopPlatform: boolean;
-    protected isUnderStandaloneMode: boolean;
-    protected isRelatedAppsInstalled: boolean;
+    platforms: BeforeInstallPromptEvent['platforms'];
+    userChoiceResult: string;
+    isDialogHidden: boolean;
+    isInstallAvailable: boolean;
+    isAppleMobilePlatform: boolean;
+    isAppleDesktopPlatform: boolean;
+    isUnderStandaloneMode: boolean;
+    isRelatedAppsInstalled: boolean;
     private _manifest;
     private _howToRequested;
     private _galleryRequested;
@@ -40,6 +41,6 @@ export declare class PWAInstallElement extends LitElement {
     private _requestUpdate;
     connectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 export { PWAInstallAttributes };

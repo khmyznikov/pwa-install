@@ -1,4 +1,3 @@
-/// <reference types="dom-chromium-installation-events" />
 import { ImageResource } from 'web-app-manifest';
 export interface IRelatedApp {
     id: string;

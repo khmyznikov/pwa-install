@@ -41,7 +41,7 @@ const localizedTemplates = new Map([
   ['zh-CN', zhCN],
   ['it', it],
   ['cs', cs],
-  ['no', no],
+  ['no', no], // + nb
   ['pt', pt],
   ['ja', ja],
   ['sv', sv],
@@ -58,6 +58,15 @@ export const { getLocale, setLocale } = configureLocalization({
 });
 
 export const changeLocale = (lang: string) => {
+  // Norwegian Bokmål is same as Norwegian
+  switch (lang.slice(0, 2)) {
+    case 'nb':
+      lang = 'no';
+      break;
+    default:
+      break;
+  }
+
   try {
     if (localizedTemplates.get(lang))
       setLocale(lang);

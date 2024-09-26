@@ -37,11 +37,13 @@ body{
 }
 .control-panel fieldset{
     color: #fff;
-    margin: 15px;
+    
     border-color: #FFF;
     border-style: dotted;
-
+}
+.control-panel > fieldset{
     opacity: .5;
+    margin: 15px;
 }
 .control-panel fieldset:hover{ 
     opacity: 1;
@@ -79,4 +81,8 @@ input[type="checkbox"]{
 .control-panel hr{
     border: 2px dotted #fff;
     border-bottom: none;
+}
+
+label + fieldset {
+    margin-top: 5px;
 }

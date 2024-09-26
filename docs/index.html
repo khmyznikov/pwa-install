@@ -60,7 +60,7 @@
 		</fieldset>
 		<fieldset>
 			<legend>
-				Force Style
+				Style Override
 			</legend>
 			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
 			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button>
@@ -68,22 +68,40 @@
 			<i>*end style depends on browser and OS</i>
 			<hr>
 
-			<input type="text" placeholder="Install description text" onchange="setAttr('install-description', this.value)"><br>
+			<input type="text" placeholder="Install description override" onchange="setAttr('install-description', this.value)"><br>
+			<input type="text" placeholder="App name override" onchange="setAttr('name', this.value)"><br>
+			<input type="text" placeholder="App description override" onchange="setAttr('description', this.value)"><br>
+			<hr>
 			<label>
 				<input type="checkbox" onchange="disableInstallDescription(this)">
 				Hide install description
 			</label><br>
-			<label>
-				<input type="checkbox" onchange="disableScreenshots(this)">
-				Hide screenshots
-			</label><br>
+
 			<label>
 				<input type="checkbox" onchange="disableClose(this)">
-				Disable Close
-			</label><hr>
+				Hide Close Button
+			</label>
+			
+			<fieldset>
+				<legend>
+					Hide screenshots
+				</legend>
+				<label>
+					<input type="checkbox" onchange="disableScreenshots(this)">
+					All
+				</label>
+				<label>
+					<input type="checkbox" onchange="disableScreenshotsPlatform(this, 'chrome')">
+					Chrome
+				</label><label>
+					<input type="checkbox" onchange="disableScreenshotsPlatform(this, 'apple')">
+					Apple
+				</label>
+			</fieldset>
+			
+			
 	
-			<input type="text" placeholder="App name text" onchange="setAttr('name', this.value)"><br>
-			<input type="text" placeholder="App description text" onchange="setAttr('description', this.value)"><br>
+			
 		</fieldset>
 		<fieldset>
 			<legend>
@@ -154,6 +172,10 @@
 		const disableScreenshots = (cb) => {
 			cb.checked ? pwaInstall.setAttribute('disable-screenshots', true) :
 			pwaInstall.removeAttribute('disable-screenshots');
+		}
+		const disableScreenshotsPlatform = (cb, platform) => {
+			cb.checked ? pwaInstall.setAttribute(`disable-screenshots-${platform}`, true) :
+			pwaInstall.removeAttribute(`disable-screenshots-${platform}`);
 		}
 		const disableClose = (cb) => {
 			cb.checked ? pwaInstall.setAttribute('disable-close', true) :

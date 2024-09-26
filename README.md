@@ -7,7 +7,8 @@
 Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
 
 Use it as [Web Component with any **modern** framework](https://custom-elements-everywhere.com/). No polyfill is required.
-[React polyfill](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx). [Angular sample](https://github.com/khmyznikov/pwa-install/discussions/40#discussioncomment-8201733).
+- [React <= 18 sample](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
+- [Angular sample](https://stackblitz.com/edit/aozf92?file=package.json,src%2Fapp%2Fpwa-install%2Fpwa-install.component.html,src%2Fapp%2Fpwa-install%2Fpwa-install.component.ts)
 
 ## **[Demo](https://khmyznikov.com/pwa-install/)**
 
@@ -52,12 +53,20 @@ Alternatively, you can use [unpkg](https://unpkg.com) or [esm.sh](https://esm.sh
 import '@khmyznikov/pwa-install';
 ```
 
+## TS Config
+```json
+"compilerOptions": {
+  "moduleResolution": "Bundler",
+  "types": ["dom-chromium-installation-events", "web-app-manifest"]
+}
+```
+
 ## Use
 
 ```html
 <pwa-install></pwa-install>
 ```
-[React polyfill](https://glitch.com/edit/#!/mango-shine-diagram?path=src%2Fcomponents%2Fpwa-install.jsx)
+[React <= 18 polyfill](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
 
 ### **[Demo](https://khmyznikov.com/pwa-install/)**
 
@@ -74,6 +83,8 @@ import '@khmyznikov/pwa-install';
   install-description="Custom call to install text"
   disable-install-description="true"
   disable-screenshots="true"
+  disable-screenshots-apple="true"
+  disable-screenshots-chrome="true"
 
   manifest-url="/manifest.json"
   name="PWA"
@@ -182,7 +193,7 @@ Translations available:
 - *IT*
 - *UK*
 - *CS*
-- *NO*
+- *NO/NB*
 - *PT*
 - *JA*
 - *SV*

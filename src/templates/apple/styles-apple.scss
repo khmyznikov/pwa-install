@@ -623,6 +623,10 @@ $phone-small-landscape: 667px;
         .install-dialog.apple.dialog-body{
             max-width: 100vw;
             filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px -5px 10px);
+
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
             .action-buttons{
                 padding-bottom: max(15px, env(safe-area-inset-bottom))
             }
@@ -630,10 +634,6 @@ $phone-small-landscape: 667px;
                 bottom: 0px;
                 max-height: 85vh;
             }
-
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-
         }
     }
 }

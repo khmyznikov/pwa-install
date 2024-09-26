@@ -37,6 +37,8 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'install-description'}) installDescription = '';
 	@property({attribute: 'disable-install-description', type: Boolean}) disableDescription = false;
 	@property({attribute: 'disable-screenshots', type: Boolean}) disableScreenshots = false;
+	@property({attribute: 'disable-screenshots-apple', type: Boolean}) disableScreenshotsApple = false;
+	@property({attribute: 'disable-screenshots-chrome', type: Boolean}) disableScreenshotsChrome = false;
 	@property({attribute: 'manual-apple', type: Boolean}) manualApple = false;
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
@@ -48,15 +50,15 @@ export class PWAInstallElement extends LitElement {
 
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
 
-	protected platforms: BeforeInstallPromptEvent['platforms'] = [];
-	protected userChoiceResult = '';
+	public platforms: BeforeInstallPromptEvent['platforms'] = [];
+	public userChoiceResult = '';
 
-	protected isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
-	protected isInstallAvailable = false;
-	protected isAppleMobilePlatform = false;
-	protected isAppleDesktopPlatform = false;
-	protected isUnderStandaloneMode = false;
-	protected isRelatedAppsInstalled = false;
+	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	public isInstallAvailable = false;
+	public isAppleMobilePlatform = false;
+	public isAppleDesktopPlatform = false;
+	public isUnderStandaloneMode = false;
+	public isRelatedAppsInstalled = false;
 
 	/** @internal */
 	private _manifest: WebAppManifest = new Manifest();
@@ -268,7 +270,7 @@ export class PWAInstallElement extends LitElement {
 				this.description, 
 				this.installDescription,
 				this.disableDescription,
-				this.disableScreenshots,
+				this.disableScreenshots || this.disableScreenshotsApple,
 				this.disableClose,
 				this.icon, 
 				this._manifest,
@@ -286,7 +288,7 @@ export class PWAInstallElement extends LitElement {
 				this.description, 
 				this.installDescription,
 				this.disableDescription,
-				this.disableScreenshots,
+				this.disableScreenshots || this.disableScreenshotsChrome,
 				this.disableClose,
 				this.icon, 
 				this._manifest,
