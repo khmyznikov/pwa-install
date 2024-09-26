@@ -1,3 +1,4 @@
+/// <reference types="dom-chromium-installation-events" />
 import { LitElement, PropertyValues } from 'lit';
 import { IRelatedApp, PWAInstallAttributes } from './types/types';
 export declare class PWAInstallElement extends LitElement {
@@ -41,6 +42,6 @@ export declare class PWAInstallElement extends LitElement {
     private _requestUpdate;
     connectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 export { PWAInstallAttributes };
