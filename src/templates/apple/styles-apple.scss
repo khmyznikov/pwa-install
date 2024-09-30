@@ -160,6 +160,19 @@
 
                 border-bottom: 1px solid var(--border-bottom-color);
             }
+
+            .welcome-to-install-RTL{
+                font-size: 15px;
+                // grid-area: title;
+                grid-area: welcome;
+
+                text-align: right;
+                font-weight: 400;
+                padding: 15px;
+                width: auto;
+
+                border-bottom: 1px solid var(--border-bottom-color);
+            }
         }
         .action-buttons{
             grid-area: button;
