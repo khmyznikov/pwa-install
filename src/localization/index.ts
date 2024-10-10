@@ -14,7 +14,7 @@ import * as fr from "./locales/fr";
 import * as sr from "./locales/sr";
 import * as pl from "./locales/pl";
 import * as uk from "./locales/uk";
-import * as zh from "./locales/zh";
+import * as zhHK from "./locales/zh-HK";
 import * as zhCN from "./locales/zh-CN";
 import * as it from "./locales/it";
 import * as cs from "./locales/cs";
@@ -36,7 +36,7 @@ const localizedTemplates = new Map([
   ['sr', sr],
   ['pl', pl],
   ['uk', uk],
-  ['zh', zh],
+  ['zh-HK', zhHK],
   ['zh-CN', zhCN],
   ['it', it],
   ['cs', cs],
