@@ -65,6 +65,16 @@ export const changeLocale = (lang: string) => {
       break;
   }
 
+  // Fallback to simplified Chinese
+  switch (lang) {
+    case 'zh':
+    case 'zh-TW':
+      lang = 'zh-CN';
+      break;
+    default:
+      break;
+  }
+
   try {
     if (localizedTemplates.get(lang))
       setLocale(lang);
