@@ -189,7 +189,7 @@ Translations available:
 - *FR*
 - *SR*
 - *PL*
-- *ZH*/*ZH-CN*
+- *ZH-CN*/*ZH-HK*
 - *IT*
 - *UK*
 - *CS*
