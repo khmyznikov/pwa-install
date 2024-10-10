@@ -218,4 +218,5 @@ Language should change automatically based on browser settings. Please create th
 ## Backers ❤️
 [Patrick Voigt](https://github.com/pvo13)<br>
 [Darren Debono](https://github.com/amigabits)<br>
+[Angelo Fan](https://github.com/angelofan)<br>
 Leek Duck
