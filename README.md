@@ -243,7 +243,7 @@ localStorage.removeItem('theme')
 
 Again you can manage this however you like, even storing the preference server-side in a database and rendering the class on the server — it’s totally up to you.
 
-You can view the complete demo code in [`docs/index.html`](docs\index.html).
+You can view the complete demo code in [`docs/index.html`](docs/index.html).
 
 [<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
 [<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)
