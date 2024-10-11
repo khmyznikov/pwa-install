@@ -60,6 +60,14 @@
 		</fieldset>
 		<fieldset>
 			<legend>
+				Theme Mode manual control
+			</legend>
+			<button onclick="toggleDarkMode(false)">Light</button>
+			<button onclick="toggleDarkMode(true)">Dark</button>
+			<button onclick="toggleDarkMode(null)">Auto</button>
+		</fieldset>
+		<fieldset>
+			<legend>
 				Style Override
 			</legend>
 			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
@@ -193,6 +201,61 @@
 		pwaInstall.addEventListener('pwa-install-available-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-how-to-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-gallery-event', (event) => {logMessage(event.detail.message)});
+	</script>
+
+	<!-- Theme Mode -->
+	<script type="text/javascript">
+		// Automatic
+		const isDarkMode = (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches));
+		isDarkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+			if(!('theme' in localStorage)){
+				const isDarkMode = event.matches;
+				isDarkMode ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+				logMessage(`Theme Mode: Auto (${isDarkMode?'Dark':'Light'})`);
+			}
+		});
+
+		// Manual
+		let themeMode = ('theme' in window.localStorage) ? window.localStorage.theme === 'dark' : null;
+		switch (themeMode) {
+			case true:
+				logMessage('Theme Mode: Dark');
+				break;
+			case false:
+				logMessage('Theme Mode: Light');
+				break;
+			case null:
+				logMessage(`Theme Mode: Auto (${isDarkMode?'Dark':'Light'})`);
+				break;
+		}
+
+		function toggleDarkMode(mode) {
+			switch (mode) {
+				case true:
+					themeMode = true;
+					window.localStorage.theme='dark';
+					document.documentElement.classList.add('dark');
+					logMessage('Theme Mode Changed to Dark');
+					break;
+				case false:
+					themeMode = false;
+					localStorage.theme='light';
+					window.document.documentElement.classList.remove('dark');
+					logMessage('Theme Mode Changed to Light');
+					break;
+				case null:
+					themeMode = null;
+					localStorage.removeItem('theme');
+					if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+						window.document.documentElement.classList.add('dark');
+					}else{
+						window.document.documentElement.classList.remove('dark');
+					}
+					logMessage('Theme Mode Changed to Auto');
+					break;
+			}
+		}
 	</script>
 </body>
 
