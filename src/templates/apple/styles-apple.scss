@@ -649,7 +649,7 @@ $phone-small-landscape: 667px;
 //     }
 // }
 
-@media (prefers-color-scheme: dark) {
+:host-context(.dark) {
     #pwa-install-element{
         .install-dialog.apple.dialog-body {
             --text-color-normal: #fff;

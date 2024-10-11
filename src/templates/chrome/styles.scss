@@ -454,7 +454,7 @@
     }
 }
 
-@media (prefers-color-scheme: dark) {
+:host-context(.dark) {
     #pwa-install-element .install-dialog{
         --text-color-normal: #fff;
         --background-color: #1e1e1e;
