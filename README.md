@@ -211,6 +211,38 @@ Language should change automatically based on browser settings. Please create th
 - mozilla mobile support
 - manual theme
 
+## Dark Mode Compatibility
+
+Now instead of `Dark Mode` being applied based on `prefers-color-scheme`, they will be applied whenever the dark class is present earlier in the HTML tree.
+
+How you add the `dark` class to the `html` element is up to you, but a common approach is to use a bit of JavaScript that reads a preference from somewhere (like `localStorage`) and updates the DOM accordingly.
+
+### Supporting system preference and manual selection
+
+The `selector` strategy can be used to support both the user’s system preference or a manually selected mode by using the [`window.matchMedia()` API](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia).
+
+Here’s a simple example of how you can support light mode, dark mode, as well as respecting the operating system preference:
+
+```
+// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.add('dark')
+} else {
+  document.documentElement.classList.remove('dark')
+}
+
+// Whenever the user explicitly chooses light mode
+localStorage.theme = 'light'
+
+// Whenever the user explicitly chooses dark mode
+localStorage.theme = 'dark'
+
+// Whenever the user explicitly chooses to respect the OS preference
+localStorage.removeItem('theme')
+```
+
+Again you can manage this however you like, even storing the preference server-side in a database and rendering the class on the server — it’s totally up to you.
+
 
 [<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
 [<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)
