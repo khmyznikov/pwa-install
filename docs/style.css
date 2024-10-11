@@ -86,3 +86,7 @@ input[type="checkbox"]{
 label + fieldset {
     margin-top: 5px;
 }
+
+button {
+    cursor: pointer;
+}
