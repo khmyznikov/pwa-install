@@ -1,13 +1,13 @@
 import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
-import { WebAppManifest } from 'web-app-manifest';
+import { PWAScreenhot } from '../types/types';
 
 import styles from './styles-gallery.scss';
 import template from './template-gallery';
 
 @customElement('pwa-gallery')
 export default class PWAGalleryElement extends LitElement {
-	@property() screenshots: WebAppManifest['screenshots'] = [];
+	@property() screenshots: PWAScreenhot[] = [];
 	@property() theme: 'default' | 'apple_desktop' | 'apple_mobile' = 'default';
 
 	static get styles() {
