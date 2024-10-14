@@ -176,6 +176,63 @@ document.getElementById("pwa-install").externalPromptEvent = window.promptEvent;
 ```
 <br>
 
+## Styling Customization with `part` Attributes
+
+This library provides customizable `part` attributes for styling the `pwa-install` dialogs and buttons. Below is a breakdown of the main parts and available modifiers.
+
+### Main Parts
+
+#### 1. `install-dialog`
+- Represents the entire installation dialog.
+- Can be styled globally or further customized with modifiers (see below).
+
+#### 2. `button`
+- Refers to action buttons within the dialog, such as install or close buttons.
+- Can be styled individually with specific button modifiers (see below).
+
+### Modifiers (for All Parts)
+
+These modifiers can be used with both `install-dialog` and `button`.
+
+| Modifier  | Description                                           |
+|-----------|-------------------------------------------------------|
+| `apple`   | Targets dialogs or buttons specifically for Apple devices.  |
+| `chrome`  | Targets dialogs or buttons specifically for Chrome devices. |
+| `mobile`  | Specifies styling for mobile versions of the dialog or buttons. |
+| `desktop` | Specifies styling for desktop versions of the dialog or buttons. |
+
+### Button-Specific Modifiers
+
+These modifiers are specific to the `button` part.
+
+| Modifier   | Description                                                    |
+|------------|----------------------------------------------------------------|
+| `primary`  | Styles the main action buttons, typically used for "Install."   |
+| `secondary`| Styles secondary action buttons, such as for opening galleries. |
+| `close`     | Targets the close buttons    |
+
+### Example
+
+You can apply specific styles using these parts and modifiers with the `::part()` selector:
+
+```css
+pwa-install::part(install-dialog apple mobile) {
+    background-color: #f8f9fa;
+}
+
+pwa-install::part(button primary) {
+    background-color: #007bff;
+    color: white;
+}
+
+```
+### How to Apply
+1. Use the ::part() CSS selector to target the appropriate part in your stylesheet.
+2. Apply your desired styles using the defined part attributes.
+This flexible approach allows you to modify the appearance of dialogs, buttons, and more without altering the core component structure.
+
+<br>
+
 ## Supported localization
 
 Translations available:

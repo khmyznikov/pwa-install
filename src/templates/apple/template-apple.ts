@@ -6,14 +6,15 @@ import { msg } from '@lit/localize';
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
+    const formFactor = isDesktop? 'desktop': 'mobile';
 
     return html`
         <aside id="pwa-install-element">
-            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body" part="install-dialog apple ${isDesktop ? 'desktop' : 'mobile'}">
+            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body" part="install-dialog apple ${formFactor}">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>
-                ${!disableClose? html`<button type="button" title="close" class="close" @click='${hideDialog}' part="apple-button close">
+                ${!disableClose? html`<button type="button" title="close" class="close" @click='${hideDialog}' part="button apple close ${formFactor}">
                     <svg viewBox="0 0 24 24"><path d="M5.3 18.7c.2.2.4.3.7.3s.5-.1.7-.3l5.3-5.3 5.3 5.3a1.08 1.08 0 0 0 .7.3 1.08 1.08 0 0 0 .7-.3c.4-.4.4-1 0-1.4L13.4 12l5.3-5.3c.4-.4.4-1 0-1.4s-1-.4-1.4 0L12 10.6 6.7 5.3c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l5.3 5.3-5.3 5.3c-.4.4-.4 1 0 1.4z"/></svg>
                 </button>` : ''}
                 <div class="about">
@@ -65,7 +66,7 @@ const template = (name: string, description: string, installDescription: string,
                 </div>
                 ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
-                    ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery} part="apple-button secondary">
+                    ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery} part="button apple secondary ${formFactor}">
                         ${isDesktop? 
                             html`<svg id="pwa-gallery" viewBox="0 0 10 6"><path d="m1.102 2.21 3.169 3.24c.22.222.462.333.729.333a.94.94 0 0 0 .378-.083 1.19 1.19 0 0 0 .347-.25L8.89 2.21a.8.8 0 0 0 .246-.593.838.838 0 0 0-.118-.44.884.884 0 0 0-.312-.311.84.84 0 0 0-1.063.167L4.854 3.92h.299L2.359 1.033a.868.868 0 0 0-.642-.286.822.822 0 0 0-.43.119.935.935 0 0 0-.312.312.863.863 0 0 0-.115.44c0 .116.02.223.057.32a.898.898 0 0 0 .185.272Z"/>
                                 </svg>`:
@@ -73,7 +74,7 @@ const template = (name: string, description: string, installDescription: string,
                                 </svg>`
                         }
                     </button>`:''}
-                    <button class="dialog-button button install" @click=${howToForApple} part="apple-button primary">
+                    <button class="dialog-button button install" @click=${howToForApple} part="button apple primary ${formFactor}">
                         <span class="button-text ${howToRequested? 'show': 'hide'}">${msg('Hide Instruction')}</span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
                             <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
