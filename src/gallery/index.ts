@@ -15,43 +15,51 @@ export default class PWAGalleryElement extends LitElement {
 	}
 
 	public calcScrollSize = () => {
-		//@ts-ignore
-		const gallery = this.shadowRoot.querySelector('#paginated_gallery');
-		if (!gallery)
-			return;
-		const gallery_scroller = gallery.querySelector('.gallery_scroller');
-		if (!gallery_scroller)
-			return;
-		const gallery_items = Array.from(gallery_scroller.querySelectorAll('img'));
-		if (!gallery_items)
-			return;
-		const gallery_item = gallery_items.find((item) => { return (item.offsetWidth + item.offsetLeft) >= gallery_scroller.scrollLeft})
-		if (!gallery_item)
-			return;
-
+		const gallery = this.shadowRoot?.querySelector('#paginated_gallery') as HTMLElement | null;
+		if (!gallery) return;
+		
+		const galleryScroller = gallery.querySelector('.gallery_scroller') as HTMLElement | null;
+		if (!galleryScroller) return;
+	
+		const galleryItems = Array.from(galleryScroller.querySelectorAll('img')) as HTMLElement[];
+		if (galleryItems.length === 0) return;
+	
 		return {
-			scroller: gallery_scroller,
-			item: gallery_item
+			scroller: galleryScroller,
+			items: galleryItems
+		};
+	};
+	
+	private findCurrentItem = (scroller: HTMLElement, items: HTMLElement[]): HTMLElement | null => {
+		const scrollLeft = scroller.scrollLeft;
+	  // Find the item closest to the center of the viewport.
+		return items.find((item) => (item.offsetWidth + item.offsetLeft) >= scrollLeft + (item.offsetWidth / 2.5)) || null;
+	};
+	
+	private scrollToPage = (direction: 'next' | 'prev') => {
+		const scrollData = this.calcScrollSize();
+		if (!scrollData) return;
+	
+		const { scroller, items } = scrollData;
+		const currentItem = this.findCurrentItem(scroller, items);
+		if (!currentItem) return;
+	
+		const currentIndex = items.indexOf(currentItem);
+		const offset = direction === 'next' ? 1 : -1;
+		const targetIndex = currentIndex + offset;
+		
+		if (targetIndex >= 0 && targetIndex < items.length) {
+			items[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 		}
-	}
+	};
+	
 	public scrollToNextPage = () => {
-		const _tools = this.calcScrollSize();
-		if (_tools && _tools.item.nextElementSibling)
-			_tools.scroller.scrollTo({
-				top: 0,
-				left: _tools.scroller.scrollLeft + _tools.scroller.clientWidth + _tools.item.nextElementSibling.clientWidth / 2,
-				behavior: 'smooth'
-			});
-	}
+		this.scrollToPage('next');
+	};
+	
 	public scrollToPrevPage = () => {
-		const _tools = this.calcScrollSize();
-		if (_tools && _tools.item.previousElementSibling)
-			_tools.scroller.scrollTo({
-				top: 0,
-				left: _tools.scroller.scrollLeft - _tools.scroller.clientWidth - _tools.item.previousElementSibling.clientWidth / 2,
-				behavior: 'smooth'
-			});
-	}
+		this.scrollToPage('prev');
+	};
 
 
 	private _init = () => {
