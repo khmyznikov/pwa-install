@@ -43,6 +43,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
 	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
+	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 
 	static get styles() {
 		return [ styles, stylesApple ];
@@ -53,7 +54,7 @@ export class PWAInstallElement extends LitElement {
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
 
-	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	public isDialogHidden: boolean = false;
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
@@ -97,7 +98,7 @@ export class PWAInstallElement extends LitElement {
 	private _hideDialog = {
 		handleEvent: () => {
 			this.isDialogHidden = true;
-			window.sessionStorage.setItem('pwa-hide-install', 'true');
+			this.useLocalStorage ? window.localStorage.setItem('pwa-hide-install', 'true') : window.sessionStorage.setItem('pwa-hide-install', 'true');
 			this.requestUpdate();
 		},
 		passive: true
@@ -115,7 +116,7 @@ export class PWAInstallElement extends LitElement {
 		this.isDialogHidden = false;
 		if (forced)
 			this.isInstallAvailable = true;
-		window.sessionStorage.setItem('pwa-hide-install', 'false');
+		this.useLocalStorage ? window.localStorage.setItem('pwa-hide-install', 'false') : window.sessionStorage.setItem('pwa-hide-install', 'false');
 		this.requestUpdate();
 	}
 
@@ -184,6 +185,10 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _init = async () => {
 		window.defferedPromptEvent = null;
+
+		this.isDialogHidden = this.useLocalStorage 
+			? JSON.parse(window.localStorage.getItem('pwa-hide-install') || 'false') 
+			: JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
 
 		this._checkInstalled();
 

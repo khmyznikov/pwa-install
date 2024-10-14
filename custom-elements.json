@@ -130,6 +130,15 @@
             },
             {
               "kind": "field",
+              "name": "useLocalStorage",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "use-local-storage"
+            },
+            {
+              "kind": "field",
               "name": "externalPromptEvent",
               "type": {
                 "text": "BeforeInstallPromptEvent | null"
@@ -376,6 +385,14 @@
               },
               "default": "false",
               "fieldName": "disableClose"
+            },
+            {
+              "name": "use-local-storage",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "useLocalStorage"
             }
           ],
           "superclass": {
