@@ -9,7 +9,7 @@ const template = (name: string, description: string, installDescription: string,
 
     return html`
         <div id="pwa-install-element">
-            <div class="install-dialog chrome ${classMap(installDialogClasses())}">
+            <div class="install-dialog chrome ${classMap(installDialogClasses())}" part="install-dialog chrome">
                 <div class="dialog-body">
                     <div class="icon">
                         <img src="${icon}" alt="icon" class="icon-image" draggable="false">
@@ -17,7 +17,7 @@ const template = (name: string, description: string, installDescription: string,
                     <div class="about">
                         <div class="name">
                             <label>${name}</label>
-                            ${!disableClose? html`<button class="material-button secondary close" @click='${hideDialog}'>
+                            ${!disableClose? html`<button class="material-button secondary close" @click='${hideDialog}' part="material-button close">
                                 <svg viewBox="0 0 24 24"><path d="M5.3 18.7c.2.2.4.3.7.3s.5-.1.7-.3l5.3-5.3 5.3 5.3a1.08 1.08 0 0 0 .7.3 1.08 1.08 0 0 0 .7-.3c.4-.4.4-1 0-1.4L13.4 12l5.3-5.3c.4-.4.4-1 0-1.4s-1-.4-1.4 0L12 10.6 6.7 5.3c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l5.3 5.3-5.3 5.3c-.4.4-.4 1 0 1.4z"/></svg>
                             </button>` : ''}
                         </div>
@@ -30,12 +30,12 @@ const template = (name: string, description: string, installDescription: string,
                         : ''}
                     ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
                     <div class="action-buttons">
-                        ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
-                        <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
+                        ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}' part="material-button secondary">${galleryRequested?msg('Less'):msg('More')}</button>`:''}
+                        <button class="material-button primary install" @click='${install}' part="material-button primary">${msg('Install')}</button>
                     </div>
                 </div>
             </div>
-            <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
+            <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}" part="install-dialog chrome mobile">
                 <div class="dialog-body">
                     <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog}>
                     </pwa-bottom-sheet>
