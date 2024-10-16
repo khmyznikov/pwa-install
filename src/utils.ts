@@ -37,6 +37,10 @@ export default class Utils {
 
         return audioCheck && webGLCheck;
     }
+
+    static deviceFormFactor(): 'narrow' | 'wide' {
+        return window.matchMedia('(orientation: portrait)').matches? 'narrow' : 'wide';
+    }
     
     static isStandalone() {
 		if (window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone === true))
