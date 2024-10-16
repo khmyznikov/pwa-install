@@ -14,7 +14,7 @@ export default class PWAGalleryElement extends LitElement {
 		return styles;
 	}
 
-	public calcScrollSize = () => {
+	private getScrollElements = () => {
 		const gallery = this.shadowRoot?.querySelector('#paginated_gallery') as HTMLElement | null;
 		if (!gallery) return;
 		
@@ -32,12 +32,12 @@ export default class PWAGalleryElement extends LitElement {
 	
 	private findCurrentItem = (scroller: HTMLElement, items: HTMLElement[]): HTMLElement | null => {
 		const scrollLeft = scroller.scrollLeft;
-	  // Find the item closest to the center of the viewport.
+	  	// Find the item closest to the center of the viewport.
 		return items.find((item) => (item.offsetWidth + item.offsetLeft) >= scrollLeft + (item.offsetWidth / 2.5)) || null;
 	};
 	
 	private scrollToPage = (direction: 'next' | 'prev') => {
-		const scrollData = this.calcScrollSize();
+		const scrollData = this.getScrollElements();
 		if (!scrollData) return;
 	
 		const { scroller, items } = scrollData;
@@ -67,7 +67,7 @@ export default class PWAGalleryElement extends LitElement {
 	}
 
 	firstUpdated () {
-		const _tools = this.calcScrollSize();
+		const _tools = this.getScrollElements();
 		if (_tools)
 			setTimeout(
 				() => {
@@ -78,7 +78,6 @@ export default class PWAGalleryElement extends LitElement {
 				},
 				300
 			)
-
 	}
 
 	connectedCallback() {
