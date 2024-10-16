@@ -24,7 +24,7 @@ export interface PWAInstallAttributes {
     icon?: string;
 }
 
-export interface PWAScreenhot extends ImageResource {
+export interface ManifestScreenshot extends ImageResource {
     label?: string;
     platform?: string;
     form_factor?: "wide" | "narrow";
@@ -40,7 +40,7 @@ export class Manifest {
     }
     short_name: string;
     icons: ImageResource[];
-    screenshots?: PWAScreenhot[];
+    screenshots?: ManifestScreenshot[];
     name: string;
     description: string;
 }

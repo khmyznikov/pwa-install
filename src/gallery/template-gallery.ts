@@ -1,8 +1,8 @@
 import { html } from 'lit';
 import Utils from '../utils';
-import { PWAScreenhot } from '../types/types';
+import { ManifestScreenshot } from '../types/types';
 
-const template = (screenshots: PWAScreenhot[], theme: string, scrollToNextPage: any, scrollToPrevPage: any) => {
+const template = (screenshots: ManifestScreenshot[], theme: string, scrollToNextPage: any, scrollToPrevPage: any) => {
 
     return html`
         ${screenshots? html`
