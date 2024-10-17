@@ -54,7 +54,7 @@ export class PWAInstallElement extends LitElement {
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
 
-	public isDialogHidden: boolean = false;
+	public isDialogHidden: boolean = Utils.getStorageFlag('pwa-hide-install');
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
@@ -98,7 +98,7 @@ export class PWAInstallElement extends LitElement {
 	private _hideDialog = {
 		handleEvent: () => {
 			this.isDialogHidden = true;
-			this.useLocalStorage ? window.localStorage.setItem('pwa-hide-install', 'true') : window.sessionStorage.setItem('pwa-hide-install', 'true');
+			Utils.setStorageFlag('pwa-hide-install', true, this.useLocalStorage);
 			this.requestUpdate();
 		},
 		passive: true
@@ -116,7 +116,7 @@ export class PWAInstallElement extends LitElement {
 		this.isDialogHidden = false;
 		if (forced)
 			this.isInstallAvailable = true;
-		this.useLocalStorage ? window.localStorage.setItem('pwa-hide-install', 'false') : window.sessionStorage.setItem('pwa-hide-install', 'false');
+		Utils.setStorageFlag('pwa-hide-install', false, this.useLocalStorage);
 		this.requestUpdate();
 	}
 
@@ -134,13 +134,6 @@ export class PWAInstallElement extends LitElement {
 
 			if (this._howToRequested) {
 				Utils.eventInstallHowTo(this);
-				
-				// Looks like it's not needed anymore
-				// if (this._manifest.start_url){
-				// 	try {
-				// 		history.replaceState({}, '', this._manifest.start_url);
-				// 	} catch (e) {}
-				// }
 			}				
         },
         passive: true
@@ -185,10 +178,6 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _init = async () => {
 		window.defferedPromptEvent = null;
-
-		this.isDialogHidden = this.useLocalStorage 
-			? JSON.parse(window.localStorage.getItem('pwa-hide-install') || 'false') 
-			: JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
 
 		this._checkInstalled();
 

@@ -54,7 +54,11 @@
 			</legend>
 			<button onclick="pwaInstall.showDialog()">Show</button>
 			<button onclick="pwaInstall.showDialog(true)">Show(forced)</button>
-			<button onclick="pwaInstall.hideDialog()">Hide</button><hr>
+			<button onclick="pwaInstall.hideDialog()">Hide</button>
+			<br><label>
+				<input type="checkbox" onchange="setAttr('use-local-storage', this.value)">
+				Use local storage
+			</label><hr>
 			<button onclick="pwaInstall.install()">Install</button>
 			<button onclick="getRelated()">Get related apps</button>
 		</fieldset>
