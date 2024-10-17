@@ -12,6 +12,7 @@ export const sourceLocale = `en`;
  */
 export const targetLocales = [
   `cs`,
+  `da`,
   `de`,
   `el`,
   `es`,
@@ -38,6 +39,7 @@ export const targetLocales = [
  */
 export const allLocales = [
   `cs`,
+  `da`,
   `de`,
   `el`,
   `en`,

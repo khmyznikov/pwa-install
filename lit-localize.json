@@ -21,7 +21,8 @@
     "pt",
     "ja",
     "ko",
-    "km"
+    "km",
+    "da"
   ],
   "tsConfig": "tsconfig.json",
   "output": {

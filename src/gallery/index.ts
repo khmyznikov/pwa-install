@@ -1,57 +1,65 @@
 import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
-import { WebAppManifest } from 'web-app-manifest';
+import { ManifestScreenshot } from '../types/types';
 
 import styles from './styles-gallery.scss';
 import template from './template-gallery';
 
 @customElement('pwa-gallery')
 export default class PWAGalleryElement extends LitElement {
-	@property() screenshots: WebAppManifest['screenshots'] = [];
+	@property({ type: Array }) screenshots: ManifestScreenshot[] = [];
 	@property() theme: 'default' | 'apple_desktop' | 'apple_mobile' = 'default';
 
 	static get styles() {
 		return styles;
 	}
 
-	public calcScrollSize = () => {
-		//@ts-ignore
-		const gallery = this.shadowRoot.querySelector('#paginated_gallery');
-		if (!gallery)
-			return;
-		const gallery_scroller = gallery.querySelector('.gallery_scroller');
-		if (!gallery_scroller)
-			return;
-		const gallery_items = Array.from(gallery_scroller.querySelectorAll('img'));
-		if (!gallery_items)
-			return;
-		const gallery_item = gallery_items.find((item) => { return (item.offsetWidth + item.offsetLeft) >= gallery_scroller.scrollLeft})
-		if (!gallery_item)
-			return;
-
+	private getScrollElements = () => {
+		const gallery = this.shadowRoot?.querySelector('#paginated_gallery') as HTMLElement | null;
+		if (!gallery) return;
+		
+		const galleryScroller = gallery.querySelector('.gallery_scroller') as HTMLElement | null;
+		if (!galleryScroller) return;
+	
+		const galleryItems = Array.from(galleryScroller.querySelectorAll('img')) as HTMLElement[];
+		if (galleryItems.length === 0) return;
+	
 		return {
-			scroller: gallery_scroller,
-			item: gallery_item
+			scroller: galleryScroller,
+			items: galleryItems
+		};
+	};
+	
+	private findCurrentItem = (scroller: HTMLElement, items: HTMLElement[]): HTMLElement | null => {
+		const scrollLeft = scroller.scrollLeft;
+	  	// Find the item closest to the center of the viewport.
+		return items.find((item) => (item.offsetWidth + item.offsetLeft) >= scrollLeft + (item.offsetWidth / 2.5)) || null;
+	};
+	
+	private scrollToPage = (direction: 'next' | 'prev') => {
+		const scrollData = this.getScrollElements();
+		if (!scrollData) return;
+	
+		const { scroller, items } = scrollData;
+		const currentItem = this.findCurrentItem(scroller, items);
+		if (!currentItem) return;
+	
+		const currentIndex = items.indexOf(currentItem);
+		const offset = direction === 'next' ? 1 : -1;
+		const targetIndex = currentIndex + offset;
+		
+		if (targetIndex >= 0 && targetIndex < items.length) {
+			items[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 		}
-	}
+	};
+	
 	public scrollToNextPage = () => {
-		const _tools = this.calcScrollSize();
-		if (_tools && _tools.item.nextElementSibling)
-			_tools.scroller.scrollTo({
-				top: 0,
-				left: _tools.scroller.scrollLeft + _tools.scroller.clientWidth + _tools.item.nextElementSibling.clientWidth / 2,
-				behavior: 'smooth'
-			});
-	}
+		this.scrollToPage('next');
+	};
+	
 	public scrollToPrevPage = () => {
-		const _tools = this.calcScrollSize();
-		if (_tools && _tools.item.previousElementSibling)
-			_tools.scroller.scrollTo({
-				top: 0,
-				left: _tools.scroller.scrollLeft - _tools.scroller.clientWidth - _tools.item.previousElementSibling.clientWidth / 2,
-				behavior: 'smooth'
-			});
-	}
+		this.scrollToPage('prev');
+	};
 
 
 	private _init = () => {
@@ -59,7 +67,7 @@ export default class PWAGalleryElement extends LitElement {
 	}
 
 	firstUpdated () {
-		const _tools = this.calcScrollSize();
+		const _tools = this.getScrollElements();
 		if (_tools)
 			setTimeout(
 				() => {
@@ -70,7 +78,6 @@ export default class PWAGalleryElement extends LitElement {
 				},
 				300
 			)
-
 	}
 
 	connectedCallback() {
