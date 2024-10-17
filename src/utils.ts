@@ -64,6 +64,22 @@ export default class Utils {
         return _relatedApps.length? true : false;
     }
 
+    static setStorageFlag(name: string, value:boolean, persistent: boolean = false) {
+        try {
+            if (persistent)
+                localStorage.setItem(name, value.toString());
+            else
+                sessionStorage.setItem(name, value.toString());
+        } catch (e) {}
+    }
+    static getStorageFlag(name: string): boolean {
+        try {
+            return sessionStorage.getItem(name) === 'true' || localStorage.getItem(name) === 'true';
+        } catch (e) {
+            return false;
+        }
+    }
+
     static eventInstalledSuccess(_element: Element) {
         _eventDispatcher(_element, 'pwa-install-success-event', 'App install success (Chromium/Android only)');
     }

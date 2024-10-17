@@ -43,6 +43,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
 	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
+	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 
 	static get styles() {
 		return [ styles, stylesApple ];
@@ -53,7 +54,7 @@ export class PWAInstallElement extends LitElement {
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
 
-	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	public isDialogHidden: boolean = Utils.getStorageFlag('pwa-hide-install');
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
@@ -97,7 +98,7 @@ export class PWAInstallElement extends LitElement {
 	private _hideDialog = {
 		handleEvent: () => {
 			this.isDialogHidden = true;
-			window.sessionStorage.setItem('pwa-hide-install', 'true');
+			Utils.setStorageFlag('pwa-hide-install', true, this.useLocalStorage);
 			this.requestUpdate();
 		},
 		passive: true
@@ -115,7 +116,7 @@ export class PWAInstallElement extends LitElement {
 		this.isDialogHidden = false;
 		if (forced)
 			this.isInstallAvailable = true;
-		window.sessionStorage.setItem('pwa-hide-install', 'false');
+		Utils.setStorageFlag('pwa-hide-install', false, this.useLocalStorage);
 		this.requestUpdate();
 	}
 
@@ -133,13 +134,6 @@ export class PWAInstallElement extends LitElement {
 
 			if (this._howToRequested) {
 				Utils.eventInstallHowTo(this);
-				
-				// Looks like it's not needed anymore
-				// if (this._manifest.start_url){
-				// 	try {
-				// 		history.replaceState({}, '', this._manifest.start_url);
-				// 	} catch (e) {}
-				// }
 			}				
         },
         passive: true
