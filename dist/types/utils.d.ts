@@ -6,8 +6,6 @@ export default class Utils {
     static isStandalone(): boolean;
     static getInstalledRelatedApps(): Promise<IRelatedApp[]>;
     static isRelatedAppsInstalled(): Promise<boolean>;
-    static setStorageFlag(name: string, value: boolean, persistent?: boolean): void;
-    static getStorageFlag(name: string): boolean;
     static eventInstalledSuccess(_element: Element): void;
     static eventInstalledFail(_element: Element): void;
     static eventUserChoiceResult(_element: Element, message: string): void;
