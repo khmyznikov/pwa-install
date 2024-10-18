@@ -79,6 +79,7 @@
                     font-size: 18px;
 
                     line-height: 24px;
+                    height: 26px;
                     // padding: 5px 0px;
                     margin-top: 5px;
 
@@ -381,30 +382,34 @@
             &:hover, &:active {
                 box-shadow: none;
             }
-            &.close{
-                height: 26px;
-                min-width: 26px;
-                line-height: 0;
+        }
+        &.close{
+            background-color: transparent;
+            box-shadow: none;
+            color:  var(--text-color-secondary);
+            height: 26px;
+            min-width: 26px;
+            line-height: 0;
+            z-index: 99;
 
-                margin-right: 0;
-                margin-left: auto;
-                padding: 0;
+            margin-right: 0;
+            margin-left: auto;
+            padding: 0;
 
+            border-radius: 50%;
+
+            svg{
+                width: 16px;
+                fill:  currentColor;
+            }
+
+            &::after{
+                width: 25px;
+                height: 25px;
                 border-radius: 50%;
-
-                svg{
-                    width: 16px;
-                    fill:  var(--text-color-secondary);
-                }
-
-                &::after{
-                    width: 25px;
-                    height: 25px;
-                    border-radius: 50%;
-                }
-                &::before{
-                    border-radius: 50%;
-                }
+            }
+            &::before{
+                border-radius: 50%;
             }
         }
         &::before {
