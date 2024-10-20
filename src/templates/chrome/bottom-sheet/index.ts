@@ -54,6 +54,8 @@ export default class PWABottomSheetElement extends LitElement {
 			window.addEventListener('touchend', dragMouseUp);
 			window.addEventListener('touchmove', dragMouseMove);
 
+			e.preventDefault();
+
 			dragOffset = getYCoord(e) - touchTargetElement.getBoundingClientRect().top;
 
 			document.body.style.overscrollBehaviorY = 'none';
@@ -140,7 +142,7 @@ export default class PWABottomSheetElement extends LitElement {
 		}
 
 		touchTargetElement.addEventListener('mousedown', dragMouseDown);
-		touchTargetElement.addEventListener('touchstart', dragMouseDown, {passive: true});
+		touchTargetElement.addEventListener('touchstart', dragMouseDown, {passive: false});
 
 		closeDragElement(new MouseEvent('mouseup'), window.innerHeight - bottomSize - bounceOffset);
 
