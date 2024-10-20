@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
+import { ManifestScreenshot } from '../../types/types';
 
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
@@ -28,7 +29,7 @@ const template = (name: string, description: string, installDescription: string,
                     ${!disableDescription? 
                         html`<hr><div class="description install-description">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
                         : ''}
-                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]}></pwa-gallery>`: ''}
                     <div class="action-buttons">
                         ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
                         <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
@@ -39,7 +40,7 @@ const template = (name: string, description: string, installDescription: string,
                 <div class="dialog-body">
                     <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog}>
                     </pwa-bottom-sheet>
-                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots}></pwa-gallery>`: ''}
+                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]}></pwa-gallery>`: ''}
                 </div>
             </div>
         </div>`;

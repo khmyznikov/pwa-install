@@ -58,6 +58,7 @@ export class PWAInstallElement extends LitElement {
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
+	public isAndroidFallback = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
@@ -157,6 +158,7 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
+		this.isAndroidFallback = Utils.isAndroidFallback();
 
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			if (!this.isUnderStandaloneMode) {
@@ -173,6 +175,16 @@ export class PWAInstallElement extends LitElement {
 		}
 		else {
 			this.manualChrome && this.hideDialog();
+			if (!this.isUnderStandaloneMode && this.isAndroidFallback) {
+				setTimeout(
+					() => {
+						this.isInstallAvailable = true;
+						this.requestUpdate()
+						Utils.eventInstallAvailable(this);
+					},
+					1000
+				);
+			}
 		}
 	}
 	/** @internal */
@@ -216,24 +228,7 @@ export class PWAInstallElement extends LitElement {
 			Utils.eventInstalledSuccess(this);
 		});
 
-
-		try{
-			const _response = await fetch(this.manifestUrl);
-			const _json = await _response.json() as WebAppManifest;
-			if (!_response.ok || !_json || !Object.keys(_json))
-				throw new Error('Manifest not found');
-			Utils.normalizeManifestAssetUrls(_json, this.manifestUrl);
-			
-			this.icon = this.icon || _json.icons?.length ? _json.icons![0].src : '';
-			this.name = this.name || _json['short_name'] || _json.name || '';
-			this.description = this.description || _json.description || '';
-			this._manifest = _json;
-		}
-		catch(e) {
-			this.icon = this.icon || this._manifest.icons?.[0].src || '';
-			this.name = this.name || this._manifest['short_name'] || '';
-			this.description = this.description || this._manifest.description || '';
-		}
+		Object.assign(this, await Utils.fetchAndProcessManifest(this.manifestUrl, this.icon, this.name, this.description));
 	};
 	/** @internal */
 	private _requestUpdate = () => {
