@@ -222,4 +222,5 @@ Language should change automatically based on browser settings. Please create th
 [Patrick Voigt](https://github.com/pvo13)<br>
 [Darren Debono](https://github.com/amigabits)<br>
 [Angelo Fan](https://github.com/angelofan)<br>
+[Chris Cherniakov](https://github.com/Taequn)<br>
 Leek Duck
