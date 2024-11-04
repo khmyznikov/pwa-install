@@ -9,6 +9,9 @@ Installation dialog for Progressive Web Application (PWA) and Add to Home Screen
 Use it as [Web Component with any **modern** framework](https://custom-elements-everywhere.com/). No polyfill is required.
 - [React <= 18 sample](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
 - [Angular sample](https://stackblitz.com/edit/aozf92?file=package.json,src%2Fapp%2Fpwa-install%2Fpwa-install.component.html,src%2Fapp%2Fpwa-install%2Fpwa-install.component.ts)
+- [Svelte](https://stackblitz.com/edit/svelte-tab-2-sng9wa?file=src%2Froutes%2F%2Bpage.svelte)
+  
+⚡Should work with any other modern framework or just vanila js as web component.
 
 ## **[Demo](https://khmyznikov.com/pwa-install/)**
 
