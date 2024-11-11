@@ -285,7 +285,8 @@ export class PWAInstallElement extends LitElement {
 				this._hideDialogUser,
 				this._install,
 				this._toggleGallery,
-				this._galleryRequested
+				this._galleryRequested,
+				this.isAndroidFallback
 			)}`;
 	}
 }

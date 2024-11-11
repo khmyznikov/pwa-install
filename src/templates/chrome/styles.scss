@@ -315,7 +315,7 @@
                 // text-overflow: ellipsis;
             }
 
-            pwa-gallery{
+            ::slotted(pwa-gallery){
                 max-height: 100%;
                 padding-bottom: 15px;
                 opacity: 1;

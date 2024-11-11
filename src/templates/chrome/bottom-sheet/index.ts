@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
+import styles from './styles-bottom-sheet.scss';
 
 // import TouchDragListener from "./touch-listener";
 
@@ -14,6 +15,10 @@ import Utils from '../../../utils';
 
 @customElement('pwa-bottom-sheet')
 export default class PWABottomSheetElement extends LitElement {
+	static get styles() {
+		return styles;
+	}
+
 	@property({type: Object}) props: IProps = {
         name: '',
         description: '',
@@ -21,7 +26,8 @@ export default class PWABottomSheetElement extends LitElement {
     };
     @property({type: Object}) install = {handleEvent: () => {}};
 	@property() hideDialog = () => {};
-	@property() disableClose = false;
+	@property({type: Boolean}) disableClose = false;
+	@property({type: Boolean}) fallback = false;
 
 	private _callInstall = () => {
 		this.install.handleEvent();
@@ -176,9 +182,9 @@ export default class PWABottomSheetElement extends LitElement {
         return;
 	}
 
-    createRenderRoot() {
-        return this;
-    }
+    // createRenderRoot() {
+    //     return this;
+    // }
 
 	connectedCallback() {
 		super.connectedCallback()
@@ -186,6 +192,6 @@ export default class PWABottomSheetElement extends LitElement {
 	}
 
 	render() {
-        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall)}`;
+        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback)}`;
 	}
 }

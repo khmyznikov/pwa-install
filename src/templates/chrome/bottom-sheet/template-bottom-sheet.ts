@@ -1,8 +1,10 @@
 import { html } from 'lit';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, icon: string, install: any) => {
+
+const template = (name: string, description: string, icon: string, install: any, fallback?: boolean) => {
     return html`
+    <div class="dialog-body">
         <div class="touch-header" id="touch-header"></div>
         <div class="body-header">
             <div class="icon">
@@ -17,6 +19,8 @@ const template = (name: string, description: string, icon: string, install: any)
             <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
         </div>
         ${description ? html `<div class="description">${description}</div>`: ''}
+        <slot></slot>
+    </div>
     `;
 };
 export default template;

@@ -39,10 +39,9 @@ export default class Utils {
     }
 
     static isAndroidFallback(): boolean {
-        if (!navigator.userAgent.toLowerCase().match(/android/) || !('BeforeInstallPromptEvent' in window))
-            return false;
-
-        return true;
+        if (navigator.userAgent.toLowerCase().match(/android/) && !('BeforeInstallPromptEvent' in window))
+            return true;
+        return !false;
     }
 
     static deviceFormFactor(): 'narrow' | 'wide' {
@@ -113,8 +112,8 @@ export default class Utils {
         })
     }
 
-    static async fetchAndProcessManifest(manifestUrl: string, icon: string, name: string, description: string): Promise<{manifest: WebAppManifest, icon: string, name: string, description: string}> {
-        let manifest: WebAppManifest = new Manifest();
+    static async fetchAndProcessManifest(manifestUrl: string, icon: string, name: string, description: string): Promise<{_manifest: WebAppManifest, icon: string, name: string, description: string}> {
+        let _manifest: WebAppManifest = new Manifest();
         let _json: WebAppManifest | null = null;
         try{
 			const _response = await fetch(manifestUrl);
@@ -125,13 +124,13 @@ export default class Utils {
         }  
         catch(e) {}    
 
-        icon = icon || (_json?.icons?.length ? _json?.icons![0].src : manifest.icons?.[0].src) || '';
-        name = name || (_json? _json['short_name']: manifest['short_name']) || '';
-        description = description || _json?.description || manifest.description || '';
-		manifest = _json || manifest;
+        icon = icon || (_json?.icons?.length ? _json?.icons![0].src : _manifest.icons?.[0].src) || '';
+        name = name || (_json? _json['short_name']: _manifest['short_name']) || '';
+        description = description || _json?.description || _manifest.description || '';
+		_manifest = _json || _manifest;
         
         return {
-            manifest,
+            _manifest,
             icon,
             name,
             description
