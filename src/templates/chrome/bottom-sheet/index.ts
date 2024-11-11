@@ -1,5 +1,7 @@
 import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
+
+import stylesCommon from '../styles-common.scss'
 import styles from './styles-bottom-sheet.scss';
 
 // import TouchDragListener from "./touch-listener";
@@ -16,7 +18,7 @@ import Utils from '../../../utils';
 @customElement('pwa-bottom-sheet')
 export default class PWABottomSheetElement extends LitElement {
 	static get styles() {
-		return styles;
+		return [stylesCommon, styles];
 	}
 
 	@property({type: Object}) props: IProps = {
@@ -165,9 +167,9 @@ export default class PWABottomSheetElement extends LitElement {
 		}
 
 		this.bindedElement = this.dragMobileSheet(
-			this.parentElement?.parentElement,
-			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement,
-			this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
+			this.parentElement,
+			this.shadowRoot?.querySelector('.dialog-body .touch-header') as HTMLElement,
+			this.shadowRoot?.querySelector('.dialog-body .body-header') as HTMLElement);
 	}
 	private _init = () => {
 		this.setupAppearence();

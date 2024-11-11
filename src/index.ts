@@ -14,6 +14,7 @@ import Utils from './utils';
 declare const window: IWindow;
 
 import styles from './templates/chrome/styles.scss';
+import stylesCommon from './templates/chrome/styles-common.scss'
 import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
@@ -46,7 +47,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 
 	static get styles() {
-		return [ styles, stylesApple ];
+		return [ styles, stylesCommon, stylesApple ];
 	}
 
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
