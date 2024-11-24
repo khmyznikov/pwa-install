@@ -1,10 +1,14 @@
 import { html } from 'lit';
 import { msg } from '@lit/localize';
+import { classMap } from 'lit/directives/class-map.js';
 
-
+const fallbackClass = (isAndroidFallback: boolean = false) => {
+    return {fallback: isAndroidFallback};
+}
+let instruction = '';
 const template = (name: string, description: string, icon: string, install: any, fallback?: boolean) => {
     return html`
-    <div class="dialog-body">
+    <div class="dialog-body ${classMap(fallbackClass(fallback))}">
         <div class="touch-header" id="touch-header"></div>
         <div class="body-header">
             <div class="icon">

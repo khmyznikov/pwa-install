@@ -127,7 +127,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	/** @internal */
-	private _howToForApple = {
+	private _toggleHowTo = {
         handleEvent: () => {
 			this._howToRequested = !this._howToRequested;
 			if (this._howToRequested && this._galleryRequested)
@@ -266,7 +266,7 @@ export class PWAInstallElement extends LitElement {
 				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
-				this._howToForApple,
+				this._toggleHowTo,
 				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
@@ -287,6 +287,8 @@ export class PWAInstallElement extends LitElement {
 				this._install,
 				this._toggleGallery,
 				this._galleryRequested,
+				this._toggleHowTo,
+				this._howToRequested,
 				this.isAndroidFallback
 			)}`;
 	}

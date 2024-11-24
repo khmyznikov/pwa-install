@@ -4,7 +4,7 @@ import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 import { ManifestScreenshot } from '../../types/types';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, isAndroidFallback: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, toggleHowTo: any, howToRequested: boolean, isAndroidFallback: boolean) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
@@ -37,7 +37,7 @@ const template = (name: string, description: string, installDescription: string,
                 </div>
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
-                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .fallback=${isAndroidFallback}>
+                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback}>
                     ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]}></pwa-gallery>`: ''}
                 </pwa-bottom-sheet>
             </div>
