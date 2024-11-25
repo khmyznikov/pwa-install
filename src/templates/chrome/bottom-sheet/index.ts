@@ -29,7 +29,10 @@ export default class PWABottomSheetElement extends LitElement {
     @property({type: Object}) install = {handleEvent: () => {}};
 	@property() hideDialog = () => {};
 	@property({type: Boolean}) disableClose = false;
+
 	@property({type: Boolean}) fallback = false;
+	@property({type: Boolean}) howToRequested = false;
+	@property({type: Object}) toggleHowTo = () => {};
 
 	private _callInstall = () => {
 		this.install.handleEvent();
@@ -194,6 +197,6 @@ export default class PWABottomSheetElement extends LitElement {
 	}
 
 	render() {
-        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback)}`;
+        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback, this.howToRequested || true)}`;
 	}
 }

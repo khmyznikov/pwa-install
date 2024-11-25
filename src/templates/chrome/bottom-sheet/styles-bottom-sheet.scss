@@ -69,6 +69,21 @@
 			height: 45px;
 		}
 	}
+	.how-to-body {
+		padding: 18px 20px;
+
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.description-step{
+			font-size: 15px;
+		}
+
+		+ .description, ~ slot{
+			display: none;
+		}
+	}
 	.description{
 		// font-size: 14px;
 		// font-weight: normal;

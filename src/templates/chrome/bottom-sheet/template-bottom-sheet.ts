@@ -6,7 +6,7 @@ const fallbackClass = (isAndroidFallback: boolean = false) => {
     return {fallback: isAndroidFallback};
 }
 let instruction = '';
-const template = (name: string, description: string, icon: string, install: any, fallback?: boolean) => {
+const template = (name: string, description: string, icon: string, install: any, fallback?: boolean, howToRequested?: boolean) => {
     return html`
     <div class="dialog-body ${classMap(fallbackClass(fallback))}">
         <div class="touch-header" id="touch-header"></div>
@@ -22,6 +22,17 @@ const template = (name: string, description: string, icon: string, install: any,
             </div>
             <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
         </div>
+        ${howToRequested ? html `
+            <div class="how-to-body">
+                <div class="description-step">
+                    ${msg('1) tap your browser three dots menu')}
+                </div>
+                <div class="description-step">
+                    ${msg('2) tap on "Add to Home screen"')}
+                </div>
+                
+            </div>`
+        : ''}
         ${description ? html `<div class="description">${description}</div>`: ''}
         <slot></slot>
     </div>
