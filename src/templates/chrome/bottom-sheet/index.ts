@@ -32,9 +32,15 @@ export default class PWABottomSheetElement extends LitElement {
 
 	@property({type: Boolean}) fallback = false;
 	@property({type: Boolean}) howToRequested = false;
-	@property({type: Object}) toggleHowTo = () => {};
+	@property({type: Object}) toggleHowTo = {handleEvent: () => {}};
 
 	private _callInstall = () => {
+		if (this.fallback) {
+			this.toggleHowTo.handleEvent();
+			setTimeout(() => this.setupAppearence(true), 100);
+			
+			return;
+		}
 		this.install.handleEvent();
 	}
 
@@ -53,7 +59,8 @@ export default class PWABottomSheetElement extends LitElement {
 
 		let dragOffset = 0;
 		const bounceOffset = 35;
-		const bottomSize = touchTargetElement.clientHeight + infoElement.clientHeight;
+		
+		const bottomSize = infoElement.offsetHeight + infoElement.offsetTop;
 
 		const getYCoord = (e: MouseEvent | TouchEvent): number => {
 			return (e as MouseEvent).clientY || ((e as TouchEvent).changedTouches && (e as TouchEvent).changedTouches.length? (e as TouchEvent).changedTouches[0].clientY : 0);
@@ -163,21 +170,21 @@ export default class PWABottomSheetElement extends LitElement {
 		}
 	}
 
-	private setupAppearence = () => {
+	private setupAppearence = (fullOpen?: boolean) => {
 		if (this.bindedElement) {
 			this.bindedElement.touchElement.removeEventListener('mousedown', this.bindedElement.listener);
 			this.bindedElement.touchElement.removeEventListener('touchstart', this.bindedElement.listener);
 		}
-
+		
 		this.bindedElement = this.dragMobileSheet(
 			this.parentElement,
 			this.shadowRoot?.querySelector('.dialog-body .touch-header') as HTMLElement,
-			this.shadowRoot?.querySelector('.dialog-body .body-header') as HTMLElement);
+			this.shadowRoot?.querySelector(`.dialog-body ${fullOpen? '.how-to-body': '.body-header'}`) as HTMLElement);
 	}
 	private _init = () => {
 		this.setupAppearence();
 
-		window.addEventListener('resize', this.setupAppearence);
+		window.addEventListener('resize', () => this.setupAppearence());
 
 		return;
 	}
@@ -187,16 +194,12 @@ export default class PWABottomSheetElement extends LitElement {
         return;
 	}
 
-    // createRenderRoot() {
-    //     return this;
-    // }
-
 	connectedCallback() {
 		super.connectedCallback()
 
 	}
 
 	render() {
-        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback, this.howToRequested || true)}`;
+        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback, this.howToRequested)}`;
 	}
 }

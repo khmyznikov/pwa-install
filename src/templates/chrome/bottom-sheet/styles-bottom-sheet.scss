@@ -70,18 +70,29 @@
 		}
 	}
 	.how-to-body {
-		padding: 18px 20px;
 
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		
+		height: 0;
+		overflow: hidden;
+		padding: 0;
 
 		.description-step{
 			font-size: 15px;
 		}
 
-		+ .description, ~ slot{
-			display: none;
+	}
+	.how-to{ 
+		::slotted(pwa-gallery), .description{
+			height: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		.how-to-body{
+			height: auto;
+			padding: 18px 20px;
 		}
 	}
 	.description{
