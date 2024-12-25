@@ -37,7 +37,7 @@ export default class PWABottomSheetElement extends LitElement {
 	private _callInstall = () => {
 		if (this.fallback) {
 			this.toggleHowTo.handleEvent();
-			setTimeout(() => this.setupAppearence(true), 100);
+			setTimeout(() => this.setupAppearence(true), 210);
 			
 			return;
 		}
@@ -90,7 +90,7 @@ export default class PWABottomSheetElement extends LitElement {
 				closeDragElement(e, window.innerHeight - element.clientHeight);
 				
 				try {
-					Utils.eventGallery((this.getRootNode() as ShadowRoot).host);
+					!this.howToRequested && Utils.eventGallery((this.getRootNode() as ShadowRoot).host);
 				} catch (e) {}
 				return
 			}

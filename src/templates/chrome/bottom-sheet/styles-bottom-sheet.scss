@@ -34,7 +34,20 @@
 		.install{
 			text-transform: capitalize;
 			height: 40px;
+			min-width: 100px;
 			padding: 0 23px;
+
+			align-items: center;
+			display: inline-flex;
+
+			transition: min-width 3s;
+
+			.button-text, svg{
+				margin: 0 auto;
+			}
+			.check-icon{
+				display: none;
+			}
 		}
 
 		.about{
@@ -70,52 +83,90 @@
 		}
 	}
 	.how-to-body {
-
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 15px;
 		
-		height: 0;
+		max-height: 0;
 		overflow: hidden;
-		padding: 0;
+		padding: 0 20px;
+		opacity: 0;
 
 		.description-step{
-			font-size: 15px;
-		}
+			// font-size: 15px;
+			display: flex;
+			gap: 15px;
+			align-items: center;
+			.svg-wrap{
+				width: 23px;
+				height: 23px;
 
+				background-color: var(--touch-header-color);
+				padding: 11px;
+				border-radius: 50%;
+				
+				svg {
+					fill: var(--text-color-normal);
+				}
+
+				&.add-icon{
+					padding-left: 12px;
+					padding-right: 10px;
+				
+				}
+			}
+		}
 	}
 	.how-to{ 
 		::slotted(pwa-gallery), .description{
-			height: 0;
-			padding: 0;
+			max-height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
 			overflow: hidden;
+			opacity: 0;
 		}
 		.how-to-body{
-			height: auto;
-			padding: 18px 20px;
+			max-height: 600px;
+			padding-top: 18px;
+			padding-bottom: 18px;
+			opacity: 1;
+		}
+		.install{
+			min-width: 60px;
+			.check-icon{
+				display: inline;
+			}
+			.button-text{
+				display: none;
+			}
 		}
 	}
 	.description{
 		// font-size: 14px;
 		// font-weight: normal;
-		padding: 15px 20px 0px;
+		padding: 15px 20px;
 		margin: 0;
-		margin-bottom: 15px;
+		// margin-bottom: 15px;
 
 		// display: -webkit-box;
 		-webkit-line-clamp: 6;
 		// -webkit-box-orient: vertical;
 
 		max-height: 150px;
+		opacity: 1;
 		// overflow: hidden;
 		// text-overflow: ellipsis;
 	}
 
 	::slotted(pwa-gallery){
 		display: block;
-		max-height: 100%;
+		max-height: 600px;
 		padding-bottom: 15px;
 		opacity: 1;
+	}
+
+	.how-to-body, .description, ::slotted(pwa-gallery){
+		transition: max-height 0.2s, opacity 0.15s, padding 0.2s;
 	}
 
 	.material-button{
