@@ -34,13 +34,15 @@
 		.install{
 			text-transform: capitalize;
 			height: 40px;
-			min-width: 100px;
+			min-width: 50px;
 			padding: 0 23px;
 
 			align-items: center;
 			display: inline-flex;
 
-			transition: min-width 3s;
+			-webkit-tap-highlight-color: transparent;
+
+			transition: min-width .2s, color .2s, background-color .2s, border-color .2s;
 
 			.button-text, svg{
 				margin: 0 auto;
@@ -98,21 +100,24 @@
 			gap: 15px;
 			align-items: center;
 			.svg-wrap{
-				width: 23px;
-				height: 23px;
+				display: flex;
+				align-items: center;
+				width: 40px;
+    			height: 40px;
 
 				background-color: var(--touch-header-color);
-				padding: 11px;
+
 				border-radius: 50%;
 				
 				svg {
 					fill: var(--text-color-normal);
+					margin: 0 auto;
 				}
 
 				&.add-icon{
-					padding-left: 12px;
-					padding-right: 10px;
-				
+					svg {
+						padding-right: 1px;
+					}
 				}
 			}
 		}
@@ -132,9 +137,17 @@
 			opacity: 1;
 		}
 		.install{
-			min-width: 60px;
+			min-width: 40px;
+			padding: 0px;
+			background: transparent;
+			color: var(--text-color-normal);
+			box-shadow: none;
+			border: 1px solid;
+
 			.check-icon{
 				display: inline;
+
+				fill: var(--text-color-normal);
 			}
 			.button-text{
 				display: none;
@@ -163,9 +176,11 @@
 		max-height: 600px;
 		padding-bottom: 15px;
 		opacity: 1;
+
+		transition: max-height 1.5s, opacity 0.8s, padding 1.5s;
 	}
 
-	.how-to-body, .description, ::slotted(pwa-gallery){
+	.how-to-body, .description{
 		transition: max-height 0.2s, opacity 0.15s, padding 0.2s;
 	}
 

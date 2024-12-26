@@ -41,7 +41,7 @@ export default class Utils {
     static isAndroidFallback(): boolean {
         if (navigator.userAgent.toLowerCase().match(/android/) && !('BeforeInstallPromptEvent' in window))
             return true;
-        return !false;
+        return false;
     }
 
     static deviceFormFactor(): 'narrow' | 'wide' {

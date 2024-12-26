@@ -44,6 +44,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
 	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
+	@property({attribute: 'disable-android-fallback', type: Boolean}) disableFallback = false;
 	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 
 	static get styles() {
@@ -159,7 +160,7 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
-		this.isAndroidFallback = true; //Utils.isAndroidFallback();
+		this.isAndroidFallback = Utils.isAndroidFallback();
 
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			if (!this.isUnderStandaloneMode) {
@@ -176,7 +177,7 @@ export class PWAInstallElement extends LitElement {
 		}
 		else {
 			this.manualChrome && this.hideDialog();
-			if (!this.isUnderStandaloneMode && this.isAndroidFallback) {
+			if (!this.isUnderStandaloneMode && this.isAndroidFallback && !this.disableFallback) {
 				setTimeout(
 					() => {
 						this.isInstallAvailable = true;
