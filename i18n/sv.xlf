@@ -30,10 +30,6 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>Lägg till på hemskärmen för att få en bättre användarupplevelse och enklare åtkomst.</target>
 </trans-unit>
-<trans-unit id="sdfe23506a3b0cdc8">
-  <source>1) Open in Safari browser</source>
-  <target>1) Öppna i Safari</target>
-</trans-unit>
 <trans-unit id="s1b9047d53d9f9d22">
   <source>2) Press Share in Navigation bar</source>
   <target>2) Tryck på Dela-knappen i verktygsfältet</target>
@@ -57,6 +53,18 @@
 <trans-unit id="scdaf4bbff76674c8">
   <source>Add to Home Screen</source>
   <target>Lägg till på hemskärmen</target>
+</trans-unit>
+<trans-unit id="s1488e73779d7682f">
+  <source>1) Open your browser menu</source>
+  <target>1) Öppna din webbläsares meny</target>
+</trans-unit>
+<trans-unit id="s4593f304dac8848c">
+  <source>2) Tap "Add to Home screen"</source>
+  <target>2) Tryck på "Lägg till på hemskärmen"</target>
+</trans-unit>
+<trans-unit id="s54cfbb14f46396d4">
+  <source>1) Open in your main browser</source>
+  <target>1) Öppna i din huvudsakliga webbläsare</target>
 </trans-unit>
 </body>
 </file>

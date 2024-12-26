@@ -14,10 +14,6 @@
         <source>More</source>
         <target>Детальніше</target>
       </trans-unit>
-      <trans-unit id="sdfe23506a3b0cdc8">
-        <source>1) Open in Safari browser</source>
-        <target>1) Відкрити в Safari браузері</target>
-      </trans-unit>
       <trans-unit id="s1b9047d53d9f9d22">
         <source>2) Press Share in Navigation bar</source>
         <target>2) Натиснути «Поділитися»</target>
@@ -58,6 +54,18 @@
         <source>Install it on your device for extensive experience and easy access.</source>
         <target>Встановіть на ваш пристрій для зручного доступу та ширших можливостей.</target>
       </trans-unit>
+<trans-unit id="s1488e73779d7682f">
+  <source>1) Open your browser menu</source>
+  <target>1) Відкрити меню браузера</target>
+</trans-unit>
+<trans-unit id="s4593f304dac8848c">
+  <source>2) Tap "Add to Home screen"</source>
+   <target>2) Натиснути «Додати на Домашній екран»</target>
+</trans-unit>
+<trans-unit id="s54cfbb14f46396d4">
+  <source>1) Open in your main browser</source>
+  <target>1) Відкрити у вашому основному браузері</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

@@ -14,10 +14,6 @@
         <source>More</source>
         <target>詳細資訊</target>
       </trans-unit>
-      <trans-unit id="sdfe23506a3b0cdc8">
-        <source>1) Open in Safari browser</source>
-        <target>1) 在Safari上瀏覽此網頁</target>
-      </trans-unit>
       <trans-unit id="s1b9047d53d9f9d22">
         <source>2) Press Share in Navigation bar</source>
         <target>2) 點擊列表上的分享按鈕</target>
@@ -58,6 +54,18 @@
         <source>Install it on your device for extensive experience and easy access.</source>
         <target>在您的裝置上安裝它，以獲得更豐富的體驗和便捷訪問。</target>
       </trans-unit>
+<trans-unit id="s1488e73779d7682f">
+  <source>1) Open your browser menu</source>
+   <target>1) 打開您的瀏覽器菜單</target>
+</trans-unit>
+<trans-unit id="s4593f304dac8848c">
+  <source>2) Tap "Add to Home screen"</source>
+  <target>2) 點擊「添加到主屏幕」</target>
+</trans-unit>
+<trans-unit id="s54cfbb14f46396d4">
+  <source>1) Open in your main browser</source>
+  <target>1) 在您的主要瀏覽器中打開</target>
+</trans-unit>
     </body>
   </file>
 </xliff>
