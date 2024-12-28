@@ -1,5 +1,5 @@
 import { WebAppManifest } from 'web-app-manifest';
-import { IRelatedApp } from './types/types';
+import { IRelatedApp, Manifest } from './types/types';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {
@@ -36,6 +36,12 @@ export default class Utils {
         const webGLCheck = new OffscreenCanvas(1, 1).getContext('webgl') ? true : false;
 
         return audioCheck && webGLCheck;
+    }
+
+    static isAndroidFallback(): boolean {
+        if (navigator.userAgent.toLowerCase().match(/android/) && !('BeforeInstallPromptEvent' in window))
+            return true;
+        return false;
     }
 
     static deviceFormFactor(): 'narrow' | 'wide' {
@@ -104,5 +110,30 @@ export default class Utils {
         [...manifest.icons || [], ...manifest.screenshots || []].forEach(asset => {
             asset.src = new URL(asset.src, normalizedManifestUrl).href;
         })
+    }
+
+    static async fetchAndProcessManifest(manifestUrl: string, icon: string, name: string, description: string): Promise<{_manifest: WebAppManifest, icon: string, name: string, description: string}> {
+        let _manifest: WebAppManifest = new Manifest();
+        let _json: WebAppManifest | null = null;
+        try{
+			const _response = await fetch(manifestUrl);
+			_json = await _response.json() as WebAppManifest;
+			if (!_response.ok || !_json || !Object.keys(_json))
+				throw new Error('Manifest not found');
+			this.normalizeManifestAssetUrls(_json, manifestUrl);
+        }  
+        catch(e) {}    
+
+        icon = icon || (_json?.icons?.length ? _json?.icons![0].src : _manifest.icons?.[0].src) || '';
+        name = name || (_json? _json['short_name']: _manifest['short_name']) || '';
+        description = description || _json?.description || _manifest.description || '';
+		_manifest = _json || _manifest;
+        
+        return {
+            _manifest,
+            icon,
+            name,
+            description
+        }
     }
 }

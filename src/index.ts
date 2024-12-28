@@ -14,6 +14,7 @@ import Utils from './utils';
 declare const window: IWindow;
 
 import styles from './templates/chrome/styles.scss';
+import stylesCommon from './templates/chrome/styles-common.scss'
 import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
@@ -43,10 +44,11 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
 	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
+	@property({attribute: 'disable-android-fallback', type: Boolean}) disableFallback = false;
 	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 
 	static get styles() {
-		return [ styles, stylesApple ];
+		return [ styles, stylesCommon, stylesApple ];
 	}
 
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
@@ -58,6 +60,7 @@ export class PWAInstallElement extends LitElement {
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
+	public isAndroidFallback = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
@@ -125,7 +128,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	/** @internal */
-	private _howToForApple = {
+	private _toggleHowTo = {
         handleEvent: () => {
 			this._howToRequested = !this._howToRequested;
 			if (this._howToRequested && this._galleryRequested)
@@ -157,6 +160,7 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
+		this.isAndroidFallback = Utils.isAndroidFallback();
 
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			if (!this.isUnderStandaloneMode) {
@@ -173,6 +177,16 @@ export class PWAInstallElement extends LitElement {
 		}
 		else {
 			this.manualChrome && this.hideDialog();
+			if (!this.isUnderStandaloneMode && this.isAndroidFallback && !this.disableFallback) {
+				setTimeout(
+					() => {
+						this.isInstallAvailable = true;
+						this.requestUpdate()
+						Utils.eventInstallAvailable(this);
+					},
+					1000
+				);
+			}
 		}
 	}
 	/** @internal */
@@ -216,24 +230,7 @@ export class PWAInstallElement extends LitElement {
 			Utils.eventInstalledSuccess(this);
 		});
 
-
-		try{
-			const _response = await fetch(this.manifestUrl);
-			const _json = await _response.json() as WebAppManifest;
-			if (!_response.ok || !_json || !Object.keys(_json))
-				throw new Error('Manifest not found');
-			Utils.normalizeManifestAssetUrls(_json, this.manifestUrl);
-			
-			this.icon = this.icon || _json.icons?.length ? _json.icons![0].src : '';
-			this.name = this.name || _json['short_name'] || _json.name || '';
-			this.description = this.description || _json.description || '';
-			this._manifest = _json;
-		}
-		catch(e) {
-			this.icon = this.icon || this._manifest.icons?.[0].src || '';
-			this.name = this.name || this._manifest['short_name'] || '';
-			this.description = this.description || this._manifest.description || '';
-		}
+		Object.assign(this, await Utils.fetchAndProcessManifest(this.manifestUrl, this.icon, this.name, this.description));
 	};
 	/** @internal */
 	private _requestUpdate = () => {
@@ -270,7 +267,7 @@ export class PWAInstallElement extends LitElement {
 				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
-				this._howToForApple,
+				this._toggleHowTo,
 				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
@@ -290,7 +287,10 @@ export class PWAInstallElement extends LitElement {
 				this._hideDialogUser,
 				this._install,
 				this._toggleGallery,
-				this._galleryRequested
+				this._galleryRequested,
+				this._toggleHowTo,
+				this._howToRequested,
+				this.isAndroidFallback
 			)}`;
 	}
 }

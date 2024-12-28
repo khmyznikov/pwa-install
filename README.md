@@ -90,6 +90,8 @@ import '@khmyznikov/pwa-install';
   disable-screenshots-apple="true"
   disable-screenshots-chrome="true"
 
+  disable-android-fallback="true"
+
   manifest-url="/manifest.json"
   name="PWA"
   description="Progressive web application"         
@@ -99,6 +101,7 @@ import '@khmyznikov/pwa-install';
   manual-apple/chrome params means you want to show the Dialog manually by showDialog().
   disable-chrome param is for completely disabling custom logic and interception for Chromium browsers (will work built-in browser logic).
   use-local-storage will store the user's preference to ignore the prompt in long-lived storage (so they will not be prompted again unless they clear application data)
+  disable-android-fallback will disable instructions for non-Chrome browsers on Android
 --->
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
@@ -221,9 +224,11 @@ Language should change automatically based on browser settings. Please create th
 [<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
 [<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)
 
-## Backers ❤️
+## One-time Backers ❤️
 [Patrick Voigt](https://github.com/pvo13)<br>
 [Darren Debono](https://github.com/amigabits)<br>
 [Angelo Fan](https://github.com/angelofan)<br>
 [Chris Cherniakov](https://github.com/Taequn)<br>
+[Moddy](https://github.com/moddyio)<br>
+[Pavlo Hromadchuk](https://github.com/hromadchuk)<br>
 Leek Duck
