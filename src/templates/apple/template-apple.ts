@@ -59,7 +59,7 @@ const template = (name: string, description: string, installDescription: string,
                                     </svg>`
                                 }
                             </div>
-                            <div class="step-text">${isDesktop? msg('2) Press Add to Dock'): msg('3) Press Add to Home Screen')}</div>
+                            <div class="step-text">${isDesktop? msg('2) Press Add to Dock'): msg('3) Scroll down to "Add to Home Screen"')}</div>
                         </div>
                     </div>
                 </div>

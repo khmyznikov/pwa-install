@@ -38,10 +38,6 @@
   <source>2) Press Add to Dock</source>
   <target>2) Velg Legg til i Dock</target>
 </trans-unit>
-<trans-unit id="s5c6aad7a7e4a1437">
-  <source>3) Press Add to Home Screen</source>
-  <target>3) Velg Legg til på Hjem-skjerm</target>
-</trans-unit>
 <trans-unit id="sc79fd7641eb9a975">
   <source>Hide Instruction</source>
   <target>Skjul instruksjoner</target>
@@ -65,6 +61,10 @@
 <trans-unit id="s54cfbb14f46396d4">
   <source>1) Open in your main browser</source>
     <target>1) Åpne i hovednettleseren din</target>
+</trans-unit>
+<trans-unit id="s2d90afa5dcca2c0e">
+  <source>3) Scroll down to "Add to Home Screen"</source>
+  <target>3) Rull ned til «Legg til på Hjem-skjerm»</target>
 </trans-unit>
 </body>
 </file>
