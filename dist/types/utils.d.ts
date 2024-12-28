@@ -3,6 +3,7 @@ import { IRelatedApp } from './types/types';
 export default class Utils {
     static isAppleMobile(): boolean;
     static isAppleDesktop(): boolean;
+    static isAndroidFallback(): boolean;
     static deviceFormFactor(): 'narrow' | 'wide';
     static isStandalone(): boolean;
     static getInstalledRelatedApps(): Promise<IRelatedApp[]>;
@@ -16,4 +17,10 @@ export default class Utils {
     static eventInstallHowTo(_element: Element): void;
     static eventGallery(_element: Element): void;
     static normalizeManifestAssetUrls(manifest: WebAppManifest, manifestUrl: string): void;
+    static fetchAndProcessManifest(manifestUrl: string, icon: string, name: string, description: string): Promise<{
+        _manifest: WebAppManifest;
+        icon: string;
+        name: string;
+        description: string;
+    }>;
 }
