@@ -3,6 +3,7 @@ import { IRelatedApp } from './types/types';
 export default class Utils {
     static isAppleMobile(): boolean;
     static isAppleDesktop(): boolean;
+    static isAndroid(): boolean;
     static isAndroidFallback(): boolean;
     static deviceFormFactor(): 'narrow' | 'wide';
     static isStandalone(): boolean;

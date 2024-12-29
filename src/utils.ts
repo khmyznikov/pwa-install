@@ -38,8 +38,14 @@ export default class Utils {
         return audioCheck && webGLCheck;
     }
 
+    static isAndroid(): boolean {
+        if (navigator.userAgent.toLowerCase().match(/android/))
+            return true;
+        return false;
+    }
+
     static isAndroidFallback(): boolean {
-        if (navigator.userAgent.toLowerCase().match(/android/) && !('BeforeInstallPromptEvent' in window))
+        if (this.isAndroid() && !('BeforeInstallPromptEvent' in window))
             return true;
         return false;
     }

@@ -25,6 +25,7 @@ export declare class PWAInstallElement extends LitElement {
     isAppleMobilePlatform: boolean;
     isAppleDesktopPlatform: boolean;
     isAndroidFallback: boolean;
+    isAndroid: boolean;
     isUnderStandaloneMode: boolean;
     isRelatedAppsInstalled: boolean;
     private _manifest;
@@ -39,7 +40,8 @@ export declare class PWAInstallElement extends LitElement {
     getInstalledRelatedApps: () => Promise<IRelatedApp[]>;
     private _toggleHowTo;
     private _toggleGallery;
-    private _checkInstalled;
+    private _checkPlatform;
+    private _checkInstallAvailable;
     private _init;
     private _requestUpdate;
     connectedCallback(): void;

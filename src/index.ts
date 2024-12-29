@@ -61,6 +61,7 @@ export class PWAInstallElement extends LitElement {
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
 	public isAndroidFallback = false;
+	public isAndroid = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
@@ -155,54 +156,42 @@ export class PWAInstallElement extends LitElement {
         passive: true
     }
 	/** @internal */
-	private async _checkInstalled() {
+	private async _checkPlatform() {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
 		this.isAndroidFallback = Utils.isAndroidFallback();
-
-		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
-			if (!this.isUnderStandaloneMode) {
-				this.manualApple && this.hideDialog();
-				setTimeout(
-					() => {
-						this.isInstallAvailable = true;
-						this.requestUpdate()
-						Utils.eventInstallAvailable(this);
-					},
-					1000
-				);
-			}
-		}
-		else {
-			this.manualChrome && this.hideDialog();
-			if (!this.isUnderStandaloneMode && this.isAndroidFallback && !this.disableFallback) {
-				setTimeout(
-					() => {
-						this.isInstallAvailable = true;
-						this.requestUpdate()
-						Utils.eventInstallAvailable(this);
-					},
-					1000
-				);
-			}
-		}
+		this.isAndroid = Utils.isAndroid();
 	}
 	/** @internal */
-	private _init = async () => {
-		window.defferedPromptEvent = null;
+	private _checkInstallAvailable() {
+		if (this.isUnderStandaloneMode)
+			return;
 
-		this._checkInstalled();
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
+			this.manualApple && this.hideDialog();
+			setTimeout(
+				() => {
+					this.isInstallAvailable = true;
+					this.requestUpdate()
+					Utils.eventInstallAvailable(this);
+				},
+				1000
+			);
+			return;
+		}
 
-		if (!this.disableChrome) {
+		let _promptTriggered = false;
+		if (!this.disableChrome && window.BeforeInstallPromptEvent) {
+			this.manualChrome && this.hideDialog();
 			const _promptHandler = (e: BeforeInstallPromptEvent) => {
 				window.defferedPromptEvent = e;
 				e.preventDefault();
 
 				this.platforms = e.platforms;
 
-				if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
+				if (this.isRelatedAppsInstalled) {
 					this.isInstallAvailable = false;
 				} else {
 					this.isInstallAvailable = true;
@@ -214,6 +203,8 @@ export class PWAInstallElement extends LitElement {
 					Utils.eventInstalledSuccess(this);
 				}
 
+				_promptTriggered = true;
+				this.isAndroidFallback = false;
 				this.requestUpdate();
 			}
 			if (this.externalPromptEvent != null)
@@ -221,14 +212,54 @@ export class PWAInstallElement extends LitElement {
 			else
 				window.addEventListener('beforeinstallprompt', _promptHandler);
 		}
+		
+		if (!this.disableFallback && this.isAndroid && !_promptTriggered) {
+			// browsers without BeforeInstallPromptEvent
+			if (this.isAndroidFallback) {
+				setTimeout(
+					() => {
+						this.isInstallAvailable = true;
+						this.requestUpdate()
+						Utils.eventInstallAvailable(this);
+					},
+					1000
+				);
+				return;
+			}
+			// trying to fix browsers like Opera with BeforeInstallPromptEvent not working
+			if ('userActivation' in navigator) {
+				const _activation = navigator.userActivation;
+				const _activationHandler = setInterval(() => {
+					if (_activation.isActive || _activation.hasBeenActive) {
+						if (!_promptTriggered) {
+							this.isAndroidFallback = true;
+							this.isInstallAvailable = true;
+							this.requestUpdate();
+							Utils.eventInstallAvailable(this);
+						}
+						clearInterval(_activationHandler);
+					}
+				}, 1000);
+				setTimeout(() => clearInterval(_activationHandler), 30000);
+			}
+		}
+	}
 
-		window.addEventListener('appinstalled', (e) => {
-			window.defferedPromptEvent = null;
-			this.isInstallAvailable = false;
+	/** @internal */
+	private _init = async () => {
+		window.defferedPromptEvent = null;
 
-			this.requestUpdate();
-			Utils.eventInstalledSuccess(this);
-		});
+		await this._checkPlatform();
+		this._checkInstallAvailable();
+
+		if ('onappinstalled' in window)
+			window.addEventListener('appinstalled', (e) => {
+				window.defferedPromptEvent = null;
+				this.isInstallAvailable = false;
+
+				this.requestUpdate();
+				Utils.eventInstalledSuccess(this);
+			});
 
 		Object.assign(this, await Utils.fetchAndProcessManifest(this.manifestUrl, this.icon, this.name, this.description));
 	};

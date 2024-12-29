@@ -218,6 +218,15 @@
             },
             {
               "kind": "field",
+              "name": "isAndroid",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "isUnderStandaloneMode",
               "type": {
                 "text": "boolean"
