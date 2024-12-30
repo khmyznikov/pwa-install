@@ -1,5 +1,5 @@
 import { WebAppManifest } from 'web-app-manifest';
-import { IRelatedApp } from './types/types';
+import { IRelatedApp, Manifest } from './types/types';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {
@@ -37,6 +37,22 @@ export default class Utils {
 
         return audioCheck && webGLCheck;
     }
+
+    static isAndroid(): boolean {
+        if (navigator.userAgent.toLowerCase().match(/android/))
+            return true;
+        return false;
+    }
+
+    static isAndroidFallback(): boolean {
+        if (this.isAndroid() && !('BeforeInstallPromptEvent' in window))
+            return true;
+        return false;
+    }
+
+    static deviceFormFactor(): 'narrow' | 'wide' {
+        return window.matchMedia('(orientation: portrait)').matches? 'narrow' : 'wide';
+    }
     
     static isStandalone() {
 		if (window.matchMedia('(display-mode: standalone)').matches || ('standalone' in navigator && (navigator as any).standalone === true))
@@ -58,6 +74,22 @@ export default class Utils {
     static async isRelatedAppsInstalled(): Promise<boolean> {
         const _relatedApps = await this.getInstalledRelatedApps();
         return _relatedApps.length? true : false;
+    }
+
+    static setStorageFlag(name: string, value:boolean, persistent: boolean = false) {
+        try {
+            if (persistent)
+                localStorage.setItem(name, value.toString());
+            else
+                sessionStorage.setItem(name, value.toString());
+        } catch (e) {}
+    }
+    static getStorageFlag(name: string): boolean {
+        try {
+            return sessionStorage.getItem(name) === 'true' || localStorage.getItem(name) === 'true';
+        } catch (e) {
+            return false;
+        }
     }
 
     static eventInstalledSuccess(_element: Element) {
@@ -84,5 +116,30 @@ export default class Utils {
         [...manifest.icons || [], ...manifest.screenshots || []].forEach(asset => {
             asset.src = new URL(asset.src, normalizedManifestUrl).href;
         })
+    }
+
+    static async fetchAndProcessManifest(manifestUrl: string, icon: string, name: string, description: string): Promise<{_manifest: WebAppManifest, icon: string, name: string, description: string}> {
+        let _manifest: WebAppManifest = new Manifest();
+        let _json: WebAppManifest | null = null;
+        try{
+			const _response = await fetch(manifestUrl);
+			_json = await _response.json() as WebAppManifest;
+			if (!_response.ok || !_json || !Object.keys(_json))
+				throw new Error('Manifest not found');
+			this.normalizeManifestAssetUrls(_json, manifestUrl);
+        }  
+        catch(e) {}    
+
+        icon = icon || (_json?.icons?.length ? _json?.icons![0].src : _manifest.icons?.[0].src) || '';
+        name = name || (_json? _json['short_name']: _manifest['short_name']) || '';
+        description = description || _json?.description || _manifest.description || '';
+		_manifest = _json || _manifest;
+        
+        return {
+            _manifest,
+            icon,
+            name,
+            description
+        }
     }
 }

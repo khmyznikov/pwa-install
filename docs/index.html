@@ -54,7 +54,11 @@
 			</legend>
 			<button onclick="pwaInstall.showDialog()">Show</button>
 			<button onclick="pwaInstall.showDialog(true)">Show(forced)</button>
-			<button onclick="pwaInstall.hideDialog()">Hide</button><hr>
+			<button onclick="pwaInstall.hideDialog()">Hide</button>
+			<br><label>
+				<input type="checkbox" onchange="setAttr('use-local-storage', this.value)">
+				Use local storage
+			</label><hr>
 			<button onclick="pwaInstall.install()">Install</button>
 			<button onclick="getRelated()">Get related apps</button>
 		</fieldset>
@@ -63,8 +67,9 @@
 				Style Override
 			</legend>
 			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
-			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button>
-			<button onclick="forceStyle('chrome')">Chrome</button><br>
+			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button><br>
+			<button onclick="forceStyle('chrome')">Chromium</button>
+			<button onclick="forceStyle('fallback')">Android Fallback</button><br>
 			<i>*end style depends on browser and OS</i>
 			<hr>
 
@@ -159,6 +164,12 @@
 				case 'chrome':
 					pwaInstall.isAppleMobilePlatform = false;
 					pwaInstall.isAppleDesktopPlatform = false;
+					pwaInstall.isAndroidFallback = false;
+					break;
+				case 'fallback':
+					pwaInstall.isAppleMobilePlatform = false;
+					pwaInstall.isAppleDesktopPlatform = false;
+					pwaInstall.isAndroidFallback = true;
 					break;
 			}
 			pwaInstall.hideDialog();

@@ -1,6 +1,9 @@
 import { LitElement, html } from 'lit';
 import { property, customElement } from 'lit/decorators.js';
 
+import stylesCommon from '../styles-common.scss'
+import styles from './styles-bottom-sheet.scss';
+
 // import TouchDragListener from "./touch-listener";
 
 type IProps = {
@@ -14,6 +17,10 @@ import Utils from '../../../utils';
 
 @customElement('pwa-bottom-sheet')
 export default class PWABottomSheetElement extends LitElement {
+	static get styles() {
+		return [stylesCommon, styles];
+	}
+
 	@property({type: Object}) props: IProps = {
         name: '',
         description: '',
@@ -21,9 +28,19 @@ export default class PWABottomSheetElement extends LitElement {
     };
     @property({type: Object}) install = {handleEvent: () => {}};
 	@property() hideDialog = () => {};
-	@property() disableClose = false;
+	@property({type: Boolean}) disableClose = false;
+
+	@property({type: Boolean}) fallback = false;
+	@property({type: Boolean}) howToRequested = false;
+	@property({type: Object}) toggleHowTo = {handleEvent: () => {}};
 
 	private _callInstall = () => {
+		if (this.fallback) {
+			this.toggleHowTo.handleEvent();
+			setTimeout(() => this.setupAppearence(true), 210);
+			
+			return;
+		}
 		this.install.handleEvent();
 	}
 
@@ -42,7 +59,8 @@ export default class PWABottomSheetElement extends LitElement {
 
 		let dragOffset = 0;
 		const bounceOffset = 35;
-		const bottomSize = touchTargetElement.clientHeight + infoElement.clientHeight;
+		
+		const bottomSize = infoElement.offsetHeight + infoElement.offsetTop;
 
 		const getYCoord = (e: MouseEvent | TouchEvent): number => {
 			return (e as MouseEvent).clientY || ((e as TouchEvent).changedTouches && (e as TouchEvent).changedTouches.length? (e as TouchEvent).changedTouches[0].clientY : 0);
@@ -53,6 +71,8 @@ export default class PWABottomSheetElement extends LitElement {
 			window.addEventListener('mousemove', dragMouseMove);
 			window.addEventListener('touchend', dragMouseUp);
 			window.addEventListener('touchmove', dragMouseMove);
+
+			e.preventDefault();
 
 			dragOffset = getYCoord(e) - touchTargetElement.getBoundingClientRect().top;
 
@@ -70,7 +90,7 @@ export default class PWABottomSheetElement extends LitElement {
 				closeDragElement(e, window.innerHeight - element.clientHeight);
 				
 				try {
-					Utils.eventGallery((this.getRootNode() as ShadowRoot).host);
+					!this.howToRequested && Utils.eventGallery((this.getRootNode() as ShadowRoot).host);
 				} catch (e) {}
 				return
 			}
@@ -140,7 +160,7 @@ export default class PWABottomSheetElement extends LitElement {
 		}
 
 		touchTargetElement.addEventListener('mousedown', dragMouseDown);
-		touchTargetElement.addEventListener('touchstart', dragMouseDown, {passive: true});
+		touchTargetElement.addEventListener('touchstart', dragMouseDown, {passive: false});
 
 		closeDragElement(new MouseEvent('mouseup'), window.innerHeight - bottomSize - bounceOffset);
 
@@ -150,21 +170,21 @@ export default class PWABottomSheetElement extends LitElement {
 		}
 	}
 
-	private setupAppearence = () => {
+	private setupAppearence = (fullOpen?: boolean) => {
 		if (this.bindedElement) {
 			this.bindedElement.touchElement.removeEventListener('mousedown', this.bindedElement.listener);
 			this.bindedElement.touchElement.removeEventListener('touchstart', this.bindedElement.listener);
 		}
-
+		
 		this.bindedElement = this.dragMobileSheet(
-			this.parentElement?.parentElement,
-			this.parentElement?.getElementsByClassName('touch-header')[0] as HTMLElement,
-			this.parentElement?.getElementsByClassName('body-header')[0] as HTMLElement);
+			this.parentElement,
+			this.shadowRoot?.querySelector('.dialog-body .touch-header') as HTMLElement,
+			this.shadowRoot?.querySelector(`.dialog-body ${fullOpen? '.how-to-body': '.body-header'}`) as HTMLElement);
 	}
 	private _init = () => {
 		this.setupAppearence();
 
-		window.addEventListener('resize', this.setupAppearence);
+		window.addEventListener('resize', () => this.setupAppearence());
 
 		return;
 	}
@@ -174,16 +194,12 @@ export default class PWABottomSheetElement extends LitElement {
         return;
 	}
 
-    createRenderRoot() {
-        return this;
-    }
-
 	connectedCallback() {
 		super.connectedCallback()
 
 	}
 
 	render() {
-        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall)}`;
+        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback, this.howToRequested)}`;
 	}
 }

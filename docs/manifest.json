@@ -29,12 +29,14 @@
         {
 			"src": "screenshots/mobile-2.jpg",
 			"sizes": "518x922",
-			"type": "image/jpeg"
+			"type": "image/jpeg",
+			"form_factor": "narrow"
 		},
         {
 			"src": "screenshots/mobile-3.jpg",
 			"sizes": "518x922",
-			"type": "image/jpeg"
+			"type": "image/jpeg",
+			"form_factor": "narrow"
 		},
         {
 			"src": "screenshots/tablet-1.jpg",

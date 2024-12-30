@@ -12,7 +12,7 @@
     "sr",
     "pl",
     "uk",
-    "zh",
+    "zh-HK",
     "zh-CN",
     "it",
     "cs",
@@ -22,7 +22,8 @@
     "ja",
     "ko",
     "km",
-    "fa-IR"
+    "fa-IR",
+    "da"
   ],
   "tsConfig": "tsconfig.json",
   "output": {

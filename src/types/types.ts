@@ -24,6 +24,12 @@ export interface PWAInstallAttributes {
     icon?: string;
 }
 
+export interface ManifestScreenshot extends ImageResource {
+    label?: string;
+    platform?: string;
+    form_factor?: "wide" | "narrow";
+}
+
 export class Manifest {
     constructor() {
         this.icons = [{ src: '' }];
@@ -34,7 +40,7 @@ export class Manifest {
     }
     short_name: string;
     icons: ImageResource[];
-    screenshots?: ImageResource[];
+    screenshots?: ManifestScreenshot[];
     name: string;
     description: string;
 }

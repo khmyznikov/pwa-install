@@ -14,6 +14,7 @@ import Utils from './utils';
 declare const window: IWindow;
 
 import styles from './templates/chrome/styles.scss';
+import stylesCommon from './templates/chrome/styles-common.scss'
 import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
@@ -43,9 +44,11 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manual-chrome', type: Boolean}) manualChrome = false;
 	@property({attribute: 'disable-chrome', type: Boolean}) disableChrome = false;
 	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
+	@property({attribute: 'disable-android-fallback', type: Boolean}) disableFallback = false;
+	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 
 	static get styles() {
-		return [ styles, stylesApple ];
+		return [ styles, stylesCommon, stylesApple ];
 	}
 
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
@@ -53,10 +56,12 @@ export class PWAInstallElement extends LitElement {
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
 
-	public isDialogHidden: boolean = JSON.parse(window.sessionStorage.getItem('pwa-hide-install') || 'false');
+	public isDialogHidden: boolean = Utils.getStorageFlag('pwa-hide-install');
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
+	public isAndroidFallback = false;
+	public isAndroid = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
@@ -97,7 +102,7 @@ export class PWAInstallElement extends LitElement {
 	private _hideDialog = {
 		handleEvent: () => {
 			this.isDialogHidden = true;
-			window.sessionStorage.setItem('pwa-hide-install', 'true');
+			Utils.setStorageFlag('pwa-hide-install', true, this.useLocalStorage);
 			this.requestUpdate();
 		},
 		passive: true
@@ -115,7 +120,7 @@ export class PWAInstallElement extends LitElement {
 		this.isDialogHidden = false;
 		if (forced)
 			this.isInstallAvailable = true;
-		window.sessionStorage.setItem('pwa-hide-install', 'false');
+		Utils.setStorageFlag('pwa-hide-install', false, this.useLocalStorage);
 		this.requestUpdate();
 	}
 
@@ -124,7 +129,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	/** @internal */
-	private _howToForApple = {
+	private _toggleHowTo = {
         handleEvent: () => {
 			this._howToRequested = !this._howToRequested;
 			if (this._howToRequested && this._galleryRequested)
@@ -133,13 +138,6 @@ export class PWAInstallElement extends LitElement {
 
 			if (this._howToRequested) {
 				Utils.eventInstallHowTo(this);
-				
-				// Looks like it's not needed anymore
-				// if (this._manifest.start_url){
-				// 	try {
-				// 		history.replaceState({}, '', this._manifest.start_url);
-				// 	} catch (e) {}
-				// }
 			}				
         },
         passive: true
@@ -158,43 +156,42 @@ export class PWAInstallElement extends LitElement {
         passive: true
     }
 	/** @internal */
-	private async _checkInstalled() {
+	private async _checkPlatform() {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
-
-		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
-			if (!this.isUnderStandaloneMode) {
-				this.manualApple && this.hideDialog();
-				setTimeout(
-					() => {
-						this.isInstallAvailable = true;
-						this.requestUpdate()
-						Utils.eventInstallAvailable(this);
-					},
-					1000
-				);
-			}
-		}
-		else {
-			this.manualChrome && this.hideDialog();
-		}
+		this.isAndroidFallback = Utils.isAndroidFallback();
+		this.isAndroid = Utils.isAndroid();
 	}
 	/** @internal */
-	private _init = async () => {
-		window.defferedPromptEvent = null;
+	private _checkInstallAvailable() {
+		if (this.isUnderStandaloneMode)
+			return;
 
-		this._checkInstalled();
+		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
+			this.manualApple && this.hideDialog();
+			setTimeout(
+				() => {
+					this.isInstallAvailable = true;
+					this.requestUpdate()
+					Utils.eventInstallAvailable(this);
+				},
+				1000
+			);
+			return;
+		}
 
-		if (!this.disableChrome) {
+		let _promptTriggered = false;
+		if (!this.disableChrome && window.BeforeInstallPromptEvent) {
+			this.manualChrome && this.hideDialog();
 			const _promptHandler = (e: BeforeInstallPromptEvent) => {
 				window.defferedPromptEvent = e;
 				e.preventDefault();
 
 				this.platforms = e.platforms;
 
-				if (this.isRelatedAppsInstalled || this.isUnderStandaloneMode) {
+				if (this.isRelatedAppsInstalled) {
 					this.isInstallAvailable = false;
 				} else {
 					this.isInstallAvailable = true;
@@ -206,6 +203,8 @@ export class PWAInstallElement extends LitElement {
 					Utils.eventInstalledSuccess(this);
 				}
 
+				_promptTriggered = true;
+				this.isAndroidFallback = false;
 				this.requestUpdate();
 			}
 			if (this.externalPromptEvent != null)
@@ -213,33 +212,56 @@ export class PWAInstallElement extends LitElement {
 			else
 				window.addEventListener('beforeinstallprompt', _promptHandler);
 		}
-
-		window.addEventListener('appinstalled', (e) => {
-			window.defferedPromptEvent = null;
-			this.isInstallAvailable = false;
-
-			this.requestUpdate();
-			Utils.eventInstalledSuccess(this);
-		});
-
-
-		try{
-			const _response = await fetch(this.manifestUrl);
-			const _json = await _response.json() as WebAppManifest;
-			if (!_response.ok || !_json || !Object.keys(_json))
-				throw new Error('Manifest not found');
-			Utils.normalizeManifestAssetUrls(_json, this.manifestUrl);
-			
-			this.icon = this.icon || _json.icons?.length ? _json.icons![0].src : '';
-			this.name = this.name || _json['short_name'] || _json.name || '';
-			this.description = this.description || _json.description || '';
-			this._manifest = _json;
+		
+		if (!this.disableFallback && this.isAndroid && !_promptTriggered) {
+			// browsers without BeforeInstallPromptEvent
+			if (this.isAndroidFallback) {
+				setTimeout(
+					() => {
+						this.isInstallAvailable = true;
+						this.requestUpdate()
+						Utils.eventInstallAvailable(this);
+					},
+					1000
+				);
+				return;
+			}
+			// trying to fix browsers like Opera with BeforeInstallPromptEvent not working
+			if ('userActivation' in navigator) {
+				const _activation = navigator.userActivation;
+				const _activationHandler = setInterval(() => {
+					if (_activation.isActive || _activation.hasBeenActive) {
+						if (!_promptTriggered) {
+							this.isAndroidFallback = true;
+							this.isInstallAvailable = true;
+							this.requestUpdate();
+							Utils.eventInstallAvailable(this);
+						}
+						clearInterval(_activationHandler);
+					}
+				}, 1000);
+				setTimeout(() => clearInterval(_activationHandler), 30000);
+			}
 		}
-		catch(e) {
-			this.icon = this.icon || this._manifest.icons?.[0].src || '';
-			this.name = this.name || this._manifest['short_name'] || '';
-			this.description = this.description || this._manifest.description || '';
-		}
+	}
+
+	/** @internal */
+	private _init = async () => {
+		window.defferedPromptEvent = null;
+
+		await this._checkPlatform();
+		this._checkInstallAvailable();
+
+		if ('onappinstalled' in window)
+			window.addEventListener('appinstalled', (e) => {
+				window.defferedPromptEvent = null;
+				this.isInstallAvailable = false;
+
+				this.requestUpdate();
+				Utils.eventInstalledSuccess(this);
+			});
+
+		Object.assign(this, await Utils.fetchAndProcessManifest(this.manifestUrl, this.icon, this.name, this.description));
 	};
 	/** @internal */
 	private _requestUpdate = () => {
@@ -276,7 +298,7 @@ export class PWAInstallElement extends LitElement {
 				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
-				this._howToForApple,
+				this._toggleHowTo,
 				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
@@ -296,7 +318,10 @@ export class PWAInstallElement extends LitElement {
 				this._hideDialogUser,
 				this._install,
 				this._toggleGallery,
-				this._galleryRequested
+				this._galleryRequested,
+				this._toggleHowTo,
+				this._howToRequested,
+				this.isAndroidFallback
 			)}`;
 	}
 }

@@ -5,12 +5,18 @@ type IProps = {
     icon: string;
 };
 export default class PWABottomSheetElement extends LitElement {
+    static get styles(): CSSStyleSheet[];
     props: IProps;
     install: {
         handleEvent: () => void;
     };
     hideDialog: () => void;
     disableClose: boolean;
+    fallback: boolean;
+    howToRequested: boolean;
+    toggleHowTo: {
+        handleEvent: () => void;
+    };
     private _callInstall;
     private _callHide;
     private bindedElement;
@@ -19,7 +25,6 @@ export default class PWABottomSheetElement extends LitElement {
     private setupAppearence;
     private _init;
     firstUpdated(): void;
-    createRenderRoot(): this;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }

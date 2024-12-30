@@ -1,5 +1,5 @@
 [![Published on NPM](https://img.shields.io/npm/v/@khmyznikov/pwa-install.svg)](https://www.npmjs.com/package/@khmyznikov/pwa-install)
-![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)
+[![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)](https://www.npmjs.com/package/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
 **New to PWAs? Unsure how to create a Web App? Check out these resources for a quick start: [PWA Intro](https://docs.pwabuilder.com/#/home/pwa-intro), [PWA Starter](https://docs.pwabuilder.com/#/starter/quick-start), [PWA Builder](https://www.pwabuilder.com/)**
@@ -9,6 +9,9 @@ Installation dialog for Progressive Web Application (PWA) and Add to Home Screen
 Use it as [Web Component with any **modern** framework](https://custom-elements-everywhere.com/). No polyfill is required.
 - [React <= 18 sample](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
 - [Angular sample](https://stackblitz.com/edit/aozf92?file=package.json,src%2Fapp%2Fpwa-install%2Fpwa-install.component.html,src%2Fapp%2Fpwa-install%2Fpwa-install.component.ts)
+- [Svelte](https://stackblitz.com/edit/svelte-tab-2-sng9wa?file=src%2Froutes%2F%2Bpage.svelte)
+  
+⚡Should work with any other modern framework or just vanila js as web component.
 
 ## **[Demo](https://khmyznikov.com/pwa-install/)**
 
@@ -79,12 +82,15 @@ import '@khmyznikov/pwa-install';
   manual-chrome="true"
   disable-chrome="true"
   disable-close="true"
+  use-local-storage="true"
 
   install-description="Custom call to install text"
   disable-install-description="true"
   disable-screenshots="true"
   disable-screenshots-apple="true"
   disable-screenshots-chrome="true"
+
+  disable-android-fallback="true"
 
   manifest-url="/manifest.json"
   name="PWA"
@@ -93,7 +99,9 @@ import '@khmyznikov/pwa-install';
 </pwa-install>
 <!-- 
   manual-apple/chrome params means you want to show the Dialog manually by showDialog().
-  disable-chrome param is for completely disabling custom logic and interception for Chominum browsers (will work built-in browser logic).
+  disable-chrome param is for completely disabling custom logic and interception for Chromium browsers (will work built-in browser logic).
+  use-local-storage will store the user's preference to ignore the prompt in long-lived storage (so they will not be prompted again unless they clear application data)
+  disable-android-fallback will disable instructions for non-Chrome browsers on Android
 --->
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
@@ -189,7 +197,7 @@ Translations available:
 - *FR*
 - *SR*
 - *PL*
-- *ZH*/*ZH-CN*
+- *ZH-CN*/*ZH-HK*
 - *IT*
 - *UK*
 - *CS*
@@ -199,6 +207,7 @@ Translations available:
 - *SV*
 - *KO*
 - *KM*
+- *DA*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
@@ -215,3 +224,11 @@ Language should change automatically based on browser settings. Please create th
 [<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
 [<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)
 
+## One-time Backers ❤️
+[Patrick Voigt](https://github.com/pvo13)<br>
+[Darren Debono](https://github.com/amigabits)<br>
+[Angelo Fan](https://github.com/angelofan)<br>
+[Chris Cherniakov](https://github.com/Taequn)<br>
+[Moddy](https://github.com/moddyio)<br>
+[Pavlo Hromadchuk](https://github.com/hromadchuk)<br>
+Leek Duck
