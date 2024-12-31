@@ -30,10 +30,6 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>Tilføj den til din hjemmeskærm for en bedre oplevelse og nem adgang.</target>
 </trans-unit>
-<trans-unit id="sdfe23506a3b0cdc8">
-  <source>1) Open in Safari browser</source>
-  <target>1) Åbn i Safari-browseren</target>
-</trans-unit>
 <trans-unit id="s1b9047d53d9f9d22">
   <source>2) Press Share in Navigation bar</source>
   <target>2) Tryk på Del-knappen i navigationslinjen</target>
@@ -41,10 +37,6 @@
 <trans-unit id="sa7551383d1897fcc">
   <source>2) Press Add to Dock</source>
   <target>2) Vælg Tilføj til Dock</target>
-</trans-unit>
-<trans-unit id="s5c6aad7a7e4a1437">
-  <source>3) Press Add to Home Screen</source>
-  <target>3) Vælg Tilføj til hjemmeskærm</target>
 </trans-unit>
 <trans-unit id="sc79fd7641eb9a975">
   <source>Hide Instruction</source>
@@ -57,6 +49,22 @@
 <trans-unit id="scdaf4bbff76674c8">
   <source>Add to Home Screen</source>
   <target>Tilføj til hjemmeskærm</target>
+</trans-unit>
+<trans-unit id="s1488e73779d7682f">
+  <source>1) Open your browser menu</source>
+  <target>1) Åbn din browsermenu</target>
+</trans-unit>
+<trans-unit id="s4593f304dac8848c">
+  <source>2) Tap "Add to Home screen"</source>
+  <target>2) Tryk på "Tilføj til hjemmeskærm"</target>
+</trans-unit>
+<trans-unit id="s54cfbb14f46396d4">
+  <source>1) Open in your main browser</source>
+  <target>1) Åbn i din primære browser</target>
+</trans-unit>
+<trans-unit id="s2d90afa5dcca2c0e">
+  <source>3) Scroll down to "Add to Home Screen"</source>
+  <target>3) Rul ned til "Tilføj til hjemmeskærm"</target>
 </trans-unit>
 </body>
 </file>
