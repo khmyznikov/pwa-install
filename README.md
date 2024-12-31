@@ -31,7 +31,7 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 |![iPadOS example light](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
 
 
-| Android | Firefox/Opera/Others&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | App gallery&nbsp;&nbsp; |
+| Android | Firefox/Opera/Others&nbsp;&nbsp; | App gallery&nbsp;&nbsp; |
 |-|-|-|
 |![Android example default](https://user-images.githubusercontent.com/6115884/169654789-41fb88b3-97b2-4992-aab5-0def6015be21.jpg)|![Firefox Opera and others](https://github.com/user-attachments/assets/03131c42-8cd0-4e93-a2fe-d75a75223550)|![Android example white](https://user-images.githubusercontent.com/6115884/169654871-33f30d44-b70c-4912-a678-3d97fd0d80a8.jpg)|
 
