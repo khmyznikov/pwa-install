@@ -9,7 +9,7 @@ const template = (name: string, description: string, installDescription: string,
     const currentLanguage = navigator.language;
     const isRTL = ['ar', 'he', 'fa', 'ur'].includes(currentLanguage.substring(0, 2));
     return html`
-        <aside id="pwa-install-element">
+        <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
@@ -23,11 +23,11 @@ const template = (name: string, description: string, installDescription: string,
                     </div>
                     <div class="description">${description || location.hostname}</div>
                 </div>
-                ${!disableDescription? html`<div class="welcome-to-install${isRTL ? '-RTL' : ''}" dir="${isRTL ? 'rtl' : ''}">
+                ${!disableDescription? html`<div class="welcome-to-install">
                     ${installDescription? installDescription: `${msg('This site has app functionality.')} ${isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.')}`}</div>` 
                 : '' }
                 <div class="how-to-body">
-                    <div class="how-to-description" dir="${isRTL ? 'rtl' : ''}">
+                    <div class="how-to-description">
 
                         ${!isDesktop? html`
                         <div class="description-step">
@@ -77,7 +77,7 @@ const template = (name: string, description: string, installDescription: string,
                     <button class="dialog-button button install" @click=${howToForApple}>
                         <span class="button-text ${howToRequested? 'show': 'hide'}">${msg('Hide Instruction')}</span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
-                            <span dir="${isRTL ? 'rtl' : ''}" >${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
+                            <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
                             <svg viewBox="0 0 25 25">
                                 <use href="#pwa-add"></use>
                             </svg>

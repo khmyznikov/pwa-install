@@ -25,11 +25,6 @@
         right: 150px;
         left: auto;
 
-        // &.rtl {
-        //     right: auto;
-        //     left: 150px;
-        // }
-
         background-color: var(--background-color);
         filter: drop-shadow(0 5px 15px rgba(0,0,0,.3));
 
@@ -48,7 +43,7 @@
             visibility: visible;
         }
 
-        .dialog-body, .dialog-body-RTL{
+        .dialog-body{
             display: grid;
 
             grid-template-columns: 70px 1fr;
@@ -81,7 +76,7 @@
                     font-weight: 500;
                     // padding-top: 10px;
                     font-size: 18px;
-                    text-align: left;
+                    text-align: start;
 
                     line-height: 24px;
                     // padding: 5px 0px;
@@ -103,13 +98,12 @@
                     font-size: 13px;
                     font-weight: 400;
                     opacity: 0.7;
-                    text-align: left;
 
                     line-height: 14px;
 
                     overflow-x: hidden;
                     text-overflow: ellipsis;
-                    text-align: left;
+                    text-align: start;
                     word-break: break-all;
                     white-space: nowrap;
                 }
@@ -126,7 +120,6 @@
                 grid-column: 1 / 3;
                 padding: 0px 6px;
                 margin: 10px 5px 5px;
-                text-align: left;
 
                 display: -webkit-box;
                 -webkit-line-clamp: 5;
@@ -135,7 +128,7 @@
                 overflow: hidden;
                 overflow-y: auto;
                 text-overflow: ellipsis;
-                text-align: left;
+                text-align: start;
             }
 
             .app-description{
@@ -203,27 +196,6 @@
                 overflow: hidden;
             }
         }
-
-        .dialog-body-RTL {
-            // .about {
-            //     .name, .hostname {
-            //         text-align: right;
-            //     }
-            // }
-
-            .install-description {
-                text-align: right;
-            }
-
-            .action-buttons {
-                direction: rtl;
-
-                // .primary {
-                //     grid-column-start: 1;
-                // }
-            }
-        }
-
 
         &.gallery{
             pwa-gallery{

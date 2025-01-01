@@ -10,9 +10,9 @@ const template = (name: string, description: string, installDescription: string,
     const currentLanguage = navigator.language;
     const isRTL = ['ar', 'he', 'fa', 'ur'].includes(currentLanguage.substring(0, 2));
     return html`
-        <div id="pwa-install-element">
+        <div id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <div class="install-dialog chrome ${classMap(installDialogClasses())}">
-                <div class="dialog-body${isRTL ? '-RTL' : ''}">
+                <div class="dialog-body">
                     <div class="icon">
                         <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                     </div>
@@ -28,7 +28,7 @@ const template = (name: string, description: string, installDescription: string,
                     </div>
                     ${description ? html `<div class="description app-description">${description}</div>`: ''}
                     ${!disableDescription? 
-                        html`<hr><div class="description install-description" dir="${isRTL ? 'rtl' : ''}">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
+                        html`<hr><div class="description install-description">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
                         : ''}
                     ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]}></pwa-gallery>`: ''}
                     <div class="action-buttons">
