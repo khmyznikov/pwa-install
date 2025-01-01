@@ -227,7 +227,7 @@ export class PWAInstallElement extends LitElement {
 				return;
 			}
 			// trying to fix browsers like Opera with BeforeInstallPromptEvent not working
-			if ('userActivation' in navigator) {
+			if ('userActivation' in navigator && !this.isRelatedAppsInstalled) {
 				const _activation = navigator.userActivation;
 				const _activationHandler = setInterval(() => {
 					if (_activation.isActive || _activation.hasBeenActive) {
