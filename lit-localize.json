@@ -23,7 +23,8 @@
     "ko",
     "km",
     "da",
-    "fa"
+    "fa",
+    "vi"
   ],
   "tsConfig": "tsconfig.json",
   "output": {
