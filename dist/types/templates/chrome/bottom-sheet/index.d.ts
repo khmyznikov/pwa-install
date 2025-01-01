@@ -26,6 +26,6 @@ export default class PWABottomSheetElement extends LitElement {
     private _init;
     firstUpdated(): void;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): import("lit").TemplateResult<1>;
 }
 export {};
