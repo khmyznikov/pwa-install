@@ -7,6 +7,7 @@ export interface IRelatedApp {
 }
 export interface IWindow extends Window {
     defferedPromptEvent: BeforeInstallPromptEvent | null;
+    BeforeInstallPromptEvent: BeforeInstallPromptEvent;
 }
 type Booleanish = 'true' | 'false';
 export interface PWAInstallAttributes {
