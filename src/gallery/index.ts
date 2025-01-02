@@ -9,6 +9,7 @@ import template from './template-gallery';
 export default class PWAGalleryElement extends LitElement {
 	@property({ type: Array }) screenshots: ManifestScreenshot[] = [];
 	@property() theme: 'default' | 'apple_desktop' | 'apple_mobile' = 'default';
+	@property({ type: Boolean }) rtl: boolean = false;
 
 	static get styles() {
 		return styles;
@@ -31,9 +32,9 @@ export default class PWAGalleryElement extends LitElement {
 	};
 	
 	private findCurrentItem = (scroller: HTMLElement, items: HTMLElement[]): HTMLElement | null => {
-		const scrollLeft = scroller.scrollLeft;
+		const scrollLeft = scroller.scrollLeft * (this.rtl? -1 : 1);
 	  	// Find the item closest to the center of the viewport.
-		return items.find((item) => (item.offsetWidth + item.offsetLeft) >= scrollLeft + (item.offsetWidth / 2.5)) || null;
+		return items.find((item) => (item.offsetWidth + item.offsetLeft * (this.rtl? -1 : 1)) >= scrollLeft + (item.offsetWidth / 2.5)) || null;
 	};
 	
 	private scrollToPage = (direction: 'next' | 'prev') => {
@@ -45,7 +46,7 @@ export default class PWAGalleryElement extends LitElement {
 		if (!currentItem) return;
 	
 		const currentIndex = items.indexOf(currentItem);
-		const offset = direction === 'next' ? 1 : -1;
+		const offset = (direction === 'next' ? 1 : -1) * (this.rtl? -1 : 1) ;
 		const targetIndex = currentIndex + offset;
 		
 		if (targetIndex >= 0 && targetIndex < items.length) {

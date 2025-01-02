@@ -24,6 +24,7 @@ import * as ja from "./locales/ja";
 import * as sv from "./locales/sv";
 import * as ko from "./locales/ko";
 import * as km from "./locales/km";
+import * as faIR from "./locales/fa";
 import * as da from "./locales/da";
 import * as vi from "./locales/vi";
 
@@ -48,6 +49,7 @@ const localizedTemplates = new Map([
   ['sv', sv],
   ['ko', ko],
   ['km', km],
+  ['fa', faIR],
   ['da', da],
   ['vi', vi],
 ])

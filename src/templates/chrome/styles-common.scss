@@ -55,7 +55,7 @@
 
 			overflow-x: hidden;
 			text-overflow: ellipsis;
-			text-align: left;
+			text-align: start;
 			word-break: break-all;
 			white-space: nowrap;
 		}
@@ -80,7 +80,7 @@
 		overflow: hidden;
 		overflow-y: auto;
 		text-overflow: ellipsis;
-		text-align: left;
+		text-align: start;
 	}
 
 	.app-description{
@@ -188,8 +188,8 @@
 				min-width: 26px;
 				line-height: 0;
 
-				margin-right: 0;
-				margin-left: auto;
+				margin-inline-end: 0;
+				margin-inline-start: auto;
 				padding: 0;
 
 				border-radius: 50%;

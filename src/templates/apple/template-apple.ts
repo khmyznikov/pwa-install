@@ -6,9 +6,10 @@ import { msg } from '@lit/localize';
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-
+    const currentLanguage = navigator.language;
+    const isRTL = ['ar', 'he', 'fa', 'ur'].includes(currentLanguage.substring(0, 2));
     return html`
-        <aside id="pwa-install-element">
+        <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
@@ -63,7 +64,7 @@ const template = (name: string, description: string, installDescription: string,
                         </div>
                     </div>
                 </div>
-                ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}"></pwa-gallery>`: ''}
+                ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}" .rtl="${isRTL}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery}>
                         ${isDesktop? 
