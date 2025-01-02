@@ -52,15 +52,19 @@
 </trans-unit>
 <trans-unit id="s1488e73779d7682f">
   <source>1) Open your browser menu</source>
+   <target>۱) مرورگر خود را باز کنید</target>
 </trans-unit>
 <trans-unit id="s4593f304dac8848c">
   <source>2) Tap "Add to Home screen"</source>
+  <target>۲) روی "Add to Home screen" ضربه بزنید</target>
 </trans-unit>
 <trans-unit id="s54cfbb14f46396d4">
   <source>1) Open in your main browser</source>
+  <target>۱) در مرورگر اصلی خود باز کنید</target>
 </trans-unit>
 <trans-unit id="s2d90afa5dcca2c0e">
   <source>3) Scroll down to "Add to Home Screen"</source>
+   <target>۳) به پایین اسکرول کنید تا به "Add to Home Screen" برسید</target>
 </trans-unit>
 </body>
 </file>
