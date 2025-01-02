@@ -64,7 +64,7 @@ const template = (name: string, description: string, installDescription: string,
                         </div>
                     </div>
                 </div>
-                ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}"></pwa-gallery>`: ''}
+                ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}" .rtl="${isRTL}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery}>
                         ${isDesktop? 

@@ -95,7 +95,7 @@
 		&.prev {
 			left: 5px;
 			svg{
-				margin-inline-start: 4px;
+				margin-left: 4px;
 			}
 			
 		}
@@ -104,7 +104,7 @@
 			right: 5px;
 			svg{
 				transform: rotate(180deg);
-				margin-inline-start: 6px;
+				margin-left: 6px;
 			}
 			
 		}
@@ -118,6 +118,7 @@
 		svg{
 			width: 20px;
 			height: 20px;
+			margin: 0 auto;
 			path{ 
 				fill: var(--nav-btn-fill-color);
 			}

@@ -124,13 +124,13 @@
                 grid-area: description;
 
                 .name, .description{
-                    padding-right: 15px;
+                    padding-inline-end: 15px;
                     overflow: hidden;
                 }
                 .name{
                     font-weight: 600;
                     padding-top: 10px;
-                    padding-right: 10px;
+                    padding-inline-end: 10px;
                     line-height: 22px;
 
                     align-items: flex-start;
@@ -140,6 +140,7 @@
                     font-size: 12px;
                     line-height: 15px;
 
+                    padding: 0;
                     margin-bottom: 15px;
                     overflow-y: auto;
 
@@ -166,6 +167,8 @@
 
             grid-column-start: 1;
             grid-column-end: 3;
+            grid-template-columns: unset;
+            gap: unset;
 
             // gap: 15px;
             padding: 15px;
@@ -538,6 +541,10 @@
                         }
                     }
                 }
+            }
+
+            pwa-gallery{
+                margin: 0 -10px;
             }
 
             &.gallery{
