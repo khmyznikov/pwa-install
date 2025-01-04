@@ -2,7 +2,7 @@ import { LitElement, PropertyValues, html } from 'lit';
 import { localized } from '@lit/localize';
 import { property, state, customElement } from 'lit/decorators.js';
 import { WebAppManifest } from 'web-app-manifest';
-import { changeLocale } from './localization';
+import { changeLocale, isRTL } from './localization';
 
 import { IRelatedApp, Manifest, IWindow, PWAInstallAttributes } from './types/types';
 
@@ -66,7 +66,10 @@ export class PWAInstallElement extends LitElement {
 	public isRelatedAppsInstalled = false;
 
 	/** @internal */
-	private _manifest: WebAppManifest = new Manifest();
+	private _isRTL = false;
+
+	/** @internal */
+	private _manifest: Manifest = new Manifest();
 	/** @internal */
 	private _howToRequested = false;
 	/** @internal */
@@ -268,8 +271,9 @@ export class PWAInstallElement extends LitElement {
 		this.requestUpdate();
 	}
 
-	connectedCallback() {
-		changeLocale(navigator.language);
+	async connectedCallback() {
+		await changeLocale(navigator.language);
+		this._isRTL = isRTL();
 		this._init();
 		PWAGalleryElement.finalized;
 		PWABottomSheetElement.finalized;
@@ -302,7 +306,8 @@ export class PWAInstallElement extends LitElement {
 				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
-				this._galleryRequested
+				this._galleryRequested,
+				this._isRTL
 			)}`;
 		else
 			return html`${template(
@@ -321,7 +326,8 @@ export class PWAInstallElement extends LitElement {
 				this._galleryRequested,
 				this._toggleHowTo,
 				this._howToRequested,
-				this.isAndroidFallback
+				this.isAndroidFallback,
+				this._isRTL
 			)}`;
 	}
 }

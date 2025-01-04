@@ -4,11 +4,10 @@ import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 import { ManifestScreenshot } from '../../types/types';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, toggleHowTo: any, howToRequested: boolean, isAndroidFallback: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, toggleHowTo: any, howToRequested: boolean, isAndroidFallback: boolean, isRTL: boolean = false) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-    const currentLanguage = navigator.language;
-    const isRTL = ['ar', 'he', 'fa', 'ur'].includes(currentLanguage.substring(0, 2));
+
     return html`
         <div id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <div class="install-dialog chrome ${classMap(installDialogClasses())}">
