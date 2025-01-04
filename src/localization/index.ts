@@ -27,7 +27,6 @@ import * as km from "./locales/km";
 import * as fa from "./locales/fa";
 import * as da from "./locales/da";
 import * as vi from "./locales/vi";
-import { get } from 'http';
 
 const localizedTemplates = new Map([
   ['ru', ru],
