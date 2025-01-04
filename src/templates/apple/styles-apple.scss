@@ -83,9 +83,9 @@
                 min-width: 26px;
                 line-height: 0;
 
-                margin-right: 7px;
+                margin-inline-end: 7px;
                 margin-top: 7px;
-                margin-left: auto;
+                margin-inline-start: auto;
 
                 padding: 0px;
                 border-radius: 50%;
@@ -124,13 +124,13 @@
                 grid-area: description;
 
                 .name, .description{
-                    padding-right: 15px;
+                    padding-inline-end: 15px;
                     overflow: hidden;
                 }
                 .name{
                     font-weight: 600;
                     padding-top: 10px;
-                    padding-right: 10px;
+                    padding-inline-end: 10px;
                     line-height: 22px;
 
                     align-items: flex-start;
@@ -140,6 +140,7 @@
                     font-size: 12px;
                     line-height: 15px;
 
+                    padding: 0;
                     margin-bottom: 15px;
                     overflow-y: auto;
 
@@ -153,7 +154,7 @@
                 // grid-area: title;
                 grid-area: welcome;
 
-                text-align: left;
+                text-align: start;
                 font-weight: 400;
                 padding: 15px;
                 width: auto;
@@ -166,6 +167,8 @@
 
             grid-column-start: 1;
             grid-column-end: 3;
+            grid-template-columns: unset;
+            gap: unset;
 
             // gap: 15px;
             padding: 15px;
@@ -199,7 +202,7 @@
 
                 &.install{
                     padding: 0 15px;
-                    text-align: left;
+                    text-align: start;
 
                     // display: inline-flex;
 
@@ -250,7 +253,7 @@
                     min-width: 50px;
                     width: auto;
 
-                    margin-right: 15px;
+                    margin-inline-end: 15px;
 
                     #pwa-gallery{
                         margin: 0 auto;
@@ -337,7 +340,7 @@
                     .step-text{
                         // margin-top: 5px;
                         font-weight: 600;
-                        text-align: left;
+                        text-align: start;
                     }
                 }
             }
@@ -425,7 +428,7 @@
                 opacity: 1;
                 height: 20px;
                 min-width: 20px;
-                margin-right: -5px;
+                margin-inline-end: -5px;
                 margin-top: -5px;
                 svg{
                     width: 14px;
@@ -490,7 +493,7 @@
                     &.gallery{
                         width: 30px;
                         min-width: 30px;
-                        margin-right: 10px;
+                        margin-inline-end: 10px;
                         background: var(--background-color-button);
                         #pwa-gallery{
                             width: 14px;
@@ -538,6 +541,10 @@
                         }
                     }
                 }
+            }
+
+            pwa-gallery{
+                margin: 0 -10px;
             }
 
             &.gallery{
