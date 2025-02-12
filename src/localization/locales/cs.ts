@@ -13,7 +13,7 @@
 's182ab2d6c997515f': `Přidejte jej na plochu pro rozšířené využití a snadný přístup.`,
 's1b9047d53d9f9d22': `2) Stiskněte tlačítko Sdílet na navigačním panelu`,
 's2d90afa5dcca2c0e': `3) Projděte dolů k "Přidat na plochu"`,
-'s37a9e8aec5713460': `Vice`,
+'s37a9e8aec5713460': `Více`,
 's4593f304dac8848c': `2) Klepněte na "Přidat na plochu"`,
 's54cfbb14f46396d4': `1) Otevřete v hlavním prohlížeči`,
 's6196153c4b0c1ea0': `Nainstalovat`,
