@@ -1,6 +1,6 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "scr/types/*"
   ],
   "scripts": {
-    "build": "npm run localize:extract && npm run localize:build && npm run build:noloc && npm run cem:analyze",
+    "build": "npm run localize:extract && npm run localize:build && npm run build:noloc",
     "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production && npx webpack --config webpack/webpack.prod.react.js --mode=production && npm run cem:analyze  && node ./scripts/postbuild.mjs",
     "localize:extract": "lit-localize extract",
     "localize:build": "lit-localize build",
