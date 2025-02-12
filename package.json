@@ -35,11 +35,14 @@
     }
   },
   "files": [
-    "dist"
+    "dist/*",
+    "docs/index.html",
+    "src/utils.ts",
+    "scr/types/*"
   ],
   "scripts": {
-    "build": "npm run localize:extract && npm run localize:build && npm run build:noloc && npm run cem:analyze && node ./scripts/postbuild.mjs",
-    "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production && npx webpack --config webpack/webpack.prod.react.js --mode=production && npm run cem:analyze",
+    "build": "npm run localize:extract && npm run localize:build && npm run build:noloc && npm run cem:analyze",
+    "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production && npx webpack --config webpack/webpack.prod.react.js --mode=production && npm run cem:analyze  && node ./scripts/postbuild.mjs",
     "localize:extract": "lit-localize extract",
     "localize:build": "lit-localize build",
     "cem:analyze": "cem analyze",
