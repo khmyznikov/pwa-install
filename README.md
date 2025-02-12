@@ -4,7 +4,7 @@
 
 **New to PWAs? Unsure how to create a Web App? Check out these resources for a quick start: [PWA Intro](https://docs.pwabuilder.com/#/home/pwa-intro), [PWA Starter](https://docs.pwabuilder.com/#/starter/quick-start), [PWA Builder](https://www.pwabuilder.com/)**
 
-Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers. **20kB brotli** compressed bundle. Translation/localization is supported.
+Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers (Safari, Firefox, Opera, etc.). **20kB brotli** compressed bundle. Translation/localization is supported.
 
 Use it as [Web Component with any **modern** framework](https://custom-elements-everywhere.com/). No polyfill is required.
 - [React <= 18 sample](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
@@ -31,9 +31,9 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 |![iPadOS example light](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
 
 
-| Android | App gallery&nbsp;&nbsp; | Light theme&nbsp;&nbsp; |
+| Android | Firefox/Opera/Others | App gallery&nbsp;&nbsp; |
 |-|-|-|
-|![Android example default](https://user-images.githubusercontent.com/6115884/169654789-41fb88b3-97b2-4992-aab5-0def6015be21.jpg)|![Android example gallery](https://user-images.githubusercontent.com/6115884/169654833-b09c1eff-cfea-41c8-b2d0-66515cd1bc2c.jpg)|![Android example white](https://user-images.githubusercontent.com/6115884/169654871-33f30d44-b70c-4912-a678-3d97fd0d80a8.jpg)|
+|![Android example default](https://user-images.githubusercontent.com/6115884/169654789-41fb88b3-97b2-4992-aab5-0def6015be21.jpg)|![Firefox Opera and others](https://github.com/user-attachments/assets/03131c42-8cd0-4e93-a2fe-d75a75223550)|![Android example white](https://user-images.githubusercontent.com/6115884/169654871-33f30d44-b70c-4912-a678-3d97fd0d80a8.jpg)|
 
 | Chrome&nbsp; | App Gallery&nbsp;&nbsp; |
 |---|---|
@@ -90,6 +90,8 @@ import '@khmyznikov/pwa-install';
   disable-screenshots-apple="true"
   disable-screenshots-chrome="true"
 
+  disable-android-fallback="true"
+
   manifest-url="/manifest.json"
   name="PWA"
   description="Progressive web application"         
@@ -99,6 +101,7 @@ import '@khmyznikov/pwa-install';
   manual-apple/chrome params means you want to show the Dialog manually by showDialog().
   disable-chrome param is for completely disabling custom logic and interception for Chromium browsers (will work built-in browser logic).
   use-local-storage will store the user's preference to ignore the prompt in long-lived storage (so they will not be prompted again unless they clear application data)
+  disable-android-fallback will disable instructions for non-Chrome browsers on Android
 --->
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
@@ -205,6 +208,8 @@ Translations available:
 - *KO*
 - *KM*
 - *DA*
+- *VI*
+- *FA*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
@@ -221,9 +226,11 @@ Language should change automatically based on browser settings. Please create th
 [<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
 [<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)
 
-## Backers ❤️
+## One-time Backers ❤️
 [Patrick Voigt](https://github.com/pvo13)<br>
 [Darren Debono](https://github.com/amigabits)<br>
 [Angelo Fan](https://github.com/angelofan)<br>
 [Chris Cherniakov](https://github.com/Taequn)<br>
+[Moddy](https://github.com/moddyio)<br>
+[Pavlo Hromadchuk](https://github.com/hromadchuk)<br>
 Leek Duck

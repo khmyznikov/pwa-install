@@ -1,0 +1,191 @@
+:host{
+	grid-template-columns: 1fr;
+
+	.touch-header{
+		height: 30px;
+		width: 100%;
+		padding-top: 10px;
+		box-sizing: border-box;
+
+		cursor: grab;
+		&:active{
+			cursor: grabbing;
+		}
+		&::before{
+			content:'';
+			width: 40px;
+			height: 5px;
+			border-radius: 3px;
+			background: var(--touch-header-color);
+			margin: 0 auto;
+			display: block;
+		}
+	}
+	.body-header{
+		display: grid;
+		grid-template-columns: max-content 1fr max-content;
+		grid-gap: 15px;
+
+		padding: 18px 20px;
+		padding-top: 0;
+
+		border-bottom: 1px solid var(--border-bottom-color);
+
+		.install{
+			text-transform: capitalize;
+			height: 40px;
+			min-width: 50px;
+			padding: 0 23px;
+
+			align-items: center;
+			display: inline-flex;
+
+			-webkit-tap-highlight-color: transparent;
+
+			transition: min-width .2s, color .2s, background-color .2s, border-color .2s;
+
+			.button-text, svg{
+				margin: 0 auto;
+			}
+			.check-icon{
+				display: none;
+			}
+		}
+
+		.about{
+			grid-template-rows: auto auto;
+			grid-gap: 6px;
+
+			.name{
+				padding: 0;
+				line-height: 20px;
+				font-size: 16px;
+			}
+
+			.hostname{
+				font-size: 14px;
+				font-weight: 400;
+				opacity: 0.7;
+
+				line-height: 14px;
+
+				overflow-x: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				white-space: nowrap;
+
+				padding: 0;
+			}
+		}
+
+		.icon .icon-image{
+			margin: 0;
+			width: 45px;
+			height: 45px;
+		}
+	}
+	.how-to-body {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		
+		max-height: 0;
+		overflow: hidden;
+		padding: 0 20px;
+		opacity: 0;
+
+		.description-step{
+			// font-size: 15px;
+			display: flex;
+			gap: 15px;
+			margin-inline-start: 2.5px;
+			align-items: center;
+			.svg-wrap{
+				display: flex;
+				align-items: center;
+				width: 40px;
+    			height: 40px;
+
+				background-color: var(--touch-header-color);
+
+				border-radius: 50%;
+				
+				svg {
+					fill: var(--text-color-normal);
+					margin: 0 auto;
+				}
+
+				&.add-icon{
+					svg {
+						padding-right: 1px;
+					}
+				}
+			}
+		}
+	}
+	.how-to{ 
+		::slotted(pwa-gallery), .description{
+			max-height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			overflow: hidden;
+			opacity: 0;
+		}
+		.how-to-body{
+			max-height: 600px;
+			padding-top: 18px;
+			padding-bottom: 18px;
+			opacity: 1;
+		}
+		.install{
+			min-width: 40px;
+			padding: 0px;
+			background: transparent;
+			color: var(--text-color-normal);
+			box-shadow: none;
+			border: 1px solid;
+
+			.check-icon{
+				display: inline;
+
+				fill: var(--text-color-normal);
+			}
+			.button-text{
+				display: none;
+			}
+		}
+	}
+	.description{
+		// font-size: 14px;
+		// font-weight: normal;
+		padding: 15px 20px;
+		margin: 0;
+		// margin-bottom: 15px;
+
+		// display: -webkit-box;
+		-webkit-line-clamp: 6;
+		// -webkit-box-orient: vertical;
+
+		max-height: 150px;
+		opacity: 1;
+		// overflow: hidden;
+		// text-overflow: ellipsis;
+	}
+
+	::slotted(pwa-gallery){
+		display: block;
+		max-height: 600px;
+		padding-bottom: 15px;
+		opacity: 1;
+
+		transition: max-height 1.5s, opacity 0.8s, padding 1.5s;
+	}
+
+	.how-to-body, .description{
+		transition: max-height 0.2s, opacity 0.15s, padding 0.2s;
+	}
+
+	.material-button{
+		border-radius: 20px;
+	}
+}

@@ -15,6 +15,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    font-size: 0;
 }
 .control-panel header{
     font-size: 0;
@@ -40,6 +41,7 @@ body{
     
     border-color: #FFF;
     border-style: dotted;
+    padding: 5px;
 }
 .control-panel > fieldset{
     opacity: .5;
@@ -62,6 +64,7 @@ body{
     border: 1px solid #fff;
 
     padding: 5px 10px;
+    margin: 3px;
 }
 input::placeholder{
     color: #fff;
@@ -81,8 +84,13 @@ input[type="checkbox"]{
 .control-panel hr{
     border: 2px dotted #fff;
     border-bottom: none;
+    margin: 5px;
 }
 
 label + fieldset {
     margin-top: 5px;
+}
+
+label, legend {
+    font-size: 14px;
 }

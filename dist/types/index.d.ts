@@ -14,6 +14,7 @@ export declare class PWAInstallElement extends LitElement {
     manualChrome: boolean;
     disableChrome: boolean;
     disableClose: boolean;
+    disableFallback: boolean;
     useLocalStorage: boolean;
     static get styles(): CSSStyleSheet[];
     externalPromptEvent: BeforeInstallPromptEvent | null;
@@ -23,8 +24,11 @@ export declare class PWAInstallElement extends LitElement {
     isInstallAvailable: boolean;
     isAppleMobilePlatform: boolean;
     isAppleDesktopPlatform: boolean;
+    isAndroidFallback: boolean;
+    isAndroid: boolean;
     isUnderStandaloneMode: boolean;
     isRelatedAppsInstalled: boolean;
+    private _isRTL;
     private _manifest;
     private _howToRequested;
     private _galleryRequested;
@@ -35,12 +39,13 @@ export declare class PWAInstallElement extends LitElement {
     hideDialog: () => void;
     showDialog: (forced?: boolean) => void;
     getInstalledRelatedApps: () => Promise<IRelatedApp[]>;
-    private _howToForApple;
+    private _toggleHowTo;
     private _toggleGallery;
-    private _checkInstalled;
+    private _checkPlatform;
+    private _checkInstallAvailable;
     private _init;
     private _requestUpdate;
-    connectedCallback(): void;
+    connectedCallback(): Promise<void>;
     willUpdate(changedProperties: PropertyValues<this>): void;
     render(): import("lit").TemplateResult<1>;
 }

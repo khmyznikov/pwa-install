@@ -3,12 +3,12 @@ import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
     return html`
-        <aside id="pwa-install-element">
+        <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
@@ -31,16 +31,14 @@ const template = (name: string, description: string, installDescription: string,
                         ${!isDesktop? html`
                         <div class="description-step">
                             <div class="svg-wrap">
-                                <!-- <span class="step-count">1</span> -->
                                 <svg id="pwa-safari" viewBox="0 0 20.283 19.932" width="24" height="24">
                                     <g fill="currentColor"><path d="M9.96 19.922c5.45 0 9.962-4.522 9.962-9.961C19.922 4.51 15.4 0 9.952 0 4.511 0 0 4.512 0 9.96c0 5.44 4.521 9.962 9.96 9.962Zm0-1.66A8.26 8.26 0 0 1 1.67 9.96c0-4.61 3.672-8.3 8.281-8.3 4.61 0 8.31 3.69 8.31 8.3 0 4.61-3.69 8.3-8.3 8.3Z"/><path d="m5.87 14.883 5.605-2.735a1.47 1.47 0 0 0 .683-.673l2.725-5.596c.312-.664-.166-1.182-.85-.84L8.447 7.764c-.302.136-.508.341-.674.673L5.03 14.043c-.312.645.196 1.152.84.84Zm4.09-3.72A1.19 1.19 0 0 1 8.77 9.97c0-.664.527-1.201 1.19-1.201a1.2 1.2 0 0 1 1.202 1.2c0 .655-.537 1.192-1.201 1.192Z"/></g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('1) Open in Safari browser')}</div>
+                            <div class="step-text">${msg('1) Open in your main browser')}</div>
                         </div>`: ''}
                         <div class="description-step">
                             <div class="svg-wrap">
-                                <!-- <span class="step-count">2</span> -->
                                 <svg id="pwa-share" width="25" height="32" viewBox="0 0 17.695 26.475">
                                     <g fill="currentColor"><path d="M17.334 10.762v9.746c0 2.012-1.025 3.027-3.066 3.027H3.066C1.026 23.535 0 22.52 0 20.508v-9.746C0 8.75 1.025 7.734 3.066 7.734h2.94v1.573h-2.92c-.977 0-1.514.527-1.514 1.543v9.57c0 1.015.537 1.543 1.514 1.543h11.152c.967 0 1.524-.527 1.524-1.543v-9.57c0-1.016-.557-1.543-1.524-1.543h-2.91V7.734h2.94c2.04 0 3.066 1.016 3.066 3.028Z"/><path d="M8.662 15.889c.42 0 .781-.352.781-.762V5.097l-.058-1.464.654.693 1.484 1.582a.698.698 0 0 0 .528.235c.4 0 .713-.293.713-.694 0-.205-.088-.361-.235-.508l-3.3-3.183c-.196-.196-.362-.264-.567-.264-.195 0-.361.069-.566.264L4.795 4.94a.681.681 0 0 0-.225.508c0 .4.293.694.703.694.186 0 .4-.079.538-.235l1.474-1.582.664-.693-.058 1.465v10.029c0 .41.351.762.771.762Z"/></g>
                                 </svg>
@@ -49,7 +47,6 @@ const template = (name: string, description: string, installDescription: string,
                         </div>
                         <div class="description-step">
                             <div class="svg-wrap">
-                                <!-- <span class="step-count">3</span> -->
                                 ${isDesktop? 
                                     html`<svg id="pwa-add" viewBox="0 0 23.389 17.979" width="25" height="25">
                                         <g fill="currentColor"><path d="M1.045 3.291v1.377h20.937V3.291Zm2.021 14.688h16.895c2.05 0 3.066-1.006 3.066-3.018V3.027C23.027 1.016 22.012 0 19.961 0H3.066C1.026 0 0 1.016 0 3.027v11.934c0 2.012 1.025 3.018 3.066 3.018Zm.02-1.573c-.977 0-1.514-.517-1.514-1.533V3.115c0-1.015.537-1.543 1.514-1.543H19.94c.967 0 1.514.528 1.514 1.543v11.758c0 1.016-.547 1.533-1.514 1.533Z"/><path d="M4.2 14.014c0 .508.35.85.868.85h12.92c.518 0 .87-.343.87-.85v-1.465c0-.508-.352-.85-.87-.85H5.068c-.517 0-.869.342-.869.85Z"/></g>
@@ -59,11 +56,11 @@ const template = (name: string, description: string, installDescription: string,
                                     </svg>`
                                 }
                             </div>
-                            <div class="step-text">${isDesktop? msg('2) Press Add to Dock'): msg('3) Press Add to Home Screen')}</div>
+                            <div class="step-text">${isDesktop? msg('2) Press Add to Dock'): msg('3) Scroll down to "Add to Home Screen"')}</div>
                         </div>
                     </div>
                 </div>
-                ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}"></pwa-gallery>`: ''}
+                ${screenshotsAvailable && manifest.screenshots? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}" .rtl="${isRTL}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery}>
                         ${isDesktop? 

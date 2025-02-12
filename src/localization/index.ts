@@ -24,7 +24,9 @@ import * as ja from "./locales/ja";
 import * as sv from "./locales/sv";
 import * as ko from "./locales/ko";
 import * as km from "./locales/km";
+import * as fa from "./locales/fa";
 import * as da from "./locales/da";
+import * as vi from "./locales/vi";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -47,7 +49,9 @@ const localizedTemplates = new Map([
   ['sv', sv],
   ['ko', ko],
   ['km', km],
+  ['fa', fa],
   ['da', da],
+  ['vi', vi],
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
@@ -57,7 +61,7 @@ export const { getLocale, setLocale } = configureLocalization({
   loadLocale: async (lang: string) => localizedTemplates.get(lang)
 });
 
-export const changeLocale = (lang: string) => {
+export const changeLocale = async (lang: string) => {
   // Norwegian Bokmål is same as Norwegian
   switch (lang.slice(0, 2)) {
     case 'nb':
@@ -79,11 +83,16 @@ export const changeLocale = (lang: string) => {
 
   try {
     if (localizedTemplates.get(lang))
-      setLocale(lang);
+      await setLocale(lang);
     else
-      setLocale(lang.slice(0, 2));
+      await setLocale(lang.slice(0, 2));
   }
   catch {
     console.warn(`pwa-install: translation error - unsupported locale: ${lang}`);
   }
 };
+
+export const isRTL = () => {
+  let locale = getLocale();
+  return ['ar', 'he', 'fa', 'ur'].includes(getLocale());
+}

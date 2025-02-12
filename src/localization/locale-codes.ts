@@ -16,6 +16,7 @@ export const targetLocales = [
   `de`,
   `el`,
   `es`,
+  `fa`,
   `fr`,
   `it`,
   `ja`,
@@ -30,6 +31,7 @@ export const targetLocales = [
   `sv`,
   `tr`,
   `uk`,
+  `vi`,
   `zh-CN`,
   `zh-HK`,
 ] as const;
@@ -44,6 +46,7 @@ export const allLocales = [
   `el`,
   `en`,
   `es`,
+  `fa`,
   `fr`,
   `it`,
   `ja`,
@@ -58,6 +61,7 @@ export const allLocales = [
   `sv`,
   `tr`,
   `uk`,
+  `vi`,
   `zh-CN`,
   `zh-HK`,
 ] as const;
