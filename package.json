@@ -27,10 +27,10 @@
   "typesVersions": {
     "*": {
       "react-legacy": [
-        "./dist/types/react-legacy/pwa-install.react-legacy.d.ts"
+        "./dist/types/react-legacy/pwa-install.react-legacy.ts"
       ],
       "dist/react-legacy/pwa-install.react-legacy.js": [
-        "./dist/types/react-legacy/pwa-install.react-legacy.d.ts"
+        "./dist/types/react-legacy/pwa-install.react-legacy.ts"
       ]
     }
   },
