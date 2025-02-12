@@ -1,5 +1,5 @@
 import { LitElement, PropertyValues } from 'lit';
-import { IRelatedApp, PWAInstallAttributes } from './types/types';
+import { IRelatedApp, PWAInstallAttributes } from './types/types.js';
 export declare class PWAInstallElement extends LitElement {
     manifestUrl: string;
     icon: string;

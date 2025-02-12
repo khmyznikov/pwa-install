@@ -6,3 +6,4 @@ package-lock.json
 *.tsbuildinfo
 .npm
 .eslintcache
+.idea/

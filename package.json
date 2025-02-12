@@ -8,34 +8,41 @@
   },
   "type": "module",
   "types": "dist/types/index.d.ts",
-  "main": "dist/pwa-install.es.js",
+  "module": "dist/pwa-install.es.js",
+  "main": "dist/pwa-install.bundle.js",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/pwa-install.es.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/pwa-install.bundle.js"
-      }
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/pwa-install.es.js"
     },
     "./react-legacy": {
-      "import": {
-        "types": "./dist/types/react-legacy/pwa-install.react-legacy.d.ts",
-        "default": "./dist/react-legacy/pwa-install.react-legacy.js"
-      }
+      "types": "./dist/types/react-legacy/pwa-install.react-legacy.d.ts",
+      "default": "./dist/react-legacy/pwa-install.react-legacy.js"
     },
     "./dist/react-legacy/pwa-install.react-legacy.js": {
-      "import": {
-        "types": "./dist/types/react-legacy/pwa-install.react-legacy.d.ts",
-        "default": "./dist/react-legacy/pwa-install.react-legacy.js"
-      }
+      "types": "./dist/types/react-legacy/pwa-install.react-legacy.d.ts",
+      "default": "./dist/react-legacy/pwa-install.react-legacy.js"
     }
   },
+  "typesVersions": {
+    "*": {
+      "react-legacy": [
+        "./dist/types/react-legacy/pwa-install.react-legacy.d.ts"
+      ],
+      "dist/react-legacy/pwa-install.react-legacy.js": [
+        "./dist/types/react-legacy/pwa-install.react-legacy.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist/*",
+    "docs/index.html",
+    "src/utils.ts",
+    "scr/types/*"
+  ],
   "scripts": {
     "build": "npm run localize:extract && npm run localize:build && npm run build:noloc && npm run cem:analyze",
-    "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production && npx webpack --config webpack/webpack.prod.react.js --mode=production && npm run cem:analyze",
+    "build:noloc": "webpack --config webpack/webpack.prod.js --mode=production && webpack --config webpack/webpack.prod.module.js --mode=production  && webpack --config webpack/webpack.prod.umd.js --mode=production && npx webpack --config webpack/webpack.prod.react.js --mode=production && npm run cem:analyze  && node ./scripts/postbuild.mjs",
     "localize:extract": "lit-localize extract",
     "localize:build": "lit-localize build",
     "cem:analyze": "cem analyze",
