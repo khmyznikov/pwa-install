@@ -15,7 +15,6 @@ type IProps = {
 import template from './template-bottom-sheet';
 import Utils from '../../../utils';
 
-@customElement('pwa-bottom-sheet')
 export default class PWABottomSheetElement extends LitElement {
 	static get styles() {
 		return [stylesCommon, styles];
@@ -202,4 +201,8 @@ export default class PWABottomSheetElement extends LitElement {
 	render() {
         return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback, this.howToRequested)}`;
 	}
+}
+
+if (!customElements.get('pwa-bottom-sheet')) {
+	customElements.define('pwa-bottom-sheet', PWABottomSheetElement);
 }
