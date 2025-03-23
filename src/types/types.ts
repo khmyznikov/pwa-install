@@ -1,4 +1,4 @@
-import { ImageResource } from 'web-app-manifest';
+import { ImageResource, WebAppManifest } from 'web-app-manifest';
 
 export interface IRelatedApp {
     id: string,
@@ -27,11 +27,11 @@ export interface PWAInstallAttributes {
 
 export interface ManifestScreenshot extends ImageResource {
     label?: string;
-    platform?: string;
+    platform?: "android" | "chromeos" | "ipados" | "ios" | "kaios" | "macos" | "windows" | "xbox" | "chrome_web_store" | "play" | "itunes" | "microsoft-inbox" | "microsoft-store";
     form_factor?: "wide" | "narrow";
 }
 
-export class Manifest {
+export class Manifest implements WebAppManifest {
     constructor() {
         this.icons = [{ src: '' }];
         this.screenshots = undefined;
