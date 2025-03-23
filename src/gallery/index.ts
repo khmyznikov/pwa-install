@@ -5,7 +5,6 @@ import { ManifestScreenshot } from '../types/types';
 import styles from './styles-gallery.scss';
 import template from './template-gallery';
 
-@customElement('pwa-gallery')
 export default class PWAGalleryElement extends LitElement {
 	@property({ type: Array }) screenshots: ManifestScreenshot[] = [];
 	@property() theme: 'default' | 'apple_desktop' | 'apple_mobile' = 'default';
@@ -94,4 +93,8 @@ export default class PWAGalleryElement extends LitElement {
 			this.scrollToPrevPage
         )}`;
 	}
+}
+
+if (!customElements.get('pwa-gallery')) {
+	customElements.define('pwa-gallery', PWAGalleryElement);
 }
