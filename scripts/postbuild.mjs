@@ -15,6 +15,13 @@ async function fixTypes() {
         content.replace('from \'../index\';', 'from \'../index.js\';'),
         'utf-8'
     );
+    // fix node10 types:
+    // implementation resolution should resolve to Javascript not to Typescript
+    await writeFile(
+        'dist/react-legacy/pwa-install.react-legacy.d.ts',
+        content.replace('from \'../index\';', 'from \'../types/index.js\';'),
+        'utf-8'
+    )
 }
 
 fixTypes()
