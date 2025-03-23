@@ -210,6 +210,7 @@ Translations available:
 - *DA*
 - *VI*
 - *FA*
+- *HU*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 

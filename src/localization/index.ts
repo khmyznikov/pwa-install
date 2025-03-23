@@ -27,6 +27,7 @@ import * as km from "./locales/km";
 import * as fa from "./locales/fa";
 import * as da from "./locales/da";
 import * as vi from "./locales/vi";
+import * as hu from "./locales/hu";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -52,6 +53,7 @@ const localizedTemplates = new Map([
   ['fa', fa],
   ['da', da],
   ['vi', vi],
+  ['hu', hu],
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
