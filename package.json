@@ -1,6 +1,6 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
@@ -27,10 +27,10 @@
   "typesVersions": {
     "*": {
       "react-legacy": [
-        "./dist/react-legacy/pwa-install.react-legacy.ts"
+        "./dist/react-legacy/pwa-install.react-legacy.d.ts"
       ],
       "dist/react-legacy/pwa-install.react-legacy.js": [
-        "./dist/react-legacy/pwa-install.react-legacy.ts"
+        "./dist/react-legacy/pwa-install.react-legacy.d.ts"
       ]
     }
   },
