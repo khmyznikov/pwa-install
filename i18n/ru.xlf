@@ -32,11 +32,11 @@
       </trans-unit>
       <trans-unit id="se740f75b95a51807">
         <source>Add it to your Dock for extensive experience and easy access.</source>
-        <target>Добавьте его в Dock, чтобы получить дополнительные возможности и использовать удобнее.</target>
+        <target>Добавьте его в Dock — это откроет дополнительные возможности и сделает использование удобнее.</target>
       </trans-unit>
       <trans-unit id="s182ab2d6c997515f">
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
-        <target>Добавьте его на главный экран, чтобы получить дополнительные возможности и использовать удобнее.</target>
+        <target>Добавьте его на экран «Домой» — это откроет дополнительные возможности и сделает использование удобнее.</target>
       </trans-unit>
       <trans-unit id="sa7551383d1897fcc">
         <source>2) Press Add to Dock</source>
@@ -64,7 +64,7 @@
       </trans-unit>
       <trans-unit id="s2d90afa5dcca2c0e">
         <source>3) Scroll down to "Add to Home Screen"</source>
-        <target>3) Прокрутите вниз до "Добавить на главный экран"</target>
+        <target>3) Прокрутите вниз до "На экран «Домой»"</target>
       </trans-unit>
     </body>
   </file>
