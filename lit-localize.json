@@ -25,7 +25,8 @@
     "da",
     "fa",
     "vi",
-    "hu"
+    "hu",
+    "sk"
   ],
   "tsConfig": "tsconfig.json",
   "output": {
