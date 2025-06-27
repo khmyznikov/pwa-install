@@ -123,7 +123,11 @@ import '@khmyznikov/pwa-install';
   pwaInstall.addEventListener('pwa-install-success-event', (event) => {console.log(event.detail.message)});
 </script>
 ```
-*⚠️ success/fail/choice events is Chromium only, iOS don't have them.*
+⚠️ `success/fail/choice` events is Chromium only, iOS don't have them.
+
+⚠️ If you see this message in the console:<br>
+`Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.`<br>
+This is **not** a error and **not** a bug. This means that the component successfully intercepted the *beforeinstallprompt* event.
 
 <br>
 
