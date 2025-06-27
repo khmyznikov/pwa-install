@@ -1,7 +1,6 @@
 import { LitElement, PropertyValues, html } from 'lit';
 import { localized } from '@lit/localize';
 import { property, state } from 'lit/decorators.js';
-import { WebAppManifest } from 'web-app-manifest';
 import { changeLocale, isRTL } from './localization';
 
 import { IRelatedApp, Manifest, IWindow, PWAInstallAttributes } from './types/types';

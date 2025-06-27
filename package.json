@@ -1,15 +1,12 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.5.4",
+  "version": "0.5.6",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/khmyznikov/pwa-install.git"
   },
   "type": "module",
-  "types": "dist/types/index.d.ts",
-  "module": "dist/pwa-install.es.js",
-  "main": "dist/pwa-install.bundle.js",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
@@ -24,13 +21,16 @@
       "default": "./dist/react-legacy/pwa-install.react-legacy.js"
     }
   },
+  "types": "dist/types/index.d.ts",
+  "module": "dist/pwa-install.es.js",
+  "main": "dist/pwa-install.bundle.js",
   "typesVersions": {
     "*": {
       "react-legacy": [
-        "./dist/types/react-legacy/pwa-install.react-legacy.ts"
+        "./dist/react-legacy/pwa-install.react-legacy.d.ts"
       ],
       "dist/react-legacy/pwa-install.react-legacy.js": [
-        "./dist/types/react-legacy/pwa-install.react-legacy.ts"
+        "./dist/react-legacy/pwa-install.react-legacy.d.ts"
       ]
     }
   },
@@ -38,7 +38,7 @@
     "dist/*",
     "docs/index.html",
     "src/utils.ts",
-    "scr/types/*"
+    "src/types/*"
   ],
   "scripts": {
     "build": "npm run localize:extract && npm run localize:build && npm run build:noloc",
@@ -56,34 +56,34 @@
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@lit/localize": "^0.12.2",
     "@lit/localize-tools": "^0.8.0",
-    "@types/node": "^22.13.1",
-    "autoprefixer": "^10.4.20",
+    "@types/node": "^22.15.3",
+    "autoprefixer": "^10.4.21",
     "clean-webpack-plugin": "4.0.0",
-    "copy-webpack-plugin": "^12.0.2",
-    "eslint": "^9.20.1",
-    "express": "^4.21.2",
+    "copy-webpack-plugin": "^13.0.0",
+    "eslint": "^9.26.0",
+    "express": "^5.1.0",
     "filemanager-webpack-plugin": "^8.0.0",
     "lit-scss-loader": "^2.0.1",
     "minify-lit-html-loader": "github:khmyznikov/minify-lit-html-loader",
     "null-loader": "^4.0.1",
-    "postcss": "^8.5.2",
+    "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",
-    "sass": "^1.84.0",
-    "sass-loader": "^16.0.4",
-    "terser-webpack-plugin": "^5.3.11",
+    "sass": "^1.87.0",
+    "sass-loader": "^16.0.5",
+    "terser-webpack-plugin": "^5.3.14",
     "ts-loader": "9.5.2",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.3",
     "typescript-lit-html-plugin": "^0.9.0",
-    "webpack": "^5.97.1",
+    "webpack": "^5.99.7",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.0",
+    "webpack-dev-server": "^5.2.1",
     "webpack-merge": "^6.0.1"
   },
   "peerDependencies": {
-    "lit": "^3.2.1",
+    "lit": "^3.3.0",
     "@lit/react": "^1.0.7",
-    "@types/web-app-manifest": "^1.0.8",
+    "@types/web-app-manifest": "^1.0.9",
     "@types/dom-chromium-installation-events": "^101.0.4"
   },
   "bugs": {

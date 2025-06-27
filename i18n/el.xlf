@@ -16,7 +16,7 @@
       </trans-unit>
       <trans-unit id="s1b9047d53d9f9d22">
         <source>2) Press Share in Navigation bar</source>
-        <target>2) Πατήστε Κοινοποίηση στη γραμμή πλοήγησης</target>
+        <target>2) Πατήστε "Κοινή χρήση" στη γραμμή πλοήγησης</target>
       </trans-unit>
       <trans-unit id="sc79fd7641eb9a975">
         <source>Hide Instruction</source>
@@ -24,27 +24,27 @@
       </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
         <source>Add to Home Screen</source>
-        <target>Προσθήκη στην Οθόνη Αφετηρίας</target>
+        <target>Προσθήκη στην οθόνη Αφετηρίας</target>
       </trans-unit>
       <trans-unit id="sfea652f6580ff086">
         <source>This site has app functionality.</source>
-        <target>Αυτός ο ιστότοπος έχει λειτουργική εφαρμογής.</target>
+        <target>Αυτός ο ιστότοπος έχει λειτουργικότητα εφαρμογής.</target>
       </trans-unit>
       <trans-unit id="se740f75b95a51807">
         <source>Add it to your Dock for extensive experience and easy access.</source>
-        <target>Προσθέστε το στην Πρόσβαση για εκτεταμένη εμπειρία και εύκολη πρόσβαση.</target>
+        <target>Προσθέστε το στο Dock για εκτεταμένη εμπειρία και εύκολη πρόσβαση.</target>
       </trans-unit>
       <trans-unit id="s182ab2d6c997515f">
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
-        <target>Προσθέστε το στην οθόνη Αφετηρίας για εκτεταμένη εμπειρία και εύκολη πρόσβαση.</target>
+        <target>Προσθέστε το στην Οθόνη Αφετηρίας για εκτεταμένη εμπειρία και εύκολη πρόσβαση.</target>
       </trans-unit>
       <trans-unit id="sa7551383d1897fcc">
         <source>2) Press Add to Dock</source>
-        <target>2) Πατήστε Προσθήκη στην Πρόσβαση</target>
+        <target>2) Πατήστε "Προσθήκη στο Dock"</target>
       </trans-unit>
       <trans-unit id="s922329d6f6213590">
         <source>Add to Dock</source>
-        <target>Προσθήκη στην Πρόσβαση</target>
+        <target>Προσθήκη στο Dock</target>
       </trans-unit>
       <trans-unit id="sba52286c21552a4e">
         <source>Install it on your device for extensive experience and easy access.</source>
