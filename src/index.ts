@@ -1,6 +1,6 @@
 import { LitElement, PropertyValues, html } from 'lit';
 import { localized } from '@lit/localize';
-import { property, state, customElement } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { changeLocale, isRTL } from './localization';
 
 import { IRelatedApp, Manifest, IWindow, PWAInstallAttributes } from './types/types';
@@ -28,7 +28,6 @@ import templateApple from './templates/apple/template-apple';
  * @event {CustomEvent} pwa-install-gallery-event - App install gallery showed
  */
 @localized()
-@customElement('pwa-install')
 export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manifest-url'}) manifestUrl = '/manifest.json';
 	@property() icon = '';
@@ -329,6 +328,10 @@ export class PWAInstallElement extends LitElement {
 				this._isRTL
 			)}`;
 	}
+}
+
+if (!customElements.get('pwa-install')) {
+	customElements.define('pwa-install', PWAInstallElement);
 }
 
 export { PWAInstallAttributes };
