@@ -12,7 +12,7 @@ const template = (name: string, description: string, icon: string, install: any,
         <div class="touch-header" id="touch-header"></div>
         <div class="body-header">
             <div class="icon">
-                <img src="${icon}" alt="icon" class="icon-image">
+                <img src="${icon}" alt="icon" class="icon-image" loading="lazy">
             </div>
             <div class="about">
                 <div class="name">
