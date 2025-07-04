@@ -9,7 +9,7 @@ const template = (screenshots: ManifestScreenshot[], theme: string, scrollToNext
             <div id="paginated_gallery" class="gallery ${theme}">
                 <div class="gallery_scroller">
                     <div class="scroller_wrap">
-                        ${screenshots.filter(screenshot => !screenshot.form_factor || screenshot.form_factor === Utils.deviceFormFactor()).map(screenshot => html`<img draggable="false" src='${screenshot.src}' alt='${screenshot.label || ""}'>`)}
+                        ${screenshots.filter(screenshot => !screenshot.form_factor || screenshot.form_factor === Utils.deviceFormFactor()).map(screenshot => html`<img draggable="false" src='${screenshot.src}' alt='${screenshot.label || ""}' loading="lazy">`)}
                     </div>
                 </div>
                 <span class="btn prev" @click="${scrollToPrevPage}">
