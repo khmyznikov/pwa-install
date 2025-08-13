@@ -9,7 +9,9 @@ export default class PWAGalleryElement extends LitElement {
 	@property({ type: Array }) screenshots: ManifestScreenshot[] = [];
 	@property() theme: 'default' | 'apple_desktop' | 'apple_mobile' = 'default';
 	@property({ type: Boolean }) rtl: boolean = false;
-
+	@property({ type: Boolean }) galleryRequested: boolean = false;
+	@property({ type: Boolean }) isAndroidMobilePlatform: boolean = false;
+	@property({ type: Boolean }) isAppleMobilePlatform: boolean = false;
 	static get styles() {
 		return styles;
 	}
@@ -90,7 +92,10 @@ export default class PWAGalleryElement extends LitElement {
             this.screenshots,
 			this.theme,
 			this.scrollToNextPage,
-			this.scrollToPrevPage
+			this.scrollToPrevPage,
+			this.galleryRequested,
+			this.isAndroidMobilePlatform,
+			this.isAppleMobilePlatform
         )}`;
 	}
 }

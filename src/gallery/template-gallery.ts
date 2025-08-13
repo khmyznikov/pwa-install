@@ -2,14 +2,20 @@ import { html } from 'lit';
 import Utils from '../utils';
 import { ManifestScreenshot } from '../types/types';
 
-const template = (screenshots: ManifestScreenshot[], theme: string, scrollToNextPage: any, scrollToPrevPage: any) => {
-
+const template = (screenshots: ManifestScreenshot[], theme: string, scrollToNextPage: any, scrollToPrevPage: any, galleryRequested: boolean, isAndroidMobilePlatform: boolean, isAppleMobilePlatform: boolean = false) => {
+   const canShowGallery = screenshots && (
+    isAppleMobilePlatform
+        ? galleryRequested // iOS
+        : isAndroidMobilePlatform
+        ? true           // Android
+        : galleryRequested // Desktop
+    );
     return html`
-        ${screenshots? html`
+        ${canShowGallery? html`
             <div id="paginated_gallery" class="gallery ${theme}">
                 <div class="gallery_scroller">
                     <div class="scroller_wrap">
-                        ${screenshots.filter(screenshot => !screenshot.form_factor || screenshot.form_factor === Utils.deviceFormFactor()).map(screenshot => html`<img draggable="false" src='${screenshot.src}' alt='${screenshot.label || ""}'>`)}
+                        ${screenshots.filter(screenshot => !screenshot.form_factor || screenshot.form_factor === Utils.deviceFormFactor()).map(screenshot => html`<img draggable="false" src='${screenshot.src}' alt='${screenshot.label || ""}' loading="lazy">`)}
                     </div>
                 </div>
                 <span class="btn prev" @click="${scrollToPrevPage}">

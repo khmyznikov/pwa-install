@@ -4,16 +4,17 @@ import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 import { ManifestScreenshot } from '../../types/types';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, toggleHowTo: any, howToRequested: boolean, isAndroidFallback: boolean, isRTL: boolean = false) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any,   dialogVisible: boolean, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, toggleHowTo: any, howToRequested: boolean, isAndroidFallback: boolean, isRTL: boolean = false, isAndroidMobilePlatform: boolean = false) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
-    const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-
+   const screenshotsAvailable = dialogVisible && !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
     return html`
         <div id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <div class="install-dialog chrome ${classMap(installDialogClasses())}">
                 <div class="dialog-body">
                     <div class="icon">
-                        <img src="${icon}" alt="icon" class="icon-image" draggable="false">
+                        ${dialogVisible ? html`
+                            <img src="${icon}" alt="icon" class="icon-image" draggable="false" loading="lazy">
+                        ` : ''}
                     </div>
                     <div class="about">
                         <div class="name">
@@ -29,7 +30,7 @@ const template = (name: string, description: string, installDescription: string,
                     ${!disableDescription? 
                         html`<hr><div class="description install-description">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
                         : ''}
-                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}"></pwa-gallery>`: ''}
+                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .galleryRequested=${galleryRequested} .isAndroidMobilePlatform=${isAndroidMobilePlatform}></pwa-gallery>`: ''}
                     <div class="action-buttons">
                         ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
                         <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
@@ -37,8 +38,8 @@ const template = (name: string, description: string, installDescription: string,
                 </div>
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
-                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback}>
-                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}"></pwa-gallery>`: ''}
+                <pwa-bottom-sheet .props=${{name, icon, description, isAndroidMobilePlatform}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback}>
+                    ${screenshotsAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .galleryRequested=${galleryRequested} .isAndroidMobilePlatform=${isAndroidMobilePlatform}></pwa-gallery>`: ''}
                 </pwa-bottom-sheet>
             </div>
         </div>`;

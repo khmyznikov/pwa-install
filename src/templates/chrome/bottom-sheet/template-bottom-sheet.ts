@@ -6,13 +6,15 @@ const fallbackClass = (isAndroidFallback: boolean = false, howToRequested: boole
     return {fallback: isAndroidFallback, 'how-to': howToRequested};
 }
 
-const template = (name: string, description: string, icon: string, install: any, fallback?: boolean, howToRequested?: boolean) => {
+const template = (name: string, description: string, icon: string, install: any, isAndroidMobilePlatform: boolean, fallback?: boolean, howToRequested?: boolean) => {
     return html`
     <div class="dialog-body ${classMap(fallbackClass(fallback, howToRequested))}">
         <div class="touch-header" id="touch-header"></div>
         <div class="body-header">
             <div class="icon">
-                <img src="${icon}" alt="icon" class="icon-image">
+                ${isAndroidMobilePlatform ? html`
+                    <img src="${icon}" alt="icon" class="icon-image">
+                ` : ''}
             </div>
             <div class="about">
                 <div class="name">
