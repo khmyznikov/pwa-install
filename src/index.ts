@@ -299,14 +299,13 @@ export class PWAInstallElement extends LitElement {
 				this.icon, 
 				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
-				!this.isDialogHidden,
 				this._hideDialogUser,
 				this._toggleHowTo,
 				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
 				this._galleryRequested,
-				this._isRTL,
+				this._isRTL
 			)}`;
 		else
 			return html`${template(
@@ -319,7 +318,6 @@ export class PWAInstallElement extends LitElement {
 				this.icon, 
 				this._manifest,
 				this.isInstallAvailable && !this.isDialogHidden,
-				!this.isDialogHidden,
 				this._hideDialogUser,
 				this._install,
 				this._toggleGallery,
@@ -327,8 +325,7 @@ export class PWAInstallElement extends LitElement {
 				this._toggleHowTo,
 				this._howToRequested,
 				this.isAndroidFallback,
-				this._isRTL,
-				this.isAndroid, // isAndroidMobilePlatform
+				this._isRTL
 			)}`;
 	}
 }
