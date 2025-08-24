@@ -1,5 +1,7 @@
 html{
     background-color: #82307b;
+    background: url("https://raw.githubusercontent.com/lucasromerodb/liquid-glass-effect-macos/refs/heads/main/assets/flowers.jpg")
+    center center;
     width: 100%;
     height: 100%;
 }

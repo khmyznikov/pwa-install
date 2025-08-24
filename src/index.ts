@@ -160,7 +160,7 @@ export class PWAInstallElement extends LitElement {
 	private async _checkPlatform() {
 		this.isUnderStandaloneMode = Utils.isStandalone();
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
-		this.isAppleMobilePlatform = Utils.isAppleMobile();
+		this.isAppleMobilePlatform = !Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
