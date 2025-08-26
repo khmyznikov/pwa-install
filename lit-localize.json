@@ -26,7 +26,8 @@
     "fa",
     "vi",
     "hu",
-    "sk"
+    "sk",
+    "ca-ES"
   ],
   "tsConfig": "tsconfig.json",
   "output": {
