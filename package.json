@@ -94,5 +94,6 @@
     "PWA",
     "lit-element",
     "lit"
-  ]
+  ],
+  "customElements": "custom-elements.json"
 }
