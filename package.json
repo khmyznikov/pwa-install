@@ -1,6 +1,6 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
@@ -94,5 +94,6 @@
     "PWA",
     "lit-element",
     "lit"
-  ]
+  ],
+  "customElements": "custom-elements.json"
 }
