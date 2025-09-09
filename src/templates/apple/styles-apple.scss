@@ -722,3 +722,22 @@ $phone-small-landscape: 667px;
                 z-index: 3;
             }
         }
+
+#pwa-install-element{
+        .install-dialog.apple.aqua.dialog-body {
+            border-radius: 26px;
+
+            .icon .icon-image{
+                border-radius: 16px;
+            }
+
+            .dialog-button{
+                &.install{
+                    border-radius: 16px;
+                }
+                &.gallery{
+                    border-radius: 50%;
+                }
+            }
+        }
+}

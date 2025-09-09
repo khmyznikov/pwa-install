@@ -9,7 +9,7 @@ const template = (name: string, description: string, installDescription: string,
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
-            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
+            <article class="install-dialog apple aqua ${classMap(installDialogClassesApple())} dialog-body">
                 <div class="liquidGlass-effect"></div>
                 <div class="liquidGlass-tint"></div>
                 <div class="liquidGlass-shine"></div>
