@@ -1,11 +1,8 @@
-import { configureLocalization } from '@lit/localize';
-import {
-  sourceLocale,
-  targetLocales,
-} from './locale-codes';
+import { configureLocalization } from "@lit/localize";
+import { sourceLocale, targetLocales } from "./locale-codes";
 
-import * as ru from './locales/ru';
-import * as tr from './locales/tr';
+import * as ru from "./locales/ru";
+import * as tr from "./locales/tr";
 import * as de from "./locales/de";
 import * as es from "./locales/es";
 import * as nl from "./locales/nl";
@@ -30,48 +27,50 @@ import * as vi from "./locales/vi";
 import * as hu from "./locales/hu";
 import * as sk from "./locales/sk";
 import * as caEs from "./locales/ca-ES";
+import * as he from "./locales/he";
 
 const localizedTemplates = new Map([
-  ['ru', ru],
-  ['tr', tr],
-  ['de', de],
-  ['es', es],
-  ['nl', nl],
-  ['el', el],
-  ['fr', fr],
-  ['sr', sr],
-  ['pl', pl],
-  ['uk', uk],
-  ['zh-HK', zhHK],
-  ['zh-CN', zhCN],
-  ['it', it],
-  ['cs', cs],
-  ['no', no], // + nb
-  ['pt', pt],
-  ['ja', ja],
-  ['sv', sv],
-  ['ko', ko],
-  ['km', km],
-  ['fa', fa],
-  ['da', da],
-  ['vi', vi],
-  ['hu', hu],
-  ['sk', sk],
-  ['ca-ES', caEs]
-])
+  ["ru", ru],
+  ["tr", tr],
+  ["de", de],
+  ["es", es],
+  ["nl", nl],
+  ["el", el],
+  ["fr", fr],
+  ["sr", sr],
+  ["pl", pl],
+  ["uk", uk],
+  ["zh-HK", zhHK],
+  ["zh-CN", zhCN],
+  ["it", it],
+  ["cs", cs],
+  ["no", no], // + nb
+  ["pt", pt],
+  ["ja", ja],
+  ["sv", sv],
+  ["ko", ko],
+  ["km", km],
+  ["fa", fa],
+  ["da", da],
+  ["vi", vi],
+  ["hu", hu],
+  ["sk", sk],
+  ["ca-ES", caEs],
+  ["he", he],
+]);
 
 export const { getLocale, setLocale } = configureLocalization({
   sourceLocale,
   targetLocales,
   // @ts-ignore
-  loadLocale: async (lang: string) => localizedTemplates.get(lang)
+  loadLocale: async (lang: string) => localizedTemplates.get(lang),
 });
 
 export const changeLocale = async (lang: string) => {
   // Norwegian Bokmål is same as Norwegian
   switch (lang.slice(0, 2)) {
-    case 'nb':
-      lang = 'no';
+    case "nb":
+      lang = "no";
       break;
     default:
       break;
@@ -79,26 +78,25 @@ export const changeLocale = async (lang: string) => {
 
   // Fallback to simplified Chinese
   switch (lang) {
-    case 'zh':
-    case 'zh-TW':
-      lang = 'zh-CN';
+    case "zh":
+    case "zh-TW":
+      lang = "zh-CN";
       break;
     default:
       break;
   }
 
   try {
-    if (localizedTemplates.get(lang))
-      await setLocale(lang);
-    else
-      await setLocale(lang.slice(0, 2));
-  }
-  catch {
-    console.warn(`pwa-install: translation error - unsupported locale: ${lang}`);
+    if (localizedTemplates.get(lang)) await setLocale(lang);
+    else await setLocale(lang.slice(0, 2));
+  } catch {
+    console.warn(
+      `pwa-install: translation error - unsupported locale: ${lang}`
+    );
   }
 };
 
 export const isRTL = () => {
   let locale = getLocale();
-  return ['ar', 'he', 'fa', 'ur'].includes(getLocale());
-}
+  return ["ar", "he", "fa", "ur"].includes(getLocale());
+};
