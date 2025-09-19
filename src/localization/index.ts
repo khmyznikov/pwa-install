@@ -97,6 +97,6 @@ export const changeLocale = async (lang: string) => {
 };
 
 export const isRTL = () => {
-  let locale = getLocale();
-  return ["ar", "he", "fa", "ur"].includes(getLocale());
+  const locale = getLocale();
+  return ["ar", "he", "fa", "ur"].includes(locale);
 };
