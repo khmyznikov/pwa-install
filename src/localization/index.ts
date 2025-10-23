@@ -30,6 +30,7 @@ import * as vi from "./locales/vi";
 import * as hu from "./locales/hu";
 import * as sk from "./locales/sk";
 import * as caEs from "./locales/ca-ES";
+import * as he from "./locales/he";
 
 const localizedTemplates = new Map([
   ['ru', ru],
@@ -57,7 +58,8 @@ const localizedTemplates = new Map([
   ['vi', vi],
   ['hu', hu],
   ['sk', sk],
-  ['ca-ES', caEs]
+  ['ca-ES', caEs],
+  ['he', he]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({
@@ -99,6 +101,6 @@ export const changeLocale = async (lang: string) => {
 };
 
 export const isRTL = () => {
-  let locale = getLocale();
-  return ['ar', 'he', 'fa', 'ur'].includes(getLocale());
+  const locale = getLocale();
+  return ['ar', 'he', 'fa', 'ur'].includes(locale);
 }
