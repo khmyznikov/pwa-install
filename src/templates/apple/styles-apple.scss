@@ -695,7 +695,7 @@ $phone-small-landscape: 667px;
             z-index: 0;
             inset: 0;
 
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(20px);
             filter: url(#glass-distortion);
             overflow: hidden;
             isolation: isolate;
@@ -705,7 +705,7 @@ $phone-small-landscape: 667px;
             z-index: 1;
             position: absolute;
             inset: 0;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .liquidGlass-shine {
@@ -715,8 +715,10 @@ $phone-small-landscape: 667px;
 
             overflow: hidden;
 
-            box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+            box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.25),
                 inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+
+            border-radius: 28px;    
             
             & ~ * {
                 z-index: 3;
@@ -725,15 +727,31 @@ $phone-small-landscape: 667px;
 
 #pwa-install-element{
         .install-dialog.apple.aqua.dialog-body {
-            border-radius: 26px;
+            border-radius: 30px;
+            grid-template-columns: 100px 1fr;
+
+            .about{
+                grid-template-rows: 52px 52px;
+                .name{
+                        align-items: flex-end;
+                }
+                .name, .description{
+                    font-size: 14px;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
 
             .icon .icon-image{
                 border-radius: 16px;
+                width: 60px;
+                height: 60px;
+                    margin-left: 23px;
             }
 
             .dialog-button{
                 &.install{
-                    border-radius: 16px;
+                    border-radius: 18px;
                 }
                 &.gallery{
                     border-radius: 50%;

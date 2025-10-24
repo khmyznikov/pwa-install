@@ -1,11 +1,11 @@
 {
     "name": "Progressive Web Application",
-    "short_name": "PWA",
+    "short_name": "Web Application",
     "start_url": "/pwa-install/",
     "display": "standalone",
     "background_color": "#fff",
     "theme_color": "#82307b",
-    "description": "Installation component for Progressive Web Application DEMO",
+    "description": "Installation component",
     "icons": [
         {
             "src": "icons/icon@192.png",
