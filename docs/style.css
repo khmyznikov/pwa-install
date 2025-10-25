@@ -4,6 +4,7 @@ html{
     center center;
     width: 100%;
     height: 100%;
+    height: calc(100vh + env(safe-area-inset-bottom));
 }
 body{
     /* background: linear-gradient(90deg, rgba(144,92,180,1) 0%, rgba(255,90,152,1) 50%, rgba(255,201,124,1) 100%); */
