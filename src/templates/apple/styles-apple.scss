@@ -695,7 +695,7 @@ $phone-small-landscape: 667px;
             z-index: 0;
             inset: 0;
 
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             filter: url(#glass-distortion);
             overflow: hidden;
             isolation: isolate;
@@ -705,7 +705,7 @@ $phone-small-landscape: 667px;
             z-index: 1;
             position: absolute;
             inset: 0;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.7);
         }
 
         .liquidGlass-shine {
@@ -726,36 +726,121 @@ $phone-small-landscape: 667px;
         }
 
 #pwa-install-element{
-        .install-dialog.apple.aqua.dialog-body {
-            border-radius: 30px;
-            grid-template-columns: 100px 1fr;
+        .install-dialog.apple.aqua{
+            --border-bottom-color: rgba(0, 0, 0, 0.15);
 
-            .about{
-                grid-template-rows: 52px 52px;
-                .name{
-                        align-items: flex-end;
+            border: 1px solid #8080804a;
+
+            &.how-to{
+                .button.gallery{
+                    height: 0;
+                    & + .install::before{
+                        visibility: hidden;
+                    }
                 }
-                .name, .description{
-                    font-size: 14px;
-                    margin: 0;
-                    padding: 0;
+            }
+            &.gallery{
+                .button.install{
+                    height: 0;
+
+                    &::before{
+                        visibility: hidden;
+                    }
                 }
             }
 
-            .icon .icon-image{
-                border-radius: 16px;
-                width: 60px;
-                height: 60px;
-                    margin-left: 23px;
-            }
+            &.dialog-body {
+                border-radius: 30px;
+                grid-template-columns: 100px 1fr;
 
-            .dialog-button{
-                &.install{
-                    border-radius: 18px;
+                .about{
+                    margin-right: 26px;
+                    grid-template-rows: 56px 56px;
+                    .name{
+                            align-items: flex-end;
+                    }
+                    .name, .description{
+                        font-size: 14px;
+                        margin: 0;
+                        padding: 0;
+                    }
                 }
-                &.gallery{
-                    border-radius: 50%;
+
+                .icon {
+                    margin-left: 26px;
+
+                    .icon-image{
+                        border-radius: 16px;
+                        width: 60px;
+                        height: 60px;
+                        margin-left: 0px;
+                    }
                 }
-            }
+
+                .dialog-button{
+                    transition: height .3s ease-in-out;
+                    &.install{
+                        border-radius: 18px;
+                    }
+                    &.gallery{
+                        border-radius: 50%;
+                    }
+
+                    &.gallery + .install::before{
+                        content: '';
+                        display: inline-block;
+                        width: 100%;
+                        height:0;
+                        border-bottom: 1px solid var(--border-bottom-color);
+                    }
+                }
+
+                .welcome-to-install{
+                    padding: 15px 0;
+                    margin: 0 26px;
+                }
+
+                .action-buttons{
+                        margin: 16px;
+                        flex-direction: column;
+                        border-radius: 26px;
+                        overflow: hidden;
+                        padding: 0;
+                    .button-text{
+                        display: flex;
+                        flex-direction: row-reverse;
+                        align-items: center;
+                        gap: 15px;
+                        justify-content: flex-end;
+                    }
+                    .dialog-button{
+                        border-radius: 0;
+                        padding: 0 15px;
+                        text-align: start;
+
+                        &.gallery{
+                            margin: 0;
+                        }
+                    }
+                    #icon-back{
+                        width: 23px;
+                        fill: var(--text-color-normal);
+                        rotate: 90deg;
+                    }
+                }
+                .close{
+                    height: 42px;
+                    min-width: 42px;
+                    margin-inline-end: 14px;
+                    margin-top: 14px;
+
+                    background-color: #ffffff5d;
+                    border: 1px solid #ffffff6b;
+
+                    svg{
+                        width: 28px;
+                    }
+                }
         }
+    }
 }
