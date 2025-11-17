@@ -2,17 +2,79 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
+import { LiquidGlassDialog } from './liquid-glass-app';
+
 
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false) => {
     const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
+    // Track initialization state to prevent double initialization
+    let liquidGlassInitialized = false;
+
+    // Initialize liquid glass effect after render
+    setTimeout(async () => {
+        // Prevent double initialization
+        if (liquidGlassInitialized) {
+            console.log('Liquid glass already initialized, skipping');
+            return;
+        }
+        liquidGlassInitialized = true;
+
+        const pwaInstallElem = document.querySelector("#pwa-install");
+        const dialog = pwaInstallElem && pwaInstallElem.shadowRoot
+            ? pwaInstallElem.shadowRoot.querySelector("#pwa-install-element > article") as HTMLElement
+            : null;
+        const canvas = pwaInstallElem && pwaInstallElem.shadowRoot
+            ? pwaInstallElem.shadowRoot.querySelector("#effect") as HTMLCanvasElement
+            : null;
+        
+        if (!canvas || !dialog) {
+            console.log('Canvas or dialog not found');
+            liquidGlassInitialized = false;
+            return;
+        }
+
+        // Check if canvas already has a data attribute indicating initialization
+        if (canvas.dataset.liquidGlassInit === 'true') {
+            console.log('Canvas already initialized');
+            return;
+        }
+        canvas.dataset.liquidGlassInit = 'true';
+
+        // Initialize the liquid glass effect
+        const liquidGlass = new LiquidGlassDialog(canvas, dialog);
+        const initialized = await liquidGlass.init();
+
+        if (!initialized) {
+            console.log('Failed to initialize liquid glass effect');
+            liquidGlassInitialized = false;
+            canvas.dataset.liquidGlassInit = 'false';
+            return;
+        }
+
+        // Cleanup on dialog close
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'style' || mutation.attributeName === 'class') {
+                    const isHidden = dialog.style.display === 'none' || !dialog.classList.contains('available');
+                    if (isHidden) {
+                        liquidGlass.cleanup();
+                        observer.disconnect();
+                        liquidGlassInitialized = false;
+                        canvas.dataset.liquidGlassInit = 'false';
+                    }
+                }
+            });
+        });
+        
+        observer.observe(dialog, { attributes: true });
+    }, 3000);
+
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <article class="install-dialog apple aqua ${classMap(installDialogClassesApple())} dialog-body">
-                <div class="liquidGlass-effect"></div>
-                <div class="liquidGlass-tint"></div>
-                <div class="liquidGlass-shine"></div>
+               <canvas id="effect"></canvas>
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>
@@ -94,61 +156,6 @@ const template = (name: string, description: string, installDescription: string,
                     </button>
                 </div>
             </article>
-             <svg style="display: none">
-                <filter
-                    id="glass-distortion"
-                    x="0%"
-                    y="0%"
-                    width="100%"
-                    height="100%"
-                    filterUnits="objectBoundingBox">
-                    <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.01 0.01"
-                    numOctaves="1"
-                    seed="5"
-                    result="turbulence"
-                    />
-                    <!-- Seeds: 14, 17,  -->
-
-                    <feComponentTransfer in="turbulence" result="mapped">
-                    <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-                    <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-                    <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-                    </feComponentTransfer>
-
-                    <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-
-                    <feSpecularLighting
-                    in="softMap"
-                    surfaceScale="5"
-                    specularConstant="1"
-                    specularExponent="100"
-                    lighting-color="white"
-                    result="specLight"
-                    >
-                    <fePointLight x="-200" y="-200" z="300" />
-                    </feSpecularLighting>
-
-                    <feComposite
-                    in="specLight"
-                    operator="arithmetic"
-                    k1="0"
-                    k2="1"
-                    k3="1"
-                    k4="0"
-                    result="litImage"
-                    />
-
-                    <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="softMap"
-                    scale="150"
-                    xChannelSelector="R"
-                    yChannelSelector="G"
-                    />
-                </filter>
-            </svg>
         </aside>`;
 };
 export default template;
