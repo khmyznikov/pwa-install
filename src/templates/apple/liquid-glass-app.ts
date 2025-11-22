@@ -298,7 +298,6 @@ export class LiquidGlassDialog {
       SHADER_PARAMS.bevelDepth,    // bevelDepth
       SHADER_PARAMS.bevelWidth,    // bevelWidth
       SHADER_PARAMS.radius,        // radius (border-radius in pixels)
-      SHADER_PARAMS.frost,         // frost
       textureWidth,                // texture width
       textureHeight,               // texture height
       0.0,                         // padding

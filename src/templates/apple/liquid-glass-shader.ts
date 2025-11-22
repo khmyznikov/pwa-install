@@ -13,7 +13,6 @@ struct Uniforms {
   bevelDepth: f32,
   bevelWidth: f32,
   radius: f32,
-  frost: f32,
   textureWidth: f32,
   textureHeight: f32,
 }
@@ -105,41 +104,25 @@ fn fs_main(input: VertexOutput) -> @location(0) vec4f {
   let chromaticStrength = edge * 0.003;
   let centerFade = smoothstep(0.0, 0.4, rectDist); // Fade chromatic effect in center
   
-  if (uniforms.frost > 0.0) {
-    // Frost effect with multiple samples
-    let radius = uniforms.frost * 4.0;
-    var sum = vec4f(0.0);
-    let samples = 16;
-    
-    for (var i = 0; i < samples; i = i + 1) {
-      let angle = random(localUV + vec2f(f32(i))) * 6.283185;
-      let dist = sqrt(random(localUV - vec2f(f32(i)))) * radius;
-      let sampleOffset = vec2f(cos(angle), sin(angle)) * dist * 0.001;
-      sum += textureSample(bgTexture, bgSampler, bgUV + sampleOffset);
-    }
-    refrCol = sum / f32(samples);
-  } else {
-    // Chromatic aberration - sample RGB channels separately with slight offset at edges
-    let offsetDir = normalize(p);
-    
-    // Apply chromatic aberration only at edges/sides
-    let chromaticOffset = chromaticStrength * centerFade;
-    
-    // Red channel - shifted outward
-    let rUV = bgUV + offsetDir * chromaticOffset * 1.5;
-    let r = textureSample(bgTexture, bgSampler, rUV).r;
-    
-    // Green channel - center
-    let g = textureSample(bgTexture, bgSampler, bgUV).g;
-    
-    // Blue channel - shifted inward
-    let bUV = bgUV - offsetDir * chromaticOffset;
-    let b = textureSample(bgTexture, bgSampler, bUV).b;
-    
-    refrCol = vec4f(r, g, b, 1.0);
-  }
+
+  // Chromatic aberration - sample RGB channels separately with slight offset at edges
+  let offsetDir = normalize(p);
   
-  var finalColor = refrCol;
+  // Apply chromatic aberration only at edges/sides
+  let chromaticOffset = chromaticStrength * centerFade;
+  
+  // Red channel - shifted outward
+  let rUV = bgUV + offsetDir * chromaticOffset * 1.5;
+  let r = textureSample(bgTexture, bgSampler, rUV).r;
+  
+  // Green channel - center
+  let g = textureSample(bgTexture, bgSampler, bgUV).g;
+  
+  // Blue channel - shifted inward
+  let bUV = bgUV - offsetDir * chromaticOffset;
+  let b = textureSample(bgTexture, bgSampler, bUV).b;
+  
+  refrCol = vec4f(r, g, b, 1.0);
 
   // Apply shape mask with rounded corners
   let p_px = (localUV - 0.5) * uniforms.rectSize;
@@ -147,9 +130,9 @@ fn fs_main(input: VertexOutput) -> @location(0) vec4f {
   let dmask = udRoundBox(p_px, b_px, uniforms.radius);
   let inShape = 1.0 - step(0.0, dmask);
   
-  finalColor = vec4f(finalColor.rgb * inShape, inShape * 0.9);
+  refrCol = vec4f(refrCol.rgb * inShape, inShape * 0.9);
   
-  return finalColor;
+  return refrCol;
 }
 `;
 
@@ -159,5 +142,4 @@ export const SHADER_PARAMS = {
   bevelDepth: 0.15,
   bevelWidth: 0.15,
   radius: 20.0,
-  frost: 0.0,
 };

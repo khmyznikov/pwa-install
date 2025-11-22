@@ -26,7 +26,7 @@ const template = (name: string, description: string, installDescription: string,
             ? pwaInstallElem.shadowRoot.querySelector("#pwa-install-element > article") as HTMLElement
             : null;
         const canvas = pwaInstallElem && pwaInstallElem.shadowRoot
-            ? pwaInstallElem.shadowRoot.querySelector("#effect") as HTMLCanvasElement
+            ? pwaInstallElem.shadowRoot.querySelector("#glass") as HTMLCanvasElement
             : null;
         
         if (!canvas || !dialog) {
@@ -74,7 +74,8 @@ const template = (name: string, description: string, installDescription: string,
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <article class="install-dialog apple aqua ${classMap(installDialogClassesApple())} dialog-body">
-               <canvas id="effect"></canvas>
+                <canvas id="glass"></canvas>
+                <div id="tint"></div>
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>
