@@ -305,26 +305,23 @@
                         position: relative;
                         display: inline-flex;
                         flex-shrink: 0;
-                        color: var(--icon-how-to-color);
+                        fill: var(--text-color-normal);
 
                         width: 50px;
                         height: 50px;
                         align-items: center;
 
                         border-radius: 6px;
-                        #pwa-share, #pwa-add, #pwa-safari{
+
+                        #pwa-share, #pwa-add, #pwa-safari, #safari-dots{
                             margin: 0 auto;
                         }
-                        // #pwa-safari, #pwa-share{
-                        //     color: #527AFB;
-                        // }
                         #pwa-share{
                             margin-bottom: 4px;
                             transform: scale(0.9);
                         }
                         #pwa-add{
-                            transform: scale(0.8);
-                            fill: var(--text-color-normal);
+                            transform: scale(0.9);
                         }
                         #pwa-safari{
                             transform: scale(.92);
@@ -716,9 +713,11 @@ $phone-small-landscape: 667px;
 
 #pwa-install-element{
         .install-dialog.apple.aqua{
-            --border-bottom-color: #d9d9db;
+            --border-bottom-color: rgb(144 144 144 / 50%);
+            --divider-buttons-color: #d9d9db;
             --background-color-button: #ebebeb;
             --text-color-normal: #000;
+            --text-color-description: #696969;
 
             border: 1px solid rgb(255 255 255 / 50%);
 
@@ -733,7 +732,8 @@ $phone-small-landscape: 667px;
             &.gallery{
                 .button.install{
                     height: 0;
-
+                    
+                    
                     &::before{
                         visibility: hidden;
                     }
@@ -772,11 +772,21 @@ $phone-small-landscape: 667px;
 
                 .dialog-button{
                     transition: height .3s ease-in-out;
+                    height: 48px;
+                    
                     &.install{
                         border-radius: 18px;
+
+                        .button-text>svg{
+                            width: 22px;
+                        }
+
                     }
                     &.gallery{
                         border-radius: 50%;
+                        #pwa-gallery{
+                            // padding: 2px;
+                        }
                     }
 
                     &.gallery + .install::before{
@@ -784,7 +794,7 @@ $phone-small-landscape: 667px;
                         display: inline-block;
                         width: 100%;
                         height:0;
-                        border-bottom: 1px solid var(--border-bottom-color);
+                        border-bottom: 1px solid var(--divider-buttons-color);
                     }
                 }
 
@@ -808,8 +818,9 @@ $phone-small-landscape: 667px;
                     }
                     .dialog-button{
                         border-radius: 0;
-                        padding: 0 15px;
+                        padding: 0 20px;
                         text-align: start;
+                        font-size: 16px;
 
                         &.gallery{
                             margin: 0;
@@ -827,8 +838,8 @@ $phone-small-landscape: 667px;
                     margin-inline-end: 14px;
                     margin-top: 14px;
 
-                    background-color: #ffffff5d;
-                    border: 1px solid #ffffff6b;
+                    background-color: rgb(255 255 255 / 80%);
+                    border: 1px solid rgb(255 255 255 / 90%);
 
                     svg{
                         width: 28px;

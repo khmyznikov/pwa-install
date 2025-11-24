@@ -103,6 +103,17 @@ const template = (name: string, description: string, installDescription: string,
                             </div>
                             <div class="step-text">${msg('1) Open in your main browser')}</div>
                         </div>`: ''}
+                        ${!isDesktop? html`
+                        <div class="description-step">
+                            <div class="svg-wrap">
+                                <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
+                                    <circle cx="2" cy="12" r="2" fill="currentColor"/>
+                                    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                                    <circle cx="22" cy="12" r="2" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="step-text">${msg('?) Press More if no Share icon')}</div>
+                        </div>`: ''}
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="pwa-share" width="25" height="32" viewBox="0 0 17.695 26.475">
