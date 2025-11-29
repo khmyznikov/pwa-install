@@ -2,24 +2,23 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
-import { LiquidGlassDialog } from './liquid-glass-app';
+import { LiquidGlassDialog } from './liquid-glass-logic';
 
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false) => {
-    const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, pageReflection: ImageBitmap | null, isRTL: boolean = false, requestUpdate: () => void = () => {}) => {
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
     // Track initialization state to prevent double initialization
     let liquidGlassInitialized = false;
 
-    // Initialize liquid glass effect after render
-    setTimeout(async () => {
+    // Initialize liquid glass effect only if installAvailable
+    const initializeLiquidGlass = async () => {
+
         // Prevent double initialization
         if (liquidGlassInitialized) {
             console.log('Liquid glass already initialized, skipping');
             return;
         }
-        liquidGlassInitialized = true;
 
         const pwaInstallElem = document.querySelector("#pwa-install");
         const dialog = pwaInstallElem && pwaInstallElem.shadowRoot
@@ -30,20 +29,28 @@ const template = (name: string, description: string, installDescription: string,
             : null;
         
         if (!canvas || !dialog) {
-            console.log('Canvas or dialog not found');
-            liquidGlassInitialized = false;
+            // DOM not ready, schedule update to retry
+            setTimeout(requestUpdate, 1500);
             return;
         }
 
+        liquidGlassInitialized = true;
+
         // Check if canvas already has a data attribute indicating initialization
         if (canvas.dataset.liquidGlassInit === 'true') {
+            const instance = (canvas as any).liquidGlassInstance as LiquidGlassDialog;
+            if (instance && pageReflection && instance.pageReflection !== pageReflection) {
+                instance.pageReflection = pageReflection;
+                instance.captureBackground(pageReflection);
+            }
             console.log('Canvas already initialized');
             return;
         }
         canvas.dataset.liquidGlassInit = 'true';
 
         // Initialize the liquid glass effect
-        const liquidGlass = new LiquidGlassDialog(canvas, dialog);
+        const liquidGlass = new LiquidGlassDialog(canvas, dialog, pageReflection!);
+        (canvas as any).liquidGlassInstance = liquidGlass;
         const initialized = await liquidGlass.init();
 
         if (!initialized) {
@@ -69,7 +76,11 @@ const template = (name: string, description: string, installDescription: string,
         });
         
         observer.observe(dialog, { attributes: true });
-    }, 3000);
+    };
+    if (installAvailable && pageReflection) {
+        initializeLiquidGlass();
+    }
+    const installDialogClassesApple = () => { return {available: installAvailable && (liquidGlassInitialized || !pageReflection), 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">

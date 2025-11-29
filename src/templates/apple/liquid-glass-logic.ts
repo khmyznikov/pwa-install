@@ -15,6 +15,7 @@ export class LiquidGlassDialog {
   uniformBuffer: GPUBuffer | null = null;
   bindGroup: GPUBindGroup | null = null;
   backgroundTexture: GPUTexture | null = null;
+  sampler: GPUSampler | null = null;
   startTime: number;
   isCapturing: boolean = false;
   animationFrameId: number | null = null;
@@ -23,13 +24,15 @@ export class LiquidGlassDialog {
   resizeDebounceTimer: number | null = null;
   isRendering: boolean = false;
   contextLost: boolean = false;
+  pageReflection: ImageBitmap | null = null;
   
   // Track dialog rect position and size
   rectBounds = { x: 0, y: 0, width: 0, height: 0 };
   
-  constructor(canvas: HTMLCanvasElement, dialog: HTMLElement) {
+  constructor(canvas: HTMLCanvasElement, dialog: HTMLElement, pageReflection: ImageBitmap | null) {
     this.canvas = canvas;
     this.dialog = dialog;
+    this.pageReflection = pageReflection;
     this.startTime = performance.now();
   }
 
@@ -41,16 +44,16 @@ export class LiquidGlassDialog {
     }
     
     // Capture background once at initialization
-    await this.captureBackground();
+    await this.captureBackground(this.pageReflection!);
     
     this.resize();
     this.setupScrollListener();
     this.setupResizeObserver();
     
-    // Start rendering only if not already rendering
+    // Start rendering only after background is captured and not already rendering
     if (!this.isRendering) {
       this.isRendering = true;
-      this.render();
+      requestAnimationFrame(() => this.render());
     }
     
     return true;
@@ -99,44 +102,22 @@ export class LiquidGlassDialog {
         usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST,
       });
 
-      // Create a placeholder texture initially
-      this.createPlaceholderTexture();
+      // Create sampler once
+      this.sampler = this.device.createSampler({
+        magFilter: 'linear',
+        minFilter: 'linear',
+      });
 
       // Create bind group layout
       const bindGroupLayout = this.device.createBindGroupLayout({
         entries: [
-          {
-            binding: 0,
-            visibility: GPUShaderStage.FRAGMENT,
-            buffer: { type: 'uniform' }
-          },
-          {
-            binding: 1,
-            visibility: GPUShaderStage.FRAGMENT,
-            texture: { sampleType: 'float' }
-          },
-          {
-            binding: 2,
-            visibility: GPUShaderStage.FRAGMENT,
-            sampler: { type: 'filtering' }
-          }
+          { binding: 0, visibility: GPUShaderStage.FRAGMENT, buffer: { type: 'uniform' } },
+          { binding: 1, visibility: GPUShaderStage.FRAGMENT, texture: { sampleType: 'float' } },
+          { binding: 2, visibility: GPUShaderStage.FRAGMENT, sampler: { type: 'filtering' } }
         ]
       });
 
-      // Create bind group
-      this.bindGroup = this.device.createBindGroup({
-        layout: bindGroupLayout,
-        entries: [
-          { binding: 0, resource: { buffer: this.uniformBuffer } },
-          { binding: 1, resource: this.backgroundTexture!.createView() },
-          { binding: 2, resource: this.device.createSampler({
-            magFilter: 'linear',
-            minFilter: 'linear',
-          })}
-        ]
-      });
-
-      // Create render pipeline
+      // Create render pipeline immediately
       this.pipeline = this.device.createRenderPipeline({
         layout: this.device.createPipelineLayout({
           bindGroupLayouts: [bindGroupLayout]
@@ -149,24 +130,10 @@ export class LiquidGlassDialog {
           module: shaderModule,
           entryPoint: 'fs_main',
           targets: [{
-            format: format,
-            blend: {
-              color: {
-                srcFactor: 'one',
-                dstFactor: 'one-minus-src-alpha',
-                operation: 'add',
-              },
-              alpha: {
-                srcFactor: 'one',
-                dstFactor: 'one-minus-src-alpha',
-                operation: 'add',
-              }
-            }
+            format: format
           }]
         },
-        primitive: {
-          topology: 'triangle-list',
-        },
+        primitive: { topology: 'triangle-list' },
       });
 
       return true;
@@ -176,46 +143,14 @@ export class LiquidGlassDialog {
     }
   }
 
-  createPlaceholderTexture() {
-    if (!this.device) return;
-
-    // Create a simple placeholder texture
-    const size = 512;
-    this.backgroundTexture = this.device.createTexture({
-      size: [size, size, 1],
-      format: 'rgba8unorm',
-      usage: GPUTextureUsage.TEXTURE_BINDING |
-             GPUTextureUsage.COPY_DST |
-             GPUTextureUsage.RENDER_ATTACHMENT,
-    });
-  }
-
-  async captureBackground() {
-    if (this.isCapturing || typeof html2canvas === 'undefined' || !this.device) {
+  async captureBackground(imageBitmap: ImageBitmap) {
+    if (this.isCapturing || typeof html2canvas === 'undefined' || !this.device || !this.pipeline || !this.uniformBuffer || !this.sampler) {
       return;
     }
 
     this.isCapturing = true;
 
     try {
-      // Temporarily hide the dialog to capture what's behind
-      const originalVisibility = this.dialog.style.visibility;
-      this.dialog.style.visibility = 'hidden';
-
-      // Capture the entire page once
-      const captureCanvas = await html2canvas(document.body, {
-        scale: 1,
-        backgroundColor: null,
-        logging: false,
-        useCORS: true,
-      });
-
-      // Restore visibility
-      this.dialog.style.visibility = originalVisibility;
-
-      // Convert to ImageBitmap and upload to GPU
-      const imageBitmap = await createImageBitmap(captureCanvas);
-      
       // Recreate texture with correct size if needed
       if (!this.backgroundTexture || 
           this.backgroundTexture.width !== imageBitmap.width ||
@@ -225,6 +160,7 @@ export class LiquidGlassDialog {
           this.backgroundTexture.destroy();
         }
 
+        // Create texture with correct size from the image
         this.backgroundTexture = this.device.createTexture({
           size: [imageBitmap.width, imageBitmap.height, 1],
           format: 'rgba8unorm',
@@ -233,20 +169,15 @@ export class LiquidGlassDialog {
                  GPUTextureUsage.RENDER_ATTACHMENT,
         });
 
-        // Update bind group with new texture
-        if (this.pipeline && this.uniformBuffer) {
-          this.bindGroup = this.device.createBindGroup({
-            layout: this.pipeline.getBindGroupLayout(0),
-            entries: [
-              { binding: 0, resource: { buffer: this.uniformBuffer } },
-              { binding: 1, resource: this.backgroundTexture.createView() },
-              { binding: 2, resource: this.device.createSampler({
-                magFilter: 'linear',
-                minFilter: 'linear',
-              })}
-            ]
-          });
-        }
+        // Create bind group using existing pipeline layout
+        this.bindGroup = this.device.createBindGroup({
+          layout: this.pipeline.getBindGroupLayout(0),
+          entries: [
+            { binding: 0, resource: { buffer: this.uniformBuffer } },
+            { binding: 1, resource: this.backgroundTexture.createView() },
+            { binding: 2, resource: this.sampler }
+          ]
+        });
       }
 
       this.device.queue.copyExternalImageToTexture(

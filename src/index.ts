@@ -18,6 +18,7 @@ import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
 import templateApple from './templates/apple/template-apple';
+import html2canvas from 'html2canvas';
 
 /**
  * @event {CustomEvent} pwa-install-success-event - App install success (Chromium/Android only)
@@ -58,11 +59,16 @@ export class PWAInstallElement extends LitElement {
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
+	public isLiquidGlassSupported = false;
 	public isAndroidFallback = false;
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
+	/** @internal */
+	private _pageReflection: ImageBitmap | null = null;
+	/** @internal */
+	private _resizeTimer: number | null = null;
 	/** @internal */
 	private _isRTL = false;
 
@@ -130,6 +136,32 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	/** @internal */
+	private _handleResize = () => {
+		if (this._resizeTimer) window.clearTimeout(this._resizeTimer);
+		this._resizeTimer = window.setTimeout(async () => {
+			if (this.isLiquidGlassSupported && this.isInstallAvailable && !this.isDialogHidden) {
+				this.isInstallAvailable = false;
+				this.requestUpdate();
+				await this.updateComplete;
+				
+				// wait untill animations are finished
+				await new Promise(resolve => setTimeout(resolve, 1000));
+
+				let capturedCanvas = await html2canvas(document.body, {
+					scale: 1,
+					backgroundColor: Utils.getPageBackgroundColor(),
+					logging: false,
+					useCORS: true,
+				});
+				this._pageReflection = await createImageBitmap(capturedCanvas);
+
+				this.isInstallAvailable = true;
+				this.requestUpdate();
+			}
+		}, 500);
+	}
+
+	/** @internal */
 	private _toggleHowTo = {
         handleEvent: () => {
 			this._howToRequested = !this._howToRequested;
@@ -162,24 +194,41 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = !Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
+		this.isLiquidGlassSupported = Utils.isLiquidGlassSupported();
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
 	}
 	/** @internal */
-	private _checkInstallAvailable() {
+	private async _triggerAppleDialog(){
+		if (this.isLiquidGlassSupported) {
+			let capturedCanvas = await html2canvas(document.body, {
+				scale: 1,
+				backgroundColor: Utils.getPageBackgroundColor(),
+				logging: false,
+				useCORS: true,
+			});
+			this._pageReflection = await createImageBitmap(capturedCanvas);
+			window.addEventListener('resize', this._handleResize, { passive: true });
+		}
+		this.isInstallAvailable = true;
+		this.requestUpdate()
+		Utils.eventInstallAvailable(this);
+	}
+	/** @internal */
+	private async _checkInstallAvailable() {
 		if (this.isUnderStandaloneMode)
 			return;
 
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			this.manualApple && this.hideDialog();
-			setTimeout(
-				() => {
-					this.isInstallAvailable = true;
-					this.requestUpdate()
-					Utils.eventInstallAvailable(this);
-				},
-				1000
-			);
+			
+			if (document.readyState === 'complete') {
+				await this._triggerAppleDialog();
+			} else {
+				window.addEventListener('load', async () => {
+					await this._triggerAppleDialog();
+				});
+			}
 			return;
 		}
 
@@ -251,7 +300,7 @@ export class PWAInstallElement extends LitElement {
 		window.defferedPromptEvent = null;
 
 		await this._checkPlatform();
-		this._checkInstallAvailable();
+		await this._checkInstallAvailable();
 
 		if ('onappinstalled' in window)
 			window.addEventListener('appinstalled', (e) => {
@@ -272,10 +321,15 @@ export class PWAInstallElement extends LitElement {
 	async connectedCallback() {
 		await changeLocale(navigator.language);
 		this._isRTL = isRTL();
-		this._init();
+		await this._init();
 		PWAGalleryElement.finalized;
 		PWABottomSheetElement.finalized;
 		super.connectedCallback();
+	}
+	disconnectedCallback() {
+		window.removeEventListener('resize', this._handleResize);
+		if (this._resizeTimer) window.clearTimeout(this._resizeTimer);
+		super.disconnectedCallback();
 	}
 	willUpdate(changedProperties: PropertyValues<this>) {
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
@@ -305,7 +359,9 @@ export class PWAInstallElement extends LitElement {
 				this._howToRequested,
 				this._toggleGallery,
 				this._galleryRequested,
-				this._isRTL
+				this._pageReflection,
+				this._isRTL,
+				this._requestUpdate
 			)}`;
 		else
 			return html`${template(
