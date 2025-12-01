@@ -83,6 +83,14 @@ export class LiquidGlassDialog {
       }
 
       const format = navigator.gpu.getPreferredCanvasFormat();
+
+      // Initial configuration - ensure non-zero size
+      const width = Math.max(1, this.canvas.width);
+      const height = Math.max(1, this.canvas.height);
+      if (this.canvas.width === 0 || this.canvas.height === 0) {
+          this.canvas.width = width;
+          this.canvas.height = height;
+      }
       
       this.context.configure({
         device: this.device,

@@ -682,35 +682,27 @@ $phone-small-landscape: 667px;
                 outline: 1px solid #1c1c1c;
                 color-scheme: dark;
             }
+
+            &.aqua {
+                --text-color-normal: #fff;
+                --text-color-description: rgb(189 177 175 / 80%);
+                --background-color-button: #2c2c2e;
+                --divider-buttons-color: #38383a;
+                --border-bottom-color: rgb(84 84 88 / 65%);
+
+                --base-color: 0 0 0;
+                
+                border-color: rgb(var(--base-color) / 30%);
+
+                .close {
+                    background-color: rgb(30 30 30 / 80%);
+                    border: 1px solid rgb(60 60 60 / 90%);
+                }
+            }
         }
     }
 }
         
-#glass {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    border-radius: inherit;
-    // opacity: 0.8;
-}
-#tint {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-    background: rgb(255 255 255 / 60%);
-    box-shadow: inset 1px 1px 1px 0 rgba(255, 255, 255, .25), 
-                inset 0px 0px 1px 1px rgba(255, 255, 255, .5);
-    backdrop-filter: blur(8px);
-}
-
 #pwa-install-element{
         .install-dialog.apple.aqua{
             --border-bottom-color: rgb(144 144 144 / 50%);
@@ -718,8 +710,9 @@ $phone-small-landscape: 667px;
             --background-color-button: #ebebeb;
             --text-color-normal: #000;
             --text-color-description: #696969;
+            --base-color: 255 255 255;
 
-            border: 1px solid rgb(255 255 255 / 50%);
+            border: 1px solid rgb(var(--base-color) / 50%);
 
             &.how-to{
                 .button.gallery{
@@ -828,8 +821,11 @@ $phone-small-landscape: 667px;
                     }
                     #icon-back{
                         width: 23px;
-                        fill: var(--text-color-normal);
                         rotate: 90deg;
+                    }
+
+                    svg{
+                        fill: var(--text-color-normal);
                     }
                 }
                 .close{
@@ -838,13 +834,36 @@ $phone-small-landscape: 667px;
                     margin-inline-end: 14px;
                     margin-top: 14px;
 
-                    background-color: rgb(255 255 255 / 80%);
-                    border: 1px solid rgb(255 255 255 / 90%);
+                    background-color: rgb(var(--base-color) / 80%);
+                    border: 1px solid rgb(var(--base-color) / 90%);
 
                     svg{
                         width: 28px;
                     }
                 }
+        }
+        #glass {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+        #tint {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background: rgb(var(--base-color) / 60%);
+            box-shadow: inset 1px 1px 1px 0 rgb(var(--base-color) / 25%), 
+                        inset 0px 0px 1px 1px rgb(var(--base-color) / 50%);
+            backdrop-filter: blur(8px);
         }
     }
 }
