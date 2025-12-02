@@ -39,7 +39,7 @@
   <target>2) Nhấp vào "Thêm vào Dock"</target>
 </trans-unit>
 <trans-unit id="sc79fd7641eb9a975">
-  <source>Hide Instruction</source>
+  <source>Hide Instructions</source>
   <target>Ẩn các bước cài đặt</target>
 </trans-unit>
 <trans-unit id="s922329d6f6213590">
@@ -59,7 +59,7 @@
   <target>2) Nhấn vào "Thêm vào Màn hình chính"</target>
 </trans-unit>
 <trans-unit id="s54cfbb14f46396d4">
-  <source>1) Open in your main browser</source>
+  <source>1) Open in the Safari  browser</source>
   <target>1) Mở trình duyệt chính của bạn</target>
 </trans-unit>
 <trans-unit id="s2d90afa5dcca2c0e">

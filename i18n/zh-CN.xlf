@@ -19,7 +19,7 @@
         <target>2) 点击导航栏中的“分享”按钮</target>
       </trans-unit>
       <trans-unit id="sc79fd7641eb9a975">
-        <source>Hide Instruction</source>
+        <source>Hide Instructions</source>
         <target>隐藏安装步骤</target>
       </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
@@ -59,7 +59,7 @@
         <target>2) 轻触“添加到主屏幕”</target>
       </trans-unit>
       <trans-unit id="s54cfbb14f46396d4">
-        <source>1) Open in your main browser</source>
+        <source>1) Open in the Safari  browser</source>
         <target>1) 在您的主浏览器中打开</target>
       </trans-unit>
       <trans-unit id="s2d90afa5dcca2c0e">

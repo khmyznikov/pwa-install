@@ -39,7 +39,7 @@
   <target>2) Dock에 추가 버튼 누르기</target>
 </trans-unit>
 <trans-unit id="sc79fd7641eb9a975">
-  <source>Hide Instruction</source>
+  <source>Hide Instructions</source>
   <target>안내 숨기기</target>
 </trans-unit>
 <trans-unit id="s922329d6f6213590">
@@ -59,7 +59,7 @@
   <target>2) "홈 화면에 추가" 탭하기</target>
 </trans-unit>
 <trans-unit id="s54cfbb14f46396d4">
-  <source>1) Open in your main browser</source>
+  <source>1) Open in the Safari  browser</source>
     <target>1) 주 브라우저에서 열기</target>
 </trans-unit>
 <trans-unit id="s2d90afa5dcca2c0e">

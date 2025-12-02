@@ -35,7 +35,7 @@ const template = (name: string, description: string, installDescription: string,
                                     <g fill="currentColor"><path d="M9.96 19.922c5.45 0 9.962-4.522 9.962-9.961C19.922 4.51 15.4 0 9.952 0 4.511 0 0 4.512 0 9.96c0 5.44 4.521 9.962 9.96 9.962Zm0-1.66A8.26 8.26 0 0 1 1.67 9.96c0-4.61 3.672-8.3 8.281-8.3 4.61 0 8.31 3.69 8.31 8.3 0 4.61-3.69 8.3-8.3 8.3Z"/><path d="m5.87 14.883 5.605-2.735a1.47 1.47 0 0 0 .683-.673l2.725-5.596c.312-.664-.166-1.182-.85-.84L8.447 7.764c-.302.136-.508.341-.674.673L5.03 14.043c-.312.645.196 1.152.84.84Zm4.09-3.72A1.19 1.19 0 0 1 8.77 9.97c0-.664.527-1.201 1.19-1.201a1.2 1.2 0 0 1 1.202 1.2c0 .655-.537 1.192-1.201 1.192Z"/></g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('1) Open in your main browser')}</div>
+                            <div class="step-text">${msg('1) Open in the Safari  browser')}</div>
                         </div>`: ''}
                         <div class="description-step">
                             <div class="svg-wrap">
@@ -71,7 +71,7 @@ const template = (name: string, description: string, installDescription: string,
                         }
                     </button>`:''}
                     <button class="dialog-button button install" @click=${howToForApple}>
-                        <span class="button-text ${howToRequested? 'show': 'hide'}">${msg('Hide Instruction')}</span>
+                        <span class="button-text ${howToRequested? 'show': 'hide'}">${msg('Hide Instructions')}</span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
                             <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
                             <svg viewBox="0 0 25 25">

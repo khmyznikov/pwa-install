@@ -19,7 +19,7 @@
         <target>2) Нажмите "Поделиться"</target>
       </trans-unit>
       <trans-unit id="sc79fd7641eb9a975">
-        <source>Hide Instruction</source>
+        <source>Hide Instructions</source>
         <target>Спрятать Инструкцию</target>
       </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
@@ -59,7 +59,7 @@
         <target>2) Нажмите "Добавить на главный экран"</target>
       </trans-unit>
       <trans-unit id="s54cfbb14f46396d4">
-        <source>1) Open in your main browser</source>
+        <source>1) Open in the Safari  browser</source>
         <target>1) Откройте в вашем основном браузере</target>
       </trans-unit>
       <trans-unit id="s2d90afa5dcca2c0e">
