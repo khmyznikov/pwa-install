@@ -68,7 +68,8 @@
 			</legend>
 			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
 			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button><br>
-			<button onclick="forceStyle('liquid-glass')">Liquid Glass</button>
+			<button onclick="forceStyle('liquid-glass-desktop')">Liquid Desktop</button>
+			<button onclick="forceStyle('liquid-glass-mobile')">Liquid Mobile</button><br>
 			<button onclick="forceStyle('chrome')">Chromium</button>
 			<button onclick="forceStyle('fallback')">Android Fallback</button><br>
 			<i>*end style depends on browser and OS</i>
@@ -170,7 +171,12 @@
 				case 'fallback':
 					pwaInstall.isAndroidFallback = true;
 					break;
-				case 'liquid-glass':
+				case 'liquid-glass-desktop':
+					pwaInstall.isLiquidGlassSupported = true;
+					pwaInstall.isAppleDesktopPlatform = true;
+					pwaInstall._triggerAppleDialog();
+					break;
+				case 'liquid-glass-mobile':
 					pwaInstall.isLiquidGlassSupported = true;
 					pwaInstall.isAppleMobilePlatform = true;
 					pwaInstall._triggerAppleDialog();
