@@ -75,22 +75,30 @@ export class LiquidGlassDialog {
 
       this.device = await adapter.requestDevice();
       
-      // Configure canvas context
       this.context = this.canvas.getContext('webgpu') as GPUCanvasContext;
+      
+      if (!this.context) {
+          const newCanvas = document.createElement('canvas');
+          newCanvas.id = this.canvas.id;
+          newCanvas.className = this.canvas.className;
+          newCanvas.style.cssText = this.canvas.style.cssText;
+          
+          if (this.canvas.parentNode) {
+              this.canvas.parentNode.replaceChild(newCanvas, this.canvas);
+              this.canvas = newCanvas;
+              this.canvas.dataset.liquidGlassInit = 'initializing';
+              (this.canvas as any).liquidGlassInstance = this;
+          }
+          
+          this.context = this.canvas.getContext('webgpu') as GPUCanvasContext;
+      }
+
       if (!this.context) {
         console.error('Failed to get WebGPU context');
         return false;
       }
 
       const format = navigator.gpu.getPreferredCanvasFormat();
-
-      // Initial configuration - ensure non-zero size
-      const width = Math.max(1, this.canvas.width);
-      const height = Math.max(1, this.canvas.height);
-      if (this.canvas.width === 0 || this.canvas.height === 0) {
-          this.canvas.width = width;
-          this.canvas.height = height;
-      }
       
       this.context.configure({
         device: this.device,

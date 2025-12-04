@@ -8,17 +8,20 @@ import { LiquidGlassDialog } from './liquid-glass-logic';
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, pageReflection: ImageBitmap | null, isRTL: boolean = false, requestUpdate: () => void = () => {}) => {
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
-    // Track initialization state to prevent double initialization
-    let liquidGlassInitialized = false;
+    // Attempt to find canvas to check status synchronously
+    const pwaInstallElem = document.querySelector("#pwa-install");
+    const canvas = pwaInstallElem && pwaInstallElem.shadowRoot
+        ? pwaInstallElem.shadowRoot.querySelector("#glass") as HTMLCanvasElement
+        : null;
+    
+    const initStatus = canvas ? canvas.dataset.liquidGlassInit : null;
+    // If initializing or true, we consider it "initialized" for the purpose of showing the dialog (available class)
+    // Use let so we can update it if we start initialization in this cycle
+    let liquidGlassInitialized = initStatus === 'true' || initStatus === 'initializing';
 
     // Initialize liquid glass effect only if installAvailable
     const initializeLiquidGlass = async () => {
-
-        // Prevent double initialization
-        if (liquidGlassInitialized) {
-            console.log('Liquid glass already initialized, skipping');
-            return;
-        }
+        if (!installAvailable || !pageReflection) return;
 
         const pwaInstallElem = document.querySelector("#pwa-install");
         const dialog = pwaInstallElem && pwaInstallElem.shadowRoot
@@ -30,36 +33,46 @@ const template = (name: string, description: string, installDescription: string,
         
         if (!canvas || !dialog) {
             // DOM not ready, schedule update to retry
-            setTimeout(requestUpdate, 1500);
+            setTimeout(requestUpdate, 50);
             return;
         }
 
-        liquidGlassInitialized = true;
-
-        // Check if canvas already has a data attribute indicating initialization
-        if (canvas.dataset.liquidGlassInit === 'true') {
-            const instance = (canvas as any).liquidGlassInstance as LiquidGlassDialog;
-            if (instance && pageReflection && instance.pageReflection !== pageReflection) {
-                instance.pageReflection = pageReflection;
-                instance.captureBackground(pageReflection);
+        // If already initialized or currently initializing, skip
+        if (canvas.dataset.liquidGlassInit === 'true' || canvas.dataset.liquidGlassInit === 'initializing') {
+            // If it was 'true' but we are here, maybe we need to update reflection
+            if (canvas.dataset.liquidGlassInit === 'true') {
+                 const instance = (canvas as any).liquidGlassInstance as LiquidGlassDialog;
+                 if (instance && pageReflection && instance.pageReflection !== pageReflection) {
+                     instance.pageReflection = pageReflection;
+                     instance.captureBackground(pageReflection);
+                 }
             }
-            console.log('Canvas already initialized');
             return;
         }
-        canvas.dataset.liquidGlassInit = 'true';
 
-        // Initialize the liquid glass effect
+        // Start initialization process
+        // Update local variable to ensure dialog is shown in THIS render
+        liquidGlassInitialized = true;
+        canvas.dataset.liquidGlassInit = 'initializing';
+        
+        // Force update to ensure 'available' class is applied
+        requestUpdate();
+        
+        // Wait for layout to occur so canvas has dimensions
+        await new Promise(resolve => setTimeout(resolve, 50));
+
         const liquidGlass = new LiquidGlassDialog(canvas, dialog, pageReflection!);
         (canvas as any).liquidGlassInstance = liquidGlass;
-        const initialized = await liquidGlass.init();
+        const success = await liquidGlass.init();
 
-        if (!initialized) {
-            console.log('Failed to initialize liquid glass effect');
-            liquidGlassInitialized = false;
-            canvas.dataset.liquidGlassInit = 'false';
-            return;
+        if (success) {
+            canvas.dataset.liquidGlassInit = 'true';
+        } else {
+            console.warn('Liquid glass init failed');
+            // Keep dialog visible even if effect failed
+            canvas.dataset.liquidGlassInit = 'true'; 
         }
-
+        
         // Cleanup on dialog close
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
@@ -68,25 +81,24 @@ const template = (name: string, description: string, installDescription: string,
                     if (isHidden) {
                         liquidGlass.cleanup();
                         observer.disconnect();
-                        liquidGlassInitialized = false;
                         canvas.dataset.liquidGlassInit = 'false';
                     }
                 }
             });
         });
-        
         observer.observe(dialog, { attributes: true });
     };
-    if (installAvailable && pageReflection) {
+    if (installAvailable && pageReflection && !isDesktop) {
         initializeLiquidGlass();
     }
-    const installDialogClassesApple = () => { return {available: installAvailable && (liquidGlassInitialized || !pageReflection), 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
+    const installDialogClassesApple = () => { return {available: installAvailable && (liquidGlassInitialized || !pageReflection), aqua: liquidGlassInitialized, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
-            <article class="install-dialog apple aqua ${classMap(installDialogClassesApple())} dialog-body">
-                <canvas id="glass"></canvas>
-                <div id="tint"></div>
+            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
+                ${pageReflection? html`
+                    <canvas id="glass"></canvas>
+                    <div id="tint"></div>`: ''}
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>

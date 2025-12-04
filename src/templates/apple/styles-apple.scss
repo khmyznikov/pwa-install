@@ -36,7 +36,7 @@
         opacity: 0;
         visibility: visible;
         transform: translateY(100%);
-        // will-change: opacity, transform;
+        will-change: opacity, transform;
 
         &.dialog-body{
             display: grid;
@@ -56,10 +56,10 @@
             border-bottom: 1px solid transparent;
             // transition: border .35s ease-in-out;
 
-            // background-color:var(--background-color);
-            // filter: drop-shadow(0 5px 15px rgba(0,0,0,.5));
-            // backdrop-filter: blur(8px);
-            // -webkit-backdrop-filter: blur(8px);
+            background-color:var(--background-color);
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,.5));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
 
             .icon{
                 display: flex;
@@ -604,7 +604,7 @@ $phone-small-landscape: 667px;
                 max-height: calc(85vh - 20px);
             }
             &.dialog-body{
-                // filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 0px 15px);
+                filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 0px 15px);
             }
         }
     }
@@ -613,7 +613,7 @@ $phone-small-landscape: 667px;
     #pwa-install-element{
         .install-dialog.apple.dialog-body{
             max-width: 100vw;
-            // filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px -5px 10px);
+            filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px -5px 10px);
 
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
