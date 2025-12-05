@@ -170,8 +170,68 @@
             grid-template-columns: unset;
             gap: unset;
 
-            // gap: 15px;
             padding: 15px;
+        }
+
+        .action-buttons{
+                flex-direction: column;
+                overflow: hidden;
+            .button-text{
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                gap: 15px;
+                justify-content: flex-end;
+            }
+            .dialog-button{
+                padding: 0 20px;
+                text-align: start;
+                font-size: 16px;
+
+                &.gallery{
+                    margin: 0;
+                }
+            }
+            #icon-back{
+                width: 23px;
+                rotate: 90deg;
+            }
+
+            svg{
+                fill: var(--text-color-normal);
+            }
+        }
+        .action-buttons{
+            margin: 16px;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 0;
+            .button-text{
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                gap: 15px;
+                justify-content: flex-end;
+            }
+            .dialog-button{
+                border-radius: 0;
+                padding: 0 20px;
+                text-align: start;
+                font-size: 16px;
+
+                &.gallery{
+                    margin: 0;
+                }
+            }
+            #icon-back{
+                width: 23px;
+                rotate: 90deg;
+            }
+
+            svg{
+                fill: var(--text-color-normal);
+            }
         }
         .dialog-button{
             display: grid;
@@ -195,8 +255,8 @@
                 user-select: none;
                 font-weight: 400;
                 font-size: 17px;
-                padding: 0;
-                margin: 0;
+                // padding: 0;
+                // margin: 0;
 
                 background-color: var(--background-color-button);
 
@@ -211,7 +271,7 @@
 
                         display: flex;
                         align-items: center;
-                        justify-content: space-between;
+                        // justify-content: space-between;
 
                         transition: opacity .4s ease-in-out 0.1s;
 
@@ -251,9 +311,6 @@
                     align-items: center;
 
                     min-width: 50px;
-                    width: auto;
-
-                    margin-inline-end: 15px;
 
                     #pwa-gallery{
                         margin: 0 auto;
@@ -384,6 +441,7 @@
         &.how-to{
             .button.gallery{
                 height: 0;
+                opacity: 0;
                 & + .install::before{
                     visibility: hidden;
                 }
@@ -392,6 +450,7 @@
         &.gallery{
             .button.install{
                 height: 0;
+                opacity: 0;
                 &::before{
                     visibility: hidden;
                 }
@@ -650,20 +709,20 @@
                             // margin-top: -4px;
                         }
                     }
-                    &.gallery{
-                        width: 30px;
-                        min-width: 30px;
-                        margin-inline-end: 10px;
-                        background: var(--background-color-button);
-                        #pwa-gallery{
-                            width: 14px;
-                            transition: transform .4s ease-in-out;
-                        }
-                        // border-radius: 5px;
-                        // background: #FFF;
-                        // box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
-                        // padding: 5px;
-                    }
+                    // &.gallery{
+                    //     width: 30px;
+                    //     min-width: 30px;
+                    //     margin-inline-end: 10px;
+                    //     background: var(--background-color-button);
+                    //     #pwa-gallery{
+                    //         width: 14px;
+                    //         transition: transform .4s ease-in-out;
+                    //     }
+                    //     // border-radius: 5px;
+                    //     // background: #FFF;
+                    //     // box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
+                    //     // padding: 5px;
+                    // }
                 }
             }
 
