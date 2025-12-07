@@ -71,6 +71,8 @@ export class PWAInstallElement extends LitElement {
 	private _resizeTimer: number | null = null;
 	/** @internal */
 	private _isRTL = false;
+	/** @internal */
+	private _lastWindowWidth: number = 0;
 
 	/** @internal */
 	private _manifest: Manifest = new Manifest();
@@ -139,6 +141,15 @@ export class PWAInstallElement extends LitElement {
 	private _handleResize = () => {
 		if (this._resizeTimer) window.clearTimeout(this._resizeTimer);
 		this._resizeTimer = window.setTimeout(async () => {
+			const currentWidth = window.innerWidth;
+			
+			// Only proceed if dimensions actually changed
+			if (currentWidth === this._lastWindowWidth) {
+				return;
+			}
+			
+			this._lastWindowWidth = currentWidth;
+		
 			if (this.isLiquidGlassSupported && this.isInstallAvailable && !this.isDialogHidden) {
 				this.isInstallAvailable = false;
 				this.requestUpdate();
@@ -208,6 +219,7 @@ export class PWAInstallElement extends LitElement {
 				useCORS: true,
 			});
 			this._pageReflection = await createImageBitmap(capturedCanvas);
+			this._lastWindowWidth = window.innerWidth;
 			window.addEventListener('resize', this._handleResize, { passive: true });
 		}
 		this.isInstallAvailable = true;

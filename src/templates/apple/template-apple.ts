@@ -91,7 +91,7 @@ const template = (name: string, description: string, installDescription: string,
     if (installAvailable && pageReflection) {
         initializeLiquidGlass();
     }
-    const installDialogClassesApple = () => { return {available: installAvailable && (liquidGlassInitialized || !pageReflection), aqua: liquidGlassInitialized, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
+    const installDialogClassesApple = () => { return {available: installAvailable && (liquidGlassInitialized || !pageReflection), aqua: liquidGlassInitialized, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">

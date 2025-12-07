@@ -174,12 +174,26 @@
 				case 'liquid-glass-desktop':
 					pwaInstall.isLiquidGlassSupported = true;
 					pwaInstall.isAppleDesktopPlatform = true;
-					pwaInstall._triggerAppleDialog();
+					pwaInstall.hideDialog();
+					setTimeout(() => {
+						pwaInstall._triggerAppleDialog();
+						setTimeout(() => {
+							pwaInstall.showDialog();
+						}, 500);
+					}, 1000);
+					return;
 					break;
 				case 'liquid-glass-mobile':
 					pwaInstall.isLiquidGlassSupported = true;
 					pwaInstall.isAppleMobilePlatform = true;
-					pwaInstall._triggerAppleDialog();
+					pwaInstall.hideDialog();
+					setTimeout(() => {
+						pwaInstall._triggerAppleDialog();
+						setTimeout(() => {
+							pwaInstall.showDialog();
+						}, 500);
+					}, 1000);
+					return;
 					break;
 			}
 			pwaInstall.hideDialog();
