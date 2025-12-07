@@ -1,6 +1,6 @@
 {
   "name": "@khmyznikov/pwa-install",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "description": "PWA install dialog provide more convenience user experience and fix lack of native dialogs in some browsers.",
   "repository": {
     "type": "git",
@@ -85,7 +85,8 @@
     "@lit/react": "^1.0.7",
     "@types/dom-chromium-installation-events": "^101.0.4",
     "@types/web-app-manifest": "^1.0.9",
-    "lit": "^3.3.0"
+    "lit": "^3.3.0",
+    "html2canvas": "^1.4.1"
   },
   "bugs": {
     "url": "https://github.com/khmyznikov/pwa-install/issues"
@@ -96,7 +97,5 @@
     "lit-element",
     "lit"
   ],
-  "dependencies": {
-    "html2canvas": "^1.4.1"
-  }
+  "customElements": "custom-elements.json"
 }

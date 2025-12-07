@@ -1,5 +1,6 @@
 export default {
 	lit: 'lit',
+	html2canvas: 'html2canvas',
 	'lit/decorators.js': 'lit/decorators.js',
 	'lit/directives/class-map.js': 'lit/directives/class-map.js',
 	'@khmyznikov/pwa-install': '@khmyznikov/pwa-install',
