@@ -457,12 +457,13 @@
 
 
         &.aqua{
-            --border-bottom-color: rgb(144 144 144 / 50%);
+            --border-bottom-color: rgb(95 95 95 / 50%);
             --divider-buttons-color: #d9d9db;
             --background-color-button: #ebebeb;
             --text-color-normal: #000;
-            --text-color-description: rgba(75, 75, 75, 0.897);
+            --text-color-description: rgba(75, 75, 75, 0.9);
             --base-color: 255 255 255;
+            --tint-color: #424ef4;
 
             border: 1px solid rgb(var(--base-color) / 50%);
 
@@ -627,10 +628,10 @@
                 z-index: -1;
                 pointer-events: none;
                 // background: rgb(var(--base-color) / 60%);
-                background: color-mix(in srgb, #82307b 40%, rgb(var(--base-color) / 50%) 60%);
-                box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, #82307b 30%, rgb(var(--base-color) / 25%) 70%), 
-                            inset 0px 0px 1px 1px color-mix(in srgb, #82307b 30%, rgb(var(--base-color) / 50%) 70%);
-                backdrop-filter: blur(3px);
+                background: color-mix(in srgb, var(--tint-color) 40%, rgb(var(--base-color) / 50%) 60%);
+                box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 25%) 70%), 
+                            inset 0px 0px 1px 1px color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 50%) 70%);
+                backdrop-filter: blur(2px);
             }
         }
         &.desktop{
@@ -828,6 +829,7 @@
             // }
 
             &.aqua{
+                --border-bottom-color: rgb(95 95 95 / 50%);
                 padding: 16px;
 
                 .icon {
@@ -858,6 +860,9 @@
                     margin-top: 0px;
                     background: unset;
                     background-color: rgb(var(--base-color) / 80%);
+                }
+                .how-to-body .how-to-description .description-step .svg-wrap{
+                    color: unset;
                 }
             }
         }
@@ -987,6 +992,10 @@ $phone-small-landscape: 667px;
                 --background-color-button-active: linear-gradient(0deg, rgba(59,108,200,1) 0%, rgba(66,123,250,1) 100%);
                 outline: 1px solid #1c1c1c;
                 color-scheme: dark;
+                &.aqua {
+                    outline: none;
+                    --border-bottom-color: rgb(142 142 142 / 65%);
+                }
             }
 
             &.aqua {

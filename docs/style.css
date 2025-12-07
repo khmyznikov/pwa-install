@@ -1,14 +1,14 @@
 html{
-    background-color: #82307b;
-    /* background-image: url("/screenshots/image.png"); */
+    background-color: #424ef4;
+    /* background-image: url("/screenshots/background.jpg"); */
     background-attachment:fixed;
     width: 100%;
     height: 100%;
     height: calc(100vh + env(safe-area-inset-bottom));
 }
 body{
-    /* background: linear-gradient(90deg, rgba(144,92,180,1) 0%, rgba(255,90,152,1) 50%, rgba(255,201,124,1) 100%); */
-    background-image: url("/screenshots/image.png");
+    background: linear-gradient(90deg, #424ef4 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 50%), url("/screenshots/background.webp") repeat-x;
+    background-size: cover;
     height: 100%;
     margin: 0;
 }
@@ -29,7 +29,7 @@ body{
     
 }
 .control-panel header img{
-    opacity: 0.5;
+    opacity: 0.7;
 }
 .control-panel header img:hover{
     opacity: 1;
@@ -47,7 +47,7 @@ body{
     padding: 5px;
 }
 .control-panel > fieldset{
-    opacity: .5;
+    opacity: .7;
     margin: 15px;
 }
 .control-panel fieldset:hover{ 
