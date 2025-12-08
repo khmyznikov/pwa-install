@@ -24,7 +24,7 @@ export declare class PWAInstallElement extends LitElement {
     isInstallAvailable: boolean;
     isAppleMobilePlatform: boolean;
     isAppleDesktopPlatform: boolean;
-    isLiquidGlassSupported: boolean;
+    isIOS26Plus: boolean;
     isAndroidFallback: boolean;
     isAndroid: boolean;
     isUnderStandaloneMode: boolean;
@@ -43,7 +43,6 @@ export declare class PWAInstallElement extends LitElement {
     hideDialog: () => void;
     showDialog: (forced?: boolean) => void;
     getInstalledRelatedApps: () => Promise<IRelatedApp[]>;
-    private _handleResize;
     private _toggleHowTo;
     private _toggleGallery;
     private _checkPlatform;
@@ -52,7 +51,6 @@ export declare class PWAInstallElement extends LitElement {
     private _init;
     private _requestUpdate;
     connectedCallback(): Promise<void>;
-    disconnectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
     render(): import("lit").TemplateResult<1>;
 }

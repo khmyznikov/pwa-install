@@ -85,8 +85,7 @@
     "@lit/react": "^1.0.7",
     "@types/dom-chromium-installation-events": "^101.0.4",
     "@types/web-app-manifest": "^1.0.9",
-    "lit": "^3.3.0",
-    "html2canvas": "^1.4.1"
+    "lit": "^3.3.0"
   },
   "bugs": {
     "url": "https://github.com/khmyznikov/pwa-install/issues"

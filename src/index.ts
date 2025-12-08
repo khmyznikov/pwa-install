@@ -59,7 +59,7 @@ export class PWAInstallElement extends LitElement {
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
-	public isLiquidGlassSupported = false;
+	public isIOS26Plus = false;
 	public isAndroidFallback = false;
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
@@ -138,41 +138,6 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	/** @internal */
-	private _handleResize = () => {
-		if (this._resizeTimer) window.clearTimeout(this._resizeTimer);
-		this._resizeTimer = window.setTimeout(async () => {
-			const currentWidth = window.innerWidth;
-			
-			// Only proceed if dimensions actually changed
-			if (currentWidth === this._lastWindowWidth) {
-				return;
-			}
-			
-			this._lastWindowWidth = currentWidth;
-		
-			if (this.isLiquidGlassSupported && this.isInstallAvailable && !this.isDialogHidden) {
-				this.isInstallAvailable = false;
-				this.requestUpdate();
-				await this.updateComplete;
-				
-				// wait untill animations are finished
-				await new Promise(resolve => setTimeout(resolve, 1000));
-
-				let capturedCanvas = await html2canvas(document.body, {
-					scale: 1,
-					backgroundColor: Utils.getPageBackgroundColor(),
-					logging: false,
-					useCORS: true,
-				});
-				this._pageReflection = await createImageBitmap(capturedCanvas);
-
-				this.isInstallAvailable = true;
-				this.requestUpdate();
-			}
-		}, 500);
-	}
-
-	/** @internal */
 	private _toggleHowTo = {
         handleEvent: () => {
 			this._howToRequested = !this._howToRequested;
@@ -205,26 +170,17 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
-		this.isLiquidGlassSupported = Utils.isLiquidGlassSupported();
+		this.isIOS26Plus = Utils.isIOS26Plus();
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
 	}
 	/** @internal */
-	private async _triggerAppleDialog(){
-		if (this.isLiquidGlassSupported) {
-			let capturedCanvas = await html2canvas(document.body, {
-				scale: 1,
-				backgroundColor: Utils.getPageBackgroundColor(),
-				logging: false,
-				useCORS: true,
-			});
-			this._pageReflection = await createImageBitmap(capturedCanvas);
-			this._lastWindowWidth = window.innerWidth;
-			window.addEventListener('resize', this._handleResize, { passive: true });
-		}
-		this.isInstallAvailable = true;
-		this.requestUpdate()
-		Utils.eventInstallAvailable(this);
+	private async _triggerAppleDialog() {
+		setTimeout(() => {
+			this.isInstallAvailable = true;
+			this.requestUpdate();
+			Utils.eventInstallAvailable(this);
+		}, 500);
 	}
 	/** @internal */
 	private async _checkInstallAvailable() {
@@ -338,11 +294,7 @@ export class PWAInstallElement extends LitElement {
 		PWABottomSheetElement.finalized;
 		super.connectedCallback();
 	}
-	disconnectedCallback() {
-		window.removeEventListener('resize', this._handleResize);
-		if (this._resizeTimer) window.clearTimeout(this._resizeTimer);
-		super.disconnectedCallback();
-	}
+
 	willUpdate(changedProperties: PropertyValues<this>) {
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
 		  this._init();
@@ -371,9 +323,8 @@ export class PWAInstallElement extends LitElement {
 				this._howToRequested,
 				this._toggleGallery,
 				this._galleryRequested,
-				this._pageReflection,
 				this._isRTL,
-				this._requestUpdate
+				this.isIOS26Plus
 			)}`;
 		else
 			return html`${template(

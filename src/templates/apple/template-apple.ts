@@ -2,103 +2,15 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
-import { LiquidGlassDialog } from './liquid-glass-logic';
 
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, pageReflection: ImageBitmap | null, isRTL: boolean = false, requestUpdate: () => void = () => {}) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false, isIOS26Plus: boolean = false) => {
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-
-    // Attempt to find canvas to check status synchronously
-    const pwaInstallElem = document.querySelector("#pwa-install");
-    const canvas = pwaInstallElem && pwaInstallElem.shadowRoot
-        ? pwaInstallElem.shadowRoot.querySelector("#glass") as HTMLCanvasElement
-        : null;
-    
-    const initStatus = canvas ? canvas.dataset.liquidGlassInit : null;
-    // If initializing or true, we consider it "initialized" for the purpose of showing the dialog (available class)
-    // Use let so we can update it if we start initialization in this cycle
-    let liquidGlassInitialized = initStatus === 'true' || initStatus === 'initializing';
-
-    // Initialize liquid glass effect only if installAvailable
-    const initializeLiquidGlass = async () => {
-        if (!installAvailable || !pageReflection) return;
-
-        const pwaInstallElem = document.querySelector("#pwa-install");
-        const dialog = pwaInstallElem && pwaInstallElem.shadowRoot
-            ? pwaInstallElem.shadowRoot.querySelector("#pwa-install-element > article") as HTMLElement
-            : null;
-        const canvas = pwaInstallElem && pwaInstallElem.shadowRoot
-            ? pwaInstallElem.shadowRoot.querySelector("#glass") as HTMLCanvasElement
-            : null;
-        
-        if (!canvas || !dialog) {
-            // DOM not ready, schedule update to retry
-            setTimeout(requestUpdate, 50);
-            return;
-        }
-
-        // If already initialized or currently initializing, skip
-        if (canvas.dataset.liquidGlassInit === 'true' || canvas.dataset.liquidGlassInit === 'initializing') {
-            // If it was 'true' but we are here, maybe we need to update reflection
-            if (canvas.dataset.liquidGlassInit === 'true') {
-                 const instance = (canvas as any).liquidGlassInstance as LiquidGlassDialog;
-                 if (instance && pageReflection && instance.pageReflection !== pageReflection) {
-                     instance.pageReflection = pageReflection;
-                     instance.captureBackground(pageReflection);
-                 }
-            }
-            return;
-        }
-
-        // Start initialization process
-        // Update local variable to ensure dialog is shown in THIS render
-        liquidGlassInitialized = true;
-        canvas.dataset.liquidGlassInit = 'initializing';
-        
-        // Force update to ensure 'available' class is applied
-        requestUpdate();
-        
-        // Wait for layout to occur so canvas has dimensions
-        await new Promise(resolve => setTimeout(resolve, 50));
-
-        const liquidGlass = new LiquidGlassDialog(canvas, dialog, pageReflection!);
-        (canvas as any).liquidGlassInstance = liquidGlass;
-        const success = await liquidGlass.init();
-
-        if (success) {
-            canvas.dataset.liquidGlassInit = 'true';
-        } else {
-            console.warn('Liquid glass init failed');
-            // Keep dialog visible even if effect failed
-            canvas.dataset.liquidGlassInit = 'true'; 
-        }
-        
-        // Cleanup on dialog close
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.attributeName === 'style' || mutation.attributeName === 'class') {
-                    const isHidden = dialog.style.display === 'none' || !dialog.classList.contains('available');
-                    if (isHidden) {
-                        liquidGlass.cleanup();
-                        observer.disconnect();
-                        canvas.dataset.liquidGlassInit = 'false';
-                    }
-                }
-            });
-        });
-        observer.observe(dialog, { attributes: true });
-    };
-    if (installAvailable && pageReflection) {
-        initializeLiquidGlass();
-    }
-    const installDialogClassesApple = () => { return {available: installAvailable && (liquidGlassInitialized || !pageReflection), aqua: liquidGlassInitialized, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
+    const installDialogClassesApple = () => { return {available: installAvailable, aqua: isIOS26Plus, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
-                ${pageReflection? html`
-                    <canvas id="glass"></canvas>
-                    <div id="tint"></div>`: ''}
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>
@@ -116,7 +28,6 @@ const template = (name: string, description: string, installDescription: string,
                 : '' }
                 <div class="how-to-body">
                     <div class="how-to-description">
-
                         ${!isDesktop? html`
                         <div class="description-step">
                             <div class="svg-wrap">

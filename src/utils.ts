@@ -23,16 +23,8 @@ export default class Utils {
 		return false;
     }
 
-    static isLiquidGlassSupported(): boolean {
-        if (!('gpu' in navigator)){
-            return false;
-        }
-        // detect iOS 26+
+    static isIOS26Plus(): boolean {
         if (!CSS.supports('text-wrap', 'pretty')){
-            return false;
-        }
-        // @ts-ignore
-        if (typeof html2canvas === 'undefined'){
             return false;
         }
         return true;

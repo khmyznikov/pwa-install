@@ -66,10 +66,10 @@
 			<legend>
 				Style Override
 			</legend>
-			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
-			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button><br>
-			<button onclick="forceStyle('liquid-glass-desktop')">Liquid Desktop</button>
-			<button onclick="forceStyle('liquid-glass-mobile')">Liquid Mobile</button><br>
+			<button onclick="forceStyle('apple-desktop')">MacOS</button>
+			<button onclick="forceStyle('apple-mobile')">iOS/iPadOS</button><br>
+			<button onclick="forceStyle('liquid-glass-desktop')">MacOS 26+</button>
+			<button onclick="forceStyle('liquid-glass-mobile')">iOS/iPadOS 26+</button><br>
 			<button onclick="forceStyle('chrome')">Chromium</button>
 			<button onclick="forceStyle('fallback')">Android Fallback</button><br>
 			<i>*end style depends on browser and OS</i>
@@ -159,6 +159,7 @@
 			pwaInstall.isAndroidFallback = false;
 			pwaInstall.isLiquidGlassSupported = false;
 			pwaInstall._pageReflection = false;
+			pwaInstall.isIOS26Plus = false;
 			switch (style) {
 				case 'apple-mobile':
 					pwaInstall.isAppleMobilePlatform = true;
@@ -172,28 +173,12 @@
 					pwaInstall.isAndroidFallback = true;
 					break;
 				case 'liquid-glass-desktop':
-					pwaInstall.isLiquidGlassSupported = true;
+					pwaInstall.isIOS26Plus = true;
 					pwaInstall.isAppleDesktopPlatform = true;
-					pwaInstall.hideDialog();
-					setTimeout(() => {
-						pwaInstall._triggerAppleDialog();
-						setTimeout(() => {
-							pwaInstall.showDialog();
-						}, 500);
-					}, 1000);
-					return;
 					break;
 				case 'liquid-glass-mobile':
-					pwaInstall.isLiquidGlassSupported = true;
+					pwaInstall.isIOS26Plus = true;
 					pwaInstall.isAppleMobilePlatform = true;
-					pwaInstall.hideDialog();
-					setTimeout(() => {
-						pwaInstall._triggerAppleDialog();
-						setTimeout(() => {
-							pwaInstall.showDialog();
-						}, 500);
-					}, 1000);
-					return;
 					break;
 			}
 			pwaInstall.hideDialog();

@@ -2,7 +2,7 @@ import { WebAppManifest } from 'web-app-manifest';
 import { IRelatedApp } from './types/types';
 export default class Utils {
     static isAppleMobile(): boolean;
-    static isLiquidGlassSupported(): boolean;
+    static isIOS26Plus(): boolean;
     static getPageBackgroundColor(): string | null;
     static isAppleDesktop(): boolean;
     static isAndroid(): boolean;

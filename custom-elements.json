@@ -209,7 +209,7 @@
             },
             {
               "kind": "field",
-              "name": "isLiquidGlassSupported",
+              "name": "isIOS26Plus",
               "type": {
                 "text": "boolean"
               },
