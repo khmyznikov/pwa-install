@@ -7,7 +7,7 @@ html{
     height: calc(100vh + env(safe-area-inset-bottom));
 }
 body{
-    background: linear-gradient(90deg, #424ef4 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 50%), url("/screenshots/background.webp") repeat-x;
+    background: linear-gradient(90deg, #424ef4 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 50%), url("screenshots/background.webp") repeat-x;
     background-size: cover;
     height: 100%;
     margin: 0;
