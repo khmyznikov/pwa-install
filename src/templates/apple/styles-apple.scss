@@ -2,7 +2,7 @@
     .install-dialog.apple{
         --text-color-normal: #333;
         --text-color-description: #333;
-        --background-color: rgba(255, 255, 255, 0.8);
+        --background-color: rgba(255, 255, 255, 0.5);
         --text-color-button:#fff;
         --background-color-button:#fff;
         --background-color-button-active: #DBDAE0;
@@ -471,7 +471,7 @@
             border-radius: 30px;
             grid-template-columns: 100px 1fr;
 
-            backdrop-filter: blur(50px);
+            // backdrop-filter: blur(50px);
 
             .about{
                 margin-right: 26px;
@@ -618,9 +618,11 @@
                 z-index: -1;
                 pointer-events: none;
                 border-radius: inherit;
+                display: none;
             }
             #tint {
                 position: absolute;
+                display: none;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -638,7 +640,7 @@
             --text-color-normal: rgba(0, 0, 0, 0.85);
             --text-color-description: rgba(0, 0, 0, 0.85);
             --icon-how-to-color: rgba(0, 0, 0, 0.50);
-            --background-color: rgb(246 246 246 / 85%);
+            --background-color: rgb(246 246 246 / 50%);
             --background-color-button: #c6c1c6;
             --background-color-button-active: linear-gradient(0deg, rgba(64,121,250,1) 0%, rgba(84,144,251,1) 100%);
             // --background-color-button-active: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.00) 100%), #007AFF;
@@ -969,7 +971,7 @@ $phone-small-landscape: 667px;
         .install-dialog.apple.dialog-body {
             --text-color-normal: #fff;
             --text-color-description: #9E9AA1;
-            --background-color: rgb(25 25 25 / 90%);
+            --background-color: rgb(25 25 25 / 50%);
             --background-color-button:#353535;
             --background-color-button-active: #454545;
             --border-bottom-color: #353535;
@@ -986,7 +988,7 @@ $phone-small-landscape: 667px;
             &.desktop{
                 --text-color-description: var(--text-color-normal);
                 --icon-how-to-color: #bcb8b6; 
-                --background-color: rgb(45 45 45 / 90%);
+                --background-color: rgb(45 45 45 / 50%);
                 --border-bottom-color: #5b5b5b;
                 --background-color-button:#6d6765;
                 --background-color-button-active: linear-gradient(0deg, rgba(59,108,200,1) 0%, rgba(66,123,250,1) 100%);
