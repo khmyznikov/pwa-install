@@ -30,9 +30,9 @@
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
         <target>將其加入主屏幕，以獲得更豐富的體驗和便捷訪問。</target>
       </trans-unit>
-      <trans-unit id="sa7551383d1897fcc">
-        <source>2) Press Add to Dock</source>
-        <target>2) 點選添加到Dock欄</target>
+      <trans-unit id="s8114bd55cae5a22b">
+        <source>Press Add to Dock</source>
+        <target>點選添加到Dock欄</target>
       </trans-unit>
       <trans-unit id="s922329d6f6213590">
         <source>Add to Dock</source>
@@ -42,17 +42,17 @@
         <source>Install it on your device for extensive experience and easy access.</source>
         <target>在您的裝置上安裝它，以獲得更豐富的體驗和便捷訪問。</target>
       </trans-unit>
-      <trans-unit id="s1488e73779d7682f">
-        <source>1) Open your browser menu</source>
-        <target>1) 打開您的瀏覽器菜單</target>
+      <trans-unit id="s633502f7cff4f847">
+        <source>Open your browser menu</source>
+        <target>打開您的瀏覽器菜單</target>
       </trans-unit>
-      <trans-unit id="s4593f304dac8848c">
-        <source>2) Tap "Add to Home screen"</source>
-        <target>2) 點擊「添加到主屏幕」</target>
+      <trans-unit id="s4e1e10a6ca408245">
+        <source>Tap "Add to Home screen"</source>
+        <target>點擊「添加到主屏幕」</target>
       </trans-unit>
-      <trans-unit id="s9d0493c79a1c5f47">
-        <source>?) Press More if no Share icon</source>
-        <target>?) 如果沒有分享圖標，請點擊更多</target>
+      <trans-unit id="s386eca8362ff6155">
+        <source>Press More if no Share icon</source>
+        <target>如果沒有分享圖標，請點擊更多</target>
       </trans-unit>
       <trans-unit id="sc16e00a7a8b2fde2">
         <source>Back</source>
@@ -62,17 +62,17 @@
         <source>Show Gallery</source>
         <target>顯示圖庫</target>
       </trans-unit>
-      <trans-unit id="sdb168a692f9130e1">
-        <source>0) Open in your main browser</source>
-        <target>0) 在您的主要瀏覽器中打開</target>
+      <trans-unit id="se0e473adfda8066c">
+        <source>Open in your main browser</source>
+        <target>在您的主要瀏覽器中打開</target>
       </trans-unit>
-      <trans-unit id="s9c30494cee3b81dd">
-        <source>1) Press Share in Navigation bar</source>
-        <target>1) 點擊列表上的分享按鈕</target>
+      <trans-unit id="s224cbcec014ef6b5">
+        <source>Press Share in Navigation bar</source>
+        <target>點擊列表上的分享按鈕</target>
       </trans-unit>
-      <trans-unit id="s3e31cb694b5e4f47">
-        <source>2) Scroll down to "Add to Home Screen"</source>
-        <target>2) 向下滾動到「添加到主屏幕」</target>
+      <trans-unit id="s9af56bf005b49c74">
+        <source>Scroll down to "Add to Home Screen"</source>
+        <target>向下滾動到「添加到主屏幕」</target>
       </trans-unit>
     </body>
   </file>

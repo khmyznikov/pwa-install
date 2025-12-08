@@ -29,8 +29,8 @@
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
         <target>Додајте га на Home Screen за широке могућности и лак приступ.</target>
       </trans-unit>
-      <trans-unit id="sa7551383d1897fcc">
-        <source>2) Press Add to Dock</source>
+      <trans-unit id="s8114bd55cae5a22b">
+        <source>Press Add to Dock</source>
         <target>3) Притисните Add to Dock</target>
       </trans-unit>
       <trans-unit id="s922329d6f6213590">
@@ -40,17 +40,17 @@
         <source>Install it on your device for extensive experience and easy access.</source>
         <target>Инсталирајте га на вашем уређају за широке могућности и лак приступ.</target>
       </trans-unit>
-<trans-unit id="s1488e73779d7682f">
-  <source>1) Open your browser menu</source>
-  <target>1) Отворите мени вашег прегледача</target>
+<trans-unit id="s633502f7cff4f847">
+  <source>Open your browser menu</source>
+  <target>Отворите мени вашег прегледача</target>
 </trans-unit>
-<trans-unit id="s4593f304dac8848c">
-  <source>2) Tap "Add to Home screen"</source>
-    <target>2) Додирните "Add to Home Screen"</target>
+<trans-unit id="s4e1e10a6ca408245">
+  <source>Tap "Add to Home screen"</source>
+    <target>Додирните "Add to Home Screen"</target>
 </trans-unit>
-<trans-unit id="s9d0493c79a1c5f47">
-  <source>?) Press More if no Share icon</source>
-  <target>?) Притисните Више ако нема иконе за дељење</target>
+<trans-unit id="s386eca8362ff6155">
+  <source>Press More if no Share icon</source>
+  <target>Притисните Више ако нема иконе за дељење</target>
 </trans-unit>
 <trans-unit id="sc16e00a7a8b2fde2">
   <source>Back</source>
@@ -60,17 +60,17 @@
   <source>Show Gallery</source>
   <target>Прикажи галерију</target>
 </trans-unit>
-<trans-unit id="sdb168a692f9130e1">
-  <source>0) Open in your main browser</source>
-  <target>0) Отворите у вашем главном прегледачу</target>
+<trans-unit id="se0e473adfda8066c">
+  <source>Open in your main browser</source>
+  <target>Отворите у вашем главном прегледачу</target>
 </trans-unit>
-<trans-unit id="s9c30494cee3b81dd">
-  <source>1) Press Share in Navigation bar</source>
-  <target>1) Притисните Share у навигационој траци</target>
+<trans-unit id="s224cbcec014ef6b5">
+  <source>Press Share in Navigation bar</source>
+  <target>Притисните Share у навигационој траци</target>
 </trans-unit>
-<trans-unit id="s3e31cb694b5e4f47">
-  <source>2) Scroll down to "Add to Home Screen"</source>
-  <target>2) Померите се надоле до "Add to Home Screen"</target>
+<trans-unit id="s9af56bf005b49c74">
+  <source>Scroll down to "Add to Home Screen"</source>
+  <target>Померите се надоле до "Add to Home Screen"</target>
 </trans-unit>
     </body>
   </file>
