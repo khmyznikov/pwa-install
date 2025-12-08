@@ -2,26 +2,115 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
+import { LiquidGlassDialog } from './liquid-glass-logic';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false) => {
-    const installDialogClassesApple = () => { return {available: installAvailable, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop}};
+
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, pageReflection: ImageBitmap | null, isRTL: boolean = false, requestUpdate: () => void = () => {}) => {
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
+
+    // Attempt to find canvas to check status synchronously
+    const pwaInstallElem = document.querySelector("#pwa-install");
+    const canvas = pwaInstallElem && pwaInstallElem.shadowRoot
+        ? pwaInstallElem.shadowRoot.querySelector("#glass") as HTMLCanvasElement
+        : null;
+    
+    const initStatus = canvas ? canvas.dataset.liquidGlassInit : null;
+    // If initializing or true, we consider it "initialized" for the purpose of showing the dialog (available class)
+    // Use let so we can update it if we start initialization in this cycle
+    let liquidGlassInitialized = initStatus === 'true' || initStatus === 'initializing';
+
+    // Initialize liquid glass effect only if installAvailable
+    const initializeLiquidGlass = async () => {
+        if (!installAvailable || !pageReflection) return;
+
+        const pwaInstallElem = document.querySelector("#pwa-install");
+        const dialog = pwaInstallElem && pwaInstallElem.shadowRoot
+            ? pwaInstallElem.shadowRoot.querySelector("#pwa-install-element > article") as HTMLElement
+            : null;
+        const canvas = pwaInstallElem && pwaInstallElem.shadowRoot
+            ? pwaInstallElem.shadowRoot.querySelector("#glass") as HTMLCanvasElement
+            : null;
+        
+        if (!canvas || !dialog) {
+            // DOM not ready, schedule update to retry
+            setTimeout(requestUpdate, 50);
+            return;
+        }
+
+        // If already initialized or currently initializing, skip
+        if (canvas.dataset.liquidGlassInit === 'true' || canvas.dataset.liquidGlassInit === 'initializing') {
+            // If it was 'true' but we are here, maybe we need to update reflection
+            if (canvas.dataset.liquidGlassInit === 'true') {
+                 const instance = (canvas as any).liquidGlassInstance as LiquidGlassDialog;
+                 if (instance && pageReflection && instance.pageReflection !== pageReflection) {
+                     instance.pageReflection = pageReflection;
+                     instance.captureBackground(pageReflection);
+                 }
+            }
+            return;
+        }
+
+        // Start initialization process
+        // Update local variable to ensure dialog is shown in THIS render
+        liquidGlassInitialized = true;
+        canvas.dataset.liquidGlassInit = 'initializing';
+        
+        // Force update to ensure 'available' class is applied
+        requestUpdate();
+        
+        // Wait for layout to occur so canvas has dimensions
+        await new Promise(resolve => setTimeout(resolve, 50));
+
+        const liquidGlass = new LiquidGlassDialog(canvas, dialog, pageReflection!);
+        (canvas as any).liquidGlassInstance = liquidGlass;
+        const success = await liquidGlass.init();
+
+        if (success) {
+            canvas.dataset.liquidGlassInit = 'true';
+        } else {
+            console.warn('Liquid glass init failed');
+            // Keep dialog visible even if effect failed
+            canvas.dataset.liquidGlassInit = 'true'; 
+        }
+        
+        // Cleanup on dialog close
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'style' || mutation.attributeName === 'class') {
+                    const isHidden = dialog.style.display === 'none' || !dialog.classList.contains('available');
+                    if (isHidden) {
+                        liquidGlass.cleanup();
+                        observer.disconnect();
+                        canvas.dataset.liquidGlassInit = 'false';
+                    }
+                }
+            });
+        });
+        observer.observe(dialog, { attributes: true });
+    };
+    if (installAvailable && pageReflection) {
+        initializeLiquidGlass();
+    }
+    const installDialogClassesApple = () => { return {available: installAvailable && (liquidGlassInitialized || !pageReflection), aqua: liquidGlassInitialized, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
             <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
+                ${pageReflection? html`
+                    <canvas id="glass"></canvas>
+                    <div id="tint"></div>`: ''}
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>
-                ${!disableClose? html`<button type="button" title="close" class="close" @click='${hideDialog}'>
-                    <svg viewBox="0 0 24 24"><path d="M5.3 18.7c.2.2.4.3.7.3s.5-.1.7-.3l5.3-5.3 5.3 5.3a1.08 1.08 0 0 0 .7.3 1.08 1.08 0 0 0 .7-.3c.4-.4.4-1 0-1.4L13.4 12l5.3-5.3c.4-.4.4-1 0-1.4s-1-.4-1.4 0L12 10.6 6.7 5.3c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l5.3 5.3-5.3 5.3c-.4.4-.4 1 0 1.4z"/></svg>
-                </button>` : ''}
                 <div class="about">
                     <div class="name">
                         ${name}
                     </div>
                     <div class="description">${description || location.hostname}</div>
                 </div>
+                ${!disableClose? html`<button type="button" title="close" class="close" @click='${hideDialog}'>
+                    <svg viewBox="0 0 24 24"><path d="M5.3 18.7c.2.2.4.3.7.3s.5-.1.7-.3l5.3-5.3 5.3 5.3a1.08 1.08 0 0 0 .7.3 1.08 1.08 0 0 0 .7-.3c.4-.4.4-1 0-1.4L13.4 12l5.3-5.3c.4-.4.4-1 0-1.4s-1-.4-1.4 0L12 10.6 6.7 5.3c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l5.3 5.3-5.3 5.3c-.4.4-.4 1 0 1.4z"/></svg>
+                </button>` : ''}
                 ${!disableDescription? html`<div class="welcome-to-install">
                     ${installDescription? installDescription: `${msg('This site has app functionality.')} ${isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.')}`}</div>` 
                 : '' }
@@ -35,7 +124,18 @@ const template = (name: string, description: string, installDescription: string,
                                     <g fill="currentColor"><path d="M9.96 19.922c5.45 0 9.962-4.522 9.962-9.961C19.922 4.51 15.4 0 9.952 0 4.511 0 0 4.512 0 9.96c0 5.44 4.521 9.962 9.96 9.962Zm0-1.66A8.26 8.26 0 0 1 1.67 9.96c0-4.61 3.672-8.3 8.281-8.3 4.61 0 8.31 3.69 8.31 8.3 0 4.61-3.69 8.3-8.3 8.3Z"/><path d="m5.87 14.883 5.605-2.735a1.47 1.47 0 0 0 .683-.673l2.725-5.596c.312-.664-.166-1.182-.85-.84L8.447 7.764c-.302.136-.508.341-.674.673L5.03 14.043c-.312.645.196 1.152.84.84Zm4.09-3.72A1.19 1.19 0 0 1 8.77 9.97c0-.664.527-1.201 1.19-1.201a1.2 1.2 0 0 1 1.202 1.2c0 .655-.537 1.192-1.201 1.192Z"/></g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('1) Open in your main browser')}</div>
+                            <div class="step-text">${msg('0) Open in your main browser')}</div>
+                        </div>`: ''}
+                        ${!isDesktop? html`
+                        <div class="description-step">
+                            <div class="svg-wrap">
+                                <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
+                                    <circle cx="2" cy="12" r="2" fill="currentColor"/>
+                                    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                                    <circle cx="22" cy="12" r="2" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="step-text">${msg('?) Press More if no Share icon')}</div>
                         </div>`: ''}
                         <div class="description-step">
                             <div class="svg-wrap">
@@ -43,7 +143,7 @@ const template = (name: string, description: string, installDescription: string,
                                     <g fill="currentColor"><path d="M17.334 10.762v9.746c0 2.012-1.025 3.027-3.066 3.027H3.066C1.026 23.535 0 22.52 0 20.508v-9.746C0 8.75 1.025 7.734 3.066 7.734h2.94v1.573h-2.92c-.977 0-1.514.527-1.514 1.543v9.57c0 1.015.537 1.543 1.514 1.543h11.152c.967 0 1.524-.527 1.524-1.543v-9.57c0-1.016-.557-1.543-1.524-1.543h-2.91V7.734h2.94c2.04 0 3.066 1.016 3.066 3.028Z"/><path d="M8.662 15.889c.42 0 .781-.352.781-.762V5.097l-.058-1.464.654.693 1.484 1.582a.698.698 0 0 0 .528.235c.4 0 .713-.293.713-.694 0-.205-.088-.361-.235-.508l-3.3-3.183c-.196-.196-.362-.264-.567-.264-.195 0-.361.069-.566.264L4.795 4.94a.681.681 0 0 0-.225.508c0 .4.293.694.703.694.186 0 .4-.079.538-.235l1.474-1.582.664-.693-.058 1.465v10.029c0 .41.351.762.771.762Z"/></g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('2) Press Share in Navigation bar').replace(isDesktop? '2)': '0)', '1)')}</div>
+                            <div class="step-text">${msg('1) Press Share in Navigation bar').replace(isDesktop? '2)': '0)', '1)')}</div>
                         </div>
                         <div class="description-step">
                             <div class="svg-wrap">
@@ -56,22 +156,29 @@ const template = (name: string, description: string, installDescription: string,
                                     </svg>`
                                 }
                             </div>
-                            <div class="step-text">${isDesktop? msg('2) Press Add to Dock'): msg('3) Scroll down to "Add to Home Screen"')}</div>
+                            <div class="step-text">${isDesktop? msg('2) Press Add to Dock'): msg('2) Scroll down to "Add to Home Screen"')}</div>
                         </div>
                     </div>
                 </div>
                 ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}" .rtl="${isRTL}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery}>
-                        ${isDesktop? 
-                            html`<svg id="pwa-gallery" viewBox="0 0 10 6"><path d="m1.102 2.21 3.169 3.24c.22.222.462.333.729.333a.94.94 0 0 0 .378-.083 1.19 1.19 0 0 0 .347-.25L8.89 2.21a.8.8 0 0 0 .246-.593.838.838 0 0 0-.118-.44.884.884 0 0 0-.312-.311.84.84 0 0 0-1.063.167L4.854 3.92h.299L2.359 1.033a.868.868 0 0 0-.642-.286.822.822 0 0 0-.43.119.935.935 0 0 0-.312.312.863.863 0 0 0-.115.44c0 .116.02.223.057.32a.898.898 0 0 0 .185.272Z"/>
-                                </svg>`:
-                            html`<svg id="pwa-gallery" width="26" height="26" viewBox="0 0 23.538 18.022"><path d="M2.79 18.022h17.958c1.834 0 2.79-.969 2.79-2.778V2.791C23.538.969 22.582 0 20.748 0H2.791C.956 0 0 .956 0 2.79v12.454c0 1.835.956 2.778 2.79 2.778zM.879 2.83C.878 1.55 1.55.88 2.816.88h17.906c1.228 0 1.938.671 1.938 1.95v12.067L16.756 9.47c-.517-.414-.995-.685-1.615-.685-.607 0-1.085.22-1.576.672L8.927 13.59l-1.938-1.796c-.426-.387-.853-.607-1.382-.607-.504 0-.879.207-1.305.594L.878 14.986zm6.46 6.356a2.39 2.39 0 002.377-2.39c0-1.304-1.072-2.39-2.377-2.39a2.401 2.401 0 00-2.39 2.39 2.393 2.393 0 002.39 2.39z"/>
-                                </svg>`
-                        }
+                    <span class="button-text">
+                            ${galleryRequested? html`<span>${msg('Back')}</span>
+                    <svg id="icon-back" viewBox="0 0 10 6"><path d="m1.102 2.21 3.169 3.24c.22.222.462.333.729.333a.94.94 0 0 0 .378-.083 1.19 1.19 0 0 0 .347-.25L8.89 2.21a.8.8 0 0 0 .246-.593.838.838 0 0 0-.118-.44.884.884 0 0 0-.312-.311.84.84 0 0 0-1.063.167L4.854 3.92h.299L2.359 1.033a.868.868 0 0 0-.642-.286.822.822 0 0 0-.43.119.935.935 0 0 0-.312.312.863.863 0 0 0-.115.44c0 .116.02.223.057.32a.898.898 0 0 0 .185.272Z"/>`
+                    :
+                            html`
+                            <span>${msg('Show Gallery')}</span>
+                            <svg id="pwa-gallery" width="26" height="26" viewBox="0 0 23.538 18.022"><path d="M2.79 18.022h17.958c1.834 0 2.79-.969 2.79-2.778V2.791C23.538.969 22.582 0 20.748 0H2.791C.956 0 0 .956 0 2.79v12.454c0 1.835.956 2.778 2.79 2.778zM.879 2.83C.878 1.55 1.55.88 2.816.88h17.906c1.228 0 1.938.671 1.938 1.95v12.067L16.756 9.47c-.517-.414-.995-.685-1.615-.685-.607 0-1.085.22-1.576.672L8.927 13.59l-1.938-1.796c-.426-.387-.853-.607-1.382-.607-.504 0-.879.207-1.305.594L.878 14.986zm6.46 6.356a2.39 2.39 0 002.377-2.39c0-1.304-1.072-2.39-2.377-2.39a2.401 2.401 0 00-2.39 2.39 2.393 2.393 0 002.39 2.39z"/>
+                            </svg>`}
+                        </span>
+                        
                     </button>`:''}
                     <button class="dialog-button button install" @click=${howToForApple}>
-                        <span class="button-text ${howToRequested? 'show': 'hide'}">${msg('Hide Instruction')}</span>
+                        <span class="button-text ${howToRequested? 'show': 'hide'}">
+                            <span>${msg('Back')}</span>
+                            <svg id="icon-back" viewBox="0 0 10 6"><path d="m1.102 2.21 3.169 3.24c.22.222.462.333.729.333a.94.94 0 0 0 .378-.083 1.19 1.19 0 0 0 .347-.25L8.89 2.21a.8.8 0 0 0 .246-.593.838.838 0 0 0-.118-.44.884.884 0 0 0-.312-.311.84.84 0 0 0-1.063.167L4.854 3.92h.299L2.359 1.033a.868.868 0 0 0-.642-.286.822.822 0 0 0-.43.119.935.935 0 0 0-.312.312.863.863 0 0 0-.115.44c0 .116.02.223.057.32a.898.898 0 0 0 .185.272Z"/>
+                        </span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
                             <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
                             <svg viewBox="0 0 25 25">

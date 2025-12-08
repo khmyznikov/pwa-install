@@ -209,6 +209,15 @@
             },
             {
               "kind": "field",
+              "name": "isLiquidGlassSupported",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "isAndroidFallback",
               "type": {
                 "text": "boolean"

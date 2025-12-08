@@ -14,14 +14,6 @@
         <source>More</source>
         <target>Детальніше</target>
       </trans-unit>
-      <trans-unit id="s1b9047d53d9f9d22">
-        <source>2) Press Share in Navigation bar</source>
-        <target>2) Натиснути «Поділитися»</target>
-      </trans-unit>
-      <trans-unit id="sc79fd7641eb9a975">
-        <source>Hide Instruction</source>
-        <target>Сховати Інструкцію</target>
-      </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
         <source>Add to Home Screen</source>
         <target>На Початковий экран</target>
@@ -58,13 +50,29 @@
         <source>2) Tap "Add to Home screen"</source>
         <target>2) Натиснути «На Початковий экран»</target>
       </trans-unit>
-      <trans-unit id="s54cfbb14f46396d4">
-        <source>1) Open in your main browser</source>
-        <target>1) Відкрити у вашому основному браузері</target>
+      <trans-unit id="s9d0493c79a1c5f47">
+        <source>?) Press More if no Share icon</source>
+        <target>?) Натисніть «Більше», якщо немає значка «Поділитися»</target>
       </trans-unit>
-      <trans-unit id="s2d90afa5dcca2c0e">
-        <source>3) Scroll down to "Add to Home Screen"</source>
-        <target>3) Прокрутіть вниз до «На Початковий экран»</target>
+      <trans-unit id="sc16e00a7a8b2fde2">
+        <source>Back</source>
+        <target>Назад</target>
+      </trans-unit>
+      <trans-unit id="s681e399d63311fba">
+        <source>Show Gallery</source>
+        <target>Показати галерею</target>
+      </trans-unit>
+      <trans-unit id="sdb168a692f9130e1">
+        <source>0) Open in your main browser</source>
+        <target>0) Відкрити у вашому основному браузері</target>
+      </trans-unit>
+      <trans-unit id="s9c30494cee3b81dd">
+        <source>1) Press Share in Navigation bar</source>
+        <target>1) Натиснути «Поділитися»</target>
+      </trans-unit>
+      <trans-unit id="s3e31cb694b5e4f47">
+        <source>2) Scroll down to "Add to Home Screen"</source>
+        <target>2) Прокрутіть вниз до «На Початковий экран»</target>
       </trans-unit>
     </body>
   </file>

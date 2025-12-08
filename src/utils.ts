@@ -1,5 +1,6 @@
 import { WebAppManifest } from 'web-app-manifest';
 import { IRelatedApp, Manifest } from './types/types';
+import html2canvas from 'html2canvas';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {
@@ -20,6 +21,27 @@ export default class Utils {
             )
 			return true;
 		return false;
+    }
+
+    static isLiquidGlassSupported(): boolean {
+        if (!('gpu' in navigator)){
+            return false;
+        }
+        // detect iOS 26+
+        if (!CSS.supports('text-wrap', 'pretty')){
+            return false;
+        }
+        // @ts-ignore
+        if (typeof html2canvas === 'undefined'){
+            return false;
+        }
+        return true;
+    }
+
+    static getPageBackgroundColor(): string | null {
+        const bodyColor = window.getComputedStyle(document.body).backgroundColor;
+        const htmlColor = window.getComputedStyle(document.documentElement).backgroundColor;
+        return htmlColor !== 'rgba(0, 0, 0, 0)' ? htmlColor : bodyColor !== 'rgba(0, 0, 0, 0)' ? bodyColor : null;
     }
 
     static isAppleDesktop(): boolean {

@@ -14,14 +14,6 @@
         <source>More</source>
         <target>詳細資訊</target>
       </trans-unit>
-      <trans-unit id="s1b9047d53d9f9d22">
-        <source>2) Press Share in Navigation bar</source>
-        <target>2) 點擊列表上的分享按鈕</target>
-      </trans-unit>
-      <trans-unit id="sc79fd7641eb9a975">
-        <source>Hide Instruction</source>
-        <target>隱藏安裝流程</target>
-      </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
         <source>Add to Home Screen</source>
         <target>將App加入主畫面</target>
@@ -58,13 +50,29 @@
         <source>2) Tap "Add to Home screen"</source>
         <target>2) 點擊「添加到主屏幕」</target>
       </trans-unit>
-      <trans-unit id="s54cfbb14f46396d4">
-        <source>1) Open in your main browser</source>
-        <target>1) 在您的主要瀏覽器中打開</target>
+      <trans-unit id="s9d0493c79a1c5f47">
+        <source>?) Press More if no Share icon</source>
+        <target>?) 如果沒有分享圖標，請點擊更多</target>
       </trans-unit>
-      <trans-unit id="s2d90afa5dcca2c0e">
-        <source>3) Scroll down to "Add to Home Screen"</source>
-        <target>3) 向下滾動到「添加到主屏幕」</target>
+      <trans-unit id="sc16e00a7a8b2fde2">
+        <source>Back</source>
+        <target>返回</target>
+      </trans-unit>
+      <trans-unit id="s681e399d63311fba">
+        <source>Show Gallery</source>
+        <target>顯示圖庫</target>
+      </trans-unit>
+      <trans-unit id="sdb168a692f9130e1">
+        <source>0) Open in your main browser</source>
+        <target>0) 在您的主要瀏覽器中打開</target>
+      </trans-unit>
+      <trans-unit id="s9c30494cee3b81dd">
+        <source>1) Press Share in Navigation bar</source>
+        <target>1) 點擊列表上的分享按鈕</target>
+      </trans-unit>
+      <trans-unit id="s3e31cb694b5e4f47">
+        <source>2) Scroll down to "Add to Home Screen"</source>
+        <target>2) 向下滾動到「添加到主屏幕」</target>
       </trans-unit>
     </body>
   </file>
