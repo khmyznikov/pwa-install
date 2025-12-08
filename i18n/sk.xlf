@@ -38,25 +38,9 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>Pridajte ju na domovskú obrazovku pre rozšírené využitie a jednoduchý prístup.</target>
 </trans-unit>
-<trans-unit id="s54cfbb14f46396d4">
-  <source>1) Open in your main browser</source>
-  <target>1) Otvorte v hlavnom prehliadači</target>
-</trans-unit>
-<trans-unit id="s1b9047d53d9f9d22">
-  <source>2) Press Share in Navigation bar</source>
-  <target>2) Stlačte Zdieľať na navigačnom paneli</target>
-</trans-unit>
 <trans-unit id="sa7551383d1897fcc">
   <source>2) Press Add to Dock</source>
   <target>2) Stlačte Pridať do Docku</target>
-</trans-unit>
-<trans-unit id="s2d90afa5dcca2c0e">
-  <source>3) Scroll down to "Add to Home Screen"</source>
-  <target>3) Prejdite nadol k "Pridať na domovskú obrazovku"</target>
-</trans-unit>
-<trans-unit id="sc79fd7641eb9a975">
-  <source>Hide Instruction</source>
-  <target>Skryť inštrukcie</target>
 </trans-unit>
 <trans-unit id="s922329d6f6213590">
   <source>Add to Dock</source>
@@ -65,6 +49,30 @@
 <trans-unit id="scdaf4bbff76674c8">
   <source>Add to Home Screen</source>
   <target>Pridať na domovskú obrazovku</target>
+</trans-unit>
+<trans-unit id="s9d0493c79a1c5f47">
+  <source>?) Press More if no Share icon</source>
+  <target>?) Stlačte Viac, ak nevidíte ikonu Zdieľať</target>
+</trans-unit>
+<trans-unit id="sc16e00a7a8b2fde2">
+  <source>Back</source>
+  <target>Späť</target>
+</trans-unit>
+<trans-unit id="s681e399d63311fba">
+  <source>Show Gallery</source>
+  <target>Zobraziť galériu</target>
+</trans-unit>
+<trans-unit id="sdb168a692f9130e1">
+  <source>0) Open in your main browser</source>
+  <target>0) Otvorte v hlavnom prehliadači</target>
+</trans-unit>
+<trans-unit id="s9c30494cee3b81dd">
+  <source>1) Press Share in Navigation bar</source>
+  <target>1) Stlačte Zdieľať na navigačnom paneli</target>
+</trans-unit>
+<trans-unit id="s3e31cb694b5e4f47">
+  <source>2) Scroll down to "Add to Home Screen"</source>
+  <target>2) Prejdite nadol k "Pridať na domovskú obrazovku"</target>
 </trans-unit>
 </body>
 </file>

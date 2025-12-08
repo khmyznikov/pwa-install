@@ -30,17 +30,9 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>더 많은 기능과 쉬운 접근을 위해 홈 화면에 추가해주세요.</target>
 </trans-unit>
-<trans-unit id="s1b9047d53d9f9d22">
-  <source>2) Press Share in Navigation bar</source>
-  <target>2) 내비게이션 바에서 공유 버튼 누르기</target>
-</trans-unit>
 <trans-unit id="sa7551383d1897fcc">
   <source>2) Press Add to Dock</source>
   <target>2) Dock에 추가 버튼 누르기</target>
-</trans-unit>
-<trans-unit id="sc79fd7641eb9a975">
-  <source>Hide Instruction</source>
-  <target>안내 숨기기</target>
 </trans-unit>
 <trans-unit id="s922329d6f6213590">
   <source>Add to Dock</source>
@@ -58,13 +50,29 @@
   <source>2) Tap "Add to Home screen"</source>
   <target>2) "홈 화면에 추가" 탭하기</target>
 </trans-unit>
-<trans-unit id="s54cfbb14f46396d4">
-  <source>1) Open in your main browser</source>
-    <target>1) 주 브라우저에서 열기</target>
+<trans-unit id="s9d0493c79a1c5f47">
+  <source>?) Press More if no Share icon</source>
+  <target>?) 공유 아이콘이 없으면 더보기 누르기</target>
 </trans-unit>
-<trans-unit id="s2d90afa5dcca2c0e">
-  <source>3) Scroll down to "Add to Home Screen"</source>
-  <target>3) "홈 화면에 추가"로 스크롤하기</target>
+<trans-unit id="sc16e00a7a8b2fde2">
+  <source>Back</source>
+  <target>뒤로</target>
+</trans-unit>
+<trans-unit id="s681e399d63311fba">
+  <source>Show Gallery</source>
+  <target>갤러리 표시</target>
+</trans-unit>
+<trans-unit id="sdb168a692f9130e1">
+  <source>0) Open in your main browser</source>
+  <target>0) 주 브라우저에서 열기</target>
+</trans-unit>
+<trans-unit id="s9c30494cee3b81dd">
+  <source>1) Press Share in Navigation bar</source>
+  <target>1) 내비게이션 바에서 공유 버튼 누르기</target>
+</trans-unit>
+<trans-unit id="s3e31cb694b5e4f47">
+  <source>2) Scroll down to "Add to Home Screen"</source>
+  <target>2) "홈 화면에 추가"로 스크롤하기</target>
 </trans-unit>
 </body>
 </file>

@@ -30,17 +30,9 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>បន្ថែមវាទៅកាន់ផ្ទាំងអេក្រង់ដើមដើម្បីទទួលបាននូវបទពិសោធន៍កាន់តែល្អនិងងាយស្រួលប្រើ។</target>
 </trans-unit>
-<trans-unit id="s1b9047d53d9f9d22">
-  <source>2) Press Share in Navigation bar</source>
-  <target>2) ចុចលើ ប៊ូតុងចែករំលែក នៅក្នុងរបារទិសដៅ</target>
-</trans-unit>
 <trans-unit id="sa7551383d1897fcc">
   <source>2) Press Add to Dock</source>
   <target>2) ចុចលើ បន្ថែមទៅកាន់ Dock</target>
-</trans-unit>
-<trans-unit id="sc79fd7641eb9a975">
-  <source>Hide Instruction</source>
-  <target>បិទការណែនាំ</target>
 </trans-unit>
 <trans-unit id="s922329d6f6213590">
   <source>Add to Dock</source>
@@ -58,13 +50,29 @@
   <source>2) Tap "Add to Home screen"</source>
   <target>2) ចុចលើ "បន្ថែមទៅកាន់ផ្ទាំងអេក្រង់ដើម"</target>
 </trans-unit>
-<trans-unit id="s54cfbb14f46396d4">
-  <source>1) Open in your main browser</source>
-  <target>1) បើកនៅក្នុងកម្មវិធីរុករកសំខាន់របស់អ្នក</target>
+<trans-unit id="s9d0493c79a1c5f47">
+  <source>?) Press More if no Share icon</source>
+  <target>?) ចុចលើ បន្ថែម ប្រសិនបើគ្មានរូបសញ្ញា ចែករំលែក</target>
 </trans-unit>
-<trans-unit id="s2d90afa5dcca2c0e">
-  <source>3) Scroll down to "Add to Home Screen"</source>
-   <target>3) អូសចុះទៅកាន់ "បន្ថែមទៅផ្ទាំងអេក្រង់ដើម"</target>
+<trans-unit id="sc16e00a7a8b2fde2">
+  <source>Back</source>
+  <target>ត្រឡប់ក្រោយ</target>
+</trans-unit>
+<trans-unit id="s681e399d63311fba">
+  <source>Show Gallery</source>
+  <target>បង្ហាញវិចិត្រសាល</target>
+</trans-unit>
+<trans-unit id="sdb168a692f9130e1">
+  <source>0) Open in your main browser</source>
+  <target>0) បើកនៅក្នុងកម្មវិធីរុករកសំខាន់របស់អ្នក</target>
+</trans-unit>
+<trans-unit id="s9c30494cee3b81dd">
+  <source>1) Press Share in Navigation bar</source>
+  <target>1) ចុចលើ ប៊ូតុងចែករំលែក នៅក្នុងរបារទិសដៅ</target>
+</trans-unit>
+<trans-unit id="s3e31cb694b5e4f47">
+  <source>2) Scroll down to "Add to Home Screen"</source>
+  <target>2) អូសចុះទៅកាន់ "បន្ថែមទៅផ្ទាំងអេក្រង់ដើម"</target>
 </trans-unit>
 </body>
 </file>
