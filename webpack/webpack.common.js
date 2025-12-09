@@ -9,26 +9,26 @@ const __dirname = path.dirname(__filename);
 export default {
 	module: {
 		rules: [
-			{
-				test: /\.ts?$/,
-				use: [
-					{
-						loader: 'minify-lit-html-loader',
-						options: {
-							htmlMinifier: {
-								ignoreCustomFragments: [
-									/<\s/,
-									/<=/
-								],
-								collapseInlineTagWhitespace: true,
-								noNewlinesBeforeTagClose: true
-							},
-						},
-					}
-				],
-				exclude: /node_modules/,
-				include: [/template-.*\.ts$/, /template\.ts/]
-			},
+			// {
+			// 	test: /\.ts?$/,
+			// 	use: [
+			// 		{
+			// 			loader: 'minify-lit-html-loader',
+			// 			options: {
+			// 				htmlMinifier: {
+			// 					ignoreCustomFragments: [
+			// 						/<\s/,
+			// 						/<=/,
+			// 					],
+			// 					collapseInlineTagWhitespace: true,
+			// 					noNewlinesBeforeTagClose: true
+			// 				},
+			// 			},
+			// 		}
+			// 	],
+			// 	exclude: /node_modules/,
+			// 	include: [/template-.*\.ts$/, /template\.ts/]
+			// },
 			{
 				test: /\.ts?$/,
 				use: [

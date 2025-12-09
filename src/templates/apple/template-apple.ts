@@ -1,16 +1,19 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit-html/directives/style-map.js';
 import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
+import Utils from '../../utils';
 
 
 const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false, isIOS26Plus: boolean = false) => {
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
     const installDialogClassesApple = () => { return {available: installAvailable, aqua: isIOS26Plus, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
+    let styles = { '--tint-color': Utils.getPageBackgroundColor() };
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
-            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body">
+            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body" style="${styleMap(styles)}">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>

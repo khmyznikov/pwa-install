@@ -252,6 +252,10 @@
 
                 background-color: var(--background-color-button);
 
+                svg{
+                    fill: var(--text-color-normal);
+                }
+
                 &.install{
                     // padding: 0 15px;
                     // text-align: start;
@@ -307,7 +311,6 @@
                     #pwa-gallery{
                         margin: 0 auto;
                         width: 23px;
-                        fill: var(--text-color-normal);
                     }
                 }
                 &:active{
@@ -457,13 +460,13 @@
 
         &.aqua{
             --border-bottom-color: rgb(95 95 95 / 50%);
-            --divider-buttons-color: #d9d9db;
+            --divider-buttons-color: #85858580;
             --background-color: rgba(255, 255, 255, 0.5);
             --background-color-button: rgb(211 211 211 / 60%);
             --text-color-normal: #000;
             --text-color-description: rgba(75, 75, 75, 0.9);
             --base-color: 255 255 255;
-            --tint-color: #424ef4;
+            --tint-color: rgb(var(--base-color));
 
             border: 1px solid rgb(var(--base-color) / 50%);
 
@@ -471,7 +474,9 @@
             border-radius: 30px;
             grid-template-columns: 100px 1fr;
 
-            // backdrop-filter: blur(50px);
+            background: color-mix(in srgb, var(--tint-color) 40%, rgb(var(--base-color) / 50%) 60%);
+            box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 25%) 70%), 
+                            inset 0px 0px 1px 1px color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 50%) 70%);
 
             .about{
                 margin-right: 26px;
@@ -608,22 +613,6 @@
                     }
                 }
             }
-    
-            #tint {
-                position: absolute;
-                display: none;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: -1;
-                pointer-events: none;
-                // background: rgb(var(--base-color) / 60%);
-                background: color-mix(in srgb, var(--tint-color) 40%, rgb(var(--base-color) / 50%) 60%);
-                box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 25%) 70%), 
-                            inset 0px 0px 1px 1px color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 50%) 70%);
-                backdrop-filter: blur(2px);
-            }
         }
         &.desktop{
             --text-color-normal: rgba(0, 0, 0, 0.85);
@@ -649,7 +638,7 @@
             padding: 10px;
 
             max-width: 282px;
-            background: var(--background-color);
+            // background: var(--background-color);
             border: 1px solid var(--border-bottom-color);
 
             .icon {
@@ -961,7 +950,7 @@ $phone-small-landscape: 667px;
         .install-dialog.apple.dialog-body {
             --text-color-normal: #fff;
             --text-color-description: #9E9AA1;
-            --background-color: rgb(25 25 25 / 50%);
+            --background-color: rgb(25 25 25 / 90%);
             --background-color-button:#353535;
             --background-color-button-active: #454545;
             --border-bottom-color: #353535;
@@ -978,7 +967,7 @@ $phone-small-landscape: 667px;
             &.desktop{
                 --text-color-description: var(--text-color-normal);
                 --icon-how-to-color: #bcb8b6; 
-                --background-color: rgb(45 45 45 / 50%);
+                --background-color: rgb(45 45 45 / 90%);
                 --border-bottom-color: #5b5b5b;
                 --background-color-button:#6d6765;
                 --background-color-button-active: linear-gradient(0deg, rgba(59,108,200,1) 0%, rgba(66,123,250,1) 100%);

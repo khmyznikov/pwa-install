@@ -23,19 +23,6 @@ export default class Utils {
 		return false;
     }
 
-    static isIOS26Plus(): boolean {
-        if (!CSS.supports('text-wrap', 'pretty')){
-            return false;
-        }
-        return true;
-    }
-
-    static getPageBackgroundColor(): string | null {
-        const bodyColor = window.getComputedStyle(document.body).backgroundColor;
-        const htmlColor = window.getComputedStyle(document.documentElement).backgroundColor;
-        return htmlColor !== 'rgba(0, 0, 0, 0)' ? htmlColor : bodyColor !== 'rgba(0, 0, 0, 0)' ? bodyColor : null;
-    }
-
     static isAppleDesktop(): boolean {
         // check if it's a mac
         const userAgent = navigator.userAgent.toLowerCase();
@@ -50,6 +37,19 @@ export default class Utils {
         const webGLCheck = new OffscreenCanvas(1, 1).getContext('webgl') ? true : false;
 
         return audioCheck && webGLCheck;
+    }
+
+    static isIOS26Plus(): boolean {
+        if (!CSS.supports('text-wrap', 'pretty')){
+            return false;
+        }
+        return true;
+    }
+
+    static getPageBackgroundColor(): string | null {
+        const bodyColor = window.getComputedStyle(document.body).backgroundColor;
+        const htmlColor = window.getComputedStyle(document.documentElement).backgroundColor;
+        return htmlColor !== 'rgba(0, 0, 0, 0)' ? htmlColor : bodyColor !== 'rgba(0, 0, 0, 0)' ? bodyColor : null;
     }
 
     static isAndroid(): boolean {
