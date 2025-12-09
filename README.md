@@ -191,33 +191,7 @@ document.getElementById("pwa-install").externalPromptEvent = window.promptEvent;
 ## Supported localization
 
 Translations available:
-- *EN*
-- *RU*
-- *TR*
-- *DE*
-- *ES*
-- *NL*
-- *EL*
-- *FR*
-- *SR*
-- *PL*
-- *ZH-CN*/*ZH-HK*
-- *IT*
-- *UK*
-- *CS*
-- *NO/NB*
-- *PT*
-- *JA*
-- *SV*
-- *KO*
-- *KM*
-- *DA*
-- *VI*
-- *FA*
-- *HU*
-- *SK*
-- *CA-ES*
-- *HE*
+*EN*, *RU*, *TR*, *DE*, *ES*, *NL*, *EL*, *FR*, *SR*, *PL*, *ZH-CN*/*ZH-HK*, *IT*, *UK*, *CS*, *NO/NB*, *PT*, *JA*, *SV*, *KO*, *KM*, *DA*, *VI*, *FA*, *HU*, *SK*, *CA-ES*, *HE*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
@@ -226,8 +200,6 @@ Language should change automatically based on browser settings. Please create th
 <br>
 
 ## ROADMAP
-- samsung mobile support
-- mozilla mobile support
 - manual theme
 
 
