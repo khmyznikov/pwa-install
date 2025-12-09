@@ -13,10 +13,7 @@ const _eventDispatcher = (_element: Element, name: string, message: string) => {
 export default class Utils {
     static isAppleMobile(): boolean {
 		if (
-                (
-                    ['iPhone', 'iPad', 'iPod'].includes(navigator.platform) ||
-                    (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
-                )
+                (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
                 && ('serviceWorker' in navigator)
             )
 			return true;
@@ -37,6 +34,10 @@ export default class Utils {
         const webGLCheck = new OffscreenCanvas(1, 1).getContext('webgl') ? true : false;
 
         return audioCheck && webGLCheck;
+    }
+
+    static isAppleMobileNonSafari(): boolean {
+        return this.isAppleMobile() && navigator.userAgent.match(/CriOS|EdgiOS/)? true : false;
     }
 
     static isIOS26Plus(): boolean {

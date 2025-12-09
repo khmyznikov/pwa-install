@@ -3,6 +3,7 @@ import { IRelatedApp } from './types/types';
 export default class Utils {
     static isAppleMobile(): boolean;
     static isAppleDesktop(): boolean;
+    static isAppleMobileNonSafari(): boolean;
     static isIOS26Plus(): boolean;
     static getPageBackgroundColor(): string | null;
     static isAndroid(): boolean;

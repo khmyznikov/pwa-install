@@ -6,7 +6,8 @@ import { msg } from '@lit/localize';
 import Utils from '../../utils';
 
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, isDesktop: boolean, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false, isIOS26Plus: boolean = false) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false, isIOS26Plus: boolean = false) => {
+    const isDesktop = Utils.isAppleDesktop();
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
     const installDialogClassesApple = () => { return {available: installAvailable, aqua: isIOS26Plus, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
     let styles = { '--tint-color': Utils.getPageBackgroundColor() };
@@ -40,7 +41,7 @@ const template = (name: string, description: string, installDescription: string,
                             </div>
                             <div class="step-text">${msg('Open in your main browser')}</div>
                         </div>`: ''}
-                        ${!isDesktop? html`
+                        ${!isDesktop && !Utils.isAppleMobileNonSafari()? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
@@ -57,7 +58,7 @@ const template = (name: string, description: string, installDescription: string,
                                     <g fill="currentColor"><path d="M17.334 10.762v9.746c0 2.012-1.025 3.027-3.066 3.027H3.066C1.026 23.535 0 22.52 0 20.508v-9.746C0 8.75 1.025 7.734 3.066 7.734h2.94v1.573h-2.92c-.977 0-1.514.527-1.514 1.543v9.57c0 1.015.537 1.543 1.514 1.543h11.152c.967 0 1.524-.527 1.524-1.543v-9.57c0-1.016-.557-1.543-1.524-1.543h-2.91V7.734h2.94c2.04 0 3.066 1.016 3.066 3.028Z"/><path d="M8.662 15.889c.42 0 .781-.352.781-.762V5.097l-.058-1.464.654.693 1.484 1.582a.698.698 0 0 0 .528.235c.4 0 .713-.293.713-.694 0-.205-.088-.361-.235-.508l-3.3-3.183c-.196-.196-.362-.264-.567-.264-.195 0-.361.069-.566.264L4.795 4.94a.681.681 0 0 0-.225.508c0 .4.293.694.703.694.186 0 .4-.079.538-.235l1.474-1.582.664-.693-.058 1.465v10.029c0 .41.351.762.771.762Z"/></g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('Press Share in Navigation bar').replace(isDesktop? '2)': '0)', '1)')}</div>
+                            <div class="step-text">${msg('Press Share in Navigation bar')}</div>
                         </div>
                         <div class="description-step">
                             <div class="svg-wrap">

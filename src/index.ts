@@ -319,7 +319,6 @@ export class PWAInstallElement extends LitElement {
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
 				this._toggleHowTo,
-				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
 				this._galleryRequested,
