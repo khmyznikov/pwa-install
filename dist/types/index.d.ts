@@ -16,6 +16,7 @@ export declare class PWAInstallElement extends LitElement {
     disableClose: boolean;
     disableFallback: boolean;
     useLocalStorage: boolean;
+    styles: Record<string, string>;
     static get styles(): CSSStyleSheet[];
     externalPromptEvent: BeforeInstallPromptEvent | null;
     platforms: BeforeInstallPromptEvent['platforms'];
@@ -24,6 +25,7 @@ export declare class PWAInstallElement extends LitElement {
     isInstallAvailable: boolean;
     isAppleMobilePlatform: boolean;
     isAppleDesktopPlatform: boolean;
+    isApple26Plus: boolean;
     isAndroidFallback: boolean;
     isAndroid: boolean;
     isUnderStandaloneMode: boolean;
@@ -42,6 +44,7 @@ export declare class PWAInstallElement extends LitElement {
     private _toggleHowTo;
     private _toggleGallery;
     private _checkPlatform;
+    private _triggerAppleDialog;
     private _checkInstallAvailable;
     private _init;
     private _requestUpdate;

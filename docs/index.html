@@ -66,8 +66,17 @@
 			<legend>
 				Style Override
 			</legend>
-			<button onclick="forceStyle('apple-desktop')">Apple Desktop</button>
-			<button onclick="forceStyle('apple-mobile')">Apple Mobile</button><br>
+			<button onclick="forceStyle('apple-desktop')">MacOS</button>
+			<button onclick="forceStyle('apple-mobile')">iOS/iPadOS</button><br>
+			<button onclick="forceStyle('liquid-glass-desktop')">MacOS 26+</button>
+			<button onclick="forceStyle('liquid-glass-mobile')">iOS/iPadOS 26+</button><br>
+			
+			<label>
+				Tint override:
+				<input type="color" id="tint-color-picker" onchange="setStyles(this.value)">
+				<button onclick="setStyles('')">Reset</button>
+			</label>
+			<hr>
 			<button onclick="forceStyle('chrome')">Chromium</button>
 			<button onclick="forceStyle('fallback')">Android Fallback</button><br>
 			<i>*end style depends on browser and OS</i>
@@ -152,24 +161,31 @@
 		}
 		
 		const forceStyle = (style) => {
+			pwaInstall.isAppleMobilePlatform = false;
+			pwaInstall.isAppleDesktopPlatform = false;
+			pwaInstall.isAndroidFallback = false;
+			pwaInstall.isLiquidGlassSupported = false;
+			pwaInstall._pageReflection = false;
+			pwaInstall.isApple26Plus = false;
 			switch (style) {
 				case 'apple-mobile':
-					pwaInstall.isAppleDesktopPlatform = false;
 					pwaInstall.isAppleMobilePlatform = true;
 					break;
 				case 'apple-desktop':
-					pwaInstall.isAppleMobilePlatform = false;
 					pwaInstall.isAppleDesktopPlatform = true;
 					break;
 				case 'chrome':
-					pwaInstall.isAppleMobilePlatform = false;
-					pwaInstall.isAppleDesktopPlatform = false;
-					pwaInstall.isAndroidFallback = false;
 					break;
 				case 'fallback':
-					pwaInstall.isAppleMobilePlatform = false;
-					pwaInstall.isAppleDesktopPlatform = false;
 					pwaInstall.isAndroidFallback = true;
+					break;
+				case 'liquid-glass-desktop':
+					pwaInstall.isApple26Plus = true;
+					pwaInstall.isAppleDesktopPlatform = true;
+					break;
+				case 'liquid-glass-mobile':
+					pwaInstall.isApple26Plus = true;
+					pwaInstall.isAppleMobilePlatform = true;
 					break;
 			}
 			pwaInstall.hideDialog();
@@ -196,6 +212,17 @@
 			value? pwaInstall.setAttribute(attr, value) :
 			pwaInstall.removeAttribute(attr);
 			pwaInstall._init();
+		}
+
+		const setStyles = (color) => {
+			if (color) {
+				pwaInstall.setAttribute('styles', JSON.stringify({ '--tint-color': color }));
+			} else {
+				pwaInstall.removeAttribute('styles');
+				document.getElementById('tint-color-picker').value = '';
+			}
+			pwaInstall.hideDialog();
+			pwaInstall.showDialog();
 		}
 
 		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});

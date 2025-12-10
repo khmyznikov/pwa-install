@@ -18,6 +18,7 @@ import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
 import templateApple from './templates/apple/template-apple';
+import html2canvas from 'html2canvas';
 
 /**
  * @event {CustomEvent} pwa-install-success-event - App install success (Chromium/Android only)
@@ -44,6 +45,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
 	@property({attribute: 'disable-android-fallback', type: Boolean}) disableFallback = false;
 	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
+	@property({attribute: 'styles', type: Object}) styles: Record<string, string> = {};
 
 	static get styles() {
 		return [ styles, stylesCommon, stylesApple ];
@@ -58,6 +60,7 @@ export class PWAInstallElement extends LitElement {
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
+	public isApple26Plus = false;
 	public isAndroidFallback = false;
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
@@ -162,24 +165,33 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
+		this.isApple26Plus = Utils.isApple26Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
 	}
 	/** @internal */
-	private _checkInstallAvailable() {
+	private async _triggerAppleDialog() {
+		setTimeout(() => {
+			this.isInstallAvailable = true;
+			this.requestUpdate();
+			Utils.eventInstallAvailable(this);
+		}, 500);
+	}
+	/** @internal */
+	private async _checkInstallAvailable() {
 		if (this.isUnderStandaloneMode)
 			return;
 
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
 			this.manualApple && this.hideDialog();
-			setTimeout(
-				() => {
-					this.isInstallAvailable = true;
-					this.requestUpdate()
-					Utils.eventInstallAvailable(this);
-				},
-				1000
-			);
+			
+			if (document.readyState === 'complete') {
+				await this._triggerAppleDialog();
+			} else {
+				window.addEventListener('load', async () => {
+					await this._triggerAppleDialog();
+				});
+			}
 			return;
 		}
 
@@ -251,7 +263,7 @@ export class PWAInstallElement extends LitElement {
 		window.defferedPromptEvent = null;
 
 		await this._checkPlatform();
-		this._checkInstallAvailable();
+		await this._checkInstallAvailable();
 
 		if ('onappinstalled' in window)
 			window.addEventListener('appinstalled', (e) => {
@@ -272,11 +284,12 @@ export class PWAInstallElement extends LitElement {
 	async connectedCallback() {
 		await changeLocale(navigator.language);
 		this._isRTL = isRTL();
-		this._init();
+		await this._init();
 		PWAGalleryElement.finalized;
 		PWABottomSheetElement.finalized;
 		super.connectedCallback();
 	}
+
 	willUpdate(changedProperties: PropertyValues<this>) {
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
 		  this._init();
@@ -301,11 +314,13 @@ export class PWAInstallElement extends LitElement {
 				this.isInstallAvailable && !this.isDialogHidden,
 				this._hideDialogUser,
 				this._toggleHowTo,
-				this.isAppleDesktopPlatform,
 				this._howToRequested,
 				this._toggleGallery,
 				this._galleryRequested,
-				this._isRTL
+				this._isRTL,
+				this.isApple26Plus,
+				this.isAppleDesktopPlatform,
+				this.styles
 			)}`;
 		else
 			return html`${template(

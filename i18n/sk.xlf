@@ -6,13 +6,13 @@
   <source>Install</source>
   <target>Inštalovať</target>
 </trans-unit>
-<trans-unit id="s1488e73779d7682f">
-  <source>1) Open your browser menu</source>
-  <target>1) Otvorte ponuku prehliadača</target>
+<trans-unit id="s633502f7cff4f847">
+  <source>Open your browser menu</source>
+  <target>Otvorte ponuku prehliadača</target>
 </trans-unit>
-<trans-unit id="s4593f304dac8848c">
-  <source>2) Tap "Add to Home screen"</source>
-  <target>2) Klepnite na "Pridať na domovskú obrazovku"</target>
+<trans-unit id="s4e1e10a6ca408245">
+  <source>Tap "Add to Home screen"</source>
+  <target>Klepnite na "Pridať na domovskú obrazovku"</target>
 </trans-unit>
 <trans-unit id="sfea652f6580ff086">
   <source>This site has app functionality.</source>
@@ -38,25 +38,9 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>Pridajte ju na domovskú obrazovku pre rozšírené využitie a jednoduchý prístup.</target>
 </trans-unit>
-<trans-unit id="s54cfbb14f46396d4">
-  <source>1) Open in your main browser</source>
-  <target>1) Otvorte v hlavnom prehliadači</target>
-</trans-unit>
-<trans-unit id="s1b9047d53d9f9d22">
-  <source>2) Press Share in Navigation bar</source>
-  <target>2) Stlačte Zdieľať na navigačnom paneli</target>
-</trans-unit>
-<trans-unit id="sa7551383d1897fcc">
-  <source>2) Press Add to Dock</source>
-  <target>2) Stlačte Pridať do Docku</target>
-</trans-unit>
-<trans-unit id="s2d90afa5dcca2c0e">
-  <source>3) Scroll down to "Add to Home Screen"</source>
-  <target>3) Prejdite nadol k "Pridať na domovskú obrazovku"</target>
-</trans-unit>
-<trans-unit id="sc79fd7641eb9a975">
-  <source>Hide Instruction</source>
-  <target>Skryť inštrukcie</target>
+<trans-unit id="s8114bd55cae5a22b">
+  <source>Press Add to Dock</source>
+  <target>Stlačte Pridať do Docku</target>
 </trans-unit>
 <trans-unit id="s922329d6f6213590">
   <source>Add to Dock</source>
@@ -65,6 +49,34 @@
 <trans-unit id="scdaf4bbff76674c8">
   <source>Add to Home Screen</source>
   <target>Pridať na domovskú obrazovku</target>
+</trans-unit>
+<trans-unit id="s386eca8362ff6155">
+  <source>Press More if no Share icon</source>
+  <target>Stlačte Viac, ak nevidíte ikonu Zdieľať</target>
+</trans-unit>
+<trans-unit id="sc16e00a7a8b2fde2">
+  <source>Back</source>
+  <target>Späť</target>
+</trans-unit>
+<trans-unit id="s681e399d63311fba">
+  <source>Show Gallery</source>
+  <target>Zobraziť galériu</target>
+</trans-unit>
+<trans-unit id="se0e473adfda8066c">
+  <source>Open in your main browser</source>
+  <target>Otvorte v hlavnom prehliadači</target>
+</trans-unit>
+<trans-unit id="s224cbcec014ef6b5">
+  <source>Press Share in Navigation bar</source>
+  <target>Stlačte Zdieľať na navigačnom paneli</target>
+</trans-unit>
+<trans-unit id="s9af56bf005b49c74">
+  <source>Scroll down to "Add to Home Screen"</source>
+  <target>Prejdite nadol k "Pridať na domovskú obrazovku"</target>
+</trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>Stlačte Viac v menu Zdieľať</target>
 </trans-unit>
 </body>
 </file>

@@ -6,6 +6,7 @@
       "esnext",
       "dom"
     ],
+    "typeRoots": ["./node_modules/@webgpu/types", "./node_modules/@types"],
     "useDefineForClassFields": false,
     "sourceMap": true,
     "declaration": true,

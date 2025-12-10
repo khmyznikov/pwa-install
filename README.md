@@ -106,6 +106,23 @@ import '@khmyznikov/pwa-install';
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
 
+## Custom Styles
+
+*Only the Apple template supports styling, and only the tint color option is available as of today. More to come.*
+```html
+<!-- As attribute (JSON string) -->
+<pwa-install styles='{"--tint-color": "#6366f1"}'></pwa-install>
+```
+
+```javascript
+// As property (object)
+const pwaInstall = document.querySelector('pwa-install');
+pwaInstall.styles = { '--tint-color': '#6366f1' };
+
+// Or as attribute via JavaScript
+pwaInstall.setAttribute('styles', JSON.stringify({ '--tint-color': '#6366f1' }));
+```
+
 <br>
 
 ## Supported events
@@ -137,6 +154,7 @@ This is **not** a error and **not** a bug. This means that the component success
 - isInstallAvailable: boolean
 - isAppleMobilePlatform: boolean
 - isAppleDesktopPlatform: boolean
+- isApple26Plus: boolean
 - isUnderStandaloneMode: boolean
 - isRelatedAppsInstalled: boolean
 
@@ -191,33 +209,7 @@ document.getElementById("pwa-install").externalPromptEvent = window.promptEvent;
 ## Supported localization
 
 Translations available:
-- *EN*
-- *RU*
-- *TR*
-- *DE*
-- *ES*
-- *NL*
-- *EL*
-- *FR*
-- *SR*
-- *PL*
-- *ZH-CN*/*ZH-HK*
-- *IT*
-- *UK*
-- *CS*
-- *NO/NB*
-- *PT*
-- *JA*
-- *SV*
-- *KO*
-- *KM*
-- *DA*
-- *VI*
-- *FA*
-- *HU*
-- *SK*
-- *CA-ES*
-- *HE*
+*EN*, *RU*, *TR*, *DE*, *ES*, *NL*, *EL*, *FR*, *SR*, *PL*, *ZH-CN*/*ZH-HK*, *IT*, *UK*, *CS*, *NO/NB*, *PT*, *JA*, *SV*, *KO*, *KM*, *DA*, *VI*, *FA*, *HU*, *SK*, *CA-ES*, *HE*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
@@ -226,8 +218,6 @@ Language should change automatically based on browser settings. Please create th
 <br>
 
 ## ROADMAP
-- samsung mobile support
-- mozilla mobile support
 - manual theme
 
 

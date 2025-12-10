@@ -1,5 +1,6 @@
 import { WebAppManifest } from 'web-app-manifest';
 import { IRelatedApp, Manifest } from './types/types';
+import html2canvas from 'html2canvas';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {
@@ -12,10 +13,7 @@ const _eventDispatcher = (_element: Element, name: string, message: string) => {
 export default class Utils {
     static isAppleMobile(): boolean {
 		if (
-                (
-                    ['iPhone', 'iPad', 'iPod'].includes(navigator.platform) ||
-                    (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
-                )
+                (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
                 && ('serviceWorker' in navigator)
             )
 			return true;
@@ -36,6 +34,27 @@ export default class Utils {
         const webGLCheck = new OffscreenCanvas(1, 1).getContext('webgl') ? true : false;
 
         return audioCheck && webGLCheck;
+    }
+
+    static isAppleMobileNonSafari(): boolean {
+        return this.isAppleMobile() && navigator.userAgent.match(/CriOS|EdgiOS/)? true : false;
+    }
+
+    static isIPad(): boolean {
+        return navigator.userAgent.match(/iPad|Macintosh/) && this.isAppleMobile()? true : false;
+    }
+
+    static isApple26Plus(): boolean {
+        if (!CSS.supports('text-wrap', 'pretty')){
+            return false;
+        }
+        return true;
+    }
+
+    static getPageBackgroundColor(): string | null {
+        const bodyColor = window.getComputedStyle(document.body).backgroundColor;
+        const htmlColor = window.getComputedStyle(document.documentElement).backgroundColor;
+        return htmlColor !== 'rgba(0, 0, 0, 0)' ? htmlColor : bodyColor !== 'rgba(0, 0, 0, 0)' ? bodyColor : null;
     }
 
     static isAndroid(): boolean {

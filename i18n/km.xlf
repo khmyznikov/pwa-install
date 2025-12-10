@@ -30,17 +30,9 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>បន្ថែមវាទៅកាន់ផ្ទាំងអេក្រង់ដើមដើម្បីទទួលបាននូវបទពិសោធន៍កាន់តែល្អនិងងាយស្រួលប្រើ។</target>
 </trans-unit>
-<trans-unit id="s1b9047d53d9f9d22">
-  <source>2) Press Share in Navigation bar</source>
-  <target>2) ចុចលើ ប៊ូតុងចែករំលែក នៅក្នុងរបារទិសដៅ</target>
-</trans-unit>
-<trans-unit id="sa7551383d1897fcc">
-  <source>2) Press Add to Dock</source>
-  <target>2) ចុចលើ បន្ថែមទៅកាន់ Dock</target>
-</trans-unit>
-<trans-unit id="sc79fd7641eb9a975">
-  <source>Hide Instruction</source>
-  <target>បិទការណែនាំ</target>
+<trans-unit id="s8114bd55cae5a22b">
+  <source>Press Add to Dock</source>
+  <target>ចុចលើ បន្ថែមទៅកាន់ Dock</target>
 </trans-unit>
 <trans-unit id="s922329d6f6213590">
   <source>Add to Dock</source>
@@ -50,21 +42,41 @@
   <source>Add to Home Screen</source>
   <target>បន្ថែមទៅកាន់ផ្ទាំងអេក្រង់ដើម</target>
 </trans-unit>
-<trans-unit id="s1488e73779d7682f">
-  <source>1) Open your browser menu</source>
-  <target>1) បើកម៉ឺនុយកម្មវិធីរុករករបស់អ្នក</target>
+<trans-unit id="s633502f7cff4f847">
+  <source>Open your browser menu</source>
+  <target>បើកម៉ឺនុយកម្មវិធីរុករករបស់អ្នក</target>
 </trans-unit>
-<trans-unit id="s4593f304dac8848c">
-  <source>2) Tap "Add to Home screen"</source>
-  <target>2) ចុចលើ "បន្ថែមទៅកាន់ផ្ទាំងអេក្រង់ដើម"</target>
+<trans-unit id="s4e1e10a6ca408245">
+  <source>Tap "Add to Home screen"</source>
+  <target>ចុចលើ "បន្ថែមទៅកាន់ផ្ទាំងអេក្រង់ដើម"</target>
 </trans-unit>
-<trans-unit id="s54cfbb14f46396d4">
-  <source>1) Open in your main browser</source>
-  <target>1) បើកនៅក្នុងកម្មវិធីរុករកសំខាន់របស់អ្នក</target>
+<trans-unit id="s386eca8362ff6155">
+  <source>Press More if no Share icon</source>
+  <target>ចុចលើ បន្ថែម ប្រសិនបើគ្មានរូបសញ្ញា ចែករំលែក</target>
 </trans-unit>
-<trans-unit id="s2d90afa5dcca2c0e">
-  <source>3) Scroll down to "Add to Home Screen"</source>
-   <target>3) អូសចុះទៅកាន់ "បន្ថែមទៅផ្ទាំងអេក្រង់ដើម"</target>
+<trans-unit id="sc16e00a7a8b2fde2">
+  <source>Back</source>
+  <target>ត្រឡប់ក្រោយ</target>
+</trans-unit>
+<trans-unit id="s681e399d63311fba">
+  <source>Show Gallery</source>
+  <target>បង្ហាញវិចិត្រសាល</target>
+</trans-unit>
+<trans-unit id="se0e473adfda8066c">
+  <source>Open in your main browser</source>
+  <target>បើកនៅក្នុងកម្មវិធីរុករកសំខាន់របស់អ្នក</target>
+</trans-unit>
+<trans-unit id="s224cbcec014ef6b5">
+  <source>Press Share in Navigation bar</source>
+  <target>ចុចលើ ប៊ូតុងចែករំលែក នៅក្នុងរបារទិសដៅ</target>
+</trans-unit>
+<trans-unit id="s9af56bf005b49c74">
+  <source>Scroll down to "Add to Home Screen"</source>
+  <target>អូសចុះទៅកាន់ "បន្ថែមទៅផ្ទាំងអេក្រង់ដើម"</target>
+</trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>ចុចលើ បន្ថែម នៅក្នុងម៉ឺនុយ ចែករំលែក</target>
 </trans-unit>
 </body>
 </file>

@@ -14,14 +14,6 @@
         <source>More</source>
         <target>Plus</target>
       </trans-unit>
-      <trans-unit id="s1b9047d53d9f9d22">
-        <source>2) Press Share in Navigation bar</source>
-        <target>2) Appuyez sur Partager dans la barre de navigation</target>
-      </trans-unit>
-      <trans-unit id="sc79fd7641eb9a975">
-        <source>Hide Instruction</source>
-        <target>Masquer les instructions</target>
-      </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
         <source>Add to Home Screen</source>
         <target>Ajouter à l'écran d'accueil</target>
@@ -38,9 +30,9 @@
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
         <target>Ajoutez-le à votre écran d'accueil pour une expérience étendue et un accès facile.</target>
       </trans-unit>
-      <trans-unit id="sa7551383d1897fcc">
-        <source>2) Press Add to Dock</source>
-        <target>2) Appuyez sur Ajouter au Dock</target>
+      <trans-unit id="s8114bd55cae5a22b">
+        <source>Press Add to Dock</source>
+        <target>Appuyez sur Ajouter au Dock</target>
       </trans-unit>
       <trans-unit id="s922329d6f6213590">
         <source>Add to Dock</source>
@@ -50,21 +42,41 @@
         <source>Install it on your device for extensive experience and easy access.</source>
         <target>Installez-le sur votre appareil pour une expérience complète et un accès facile.</target>
       </trans-unit>
-      <trans-unit id="s1488e73779d7682f">
-        <source>1) Open your browser menu</source>
-        <target>1) Ouvrez le menu de votre navigateur</target>
+      <trans-unit id="s633502f7cff4f847">
+        <source>Open your browser menu</source>
+        <target>Ouvrez le menu de votre navigateur</target>
       </trans-unit>
-      <trans-unit id="s4593f304dac8848c">
-        <source>2) Tap "Add to Home screen"</source>
-        <target>2) Touchez "Ajouter à l'écran d'accueil"</target>
+      <trans-unit id="s4e1e10a6ca408245">
+        <source>Tap "Add to Home screen"</source>
+        <target>Touchez "Ajouter à l'écran d'accueil"</target>
       </trans-unit>
-      <trans-unit id="s54cfbb14f46396d4">
-        <source>1) Open in your main browser</source>
-        <target>1) Ouvrir dans votre navigateur principal</target>
+      <trans-unit id="s386eca8362ff6155">
+        <source>Press More if no Share icon</source>
+        <target>Appuyez sur Plus s'il n'y a pas d'icône Partager</target>
       </trans-unit>
-      <trans-unit id="s2d90afa5dcca2c0e">
-        <source>3) Scroll down to "Add to Home Screen"</source>
-        <target>3) Faites défiler vers le bas jusqu'à "Ajouter à l'écran d'accueil"</target>
+      <trans-unit id="sc16e00a7a8b2fde2">
+        <source>Back</source>
+        <target>Retour</target>
+      </trans-unit>
+      <trans-unit id="s681e399d63311fba">
+        <source>Show Gallery</source>
+        <target>Afficher la galerie</target>
+      </trans-unit>
+      <trans-unit id="se0e473adfda8066c">
+        <source>Open in your main browser</source>
+        <target>Ouvrir dans votre navigateur principal</target>
+      </trans-unit>
+      <trans-unit id="s224cbcec014ef6b5">
+        <source>Press Share in Navigation bar</source>
+        <target>Appuyez sur Partager dans la barre de navigation</target>
+      </trans-unit>
+      <trans-unit id="s9af56bf005b49c74">
+        <source>Scroll down to "Add to Home Screen"</source>
+        <target>Faites défiler vers le bas jusqu'à "Ajouter à l'écran d'accueil"</target>
+      </trans-unit>
+      <trans-unit id="s7f0591f08e318eda">
+        <source>Press More in Share menu</source>
+        <target>Appuyez sur Plus dans le menu Partager</target>
       </trans-unit>
     </body>
   </file>

@@ -209,6 +209,15 @@
             },
             {
               "kind": "field",
+              "name": "isApple26Plus",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "isAndroidFallback",
               "type": {
                 "text": "boolean"
@@ -428,6 +437,14 @@
               },
               "default": "false",
               "fieldName": "useLocalStorage"
+            },
+            {
+              "name": "styles",
+              "type": {
+                "text": "Record<string, string>"
+              },
+              "default": "{}",
+              "fieldName": "styles"
             }
           ],
           "superclass": {
