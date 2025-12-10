@@ -902,7 +902,7 @@ $phone-small-landscape: 667px;
 }
 @media (max-width: 428px) {
     #pwa-install-element{
-        .install-dialog.apple.dialog-body{
+        .install-dialog.apple.dialog-body:not(.aqua){
             max-width: 100vw;
             filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px -5px 10px);
 
@@ -917,6 +917,10 @@ $phone-small-landscape: 667px;
                 bottom: 0px;
                 max-height: 85vh;
             }
+        }
+        .install-dialog.apple.dialog-body.aqua{
+            bottom: calc(20px + env(safe-area-inset-bottom));
+            margin: 0 max(env(safe-area-inset-left), 20px);
         }
     }
 }
