@@ -18,7 +18,7 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 ## Gallery
 | iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |-|-|-|
-|![iOS example default](https://user-images.githubusercontent.com/6115884/169653932-5a9916b6-8d1f-4320-a595-86c3b797ae86.jpg)|![iOS example install instruction](https://user-images.githubusercontent.com/6115884/169654013-7d144d66-0021-44d8-8f1d-9a7d2c71cb07.jpg)|![iOS example gallery](https://user-images.githubusercontent.com/6115884/169654077-f48c9b63-2b6e-4291-a0e3-b33daf86d468.jpg)|
+|![iOS example default](https://github.com/user-attachments/assets/933a9669-2b1a-49e1-ad49-b4d8657bee8c)|![iOS example install instruction](https://github.com/user-attachments/assets/7f7bf553-8c7e-4840-a261-28b07534ca07)|![iOS example gallery](https://github.com/user-attachments/assets/be709716-bcc4-457c-a271-4e6696032f57)|
 
 | MacOS 14+ (Sonoma) | Install instruction |
 |---|---|
@@ -26,9 +26,10 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 
 
 
-| iPadOS |
-|---|
-|![iPadOS example light](https://user-images.githubusercontent.com/6115884/169654199-1b474920-089c-44b5-8eca-534229ce0720.jpg)|
+| iPadOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Instruction |
+|---|---|
+|![iPadOS example default](https://github.com/user-attachments/assets/a9b94313-7a88-4042-88c4-be7cc585e236)|![iPadOS install instruction](https://github.com/user-attachments/assets/0f62be23-ba2a-4bf9-b979-058487ccc238)
+
 
 
 | Android | Firefox/Opera/Others | App gallery&nbsp;&nbsp; |
