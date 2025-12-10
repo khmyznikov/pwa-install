@@ -209,7 +209,7 @@
             },
             {
               "kind": "field",
-              "name": "isIOS26Plus",
+              "name": "isApple26Plus",
               "type": {
                 "text": "boolean"
               },

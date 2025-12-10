@@ -44,7 +44,7 @@ export default class Utils {
         return navigator.userAgent.match(/iPad|Macintosh/) && this.isAppleMobile()? true : false;
     }
 
-    static isIOS26Plus(): boolean {
+    static isApple26Plus(): boolean {
         if (!CSS.supports('text-wrap', 'pretty')){
             return false;
         }

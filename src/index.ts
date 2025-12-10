@@ -59,20 +59,14 @@ export class PWAInstallElement extends LitElement {
 	public isInstallAvailable = false;
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
-	public isIOS26Plus = false;
+	public isApple26Plus = false;
 	public isAndroidFallback = false;
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
 
 	/** @internal */
-	private _pageReflection: ImageBitmap | null = null;
-	/** @internal */
-	private _resizeTimer: number | null = null;
-	/** @internal */
 	private _isRTL = false;
-	/** @internal */
-	private _lastWindowWidth: number = 0;
 
 	/** @internal */
 	private _manifest: Manifest = new Manifest();
@@ -170,7 +164,7 @@ export class PWAInstallElement extends LitElement {
 		this.isRelatedAppsInstalled = await Utils.isRelatedAppsInstalled();
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
-		this.isIOS26Plus = Utils.isIOS26Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
+		this.isApple26Plus = Utils.isApple26Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
 	}
@@ -323,7 +317,8 @@ export class PWAInstallElement extends LitElement {
 				this._toggleGallery,
 				this._galleryRequested,
 				this._isRTL,
-				this.isIOS26Plus
+				this.isApple26Plus,
+				this.isAppleDesktopPlatform
 			)}`;
 		else
 			return html`${template(

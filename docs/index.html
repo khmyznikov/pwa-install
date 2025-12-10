@@ -159,7 +159,7 @@
 			pwaInstall.isAndroidFallback = false;
 			pwaInstall.isLiquidGlassSupported = false;
 			pwaInstall._pageReflection = false;
-			pwaInstall.isIOS26Plus = false;
+			pwaInstall.isApple26Plus = false;
 			switch (style) {
 				case 'apple-mobile':
 					pwaInstall.isAppleMobilePlatform = true;
@@ -173,11 +173,11 @@
 					pwaInstall.isAndroidFallback = true;
 					break;
 				case 'liquid-glass-desktop':
-					pwaInstall.isIOS26Plus = true;
+					pwaInstall.isApple26Plus = true;
 					pwaInstall.isAppleDesktopPlatform = true;
 					break;
 				case 'liquid-glass-mobile':
-					pwaInstall.isIOS26Plus = true;
+					pwaInstall.isApple26Plus = true;
 					pwaInstall.isAppleMobilePlatform = true;
 					break;
 			}
