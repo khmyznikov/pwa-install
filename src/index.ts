@@ -18,7 +18,6 @@ import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
 import templateApple from './templates/apple/template-apple';
-import html2canvas from 'html2canvas';
 
 /**
  * @event {CustomEvent} pwa-install-success-event - App install success (Chromium/Android only)

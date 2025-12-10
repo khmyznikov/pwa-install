@@ -1,6 +1,5 @@
 import { WebAppManifest } from 'web-app-manifest';
 import { IRelatedApp, Manifest } from './types/types';
-import html2canvas from 'html2canvas';
 
 const _eventDispatcher = (_element: Element, name: string, message: string) => {
     const event  = new CustomEvent(name, {
