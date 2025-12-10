@@ -21,9 +21,9 @@ Adding new languages in Lit framework are relatively easy. You need to make a fe
 3. Execute `npm run localize:extract` to generate **XLF** file for new language.
 4. Find new file in `i18n` folder.
 5. Do translation inside `<target>` tags below `<source>` tag of each string.
-6. Execute `npm run localize:build` to generate new locale files.
-7. Find `/src/localization/index.ts` and import new locale like the rest of the languages.
-8. Execute `npm run build` to update bundle and prepare changes for pull request.
+6. Find `/src/localization/index.ts` and import new locale like the rest of the languages.
+7. Execute `npm run dev` to test new translation.
+9. Don't include full build into PR
 
 <br>
 
