@@ -45,6 +45,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'disable-close', type: Boolean}) disableClose = false;
 	@property({attribute: 'disable-android-fallback', type: Boolean}) disableFallback = false;
 	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
+	@property({attribute: 'styles', type: Object}) styles: Record<string, string> = {};
 
 	static get styles() {
 		return [ styles, stylesCommon, stylesApple ];
@@ -318,7 +319,8 @@ export class PWAInstallElement extends LitElement {
 				this._galleryRequested,
 				this._isRTL,
 				this.isApple26Plus,
-				this.isAppleDesktopPlatform
+				this.isAppleDesktopPlatform,
+				this.styles
 			)}`;
 		else
 			return html`${template(

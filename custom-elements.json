@@ -437,6 +437,14 @@
               },
               "default": "false",
               "fieldName": "useLocalStorage"
+            },
+            {
+              "name": "styles",
+              "type": {
+                "text": "Record<string, string>"
+              },
+              "default": "{}",
+              "fieldName": "styles"
             }
           ],
           "superclass": {
