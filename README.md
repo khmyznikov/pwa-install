@@ -20,25 +20,25 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 |-|-|-|
 |![iOS example default](https://github.com/user-attachments/assets/933a9669-2b1a-49e1-ad49-b4d8657bee8c)|![iOS example install instruction](https://github.com/user-attachments/assets/7f7bf553-8c7e-4840-a261-28b07534ca07)|![iOS example gallery](https://github.com/user-attachments/assets/be709716-bcc4-457c-a271-4e6696032f57)|
 
-| MacOS 14+ (Sonoma) | Install instruction |
-|---|---|
-|![sonoma_dialog-min](https://github.com/khmyznikov/pwa-install/assets/6115884/4ee02327-9abd-4d5e-a581-537dccb2187f)|![sonoma-dialog-open-min](https://github.com/khmyznikov/pwa-install/assets/6115884/6b147938-b55b-479a-85ea-1778868e6ff5)|
+| MacOS 14-26+ (Tahoe) |
+|---|
+|![macos_default](https://github.com/user-attachments/assets/c868fa2a-283e-4dcb-b6c5-b2bacdc1749e)|
 
 
 
-| iPadOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Instruction |
+| iPadOS | Instruction |
 |---|---|
 |![iPadOS example default](https://github.com/user-attachments/assets/a9b94313-7a88-4042-88c4-be7cc585e236)|![iPadOS install instruction](https://github.com/user-attachments/assets/0f62be23-ba2a-4bf9-b979-058487ccc238)
 
 
 
-| Android | Firefox/Opera/Others | App gallery&nbsp;&nbsp; |
+| Android | Firefox/Opera/Others | App gallery |
 |-|-|-|
-|![Android example default](https://user-images.githubusercontent.com/6115884/169654789-41fb88b3-97b2-4992-aab5-0def6015be21.jpg)|![Firefox Opera and others](https://github.com/user-attachments/assets/03131c42-8cd0-4e93-a2fe-d75a75223550)|![Android example white](https://user-images.githubusercontent.com/6115884/169654871-33f30d44-b70c-4912-a678-3d97fd0d80a8.jpg)|
+|![Android example default](https://github.com/user-attachments/assets/cd973d85-a7e7-4699-84c3-dc7c54aac146)|![Firefox Opera and others](https://github.com/user-attachments/assets/dc238509-96f6-4a8e-a8ba-7df0997a2c16)|![Android gallery](https://github.com/user-attachments/assets/98ac4107-c55b-464a-9881-bbc51721ac6d)|
 
 | Chrome&nbsp; | App Gallery&nbsp;&nbsp; |
 |---|---|
-|![Chrome example default](https://user-images.githubusercontent.com/6115884/169655166-07f02a6b-a72a-4eb8-8ae1-e5a32fcac530.jpg)|![Chrome example gallery](https://user-images.githubusercontent.com/6115884/169655205-34b9b1a8-328b-45f8-8cd2-f6524e82469e.jpg)|
+|![Chrome example default](https://github.com/user-attachments/assets/7406b3ff-4282-4a07-a3c1-e78f8949c00b)|![Chrome example gallery](https://github.com/user-attachments/assets/7c9722f1-0435-4901-ba21-d7e54b228022)|
 
 <br>
 
