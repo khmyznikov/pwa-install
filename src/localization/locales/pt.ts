@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Instalar`,
 's633502f7cff4f847': `Abra o menu do seu navegador`,
 's681e399d63311fba': `Mostrar Galeria`,
+'s7f0591f08e318eda': `Pressione Mais no menu de Compartilhar`,
 's8114bd55cae5a22b': `Pressione Adicionar ao Dock`,
 's922329d6f6213590': `Adicionar ao Dock`,
 's9af56bf005b49c74': `Role para baixo até "Adicionar à Tela de Início"`,

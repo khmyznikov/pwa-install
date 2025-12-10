@@ -74,6 +74,10 @@
         <source>Scroll down to "Add to Home Screen"</source>
         <target>"Ana Ekrana Ekle" seçeneğine kadar aşağı kaydırın</target>
       </trans-unit>
+      <trans-unit id="s7f0591f08e318eda">
+        <source>Press More in Share menu</source>
+        <target>Paylaş menüsünde Daha Fazla'ya basın</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

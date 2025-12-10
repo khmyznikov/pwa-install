@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Installera`,
 's633502f7cff4f847': `Öppna din webbläsares meny`,
 's681e399d63311fba': `Visa galleri`,
+'s7f0591f08e318eda': `Tryck på Mer i delningsmenyn`,
 's8114bd55cae5a22b': `Välj Lägg till i Dock`,
 's922329d6f6213590': `Lägg till i Dock`,
 's9af56bf005b49c74': `Scrolla ner till "Lägg till på hemskärmen"`,

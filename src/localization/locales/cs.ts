@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Nainstalovat`,
 's633502f7cff4f847': `Otevřete nabídku prohlížeče`,
 's681e399d63311fba': `Zobrazit galerii`,
+'s7f0591f08e318eda': `Stiskněte Více v menu Sdílet`,
 's8114bd55cae5a22b': `Stiskněte Přidat do Docku`,
 's922329d6f6213590': `Přidat do Docku`,
 's9af56bf005b49c74': `Projděte dolů k "Přidat na plochu"`,

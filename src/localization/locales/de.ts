@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Installieren`,
 's633502f7cff4f847': `Öffnen Sie das Menü Ihres Browsers`,
 's681e399d63311fba': `Galerie anzeigen`,
+'s7f0591f08e318eda': `Drücken Sie auf Mehr im Teilen-Menü`,
 's8114bd55cae5a22b': `Drücken Sie auf Zum Dock hinzufügen`,
 's922329d6f6213590': `Zum Dock hinzufügen`,
 's9af56bf005b49c74': `Scrollen Sie nach unten zu "Zum Startbildschirm hinzufügen"`,

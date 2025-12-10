@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Zainstaluj`,
 's633502f7cff4f847': `Otwórz menu przeglądarki`,
 's681e399d63311fba': `Pokaż galerię`,
+'s7f0591f08e318eda': `Naciśnij Więcej w menu Udostępnij`,
 's8114bd55cae5a22b': `Wybierz "Dodaj do Docka"`,
 's922329d6f6213590': `Dodaj do Docka`,
 's9af56bf005b49c74': `Przewiń w dół do opcji "Dodaj do Ekranu Głównego"`,

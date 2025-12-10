@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Installer`,
 's633502f7cff4f847': `Åpne menyen i nettleseren din`,
 's681e399d63311fba': `Vis galleri`,
+'s7f0591f08e318eda': `Trykk på Mer i delingsmenyen`,
 's8114bd55cae5a22b': `Velg Legg til i Dock`,
 's922329d6f6213590': `Legg til i Dock`,
 's9af56bf005b49c74': `Rull ned til «Legg til på Hjem-skjerm»`,

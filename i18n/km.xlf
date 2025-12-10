@@ -74,6 +74,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>អូសចុះទៅកាន់ "បន្ថែមទៅផ្ទាំងអេក្រង់ដើម"</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>ចុចលើ បន្ថែម នៅក្នុងម៉ឺនុយ ចែករំលែក</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

@@ -74,6 +74,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>Scorri verso il basso fino a "Aggiungi alla schermata principale"</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>Premi Altro nel menu Condividi</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

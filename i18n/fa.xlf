@@ -74,6 +74,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>به پایین اسکرول کنید تا به "Add to Home Screen" برسید</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>در منوی اشتراک‌گذاری روی بیشتر فشار دهید</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

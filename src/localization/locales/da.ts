@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Installer`,
 's633502f7cff4f847': `Åbn din browsermenu`,
 's681e399d63311fba': `Vis galleri`,
+'s7f0591f08e318eda': `Tryk på Mere i Del-menuen`,
 's8114bd55cae5a22b': `Vælg Tilføj til Dock`,
 's922329d6f6213590': `Tilføj til Dock`,
 's9af56bf005b49c74': `Rul ned til "Tilføj til hjemmeskærm"`,

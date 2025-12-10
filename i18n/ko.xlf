@@ -74,6 +74,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>"홈 화면에 추가"로 스크롤하기</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>공유 메뉴에서 더보기 누르기</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

@@ -41,7 +41,7 @@ const template = (name: string, description: string, installDescription: string,
                             </div>
                             <div class="step-text">${msg('Open in your main browser')}</div>
                         </div>`: ''}
-                        ${!isDesktop && !Utils.isAppleMobileNonSafari()? html`
+                        ${!isDesktop && !Utils.isAppleMobileNonSafari() && !Utils.isIPad()? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
@@ -60,6 +60,17 @@ const template = (name: string, description: string, installDescription: string,
                             </div>
                             <div class="step-text">${msg('Press Share in Navigation bar')}</div>
                         </div>
+                        ${!isDesktop && Utils.isIPad()? html`
+                        <div class="description-step">
+                            <div class="svg-wrap">
+                                <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
+                                    <circle cx="2" cy="12" r="2" fill="currentColor"/>
+                                    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                                    <circle cx="22" cy="12" r="2" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="step-text">${msg('Press More in Share menu')}</div>
+                        </div>`: ''}
                         <div class="description-step">
                             <div class="svg-wrap">
                                 ${isDesktop? 

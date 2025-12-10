@@ -74,6 +74,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>Kéo đến mục "Thêm vào Màn hình chính"</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>Nhấn Thêm trong menu Chia sẻ</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

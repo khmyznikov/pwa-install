@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Yükle`,
 's633502f7cff4f847': `Tarayıcı menünüzü açın`,
 's681e399d63311fba': `Galeriyi Göster`,
+'s7f0591f08e318eda': `Paylaş menüsünde Daha Fazla'ya basın`,
 's8114bd55cae5a22b': `Dock’a ekleye basın`,
 's922329d6f6213590': `Dock’a Ekle`,
 's9af56bf005b49c74': `"Ana Ekrana Ekle" seçeneğine kadar aşağı kaydırın`,

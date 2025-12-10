@@ -74,6 +74,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>Scrolla ner till "Lägg till på hemskärmen"</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>Tryck på Mer i delningsmenyn</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

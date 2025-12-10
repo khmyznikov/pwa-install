@@ -74,6 +74,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>Görgessen le a "Hozzáadás a kezdőképernyőhöz" lehetőséghez</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>Nyomja meg a Több gombot a Megosztás menüben</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

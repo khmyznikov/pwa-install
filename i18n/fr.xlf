@@ -74,6 +74,10 @@
         <source>Scroll down to "Add to Home Screen"</source>
         <target>Faites défiler vers le bas jusqu'à "Ajouter à l'écran d'accueil"</target>
       </trans-unit>
+      <trans-unit id="s7f0591f08e318eda">
+        <source>Press More in Share menu</source>
+        <target>Appuyez sur Plus dans le menu Partager</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

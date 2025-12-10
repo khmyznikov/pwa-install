@@ -72,6 +72,10 @@
   <source>Scroll down to "Add to Home Screen"</source>
   <target>Померите се надоле до "Add to Home Screen"</target>
 </trans-unit>
+<trans-unit id="s7f0591f08e318eda">
+  <source>Press More in Share menu</source>
+  <target>Притисните Више у Share менију</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

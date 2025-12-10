@@ -40,6 +40,10 @@ export default class Utils {
         return this.isAppleMobile() && navigator.userAgent.match(/CriOS|EdgiOS/)? true : false;
     }
 
+    static isIPad(): boolean {
+        return navigator.userAgent.match(/iPad|Macintosh/) && this.isAppleMobile()? true : false;
+    }
+
     static isIOS26Plus(): boolean {
         if (!CSS.supports('text-wrap', 'pretty')){
             return false;

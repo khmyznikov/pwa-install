@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Cài đặt`,
 's633502f7cff4f847': `Mở menu trình duyệt của bạn`,
 's681e399d63311fba': `Hiển thị thư viện`,
+'s7f0591f08e318eda': `Nhấn Thêm trong menu Chia sẻ`,
 's8114bd55cae5a22b': `Nhấp vào "Thêm vào Dock"`,
 's922329d6f6213590': `Thêm vào Dock`,
 's9af56bf005b49c74': `Kéo đến mục "Thêm vào Màn hình chính"`,

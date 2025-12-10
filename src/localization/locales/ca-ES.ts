@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Instal·la`,
 's633502f7cff4f847': `Obre el menú del navegador`,
 's681e399d63311fba': `Mostra la galeria`,
+'s7f0591f08e318eda': `Premeu "Més" al menú de Compartir`,
 's8114bd55cae5a22b': `Premeu "Afegeix al Dock"`,
 's922329d6f6213590': `Afegeix al Dock`,
 's9af56bf005b49c74': `Desplaça't cap avall fins a "Afegeix a la pantalla d'inici"`,

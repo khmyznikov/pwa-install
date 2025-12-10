@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Installa`,
 's633502f7cff4f847': `Apri il menu del tuo browser`,
 's681e399d63311fba': `Mostra galleria`,
+'s7f0591f08e318eda': `Premi Altro nel menu Condividi`,
 's8114bd55cae5a22b': `Premi Aggiungi al Dock`,
 's922329d6f6213590': `Aggiungi al Dock`,
 's9af56bf005b49c74': `Scorri verso il basso fino a "Aggiungi alla schermata principale"`,

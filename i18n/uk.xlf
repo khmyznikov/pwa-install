@@ -74,6 +74,10 @@
         <source>Scroll down to "Add to Home Screen"</source>
         <target>Прокрутіть вниз до «На Початковий экран»</target>
       </trans-unit>
+      <trans-unit id="s7f0591f08e318eda">
+        <source>Press More in Share menu</source>
+        <target>Натисніть «Більше» в меню «Поділитися»</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
