@@ -16,7 +16,7 @@
       </trans-unit>
       <trans-unit id="scdaf4bbff76674c8">
         <source>Add to Home Screen</source>
-        <target>Toevoegen aan het startscherm</target>
+        <target>Zet op beginscherm</target>
       </trans-unit>
       <trans-unit id="sfea652f6580ff086">
         <source>This site has app functionality.</source>
@@ -28,7 +28,7 @@
       </trans-unit>
       <trans-unit id="s182ab2d6c997515f">
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
-        <target>Voeg het toe aan je startscherm voor een uitgebreide ervaring en gemakkelijke toegang.</target>
+        <target>Zet het op je beginscherm voor een uitgebreide ervaring en gemakkelijke toegang.</target>
       </trans-unit>
       <trans-unit id="s8114bd55cae5a22b">
         <source>Press Add to Dock</source>
@@ -48,7 +48,7 @@
       </trans-unit>
       <trans-unit id="s4e1e10a6ca408245">
         <source>Tap "Add to Home screen"</source>
-        <target>Tik op "Toevoegen aan startscherm"</target>
+        <target>Tik op "Zet op beginscherm"</target>
       </trans-unit>
       <trans-unit id="s386eca8362ff6155">
         <source>Press More if no Share icon</source>
@@ -64,7 +64,7 @@
       </trans-unit>
       <trans-unit id="se0e473adfda8066c">
         <source>Open in your main browser</source>
-        <target>Open in je hoofdprogramma</target>
+        <target>Open in je hoofdbrowser</target>
       </trans-unit>
       <trans-unit id="s224cbcec014ef6b5">
         <source>Press Share in Navigation bar</source>
@@ -72,7 +72,7 @@
       </trans-unit>
       <trans-unit id="s9af56bf005b49c74">
         <source>Scroll down to "Add to Home Screen"</source>
-        <target>Scrol naar beneden naar "Toevoegen aan startscherm"</target>
+        <target>Scrol omlaag en klik op "Zet op beginscherm"</target>
       </trans-unit>
       <trans-unit id="s7f0591f08e318eda">
         <source>Press More in Share menu</source>
