@@ -10,6 +10,8 @@ Installation dialog for Progressive Web Application (PWA) and Add to Home Screen
 
 Use it as [Web Component with any **modern** framework](https://custom-elements-everywhere.com/). No polyfill is required.
 - [React <= 18 sample](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
+- [React 19+ sample](https://stackblitz.com/edit/react-19-web-components-shoelace-8rdjcfbb?file=src%2FApp.jsx)
+- [Next.js 15 + React 19 sample](https://stackblitz.com/edit/github-xrnbtug5?file=src%2Fapp%2F(delete-this-and-modify-page.tsx)%2FPWAInstall.tsx)
 - [Angular sample](https://stackblitz.com/edit/aozf92?file=package.json,src%2Fapp%2Fpwa-install%2Fpwa-install.component.html,src%2Fapp%2Fpwa-install%2Fpwa-install.component.ts)
 - [Svelte](https://stackblitz.com/edit/svelte-tab-2-sng9wa?file=src%2Froutes%2F%2Bpage.svelte)
   
@@ -72,7 +74,9 @@ import '@khmyznikov/pwa-install';
 ```html
 <pwa-install></pwa-install>
 ```
-[React <= 18 polyfill](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
+- [React <= 18 polyfill](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
+- [React 19+ sample](https://stackblitz.com/edit/react-19-web-components-shoelace-8rdjcfbb?file=src%2FApp.jsx)
+- [Next.js 15 + React 19 sample](https://stackblitz.com/edit/github-xrnbtug5?file=src%2Fapp%2F(delete-this-and-modify-page.tsx)%2FPWAInstall.tsx)
 
 ### **[Demo](https://khmyznikov.com/pwa-install/)**
 
