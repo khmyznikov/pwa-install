@@ -82,11 +82,10 @@
     "webpack-merge": "^6.0.1"
   },
   "peerDependencies": {
-    "@lit/react": "^1.0.7",
+    "@lit/react": "^1.0.8",
     "@types/dom-chromium-installation-events": "^101.0.4",
     "@types/web-app-manifest": "^1.0.9",
-    "lit": "^3.3.0",
-    "@lit/localize": "^0.12.2"
+    "lit": "^3.3.1"
   },
   "bugs": {
     "url": "https://github.com/khmyznikov/pwa-install/issues"
