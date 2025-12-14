@@ -8,5 +8,5 @@ export default {
 	'lit-element': 'lit-element',
 	'@khmyznikov/pwa-install': '@khmyznikov/pwa-install',
 	'react': 'react',
-	'@lit/localize': '@lit/localize',
+	// '@lit/localize': '@lit/localize',
 }
