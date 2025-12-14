@@ -479,6 +479,14 @@
             "name": "PWAInstallAttributes",
             "module": "src/index.ts"
           }
+        },
+        {
+          "kind": "js",
+          "name": "PWAInstallProps",
+          "declaration": {
+            "name": "PWAInstallProps",
+            "module": "./types/jsx"
+          }
         }
       ]
     }

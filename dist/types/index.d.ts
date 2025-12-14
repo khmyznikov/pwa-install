@@ -53,3 +53,4 @@ export declare class PWAInstallElement extends LitElement {
     render(): import("lit").TemplateResult<1>;
 }
 export { PWAInstallAttributes };
+export type { PWAInstallProps } from './types/jsx';

@@ -35,5 +35,6 @@
         "name": "typescript-lit-html-plugin"
       }
     ]
-  }
+  },
+  "exclude": ["dist", "node_modules", "docs"]
 }

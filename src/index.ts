@@ -349,3 +349,4 @@ if (!customElements.get('pwa-install')) {
 }
 
 export { PWAInstallAttributes };
+export type { PWAInstallProps } from './types/jsx';
