@@ -5,7 +5,7 @@
         --background-color: rgba(255, 255, 255, 0.8);
         --text-color-button:#fff;
         --background-color-button:#fff;
-        --background-color-button-active: #DBDAE0;
+        --background-color-button-active: rgb(181,181,187);
         --border-bottom-color: rgba(0, 0, 0, 0.1);
         --icon-how-to-color: #527AFB;
 
@@ -252,6 +252,9 @@
 
                 background-color: var(--background-color-button);
 
+                -webkit-tap-highlight-color: transparent;
+                outline: none;
+
                 svg{
                     fill: var(--text-color-normal);
                 }
@@ -459,7 +462,7 @@
 
 
         &.aqua{
-            --border-bottom-color: rgb(95 95 95 / 50%);
+            --border-bottom-color: rgb(95 95 95 / 30%);
             --divider-buttons-color: #85858580;
             --background-color: rgba(255, 255, 255, 0.5);
             --background-color-button: rgb(211 211 211 / 60%);
@@ -471,12 +474,13 @@
             border: 1px solid rgb(var(--base-color) / 50%);
 
             
-            border-radius: 30px;
+            border-radius: 35px;
             grid-template-columns: 100px 1fr;
 
-            background: color-mix(in srgb, var(--tint-color) 40%, rgb(var(--base-color) / 50%) 60%);
-            box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 25%) 70%), 
-                            inset 0px 0px 1px 1px color-mix(in srgb, var(--tint-color) 30%, rgb(var(--base-color) / 50%) 70%);
+            background: color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 70%) 80%);
+            box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 25%) 80%), 
+                            inset 0px 0px 1px 1px color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 50%) 80%);
+            backdrop-filter: blur(3px);
 
             .about{
                 margin-right: 26px;
@@ -495,7 +499,7 @@
                 margin-left: 26px;
 
                 .icon-image{
-                    border-radius: 16px;
+                    border-radius: 14px;
                     width: 60px;
                     height: 60px;
                     margin-left: 0px;
@@ -516,9 +520,6 @@
                 }
                 &.gallery{
                     border-radius: 50%;
-                    #pwa-gallery{
-                        // padding: 2px;
-                    }
                 }
 
                 &.gallery + .install::before{
