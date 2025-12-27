@@ -442,6 +442,7 @@
                 opacity: 0;
                 min-height: 0;
                 padding: 0;
+                pointer-events: none;
                 & + .install::before{
                     visibility: hidden;
                 }
@@ -453,6 +454,7 @@
                 opacity: 0;
                 min-height: 0;
                 padding: 0;
+                pointer-events: none;
                 &::before{
                     visibility: hidden;
                 }
@@ -611,6 +613,14 @@
                     .dialog-button.button.gallery{
                         border-bottom-left-radius: 26px;
                         border-bottom-right-radius: 26px;
+                    }
+                }
+                .how-to-body .how-to-description .description-step{
+                    .svg-wrap{
+                        border-radius: 50%;
+                        width: 60px;
+                        height: 60px;
+                        background-color: color-mix(in srgb, var(--tint-color) 20%, color-mix(in srgb, var(--text-color-normal) 10%, transparent) 50%);
                     }
                 }
             }
@@ -893,7 +903,7 @@ $phone-small-landscape: 667px;
             }
             &.available{
                 bottom: 20px;
-                max-height: calc(85vh - 20px);
+                max-height: calc(88vh - 20px);
             }
             &.dialog-body{
                 filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 0px 15px);
