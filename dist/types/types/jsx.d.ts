@@ -1,6 +1,6 @@
 import type { PWAInstallElement } from '../index';
 import type { PWAInstallAttributes } from './types';
-export type PWAInstallProps = Partial<PWAInstallElement> & PWAInstallAttributes & React.HTMLAttributes<HTMLElement> & {
+export type PWAInstallProps = Partial<PWAInstallElement> & PWAInstallAttributes & React.HTMLAttributes<PWAInstallElement> & React.RefAttributes<PWAInstallElement> & {
     children?: React.ReactNode;
 };
 declare global {

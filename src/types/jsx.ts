@@ -3,7 +3,9 @@ import type { PWAInstallAttributes } from './types';
 
 export type PWAInstallProps = Partial<PWAInstallElement> &
     PWAInstallAttributes &
-    React.HTMLAttributes<HTMLElement> & {
+    React.HTMLAttributes<PWAInstallElement> &
+    React.RefAttributes<PWAInstallElement> & 
+    {
         children?: React.ReactNode;
     };
 
