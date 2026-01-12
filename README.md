@@ -85,19 +85,20 @@ import '@khmyznikov/pwa-install';
 ## Supported params
 ```html
 <pwa-install
-  manual-apple="true"
-  manual-chrome="true"
-  disable-chrome="true"
-  disable-close="true"
-  use-local-storage="true"
+  manual-apple
+  manual-chrome
+  disable-chrome
+  disable-close
+  use-local-storage
 
   install-description="Custom call to install text"
-  disable-install-description="true"
-  disable-screenshots="true"
-  disable-screenshots-apple="true"
-  disable-screenshots-chrome="true"
+  disable-install-description
+  disable-screenshots
+  disable-screenshots-apple
+  disable-screenshots-chrome
+  manual-how-to
 
-  disable-android-fallback="true"
+  disable-android-fallback
 
   manifest-url="/manifest.json"
   name="PWA"
@@ -109,6 +110,7 @@ import '@khmyznikov/pwa-install';
   disable-chrome param is for completely disabling custom logic and interception for Chromium browsers (will work built-in browser logic).
   use-local-storage will store the user's preference to ignore the prompt in long-lived storage (so they will not be prompted again unless they clear application data)
   disable-android-fallback will disable instructions for non-Chrome browsers on Android
+  manual-how-to shows the instructions right away, disabling screenshots (Apple only)
 --->
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*

@@ -460,6 +460,15 @@
                 }
             }
         }
+        &.how-to.how-to-manual{
+            .action-buttons{
+                margin-top: 0;
+                padding-top: 0;
+                .dialog-button{
+                    display: none;
+                }
+            }
+        }
 
 
 

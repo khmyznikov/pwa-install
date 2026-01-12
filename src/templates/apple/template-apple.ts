@@ -6,9 +6,9 @@ import { msg } from '@lit/localize';
 import Utils from '../../utils';
 
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false, isApple26Plus: boolean = false, isDesktop: boolean = false, customStyles: Record<string, string> = {}) => {
+const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, manualHowTo: boolean = false, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false, isApple26Plus: boolean = false, isDesktop: boolean = false, customStyles: Record<string, string> = {}) => {
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-    const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, 'how-to': howToRequested, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
+    const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
     let styles = { '--tint-color': Utils.getPageBackgroundColor(), ...customStyles };
 
     return html`

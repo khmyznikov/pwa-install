@@ -112,6 +112,15 @@
             },
             {
               "kind": "field",
+              "name": "manualHowTo",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "manual-how-to"
+            },
+            {
+              "kind": "field",
               "name": "disableChrome",
               "type": {
                 "text": "boolean"
@@ -405,6 +414,14 @@
               },
               "default": "false",
               "fieldName": "manualChrome"
+            },
+            {
+              "name": "manual-how-to",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "manualHowTo"
             },
             {
               "name": "disable-chrome",

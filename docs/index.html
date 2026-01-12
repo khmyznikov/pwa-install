@@ -94,6 +94,11 @@
 			<label>
 				<input type="checkbox" onchange="disableClose(this)">
 				Hide Close Button
+			</label><br>
+
+			<label>
+				<input type="checkbox" onchange="manualHowTo(this)">
+				How-to shown by default (Apple)
 			</label>
 			
 			<fieldset>
@@ -207,6 +212,11 @@
 		const disableClose = (cb) => {
 			cb.checked ? pwaInstall.setAttribute('disable-close', true) :
 			pwaInstall.removeAttribute('disable-close');
+		}
+		const manualHowTo = (cb) => {
+			cb.checked ? pwaInstall.setAttribute('manual-how-to', true) :
+			pwaInstall.removeAttribute('manual-how-to');
+			pwaInstall._galleryRequested = false;
 		}
 		const setAttr = (attr, value) => {
 			value? pwaInstall.setAttribute(attr, value) :
