@@ -11,6 +11,7 @@ export const sourceLocale = `en`;
  * lexicographically.
  */
 export const targetLocales = [
+  `bg`,
   `ca-ES`,
   `cs`,
   `da`,
@@ -44,6 +45,7 @@ export const targetLocales = [
  * All valid project locale codes. Sorted lexicographically.
  */
 export const allLocales = [
+  `bg`,
   `ca-ES`,
   `cs`,
   `da`,
