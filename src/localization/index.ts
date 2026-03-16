@@ -4,6 +4,7 @@ import {
   targetLocales,
 } from './locale-codes';
 
+import * as ar from './locales/ar';
 import * as bg from './locales/bg';
 import * as ru from './locales/ru';
 import * as tr from './locales/tr';
@@ -34,6 +35,7 @@ import * as caEs from "./locales/ca-ES";
 import * as he from "./locales/he";
 
 const localizedTemplates = new Map([
+  ['ar', ar],
   ['bg', bg],
   ['ru', ru],
   ['tr', tr],
