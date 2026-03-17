@@ -13,5 +13,5 @@ export default class PWAGalleryElement extends LitElement {
     private _init;
     firstUpdated(): void;
     connectedCallback(): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }

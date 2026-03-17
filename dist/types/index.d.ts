@@ -51,7 +51,7 @@ export declare class PWAInstallElement extends LitElement {
     private _requestUpdate;
     connectedCallback(): Promise<void>;
     willUpdate(changedProperties: PropertyValues<this>): void;
-    render(): import("lit").TemplateResult<1>;
+    render(): import("lit-html").TemplateResult<1>;
 }
 export { PWAInstallAttributes };
 export type { PWAInstallProps } from './types/jsx';

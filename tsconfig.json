@@ -6,7 +6,7 @@
       "esnext",
       "dom"
     ],
-    "typeRoots": ["./node_modules/@webgpu/types", "./node_modules/@types"],
+    "types": ["dom-chromium-installation-events"],
     "useDefineForClassFields": false,
     "sourceMap": true,
     "declaration": true,
@@ -25,7 +25,7 @@
     "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,

@@ -71,5 +71,8 @@ export default {
 	},
 	resolve: {
 		extensions: ['.ts', '.js']
+	},
+	stats: {
+      errorDetails: true,
 	}
 };

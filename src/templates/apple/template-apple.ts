@@ -40,7 +40,7 @@ const template = (name: string, description: string, installDescription: string,
                             </div>
                             <div class="step-text">${msg('Open in your main browser')}</div>
                         </div>`: ''}
-                        ${!isDesktop && !Utils.isAppleMobileNonSafari() && !Utils.isIPad()? html`
+                        ${!isDesktop && !Utils.isAppleMobileNonSafari() && !Utils.isIPad() && isApple26Plus? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
