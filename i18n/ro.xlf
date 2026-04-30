@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file target-language="ro" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+    <body>
+      <trans-unit id="s6196153c4b0c1ea0">
+        <source>Install</source>
+        <target>Instalați</target>
+      </trans-unit>
+      <trans-unit id="sa5ef80b4bb9b39f8">
+        <source>Less</source>
+        <target>Mai puțin</target>
+      </trans-unit>
+      <trans-unit id="s37a9e8aec5713460">
+        <source>More</source>
+        <target>Mai mult</target>
+      </trans-unit>
+      <trans-unit id="scdaf4bbff76674c8">
+        <source>Add to Home Screen</source>
+        <target>Adaugă pe Ecranul Principal</target>
+      </trans-unit>
+      <trans-unit id="sfea652f6580ff086">
+        <source>This site has app functionality.</source>
+        <target>Acest site are funcționalități de aplicație.</target>
+      </trans-unit>
+      <trans-unit id="se740f75b95a51807">
+        <source>Add it to your Dock for extensive experience and easy access.</source>
+        <target>Adaugă-l în Dock pentru o experiență extinsă și acces facil.</target>
+      </trans-unit>
+      <trans-unit id="s182ab2d6c997515f">
+        <source>Add it to your Home Screen for extensive experience and easy access.</source>
+        <target>Adaugă-l pe Ecranul Principal pentru o experiență extinsă și acces facil.</target>
+      </trans-unit>
+      <trans-unit id="s8114bd55cae5a22b">
+        <source>Press Add to Dock</source>
+        <target>Apasă pe „Adaugă în Dock”</target>
+      </trans-unit>
+      <trans-unit id="s922329d6f6213590">
+        <source>Add to Dock</source>
+        <target>Adaugă în Dock</target>
+      </trans-unit>
+      <trans-unit id="sba52286c21552a4e">
+        <source>Install it on your device for extensive experience and easy access.</source>
+        <target>Instalează-l pe dispozitivul tău pentru o experiență completă și acces facil.</target>
+      </trans-unit>
+      <trans-unit id="s633502f7cff4f847">
+        <source>Open your browser menu</source>
+        <target>Deschide meniul browserului tău</target>
+      </trans-unit>
+      <trans-unit id="s4e1e10a6ca408245">
+        <source>Tap "Add to Home screen"</source>
+        <target>Atinge „Adaugă pe ecranul principal”</target>
+      </trans-unit>
+      <trans-unit id="s386eca8362ff6155">
+        <source>Press More if no Share icon</source>
+        <target>Apasă Mai mult dacă nu există pictograma Partajare</target>
+      </trans-unit>
+      <trans-unit id="sc16e00a7a8b2fde2">
+        <source>Back</source>
+        <target>Înapoi</target>
+      </trans-unit>
+      <trans-unit id="s681e399d63311fba">
+        <source>Show Gallery</source>
+        <target>Afișează galeria</target>
+      </trans-unit>
+      <trans-unit id="se0e473adfda8066c">
+        <source>Open in your main browser</source>
+        <target>Deschide în browserul principal</target>
+      </trans-unit>
+      <trans-unit id="s224cbcec014ef6b5">
+        <source>Press Share in Navigation bar</source>
+        <target>Apasă Partajare în bara de navigare</target>
+      </trans-unit>
+      <trans-unit id="s9af56bf005b49c74">
+        <source>Scroll down to "Add to Home Screen"</source>
+        <target>Derulează în jos până la „Adaugă pe ecranul principal”</target>
+      </trans-unit>
+      <trans-unit id="s7f0591f08e318eda">
+        <source>Press More in Share menu</source>
+        <target>Apasă Mai mult în meniul Partajare</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
