@@ -18,6 +18,7 @@ import * as pl from "./locales/pl";
 import * as uk from "./locales/uk";
 import * as zhHK from "./locales/zh-HK";
 import * as zhCN from "./locales/zh-CN";
+import * as zhTW from "./locales/zh-TW";
 import * as it from "./locales/it";
 import * as cs from "./locales/cs";
 import * as no from "./locales/no";
@@ -49,6 +50,7 @@ const localizedTemplates = new Map([
   ['uk', uk],
   ['zh-HK', zhHK],
   ['zh-CN', zhCN],
+  ['zh-TW', zhTW],
   ['it', it],
   ['cs', cs],
   ['no', no], // + nb
@@ -86,7 +88,6 @@ export const changeLocale = async (lang: string) => {
   // Fallback to simplified Chinese
   switch (lang) {
     case 'zh':
-    case 'zh-TW':
       lang = 'zh-CN';
       break;
     default:
