@@ -16,13 +16,14 @@ If you are interested in making a code contribution and would like to learn more
 ###  🌐 How to contribute translation?
 Adding new languages in Lit framework are relatively easy. You need to make a few simple steps and do translation.
 
-1. Define proper [locale code](https://lit.dev/docs/localization/overview/#locale-codes) for your language.
-2. Find `lit-localize.json` config file and add new lang code to **targetLocales**.
+1. Execute `npm run localize:extract` to generate **XLF** file for the new language.
+2. Find the new file in the `i18n` folder.
 3. Execute `npm run localize:extract` to generate **XLF** file for new language.
 4. Find new file in `i18n` folder.
 5. Do translation inside `<target>` tags below `<source>` tag of each string.
-6. Find `/src/localization/index.ts` and import new locale like the rest of the languages.
-7. Execute `npm run dev` to test new translation.
+6. Execute `npm run localize:build` to generate runtime TypeScript module for your newly added localization.
+7. Find `/src/localization/index.ts` and import new locale like the rest of the languages.
+8. Execute `npm run dev` to test new translation.
 9. Don't include full build into PR
 
 <br>
