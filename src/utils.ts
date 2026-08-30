@@ -1,15 +1,41 @@
 import { WebAppManifest } from 'web-app-manifest';
-import { IRelatedApp, Manifest } from './types/types';
+import { IRelatedApp, IWebInstallNavigator, Manifest } from './types/types';
 
-const _eventDispatcher = (_element: Element, name: string, message: string) => {
+type EventDetails = Record<string, unknown>;
+
+const _eventDispatcher = (_element: Element, name: string, message: string, details: EventDetails = {}) => {
     const event  = new CustomEvent(name, {
         detail: {
-          message
+                    message,
+                    ...details
         }
     });
     _element.dispatchEvent(event);
 }
 export default class Utils {
+    static isWebInstallSupported(): boolean {
+        return typeof (navigator as IWebInstallNavigator).install === 'function';
+    }
+
+    static resolveManifestUrl(manifestUrl: string): string {
+        return new URL(manifestUrl, document.baseURI).href;
+    }
+
+    static isCurrentManifestTarget(manifestUrl: string): boolean {
+        if (!manifestUrl)
+            return true;
+
+        const manifestLink = document.querySelector<HTMLLinkElement>('link[rel~="manifest"][href]');
+        if (!manifestLink)
+            return false;
+
+        try {
+            return this.resolveManifestUrl(manifestUrl) === manifestLink.href;
+        } catch (error) {
+            return false;
+        }
+    }
+
     static isAppleMobile(): boolean {
 		if (
                 (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
@@ -110,11 +136,11 @@ export default class Utils {
         }
     }
 
-    static eventInstalledSuccess(_element: Element) {
-        _eventDispatcher(_element, 'pwa-install-success-event', 'App install success (Chromium/Android only)');
+    static eventInstalledSuccess(_element: Element, details: EventDetails = {}) {
+        _eventDispatcher(_element, 'pwa-install-success-event', 'App install success (Chromium/Android only)', details);
     }
-    static eventInstalledFail(_element: Element) {
-        _eventDispatcher(_element, 'pwa-install-fail-event', 'App install failed (Chromium/Android only)');
+    static eventInstalledFail(_element: Element, details: EventDetails = {}) {
+        _eventDispatcher(_element, 'pwa-install-fail-event', 'App install failed (Chromium/Android only)', details);
     }
     static eventUserChoiceResult(_element: Element, message: string) {
         _eventDispatcher(_element, 'pwa-user-choice-result-event', message);

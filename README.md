@@ -101,6 +101,7 @@ import '@khmyznikov/pwa-install';
   disable-android-fallback
 
   manifest-url="/manifest.json"
+  manifest-id="https://example.com/app-id"
   name="PWA"
   description="Progressive web application"         
   icon="/icon.png">
@@ -114,6 +115,10 @@ import '@khmyznikov/pwa-install';
 --->
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
+
+On supported Chromium browsers, the component uses the Web Install API automatically. `manifest-url` is used both to load the dialog metadata and as the manifest passed to `navigator.install()`. Relative manifest URLs are resolved against the current document. `manifest-id` is optional when the manifest declares an explicit `id`.
+
+The component continues to intercept and retain `beforeinstallprompt` as a legacy fallback. If the Web Install API fails for a technical reason and the configured manifest belongs to the current document, `pwa-install-fail-event` reports that fallback is available and the next user click uses the retained prompt. A legacy prompt cannot install a different app.
 
 ## Custom Styles
 
@@ -147,6 +152,9 @@ pwaInstall.setAttribute('styles', JSON.stringify({ '--tint-color': '#6366f1' }))
   var pwaInstall = document.getElementsByTagName('pwa-install')[0];
 
   pwaInstall.addEventListener('pwa-install-success-event', (event) => {console.log(event.detail.message)});
+  pwaInstall.addEventListener('pwa-install-fail-event', (event) => {
+    console.log(event.detail.errorName, event.detail.fallbackAvailable);
+  });
 </script>
 ```
 ⚠️ `success/fail/choice` events is Chromium only, iOS don't have them.
@@ -166,6 +174,7 @@ This is **not** a error and **not** a bug. This means that the component success
 - isApple26Plus: *boolean*
 - isUnderStandaloneMode: *boolean*
 - isRelatedAppsInstalled: *boolean*
+- isWebInstallSupported: *boolean*
 
 ```html
 <script type="text/javascript">
@@ -186,9 +195,11 @@ This is **not** a error and **not** a bug. This means that the component success
 <script type="text/javascript">
   var pwaInstall = document.getElementsByTagName('pwa-install')[0];
 
-  pwaInstall.install();
+  await pwaInstall.install();
 </script>
 ```
+
+The install method prefers `navigator.install()` whenever it is available. After a technical Web Install failure, a retained `beforeinstallprompt` fallback requires a second user click because both browser APIs consume transient user activation.
 
 *getInstalledRelatedApps is Chromium only, always empty on iOS.*
 

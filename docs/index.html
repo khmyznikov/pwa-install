@@ -85,6 +85,8 @@
 			<input type="text" placeholder="Install description override" onchange="setAttr('install-description', this.value)"><br>
 			<input type="text" placeholder="App name override" onchange="setAttr('name', this.value)"><br>
 			<input type="text" placeholder="App description override" onchange="setAttr('description', this.value)"><br>
+			<input type="text" placeholder="Manifest URL override" value="manifest.json" onchange="setAttr('manifest-url', this.value)"><br>
+			<input type="text" placeholder="Manifest ID override" onchange="setAttr('manifest-id', this.value)"><br>
 			<hr>
 			<label>
 				<input type="checkbox" onchange="disableInstallDescription(this)">
@@ -155,6 +157,11 @@
 		const logMessage = (message) => {
 			console.log(message);
 			document.getElementById('events-area').value+=`>: ${message}\r\n`;
+		}
+		const logEvent = (event) => {
+			const {message, ...details} = event.detail;
+			const eventDetails = Object.keys(details).length ? ` ${JSON.stringify(details)}` : '';
+			logMessage(`${message}${eventDetails}`);
 		}
 
 		const getRelated = () => {
@@ -235,8 +242,8 @@
 			pwaInstall.showDialog();
 		}
 
-		pwaInstall.addEventListener('pwa-install-success-event', (event) => {logMessage(event.detail.message)});
-		pwaInstall.addEventListener('pwa-install-fail-event', (event) => {logMessage(event.detail.message)});
+		pwaInstall.addEventListener('pwa-install-success-event', logEvent);
+		pwaInstall.addEventListener('pwa-install-fail-event', logEvent);
 		pwaInstall.addEventListener('pwa-user-choice-result-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-available-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-how-to-event', (event) => {logMessage(event.detail.message)});

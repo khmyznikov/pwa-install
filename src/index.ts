@@ -3,7 +3,7 @@ import { localized } from '@lit/localize';
 import { property, state } from 'lit/decorators.js';
 import { changeLocale, isRTL } from './localization';
 
-import { IRelatedApp, Manifest, IWindow, PWAInstallAttributes } from './types/types';
+import { IRelatedApp, IWebInstallNavigator, Manifest, IWindow, PWAInstallAttributes, WebInstallParams } from './types/types';
 
 import PWAGalleryElement from './gallery';
 import PWABottomSheetElement from './templates/chrome/bottom-sheet';
@@ -30,6 +30,7 @@ import templateApple from './templates/apple/template-apple';
 @localized()
 export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manifest-url'}) manifestUrl = '/manifest.json';
+	@property({attribute: 'manifest-id'}) manifestId = '';
 	@property() icon = '';
 	@property() name = '';
 	@property() description = '';
@@ -65,6 +66,7 @@ export class PWAInstallElement extends LitElement {
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
+	public isWebInstallSupported = false;
 
 	/** @internal */
 	private _isRTL = false;
@@ -76,31 +78,193 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _galleryRequested = false;
 	/** @internal */
+	private _nativeInstallFailed = false;
+	/** @internal */
+	private _installSuccessDispatched = false;
+	/** @internal */
+	private _activeInstallBackend: 'web-install' | 'beforeinstallprompt' | null = null;
+	/** @internal */
+	private _promptListenerAttached = false;
+	/** @internal */
+	private _appInstalledListenerAttached = false;
+	/** @internal */
 	private _install = {
 		handleEvent: () => {
-			if (window.defferedPromptEvent) {
-				this.hideDialog();
-				window.defferedPromptEvent.prompt();
-				window.defferedPromptEvent.userChoice
-					.then((choiceResult: PromptResponseObject) => {
-						this.userChoiceResult = choiceResult.outcome;
-						Utils.eventUserChoiceResult(this, this.userChoiceResult);
-					})
-					.catch((error) => {
-						Utils.eventInstalledFail(this);
-					});
-				window.defferedPromptEvent = null;
-			}
+			void this.install();
 		},
 		passive: true
 	}
-	public install = () => {
+	/** @internal */
+	private _canUseLegacyFallback() {
+		return Boolean(window.defferedPromptEvent) && Utils.isCurrentManifestTarget(this.manifestUrl);
+	}
+	/** @internal */
+	private _setInstallAvailable(available: boolean) {
+		const becameAvailable = available && !this.isInstallAvailable;
+		this.isInstallAvailable = available;
+		if (becameAvailable)
+			Utils.eventInstallAvailable(this);
+		this.requestUpdate();
+	}
+	/** @internal */
+	private _dispatchInstalledSuccess(backend: 'web-install' | 'beforeinstallprompt' | 'browser') {
+		if (this._installSuccessDispatched)
+			return;
+
+		this._installSuccessDispatched = true;
+		Utils.eventInstalledSuccess(this, { backend });
+	}
+	/** @internal */
+	private _captureBeforeInstallPrompt = (event: BeforeInstallPromptEvent) => {
+		if (this.disableChrome)
+			return;
+
+		event.preventDefault();
+		window.defferedPromptEvent = event;
+		this.platforms = event.platforms;
+		this.isAndroidFallback = false;
+		this._installSuccessDispatched = false;
+
+		const isCurrentManifestTarget = Utils.isCurrentManifestTarget(this.manifestUrl);
+		const currentAppUnavailable = isCurrentManifestTarget &&
+			(this.isUnderStandaloneMode || this.isRelatedAppsInstalled);
+		const targetSupported = Utils.isWebInstallSupported() || isCurrentManifestTarget;
+		this._setInstallAvailable(targetSupported && !currentAppUnavailable);
+	}
+	/** @internal */
+	private _setupInstallListeners() {
+		if (!this._promptListenerAttached) {
+			window.addEventListener('beforeinstallprompt', this._captureBeforeInstallPrompt);
+			this._promptListenerAttached = true;
+		}
+
+		if (!this._appInstalledListenerAttached && 'onappinstalled' in window) {
+			window.addEventListener('appinstalled', this._handleAppInstalled);
+			this._appInstalledListenerAttached = true;
+		}
+	}
+	/** @internal */
+	private _handleAppInstalled = () => {
+		window.defferedPromptEvent = null;
+		this._nativeInstallFailed = false;
+		this._setInstallAvailable(false);
+		this._dispatchInstalledSuccess(this._activeInstallBackend || 'browser');
+		this._activeInstallBackend = null;
+	}
+	/** @internal */
+	private async _runLegacyInstall() {
+		const promptEvent = window.defferedPromptEvent;
+		if (!promptEvent)
+			return;
+
+		this.hideDialog();
+		window.defferedPromptEvent = null;
+		this._activeInstallBackend = 'beforeinstallprompt';
+
+		try {
+			await promptEvent.prompt();
+			const choiceResult = await promptEvent.userChoice;
+			this.userChoiceResult = choiceResult.outcome;
+			Utils.eventUserChoiceResult(this, this.userChoiceResult);
+			if (choiceResult.outcome === 'dismissed')
+				this._activeInstallBackend = null;
+		} catch (error) {
+			this._activeInstallBackend = null;
+			Utils.eventInstalledFail(this, {
+				backend: 'beforeinstallprompt',
+				errorName: error instanceof Error ? error.name : 'Error',
+				errorMessage: error instanceof Error ? error.message : String(error),
+				fallbackAvailable: false
+			});
+		}
+	}
+	/** @internal */
+	private async _runWebInstall() {
+		const webInstallNavigator = navigator as IWebInstallNavigator;
+		if (!webInstallNavigator.install)
+			return;
+
+		this._activeInstallBackend = 'web-install';
+		try {
+			if (this.manifestUrl) {
+				const params: WebInstallParams = {
+					manifest: Utils.resolveManifestUrl(this.manifestUrl)
+				};
+				if (this.manifestId)
+					params.manifestId = this.manifestId;
+				await webInstallNavigator.install(params);
+			} else {
+				await webInstallNavigator.install();
+			}
+
+			this._nativeInstallFailed = false;
+			window.defferedPromptEvent = null;
+			this.userChoiceResult = 'accepted';
+			Utils.eventUserChoiceResult(this, this.userChoiceResult);
+			this.hideDialog();
+			this._setInstallAvailable(false);
+			this._dispatchInstalledSuccess('web-install');
+			this._activeInstallBackend = null;
+		} catch (error) {
+			const errorName = error instanceof Error ? error.name : 'Error';
+			if (errorName === 'AbortError') {
+				this._nativeInstallFailed = false;
+				this._activeInstallBackend = null;
+				this._hideDialogUser();
+				return;
+			}
+
+			this._nativeInstallFailed = errorName !== 'InvalidStateError';
+			this._activeInstallBackend = null;
+			const fallbackAvailable = this._nativeInstallFailed && this._canUseLegacyFallback();
+			Utils.eventInstalledFail(this, {
+				backend: 'web-install',
+				errorName,
+				errorMessage: error instanceof Error ? error.message : String(error),
+				fallbackAvailable,
+				fallbackBackend: fallbackAvailable ? 'beforeinstallprompt' : undefined
+			});
+		}
+	}
+	public install = async () => {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
+			if (!Utils.isCurrentManifestTarget(this.manifestUrl)) {
+				Utils.eventInstalledFail(this, {
+					backend: 'manual',
+					errorName: 'NotSupportedError',
+					errorMessage: 'This platform cannot install a different app.',
+					fallbackAvailable: false
+				});
+				return;
+			}
 			this._howToRequested = true;
 			this.requestUpdate();
+			return;
 		}
-		else
-			this._install.handleEvent();
+		if (this.disableChrome)
+			return;
+
+		if (this._nativeInstallFailed && this._canUseLegacyFallback()) {
+			await this._runLegacyInstall();
+			return;
+		}
+
+		if (Utils.isWebInstallSupported()) {
+			await this._runWebInstall();
+			return;
+		}
+
+		if (this._canUseLegacyFallback()) {
+			await this._runLegacyInstall();
+			return;
+		}
+
+		Utils.eventInstalledFail(this, {
+			backend: 'beforeinstallprompt',
+			errorName: 'NotSupportedError',
+			errorMessage: 'No compatible install prompt is available for this app.',
+			fallbackAvailable: false
+		});
 	}
 	/** @internal */
 	private _hideDialog = {
@@ -168,6 +332,7 @@ export class PWAInstallElement extends LitElement {
 		this.isApple26Plus = Utils.isApple26Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
+		this.isWebInstallSupported = Utils.isWebInstallSupported();
 	}
 	/** @internal */
 	private async _triggerAppleDialog() {
@@ -179,10 +344,12 @@ export class PWAInstallElement extends LitElement {
 	}
 	/** @internal */
 	private async _checkInstallAvailable() {
-		if (this.isUnderStandaloneMode)
+		if (this.isUnderStandaloneMode && Utils.isCurrentManifestTarget(this.manifestUrl))
 			return;
 
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
+			if (!Utils.isCurrentManifestTarget(this.manifestUrl))
+				return;
 			this.manualApple && this.hideDialog();
 			
 			if (document.readyState === 'complete') {
@@ -195,38 +362,18 @@ export class PWAInstallElement extends LitElement {
 			return;
 		}
 
-		let _promptTriggered = false;
-		if (!this.disableChrome && window.BeforeInstallPromptEvent) {
+		if (!this.disableChrome) {
 			this.manualChrome && this.hideDialog();
-			const _promptHandler = (e: BeforeInstallPromptEvent) => {
-				window.defferedPromptEvent = e;
-				e.preventDefault();
-
-				this.platforms = e.platforms;
-
-				if (this.isRelatedAppsInstalled) {
-					this.isInstallAvailable = false;
-				} else {
-					this.isInstallAvailable = true;
-					Utils.eventInstallAvailable(this);
-				}
-
-				if (this.userChoiceResult === 'accepted'){
-					this.isDialogHidden = true;
-					Utils.eventInstalledSuccess(this);
-				}
-
-				_promptTriggered = true;
+			if (this.isWebInstallSupported) {
 				this.isAndroidFallback = false;
-				this.requestUpdate();
+				const currentAppUnavailable = Utils.isCurrentManifestTarget(this.manifestUrl) && this.isRelatedAppsInstalled;
+				this._setInstallAvailable(!currentAppUnavailable);
 			}
 			if (this.externalPromptEvent != null)
-				setTimeout(() => _promptHandler(this.externalPromptEvent!), 300);
-			else
-				window.addEventListener('beforeinstallprompt', _promptHandler);
+				this._captureBeforeInstallPrompt(this.externalPromptEvent);
 		}
 		
-		if (!this.disableFallback && this.isAndroid && !_promptTriggered) {
+		if (!this.disableFallback && this.isAndroid && Utils.isCurrentManifestTarget(this.manifestUrl) && !this.isWebInstallSupported && !window.defferedPromptEvent) {
 			// browsers without BeforeInstallPromptEvent
 			if (this.isAndroidFallback) {
 				setTimeout(
@@ -244,7 +391,7 @@ export class PWAInstallElement extends LitElement {
 				const _activation = navigator.userActivation;
 				const _activationHandler = setInterval(() => {
 					if (_activation.isActive || _activation.hasBeenActive) {
-						if (!_promptTriggered) {
+						if (!window.defferedPromptEvent) {
 							this.isAndroidFallback = true;
 							this.isInstallAvailable = true;
 							this.requestUpdate();
@@ -260,19 +407,8 @@ export class PWAInstallElement extends LitElement {
 
 	/** @internal */
 	private _init = async () => {
-		window.defferedPromptEvent = null;
-
 		await this._checkPlatform();
 		await this._checkInstallAvailable();
-
-		if ('onappinstalled' in window)
-			window.addEventListener('appinstalled', (e) => {
-				window.defferedPromptEvent = null;
-				this.isInstallAvailable = false;
-
-				this.requestUpdate();
-				Utils.eventInstalledSuccess(this);
-			});
 
 		Object.assign(this, await Utils.fetchAndProcessManifest(this.manifestUrl, this.icon, this.name, this.description));
 	};
@@ -282,6 +418,8 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	async connectedCallback() {
+		window.defferedPromptEvent = null;
+		this._setupInstallListeners();
 		await changeLocale(navigator.language);
 		this._isRTL = isRTL();
 		await this._init();
@@ -290,9 +428,21 @@ export class PWAInstallElement extends LitElement {
 		super.connectedCallback();
 	}
 
+	disconnectedCallback() {
+		window.removeEventListener('beforeinstallprompt', this._captureBeforeInstallPrompt);
+		window.removeEventListener('appinstalled', this._handleAppInstalled);
+		this._promptListenerAttached = false;
+		this._appInstalledListenerAttached = false;
+		super.disconnectedCallback();
+	}
+
 	willUpdate(changedProperties: PropertyValues<this>) {
+		if (changedProperties.has('manifestUrl') || changedProperties.has('manifestId')) {
+			this._nativeInstallFailed = false;
+			this._installSuccessDispatched = false;
+		}
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
-		  this._init();
+			this._captureBeforeInstallPrompt(this.externalPromptEvent);
 		}
 	}
 

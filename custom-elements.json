@@ -22,6 +22,15 @@
             },
             {
               "kind": "field",
+              "name": "manifestId",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "manifest-id"
+            },
+            {
+              "kind": "field",
               "name": "icon",
               "type": {
                 "text": "string"
@@ -263,6 +272,15 @@
             },
             {
               "kind": "field",
+              "name": "isWebInstallSupported",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "install",
               "privacy": "public"
             },
@@ -334,6 +352,14 @@
               },
               "default": "'/manifest.json'",
               "fieldName": "manifestUrl"
+            },
+            {
+              "name": "manifest-id",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "manifestId"
             },
             {
               "name": "icon",

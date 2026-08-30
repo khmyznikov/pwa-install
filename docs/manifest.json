@@ -1,7 +1,8 @@
 {
     "name": "Progressive Web Application",
     "short_name": "Web Application",
-    "start_url": "/pwa-install/",
+	"id": "/pwa-install/",
+	"start_url": ".",
     "display": "standalone",
     "background_color": "#fff",
     "theme_color": "#82307b",
