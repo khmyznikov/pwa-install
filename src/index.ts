@@ -3,7 +3,8 @@ import { localized } from '@lit/localize';
 import { property, state } from 'lit/decorators.js';
 import { changeLocale, isRTL } from './localization';
 
-import { IRelatedApp, IWebInstallNavigator, Manifest, IWindow, PWAInstallAttributes, WebInstallParams } from './types/types';
+import { Manifest } from './types/types';
+import type { IRelatedApp, IWebInstallNavigator, IWindow, PWAInstallAttributes, WebInstallParams } from './types/types';
 
 import PWAGalleryElement from './gallery';
 import PWABottomSheetElement from './templates/chrome/bottom-sheet';
@@ -500,5 +501,5 @@ if (!customElements.get('pwa-install')) {
 	customElements.define('pwa-install', PWAInstallElement);
 }
 
-export { PWAInstallAttributes };
+export type { PWAInstallAttributes };
 export type { PWAInstallProps } from './types/jsx';

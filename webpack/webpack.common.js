@@ -33,7 +33,10 @@ export default {
 				test: /\.ts?$/,
 				use: [
 					{
-						loader: 'ts-loader'
+						loader: 'esbuild-loader',
+						options: {
+							target: 'es2021'
+						}
 					},
 				],
 				exclude: [/node_modules/],
