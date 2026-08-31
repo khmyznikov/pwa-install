@@ -187,15 +187,17 @@ export class PWAInstallElement extends LitElement {
 
 		this._activeInstallBackend = 'web-install';
 		try {
-			if (this.manifestUrl) {
+			const isCurrentDocumentInstall = !this.manifestUrl ||
+				(!this.manifestId && Utils.isCurrentManifestTarget(this.manifestUrl));
+			if (isCurrentDocumentInstall) {
+				await webInstallNavigator.install();
+			} else if (this.manifestUrl) {
 				const params: WebInstallParams = {
 					manifest: Utils.resolveManifestUrl(this.manifestUrl)
 				};
 				if (this.manifestId)
 					params.manifestId = this.manifestId;
 				await webInstallNavigator.install(params);
-			} else {
-				await webInstallNavigator.install();
 			}
 
 			this._nativeInstallFailed = false;

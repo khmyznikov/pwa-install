@@ -116,7 +116,7 @@ import '@khmyznikov/pwa-install';
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
 
-On supported Chromium browsers, the component uses the Web Install API automatically. `manifest-url` is used both to load the dialog metadata and as the manifest passed to `navigator.install()`. Relative manifest URLs are resolved against the current document. `manifest-id` is optional when the manifest declares an explicit `id`.
+On supported Chromium browsers, the component uses the Web Install API automatically. When `manifest-url` matches the current document's linked manifest and `manifest-id` is omitted, the component uses the current-document `navigator.install()` signature. A different manifest or an explicit `manifest-id` uses `navigator.install({ manifest, manifestId })`. Relative manifest URLs are resolved against the current document. `manifest-id` is optional when the manifest declares an explicit `id`.
 
 The component continues to intercept and retain `beforeinstallprompt` as a legacy fallback. If the Web Install API fails for a technical reason and the configured manifest belongs to the current document, `pwa-install-fail-event` reports that fallback is available and the next user click uses the retained prompt. A legacy prompt cannot install a different app.
 
