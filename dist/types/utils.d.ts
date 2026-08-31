@@ -1,6 +1,10 @@
 import { WebAppManifest } from 'web-app-manifest';
 import { IRelatedApp } from './types/types';
+type EventDetails = Record<string, unknown>;
 export default class Utils {
+    static isWebInstallSupported(): boolean;
+    static resolveManifestUrl(manifestUrl: string): string;
+    static isCurrentManifestTarget(manifestUrl: string): boolean;
     static isAppleMobile(): boolean;
     static isAppleDesktop(): boolean;
     static isAppleMobileNonSafari(): boolean;
@@ -15,8 +19,8 @@ export default class Utils {
     static isRelatedAppsInstalled(): Promise<boolean>;
     static setStorageFlag(name: string, value: boolean, persistent?: boolean): void;
     static getStorageFlag(name: string): boolean;
-    static eventInstalledSuccess(_element: Element): void;
-    static eventInstalledFail(_element: Element): void;
+    static eventInstalledSuccess(_element: Element, details?: EventDetails): void;
+    static eventInstalledFail(_element: Element, details?: EventDetails): void;
     static eventUserChoiceResult(_element: Element, message: string): void;
     static eventInstallAvailable(_element: Element): void;
     static eventInstallHowTo(_element: Element): void;
@@ -29,3 +33,4 @@ export default class Utils {
         description: string;
     }>;
 }
+export {};

@@ -1,4 +1,4 @@
-import common from "./webpack.common.js";
+import common, { javascriptTarget } from "./webpack.common.js";
 import webpack from "webpack";
 import { merge } from "webpack-merge";
 
@@ -58,6 +58,7 @@ export default merge(common, {
         test: /\.js$/,
         extractComments: false,
         terserOptions: {
+          ecma: Number(javascriptTarget.slice(2)),
           compress: {
             drop_console: true,
             unsafe: true,

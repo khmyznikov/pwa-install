@@ -11,6 +11,20 @@ export interface IWindow extends Window {
     BeforeInstallPromptEvent: BeforeInstallPromptEvent;
 }
 
+export interface WebInstallParams {
+    manifest: string;
+    manifestId?: string;
+}
+
+export type WebInstallResult = Record<string, never>;
+
+export interface IWebInstallNavigator extends Navigator {
+    install?: {
+        (): Promise<WebInstallResult>;
+        (params: WebInstallParams): Promise<WebInstallResult>;
+    };
+}
+
 type Booleanish = 'true' | 'false';
 
 export interface PWAInstallAttributes {
@@ -20,6 +34,7 @@ export interface PWAInstallAttributes {
     ['install-description']?: string;
     ['disable-install-description']?: Booleanish;
     ['manifest-url']?: string;
+    ['manifest-id']?: string;
     name?: string;
     description?: string;
     icon?: string;

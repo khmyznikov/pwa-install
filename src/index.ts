@@ -1,16 +1,16 @@
-import { LitElement, PropertyValues, html } from 'lit';
+import { LitElement, PropertyValues } from 'lit';
 import { localized } from '@lit/localize';
 import { property, state } from 'lit/decorators.js';
 import { changeLocale, isRTL } from './localization';
 
-import { IRelatedApp, Manifest, IWindow, PWAInstallAttributes } from './types/types';
+import { Manifest } from './types/types';
+import type { IRelatedApp, PWAInstallAttributes } from './types/types';
 
 import PWAGalleryElement from './gallery';
 import PWABottomSheetElement from './templates/chrome/bottom-sheet';
 
+import InstallLogic from './logic';
 import Utils from './utils';
-
-declare const window: IWindow;
 
 import styles from './templates/chrome/styles.scss';
 import stylesCommon from './templates/chrome/styles-common.scss'
@@ -18,6 +18,7 @@ import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
 import templateApple from './templates/apple/template-apple';
+import type { InstallTemplateOptions } from './templates/types';
 
 /**
  * @event {CustomEvent} pwa-install-success-event - App install success (Chromium/Android only)
@@ -30,6 +31,7 @@ import templateApple from './templates/apple/template-apple';
 @localized()
 export class PWAInstallElement extends LitElement {
 	@property({attribute: 'manifest-url'}) manifestUrl = '/manifest.json';
+	@property({attribute: 'manifest-id'}) manifestId = '';
 	@property() icon = '';
 	@property() name = '';
 	@property() description = '';
@@ -65,6 +67,7 @@ export class PWAInstallElement extends LitElement {
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
+	public isWebInstallSupported = false;
 
 	/** @internal */
 	private _isRTL = false;
@@ -76,31 +79,25 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _galleryRequested = false;
 	/** @internal */
-	private _install = {
-		handleEvent: () => {
-			if (window.defferedPromptEvent) {
-				this.hideDialog();
-				window.defferedPromptEvent.prompt();
-				window.defferedPromptEvent.userChoice
-					.then((choiceResult: PromptResponseObject) => {
-						this.userChoiceResult = choiceResult.outcome;
-						Utils.eventUserChoiceResult(this, this.userChoiceResult);
-					})
-					.catch((error) => {
-						Utils.eventInstalledFail(this);
-					});
-				window.defferedPromptEvent = null;
-			}
-		},
-		passive: true
-	}
-	public install = () => {
+	private _installLogic = new InstallLogic(this);
+
+	public install = async () => {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
+			if (!Utils.isCurrentManifestTarget(this.manifestUrl)) {
+				Utils.eventInstalledFail(this, {
+					backend: 'manual',
+					errorName: 'NotSupportedError',
+					errorMessage: 'This platform cannot install a different app.',
+					fallbackAvailable: false
+				});
+				return;
+			}
 			this._howToRequested = true;
 			this.requestUpdate();
+			return;
 		}
-		else
-			this._install.handleEvent();
+
+		await this._installLogic.install();
 	}
 	/** @internal */
 	private _hideDialog = {
@@ -113,9 +110,7 @@ export class PWAInstallElement extends LitElement {
 	}
 	/** @internal */
 	private _hideDialogUser = () => {
-		Utils.eventUserChoiceResult(this, 'dismissed');
-		this.userChoiceResult = 'dismissed';
-		this.hideDialog();
+		this._installLogic.dismiss();
 	}
 	public hideDialog = () => {
 		this._hideDialog.handleEvent();
@@ -168,6 +163,7 @@ export class PWAInstallElement extends LitElement {
 		this.isApple26Plus = Utils.isApple26Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
+		this.isWebInstallSupported = Utils.isWebInstallSupported();
 	}
 	/** @internal */
 	private async _triggerAppleDialog() {
@@ -179,10 +175,12 @@ export class PWAInstallElement extends LitElement {
 	}
 	/** @internal */
 	private async _checkInstallAvailable() {
-		if (this.isUnderStandaloneMode)
+		if (this.isUnderStandaloneMode && Utils.isCurrentManifestTarget(this.manifestUrl))
 			return;
 
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
+			if (!Utils.isCurrentManifestTarget(this.manifestUrl))
+				return;
 			this.manualApple && this.hideDialog();
 			
 			if (document.readyState === 'complete') {
@@ -195,84 +193,13 @@ export class PWAInstallElement extends LitElement {
 			return;
 		}
 
-		let _promptTriggered = false;
-		if (!this.disableChrome && window.BeforeInstallPromptEvent) {
-			this.manualChrome && this.hideDialog();
-			const _promptHandler = (e: BeforeInstallPromptEvent) => {
-				window.defferedPromptEvent = e;
-				e.preventDefault();
-
-				this.platforms = e.platforms;
-
-				if (this.isRelatedAppsInstalled) {
-					this.isInstallAvailable = false;
-				} else {
-					this.isInstallAvailable = true;
-					Utils.eventInstallAvailable(this);
-				}
-
-				if (this.userChoiceResult === 'accepted'){
-					this.isDialogHidden = true;
-					Utils.eventInstalledSuccess(this);
-				}
-
-				_promptTriggered = true;
-				this.isAndroidFallback = false;
-				this.requestUpdate();
-			}
-			if (this.externalPromptEvent != null)
-				setTimeout(() => _promptHandler(this.externalPromptEvent!), 300);
-			else
-				window.addEventListener('beforeinstallprompt', _promptHandler);
-		}
-		
-		if (!this.disableFallback && this.isAndroid && !_promptTriggered) {
-			// browsers without BeforeInstallPromptEvent
-			if (this.isAndroidFallback) {
-				setTimeout(
-					() => {
-						this.isInstallAvailable = true;
-						this.requestUpdate()
-						Utils.eventInstallAvailable(this);
-					},
-					1000
-				);
-				return;
-			}
-			// trying to fix browsers like Opera with BeforeInstallPromptEvent not working
-			if ('userActivation' in navigator && !this.isRelatedAppsInstalled) {
-				const _activation = navigator.userActivation;
-				const _activationHandler = setInterval(() => {
-					if (_activation.isActive || _activation.hasBeenActive) {
-						if (!_promptTriggered) {
-							this.isAndroidFallback = true;
-							this.isInstallAvailable = true;
-							this.requestUpdate();
-							Utils.eventInstallAvailable(this);
-						}
-						clearInterval(_activationHandler);
-					}
-				}, 1000);
-				setTimeout(() => clearInterval(_activationHandler), 30000);
-			}
-		}
+		this._installLogic.checkAvailability(this.externalPromptEvent);
 	}
 
 	/** @internal */
 	private _init = async () => {
-		window.defferedPromptEvent = null;
-
 		await this._checkPlatform();
 		await this._checkInstallAvailable();
-
-		if ('onappinstalled' in window)
-			window.addEventListener('appinstalled', (e) => {
-				window.defferedPromptEvent = null;
-				this.isInstallAvailable = false;
-
-				this.requestUpdate();
-				Utils.eventInstalledSuccess(this);
-			});
 
 		Object.assign(this, await Utils.fetchAndProcessManifest(this.manifestUrl, this.icon, this.name, this.description));
 	};
@@ -282,6 +209,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	async connectedCallback() {
+		this._installLogic.connect();
 		await changeLocale(navigator.language);
 		this._isRTL = isRTL();
 		await this._init();
@@ -290,59 +218,60 @@ export class PWAInstallElement extends LitElement {
 		super.connectedCallback();
 	}
 
+	disconnectedCallback() {
+		this._installLogic.disconnect();
+		super.disconnectedCallback();
+	}
+
 	willUpdate(changedProperties: PropertyValues<this>) {
+		if (changedProperties.has('manifestUrl') || changedProperties.has('manifestId'))
+			this._installLogic.reset();
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
-		  this._init();
+			this._installLogic.captureBeforeInstallPrompt(this.externalPromptEvent);
 		}
 	}
 
 	// firstUpdated() {
 	// 	return;
 	// }
+	/** @internal */
+	private _getTemplateOptions(disableScreenshots: boolean): InstallTemplateOptions {
+		return {
+			name: this.name,
+			description: this.description,
+			installDescription: this.installDescription,
+			disableDescription: this.disableDescription,
+			disableScreenshots,
+			disableClose: this.disableClose,
+			icon: this.icon,
+			manifest: this._manifest,
+			installAvailable: this.isInstallAvailable && !this.isDialogHidden,
+			hideDialog: this._hideDialogUser,
+			toggleGallery: this._toggleGallery,
+			galleryRequested: this._galleryRequested,
+			isRTL: this._isRTL
+		};
+	}
 
 	render() {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform)
-			return html`${templateApple(
-				this.name, 
-				this.description, 
-				this.installDescription,
-				this.disableDescription,
-				this.disableScreenshots || this.disableScreenshotsApple,
-				this.disableClose,
-				this.manualHowTo,
-				this.icon, 
-				this._manifest,
-				this.isInstallAvailable && !this.isDialogHidden,
-				this._hideDialogUser,
-				this._toggleHowTo,
-				this._howToRequested || this.manualHowTo,
-				this._toggleGallery,
-				this._galleryRequested,
-				this._isRTL,
-				this.isApple26Plus,
-				this.isAppleDesktopPlatform,
-				this.styles
-			)}`;
+			return templateApple({
+				...this._getTemplateOptions(this.disableScreenshots || this.disableScreenshotsApple),
+				manualHowTo: this.manualHowTo,
+				howToForApple: this._toggleHowTo,
+				howToRequested: this._howToRequested || this.manualHowTo,
+				isApple26Plus: this.isApple26Plus,
+				isDesktop: this.isAppleDesktopPlatform,
+				customStyles: this.styles
+			});
 		else
-			return html`${template(
-				this.name, 
-				this.description, 
-				this.installDescription,
-				this.disableDescription,
-				this.disableScreenshots || this.disableScreenshotsChrome,
-				this.disableClose,
-				this.icon, 
-				this._manifest,
-				this.isInstallAvailable && !this.isDialogHidden,
-				this._hideDialogUser,
-				this._install,
-				this._toggleGallery,
-				this._galleryRequested,
-				this._toggleHowTo,
-				this._howToRequested,
-				this.isAndroidFallback,
-				this._isRTL
-			)}`;
+			return template({
+				...this._getTemplateOptions(this.disableScreenshots || this.disableScreenshotsChrome),
+				install: this._installLogic,
+				toggleHowTo: this._toggleHowTo,
+				howToRequested: this._howToRequested,
+				isAndroidFallback: this.isAndroidFallback
+			});
 	}
 }
 
@@ -350,5 +279,5 @@ if (!customElements.get('pwa-install')) {
 	customElements.define('pwa-install', PWAInstallElement);
 }
 
-export { PWAInstallAttributes };
+export type { PWAInstallAttributes };
 export type { PWAInstallProps } from './types/jsx';

@@ -6,7 +6,10 @@ import autoprefixer from 'autoprefixer';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+export const javascriptTarget = 'es2021';
+
 export default {
+	target: ['web', javascriptTarget],
 	module: {
 		rules: [
 			// {
@@ -33,7 +36,10 @@ export default {
 				test: /\.ts?$/,
 				use: [
 					{
-						loader: 'ts-loader'
+						loader: 'esbuild-loader',
+						options: {
+							target: javascriptTarget
+						}
 					},
 				],
 				exclude: [/node_modules/],
