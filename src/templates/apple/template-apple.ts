@@ -1,12 +1,40 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
 import Utils from '../../utils';
+import type { InstallTemplateOptions } from '../types';
 
+export interface AppleTemplateOptions extends InstallTemplateOptions {
+    manualHowTo: boolean;
+    howToForApple: EventListenerOrEventListenerObject;
+    howToRequested: boolean;
+    isApple26Plus: boolean;
+    isDesktop: boolean;
+    customStyles: Record<string, string>;
+}
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, manualHowTo: boolean = false, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, howToForApple: any, howToRequested: boolean, toggleGallery: any, galleryRequested: boolean, isRTL: boolean = false, isApple26Plus: boolean = false, isDesktop: boolean = false, customStyles: Record<string, string> = {}) => {
+const template = ({
+    name,
+    description,
+    installDescription,
+    disableDescription,
+    disableScreenshots,
+    disableClose,
+    manualHowTo,
+    icon,
+    manifest,
+    installAvailable,
+    hideDialog,
+    howToForApple,
+    howToRequested,
+    toggleGallery,
+    galleryRequested,
+    isRTL,
+    isApple26Plus,
+    isDesktop,
+    customStyles
+}: AppleTemplateOptions) => {
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
     const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
     let styles = { '--tint-color': Utils.getPageBackgroundColor(), ...customStyles };

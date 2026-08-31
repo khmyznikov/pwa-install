@@ -1,4 +1,4 @@
-import { LitElement, PropertyValues, html } from 'lit';
+import { LitElement, PropertyValues } from 'lit';
 import { localized } from '@lit/localize';
 import { property, state } from 'lit/decorators.js';
 import { changeLocale, isRTL } from './localization';
@@ -18,6 +18,7 @@ import stylesApple from './templates/apple/styles-apple.scss';
 
 import template from './templates/chrome/template';
 import templateApple from './templates/apple/template-apple';
+import type { InstallTemplateOptions } from './templates/types';
 
 /**
  * @event {CustomEvent} pwa-install-success-event - App install success (Chromium/Android only)
@@ -233,50 +234,44 @@ export class PWAInstallElement extends LitElement {
 	// firstUpdated() {
 	// 	return;
 	// }
+	/** @internal */
+	private _getTemplateOptions(disableScreenshots: boolean): InstallTemplateOptions {
+		return {
+			name: this.name,
+			description: this.description,
+			installDescription: this.installDescription,
+			disableDescription: this.disableDescription,
+			disableScreenshots,
+			disableClose: this.disableClose,
+			icon: this.icon,
+			manifest: this._manifest,
+			installAvailable: this.isInstallAvailable && !this.isDialogHidden,
+			hideDialog: this._hideDialogUser,
+			toggleGallery: this._toggleGallery,
+			galleryRequested: this._galleryRequested,
+			isRTL: this._isRTL
+		};
+	}
 
 	render() {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform)
-			return html`${templateApple(
-				this.name, 
-				this.description, 
-				this.installDescription,
-				this.disableDescription,
-				this.disableScreenshots || this.disableScreenshotsApple,
-				this.disableClose,
-				this.manualHowTo,
-				this.icon, 
-				this._manifest,
-				this.isInstallAvailable && !this.isDialogHidden,
-				this._hideDialogUser,
-				this._toggleHowTo,
-				this._howToRequested || this.manualHowTo,
-				this._toggleGallery,
-				this._galleryRequested,
-				this._isRTL,
-				this.isApple26Plus,
-				this.isAppleDesktopPlatform,
-				this.styles
-			)}`;
+			return templateApple({
+				...this._getTemplateOptions(this.disableScreenshots || this.disableScreenshotsApple),
+				manualHowTo: this.manualHowTo,
+				howToForApple: this._toggleHowTo,
+				howToRequested: this._howToRequested || this.manualHowTo,
+				isApple26Plus: this.isApple26Plus,
+				isDesktop: this.isAppleDesktopPlatform,
+				customStyles: this.styles
+			});
 		else
-			return html`${template(
-				this.name, 
-				this.description, 
-				this.installDescription,
-				this.disableDescription,
-				this.disableScreenshots || this.disableScreenshotsChrome,
-				this.disableClose,
-				this.icon, 
-				this._manifest,
-				this.isInstallAvailable && !this.isDialogHidden,
-				this._hideDialogUser,
-				this._installLogic,
-				this._toggleGallery,
-				this._galleryRequested,
-				this._toggleHowTo,
-				this._howToRequested,
-				this.isAndroidFallback,
-				this._isRTL
-			)}`;
+			return template({
+				...this._getTemplateOptions(this.disableScreenshots || this.disableScreenshotsChrome),
+				install: this._installLogic,
+				toggleHowTo: this._toggleHowTo,
+				howToRequested: this._howToRequested,
+				isAndroidFallback: this.isAndroidFallback
+			});
 	}
 }
 

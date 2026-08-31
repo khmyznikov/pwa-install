@@ -1,10 +1,35 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { WebAppManifest } from 'web-app-manifest';
 import { msg } from '@lit/localize';
-import { ManifestScreenshot } from '../../types/types';
+import type { ManifestScreenshot } from '../../types/types';
+import type { InstallTemplateOptions } from '../types';
 
-const template = (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, toggleHowTo: any, howToRequested: boolean, isAndroidFallback: boolean, isRTL: boolean = false) => {
+export interface ChromeTemplateOptions extends InstallTemplateOptions {
+    install: EventListenerOrEventListenerObject;
+    toggleHowTo: EventListenerOrEventListenerObject;
+    howToRequested: boolean;
+    isAndroidFallback: boolean;
+}
+
+const template = ({
+    name,
+    description,
+    installDescription,
+    disableDescription,
+    disableScreenshots,
+    disableClose,
+    icon,
+    manifest,
+    installAvailable,
+    hideDialog,
+    install,
+    toggleGallery,
+    galleryRequested,
+    toggleHowTo,
+    howToRequested,
+    isAndroidFallback,
+    isRTL
+}: ChromeTemplateOptions) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
 
