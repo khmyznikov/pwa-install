@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    "target": "es2021",
     "module": "esnext",
+    "forceConsistentCasingInFileNames": true,
     "lib": [
-      "esnext",
-      "dom"
+      "es2021",
+      "DOM",
+      "DOM.Iterable"
     ],
     "types": ["dom-chromium-installation-events"],
     "useDefineForClassFields": false,

@@ -6,7 +6,10 @@ import autoprefixer from 'autoprefixer';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+export const javascriptTarget = 'es2021';
+
 export default {
+	target: ['web', javascriptTarget],
 	module: {
 		rules: [
 			// {
@@ -35,7 +38,7 @@ export default {
 					{
 						loader: 'esbuild-loader',
 						options: {
-							target: 'es2021'
+							target: javascriptTarget
 						}
 					},
 				],
