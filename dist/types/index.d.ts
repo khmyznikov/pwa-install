@@ -1,7 +1,8 @@
 import { LitElement, PropertyValues } from 'lit';
-import { IRelatedApp, PWAInstallAttributes } from './types/types.js';
+import type { IRelatedApp, PWAInstallAttributes } from './types/types.js';
 export declare class PWAInstallElement extends LitElement {
     manifestUrl: string;
+    manifestId: string;
     icon: string;
     name: string;
     description: string;
@@ -31,12 +32,26 @@ export declare class PWAInstallElement extends LitElement {
     isAndroid: boolean;
     isUnderStandaloneMode: boolean;
     isRelatedAppsInstalled: boolean;
+    isWebInstallSupported: boolean;
     private _isRTL;
     private _manifest;
     private _howToRequested;
     private _galleryRequested;
+    private _nativeInstallFailed;
+    private _installSuccessDispatched;
+    private _activeInstallBackend;
+    private _promptListenerAttached;
+    private _appInstalledListenerAttached;
     private _install;
-    install: () => void;
+    private _canUseLegacyFallback;
+    private _setInstallAvailable;
+    private _dispatchInstalledSuccess;
+    private _captureBeforeInstallPrompt;
+    private _setupInstallListeners;
+    private _handleAppInstalled;
+    private _runLegacyInstall;
+    private _runWebInstall;
+    install: () => Promise<void>;
     private _hideDialog;
     private _hideDialogUser;
     hideDialog: () => void;
@@ -50,8 +65,9 @@ export declare class PWAInstallElement extends LitElement {
     private _init;
     private _requestUpdate;
     connectedCallback(): Promise<void>;
+    disconnectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
 }
-export { PWAInstallAttributes };
+export type { PWAInstallAttributes };
 export type { PWAInstallProps } from './types/jsx';
