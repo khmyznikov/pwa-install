@@ -4,6 +4,7 @@ import Utils from './utils';
 declare const window: IWindow;
 
 type InstallBackend = 'web-install' | 'beforeinstallprompt';
+type LegacyFallbackReason = 'missing-manifest-id' | 'web-install-failed' | 'web-install-unavailable';
 
 interface InstallLogicHost extends Element {
 	manifestUrl: string;
@@ -35,7 +36,10 @@ export default class InstallLogic {
 	private activationInterval: number | null = null;
 	private activationTimeout: number | null = null;
 
-	constructor(private readonly host: InstallLogicHost) {}
+	constructor(
+		private readonly host: InstallLogicHost,
+		private readonly getFetchedManifestId: () => unknown
+	) {}
 
 	public handleEvent = () => {
 		void this.install();
@@ -111,7 +115,22 @@ export default class InstallLogic {
 			return;
 
 		if (this.nativeInstallFailed && this.canUseLegacyFallback()) {
-			await this.runLegacyInstall();
+			await this.runLegacyInstall('web-install-failed');
+			return;
+		}
+
+		if (Utils.isWebInstallSupported() && !this.hasManifestId()) {
+			if (this.canUseLegacyFallback()) {
+				await this.runLegacyInstall('missing-manifest-id');
+				return;
+			}
+
+			Utils.eventInstalledFail(this.host, {
+				backend: 'web-install',
+				errorName: 'DataError',
+				errorMessage: 'Web Install API was not called because neither manifest-id nor an id in the fetched manifest is available.',
+				fallbackAvailable: false
+			});
 			return;
 		}
 
@@ -121,7 +140,7 @@ export default class InstallLogic {
 		}
 
 		if (this.canUseLegacyFallback()) {
-			await this.runLegacyInstall();
+			await this.runLegacyInstall('web-install-unavailable');
 			return;
 		}
 
@@ -136,6 +155,12 @@ export default class InstallLogic {
 	private canUseLegacyFallback() {
 		return Boolean(window.defferedPromptEvent) &&
 			Utils.isCurrentManifestTarget(this.host.manifestUrl);
+	}
+
+	private hasManifestId() {
+		const fetchedManifestId = this.getFetchedManifestId();
+		return Boolean(this.host.manifestId.trim()) ||
+			(typeof fetchedManifestId === 'string' && Boolean(fetchedManifestId.trim()));
 	}
 
 	private setInstallAvailable(available: boolean) {
@@ -162,7 +187,7 @@ export default class InstallLogic {
 		this.activeInstallBackend = null;
 	}
 
-	private async runLegacyInstall() {
+	private async runLegacyInstall(reason: LegacyFallbackReason) {
 		const promptEvent = window.defferedPromptEvent;
 		if (!promptEvent)
 			return;
@@ -170,6 +195,7 @@ export default class InstallLogic {
 		this.host.hideDialog();
 		window.defferedPromptEvent = null;
 		this.activeInstallBackend = 'beforeinstallprompt';
+		Utils.eventInstallBackend(this.host, 'beforeinstallprompt', reason);
 
 		try {
 			await promptEvent.prompt();
@@ -195,6 +221,7 @@ export default class InstallLogic {
 			return;
 
 		this.activeInstallBackend = 'web-install';
+		Utils.eventInstallBackend(this.host, 'web-install');
 		try {
 			const isCurrentDocumentInstall = !this.host.manifestUrl ||
 				(!this.host.manifestId && Utils.isCurrentManifestTarget(this.host.manifestUrl));

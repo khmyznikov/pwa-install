@@ -319,6 +319,13 @@
               "type": {
                 "text": "CustomEvent"
               },
+              "description": "Install backend selected (Chromium/Android only)",
+              "name": "pwa-install-backend-event"
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
               "description": "dismissed, accepted",
               "name": "pwa-user-choice-result-event"
             },

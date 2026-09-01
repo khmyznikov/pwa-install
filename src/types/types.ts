@@ -55,6 +55,7 @@ export class Manifest implements WebAppManifest {
         this.description = 'Progressive web application';
     }
     short_name: string;
+    id?: string;
     icons: ImageResource[];
     screenshots?: ManifestScreenshot[];
     name: string;

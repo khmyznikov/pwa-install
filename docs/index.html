@@ -244,6 +244,7 @@
 
 		pwaInstall.addEventListener('pwa-install-success-event', logEvent);
 		pwaInstall.addEventListener('pwa-install-fail-event', logEvent);
+		pwaInstall.addEventListener('pwa-install-backend-event', logEvent);
 		pwaInstall.addEventListener('pwa-user-choice-result-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-available-event', (event) => {logMessage(event.detail.message)});
 		pwaInstall.addEventListener('pwa-install-how-to-event', (event) => {logMessage(event.detail.message)});

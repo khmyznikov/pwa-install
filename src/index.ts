@@ -23,6 +23,7 @@ import type { InstallTemplateOptions } from './templates/types';
 /**
  * @event {CustomEvent} pwa-install-success-event - App install success (Chromium/Android only)
  * @event {CustomEvent} pwa-install-fail-event - App install failed (Chromium/Android only)
+ * @event {CustomEvent} pwa-install-backend-event - Install backend selected (Chromium/Android only)
  * @event {CustomEvent} pwa-user-choice-result-event - dismissed, accepted
  * @event {CustomEvent} pwa-install-available-event - App install available
  * @event {CustomEvent} pwa-install-how-to-event - App install instruction showed
@@ -79,7 +80,7 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _galleryRequested = false;
 	/** @internal */
-	private _installLogic = new InstallLogic(this);
+	private _installLogic = new InstallLogic(this, () => this._manifest.id);
 
 	public install = async () => {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {

@@ -142,6 +142,21 @@ export default class Utils {
     static eventInstalledFail(_element: Element, details: EventDetails = {}) {
         _eventDispatcher(_element, 'pwa-install-fail-event', 'App install failed (Chromium/Android only)', details);
     }
+    static eventInstallBackend(_element: Element, backend: 'web-install' | 'beforeinstallprompt', reason?: 'missing-manifest-id' | 'web-install-failed' | 'web-install-unavailable') {
+        let message = backend === 'web-install'
+            ? 'Install requested with Web Install API.'
+            : 'Install requested with beforeinstallprompt.';
+        if (reason === 'missing-manifest-id')
+            message = 'Web Install API skipped because neither manifest-id nor an id in the fetched manifest is available. Falling back to beforeinstallprompt.';
+        else if (reason === 'web-install-failed')
+            message = 'Web Install API previously failed. Falling back to beforeinstallprompt.';
+        else if (reason === 'web-install-unavailable')
+            message = 'Web Install API is unavailable. Using beforeinstallprompt.';
+        _eventDispatcher(_element, 'pwa-install-backend-event', message, {
+            backend,
+            ...(reason ? {reason} : {})
+        });
+    }
     static eventUserChoiceResult(_element: Element, message: string) {
         _eventDispatcher(_element, 'pwa-user-choice-result-event', message);
     }

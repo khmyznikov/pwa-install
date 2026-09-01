@@ -10,6 +10,7 @@ const PWAInstall = createComponent({
 	events: {
 	  onPwaInstallSuccessEvent: 'pwa-install-success-event',
 	  onPwaInstallFailEvent: 'pwa-install-fail-event',
+	  onPwaInstallBackendEvent: 'pwa-install-backend-event',
 	  onPwaUserChoiceResultEvent: 'pwa-user-choice-result-event',
 	  onPwaInstallAvailableEvent: 'pwa-install-available-event',
 	  onPwaInstallHowToEvent: 'pwa-install-how-to-event',

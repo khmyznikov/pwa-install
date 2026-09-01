@@ -116,9 +116,9 @@ import '@khmyznikov/pwa-install';
 ```
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
 
-On supported Chromium browsers, the component uses the Web Install API automatically. When `manifest-url` matches the current document's linked manifest and `manifest-id` is omitted, the component uses the current-document `navigator.install()` signature. A different manifest or an explicit `manifest-id` uses `navigator.install({ manifest, manifestId })`. Relative manifest URLs are resolved against the current document. `manifest-id` is optional when the manifest declares an explicit `id`.
+On supported Chromium browsers, the component uses the Web Install API automatically after fetching the configured manifest. When `manifest-url` matches the current document's linked manifest, `manifest-id` is omitted, and the fetched manifest declares an `id`, the component uses the current-document `navigator.install()` signature. A different manifest or an explicit `manifest-id` uses `navigator.install({ manifest, manifestId })`. Relative manifest URLs are resolved against the current document. `manifest-id` is optional when the manifest declares a non-empty `id`.
 
-The component continues to intercept and retain `beforeinstallprompt` as a legacy fallback. If the Web Install API fails for a technical reason and the configured manifest belongs to the current document, `pwa-install-fail-event` reports that fallback is available and the next user click uses the retained prompt. A legacy prompt cannot install a different app.
+The component continues to intercept and retain `beforeinstallprompt` as a legacy fallback. If both `manifest-id` and the fetched manifest's `id` are missing, the component skips Web Install and uses the retained prompt on the same click. If no compatible legacy prompt exists, `pwa-install-fail-event` reports a `DataError`. Other technical Web Install failures still require the next user click to use the retained prompt. A legacy prompt cannot install a different app.
 
 ## Custom Styles
 
@@ -142,6 +142,7 @@ pwaInstall.setAttribute('styles', JSON.stringify({ '--tint-color': '#6366f1' }))
 ## Supported events
 - pwa-install-success-event
 - pwa-install-fail-event
+- pwa-install-backend-event
 - pwa-install-available-event
 - pwa-user-choice-result-event
 - pwa-install-how-to-event
@@ -155,8 +156,13 @@ pwaInstall.setAttribute('styles', JSON.stringify({ '--tint-color': '#6366f1' }))
   pwaInstall.addEventListener('pwa-install-fail-event', (event) => {
     console.log(event.detail.errorName, event.detail.fallbackAvailable);
   });
+  pwaInstall.addEventListener('pwa-install-backend-event', (event) => {
+    console.log(event.detail.backend, event.detail.reason);
+  });
 </script>
 ```
+
+`pwa-install-backend-event` is dispatched immediately before an install backend is called. Its `backend` is `web-install` or `beforeinstallprompt`. When the legacy backend is selected, `reason` can be `missing-manifest-id`, `web-install-unavailable`, or `web-install-failed`.
 ⚠️ `success/fail/choice` events is Chromium only, iOS don't have them.
 
 ⚠️ If you see this message in the console:<br>
@@ -199,7 +205,7 @@ This is **not** a error and **not** a bug. This means that the component success
 </script>
 ```
 
-The install method prefers `navigator.install()` whenever it is available. After a technical Web Install failure, a retained `beforeinstallprompt` fallback requires a second user click because both browser APIs consume transient user activation.
+The install method prefers `navigator.install()` whenever it is available and a manifest ID is configured or declared. A missing ID is detected before Web Install is called, allowing a retained `beforeinstallprompt` fallback to run on the same click. After a runtime Web Install failure, fallback still requires a second user click because both browser APIs consume transient user activation.
 
 *getInstalledRelatedApps is Chromium only, always empty on iOS.*
 
