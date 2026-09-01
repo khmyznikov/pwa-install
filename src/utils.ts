@@ -37,10 +37,7 @@ export default class Utils {
     }
 
     static isAppleMobile(): boolean {
-		if (
-                (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
-                && ('serviceWorker' in navigator)
-            )
+		if (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
 			return true;
 		return false;
     }
