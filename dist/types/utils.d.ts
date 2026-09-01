@@ -21,6 +21,7 @@ export default class Utils {
     static getStorageFlag(name: string): boolean;
     static eventInstalledSuccess(_element: Element, details?: EventDetails): void;
     static eventInstalledFail(_element: Element, details?: EventDetails): void;
+    static eventInstallBackend(_element: Element, backend: 'web-install' | 'beforeinstallprompt', reason?: 'missing-manifest-id' | 'web-install-failed' | 'web-install-unavailable'): void;
     static eventUserChoiceResult(_element: Element, message: string): void;
     static eventInstallAvailable(_element: Element): void;
     static eventInstallHowTo(_element: Element): void;

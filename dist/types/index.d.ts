@@ -37,20 +37,7 @@ export declare class PWAInstallElement extends LitElement {
     private _manifest;
     private _howToRequested;
     private _galleryRequested;
-    private _nativeInstallFailed;
-    private _installSuccessDispatched;
-    private _activeInstallBackend;
-    private _promptListenerAttached;
-    private _appInstalledListenerAttached;
-    private _install;
-    private _canUseLegacyFallback;
-    private _setInstallAvailable;
-    private _dispatchInstalledSuccess;
-    private _captureBeforeInstallPrompt;
-    private _setupInstallListeners;
-    private _handleAppInstalled;
-    private _runLegacyInstall;
-    private _runWebInstall;
+    private _installLogic;
     install: () => Promise<void>;
     private _hideDialog;
     private _hideDialogUser;
@@ -67,6 +54,7 @@ export declare class PWAInstallElement extends LitElement {
     connectedCallback(): Promise<void>;
     disconnectedCallback(): void;
     willUpdate(changedProperties: PropertyValues<this>): void;
+    private _getTemplateOptions;
     render(): import("lit-html").TemplateResult<1>;
 }
 export type { PWAInstallAttributes };

@@ -1,3 +1,9 @@
-import { WebAppManifest } from 'web-app-manifest';
-declare const template: (name: string, description: string, installDescription: string, disableDescription: boolean, disableScreenshots: boolean, disableClose: boolean, icon: string, manifest: WebAppManifest, installAvailable: any, hideDialog: any, install: any, toggleGallery: any, galleryRequested: boolean, toggleHowTo: any, howToRequested: boolean, isAndroidFallback: boolean, isRTL?: boolean) => import("lit-html").TemplateResult<1>;
+import type { InstallTemplateOptions } from '../types';
+export interface ChromeTemplateOptions extends InstallTemplateOptions {
+    install: EventListenerOrEventListenerObject;
+    toggleHowTo: EventListenerOrEventListenerObject;
+    howToRequested: boolean;
+    isAndroidFallback: boolean;
+}
+declare const template: ({ name, description, installDescription, disableDescription, disableScreenshots, disableClose, icon, manifest, installAvailable, hideDialog, install, toggleGallery, galleryRequested, toggleHowTo, howToRequested, isAndroidFallback, isRTL }: ChromeTemplateOptions) => import("lit-html").TemplateResult<1>;
 export default template;

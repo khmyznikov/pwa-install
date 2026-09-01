@@ -40,6 +40,7 @@ export interface ManifestScreenshot extends ImageResource {
 export declare class Manifest implements WebAppManifest {
     constructor();
     short_name: string;
+    id?: string;
     icons: ImageResource[];
     screenshots?: ManifestScreenshot[];
     name: string;
