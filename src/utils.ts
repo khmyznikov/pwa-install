@@ -1,4 +1,5 @@
 import { WebAppManifest } from 'web-app-manifest';
+import InAppSpy from 'inapp-spy';
 import { IRelatedApp, IWebInstallNavigator, Manifest } from './types/types';
 
 type EventDetails = Record<string, unknown>;
@@ -40,6 +41,23 @@ export default class Utils {
 		if (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2)
 			return true;
 		return false;
+    }
+
+    static isServiceWorkerSupported(): boolean {
+        return 'serviceWorker' in navigator;
+    }
+
+    static isInAppBrowser(): boolean {
+        return InAppSpy().isInApp;
+    }
+
+    static async copyTextToClipboard(text: string): Promise<boolean> {
+        try {
+            await navigator.clipboard.writeText(text);
+            return true;
+        } catch (error) {
+            return false;
+        }
     }
 
     static isAppleDesktop(): boolean {

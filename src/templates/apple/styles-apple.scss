@@ -217,8 +217,8 @@
                 }
             }
             #icon-back{
-                width: 23px;
-                rotate: 90deg;
+                width: auto;
+                height: 19px;
             }
 
             // svg{
@@ -356,6 +356,41 @@
                     align-items: center;
 
                     font-size: 14px;
+                    &.copy-link{
+                        appearance: none;
+                        width: 100%;
+                        padding: 0;
+                        border: 0;
+                        color: inherit;
+                        background: transparent;
+                        font: inherit;
+                        text-align: start;
+                        text-decoration: none;
+                        cursor: pointer;
+
+                        &:focus-visible{
+                            outline: 2px solid currentColor;
+                            outline-offset: 3px;
+                        }
+                        .copy-link-action{
+                            text-decoration: underline;
+                            text-underline-offset: 2px;
+                        }
+                        &.copied{
+                            .svg-wrap{
+                                justify-content: center;
+                            }
+                            #pwa-copy-document{
+                                display: none;
+                            }
+                            #pwa-safari{
+                                display: block;
+                            }
+                            .copy-link-action{
+                                text-decoration: none;
+                            }
+                        }
+                    }
                     .svg-wrap{
                         position: relative;
                         display: inline-flex;
@@ -368,8 +403,11 @@
 
                         border-radius: 6px;
 
-                        #pwa-share, #pwa-add, #pwa-safari, #safari-dots{
+                        #pwa-share, #pwa-add, #pwa-copy-document, #pwa-safari, #safari-dots{
                             margin: 0 auto;
+                        }
+                        #pwa-safari{
+                            display: none;
                         }
                         #pwa-share{
                             margin-bottom: 4px;
@@ -571,8 +609,8 @@
                     }
                 }
                 #icon-back{
-                    width: 23px;
-                    rotate: 90deg;
+                    width: auto;
+                    height: 19px;
                 }
 
                 svg{
@@ -770,7 +808,8 @@
                         gap: 10px;
                     }
                     #icon-back{
-                        width: 14px;
+                        width: auto;
+                        height: 14px;
                     }
                 }
             }

@@ -6,6 +6,9 @@ export default class Utils {
     static resolveManifestUrl(manifestUrl: string): string;
     static isCurrentManifestTarget(manifestUrl: string): boolean;
     static isAppleMobile(): boolean;
+    static isServiceWorkerSupported(): boolean;
+    static isInAppBrowser(): boolean;
+    static copyTextToClipboard(text: string): Promise<boolean>;
     static isAppleDesktop(): boolean;
     static isAppleMobileNonSafari(): boolean;
     static isIPad(): boolean;
