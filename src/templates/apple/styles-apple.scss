@@ -336,14 +336,9 @@
                 user-select: none;
 
                 grid-auto-columns: 1fr;
-                grid-template-rows: 1fr 1fr 1fr;
+                grid-template-rows: 1fr auto;
 
-                // grid-template-columns: 1fr 1fr 1fr;
-                // grid-template-rows: auto 1fr;
                 gap: 10px;
-                // grid-template-areas:
-                //     "title title title"
-                //     ". . .";
 
                 padding: 15px;
                 padding-bottom: 0;
@@ -363,7 +358,6 @@
                         border: 0;
                         color: inherit;
                         background: transparent;
-                        font: inherit;
                         text-align: start;
                         text-decoration: none;
                         cursor: pointer;
@@ -403,7 +397,7 @@
 
                         border-radius: 6px;
 
-                        #pwa-share, #pwa-add, #pwa-copy-document, #pwa-safari, #safari-dots{
+                        #pwa-share, #pwa-add, #pwa-copy-document, #pwa-safari, #safari-dots, #safari-chevron{
                             margin: 0 auto;
                         }
                         #pwa-safari{
@@ -418,6 +412,10 @@
                         }
                         #pwa-safari{
                             transform: scale(.92);
+                        }
+                        #safari-chevron{
+                            width: 22px;
+                            margin-top: 2px;
                         }
 
                         .step-count{
