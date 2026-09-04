@@ -30,10 +30,6 @@
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
         <target>Додайте на Домашній екран для зручного доступу та ширших можливостей.</target>
       </trans-unit>
-      <trans-unit id="s8114bd55cae5a22b">
-        <source>Press Add to Dock</source>
-        <target>Натиснути «Додати на Dock»</target>
-      </trans-unit>
       <trans-unit id="s922329d6f6213590">
         <source>Add to Dock</source>
         <target>Додати на Dock</target>
@@ -62,22 +58,30 @@
         <source>Show Gallery</source>
         <target>Показати галерею</target>
       </trans-unit>
-      <trans-unit id="se0e473adfda8066c">
-        <source>Open in your main browser</source>
-        <target>Відкрити у вашому основному браузері</target>
-      </trans-unit>
       <trans-unit id="s224cbcec014ef6b5">
         <source>Press Share in Navigation bar</source>
         <target>Натиснути «Поділитися»</target>
       </trans-unit>
-      <trans-unit id="s9af56bf005b49c74">
-        <source>Scroll down to "Add to Home Screen"</source>
-        <target>Прокрутіть вниз до «На Початковий экран»</target>
-      </trans-unit>
-      <trans-unit id="s7f0591f08e318eda">
-        <source>Press More in Share menu</source>
-        <target>Натисніть «Більше» в меню «Поділитися»</target>
-      </trans-unit>
+<trans-unit id="sd18a5b85f599ff3c">
+  <source>Open Copied Link in Safari</source>
+  <target>Відкрийте скопійоване посилання в Safari</target>
+</trans-unit>
+<trans-unit id="se72fc3a84f9b51c3">
+  <source>Tap here to Copy App Link</source>
+  <target>Натисніть, щоб скопіювати посилання</target>
+</trans-unit>
+<trans-unit id="sfb78526365796a41">
+  <source>Press "View More" in Share menu</source>
+  <target>Натисніть «Переглянути більше» в меню «Поділитися»</target>
+</trans-unit>
+<trans-unit id="sa2d71bfd9525168d">
+  <source>Press "Add to Dock"</source>
+  <target>Натисніть «Додати на Dock»</target>
+</trans-unit>
+<trans-unit id="s9c63a79ffcc2a3a3">
+  <source>Press "Add to Home Screen"</source>
+  <target>Натисніть «На початковий екран»</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

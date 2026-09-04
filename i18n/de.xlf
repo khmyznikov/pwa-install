@@ -30,10 +30,6 @@
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
         <target>Fügen Sie es zu Ihrem Startbildschirm hinzu, um eine umfassende Erfahrung und einen leichten Zugriff zu erhalten.</target>
       </trans-unit>
-      <trans-unit id="s8114bd55cae5a22b">
-        <source>Press Add to Dock</source>
-        <target>Drücken Sie auf Zum Dock hinzufügen</target>
-      </trans-unit>
       <trans-unit id="s922329d6f6213590">
         <source>Add to Dock</source>
         <target>Zum Dock hinzufügen</target>
@@ -62,22 +58,30 @@
         <source>Show Gallery</source>
         <target>Galerie anzeigen</target>
       </trans-unit>
-      <trans-unit id="se0e473adfda8066c">
-        <source>Open in your main browser</source>
-        <target>Öffnen Sie es in Ihrem Hauptbrowser</target>
-      </trans-unit>
       <trans-unit id="s224cbcec014ef6b5">
         <source>Press Share in Navigation bar</source>
         <target>Drücken Sie auf Teilen in der Navigationsleiste</target>
       </trans-unit>
-      <trans-unit id="s9af56bf005b49c74">
-        <source>Scroll down to "Add to Home Screen"</source>
-        <target>Scrollen Sie nach unten zu "Zum Startbildschirm hinzufügen"</target>
-      </trans-unit>
-      <trans-unit id="s7f0591f08e318eda">
-        <source>Press More in Share menu</source>
-        <target>Drücken Sie auf Mehr im Teilen-Menü</target>
-      </trans-unit>
+<trans-unit id="sd18a5b85f599ff3c">
+  <source>Open Copied Link in Safari</source>
+  <target>Kopierten Link in Safari öffnen</target>
+</trans-unit>
+<trans-unit id="se72fc3a84f9b51c3">
+  <source>Tap here to Copy App Link</source>
+  <target>Zum Kopieren des Links tippen</target>
+</trans-unit>
+<trans-unit id="sfb78526365796a41">
+  <source>Press "View More" in Share menu</source>
+  <target>Drücken Sie auf "Mehr anzeigen" im Teilen-Menü</target>
+</trans-unit>
+<trans-unit id="sa2d71bfd9525168d">
+  <source>Press "Add to Dock"</source>
+  <target>Drücken Sie auf "Zum Dock hinzufügen"</target>
+</trans-unit>
+<trans-unit id="s9c63a79ffcc2a3a3">
+  <source>Press "Add to Home Screen"</source>
+  <target>Drücken Sie auf "Zum Startbildschirm hinzufügen"</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

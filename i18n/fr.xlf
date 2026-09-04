@@ -30,10 +30,6 @@
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
         <target>Ajoutez-le à votre écran d'accueil pour une expérience étendue et un accès facile.</target>
       </trans-unit>
-      <trans-unit id="s8114bd55cae5a22b">
-        <source>Press Add to Dock</source>
-        <target>Appuyez sur Ajouter au Dock</target>
-      </trans-unit>
       <trans-unit id="s922329d6f6213590">
         <source>Add to Dock</source>
         <target>Ajouter au Dock</target>
@@ -62,22 +58,30 @@
         <source>Show Gallery</source>
         <target>Afficher la galerie</target>
       </trans-unit>
-      <trans-unit id="se0e473adfda8066c">
-        <source>Open in your main browser</source>
-        <target>Ouvrir dans votre navigateur principal</target>
-      </trans-unit>
       <trans-unit id="s224cbcec014ef6b5">
         <source>Press Share in Navigation bar</source>
         <target>Appuyez sur Partager dans la barre de navigation</target>
       </trans-unit>
-      <trans-unit id="s9af56bf005b49c74">
-        <source>Scroll down to "Add to Home Screen"</source>
-        <target>Faites défiler vers le bas jusqu'à "Ajouter à l'écran d'accueil"</target>
-      </trans-unit>
-      <trans-unit id="s7f0591f08e318eda">
-        <source>Press More in Share menu</source>
-        <target>Appuyez sur Plus dans le menu Partager</target>
-      </trans-unit>
+<trans-unit id="sd18a5b85f599ff3c">
+  <source>Open Copied Link in Safari</source>
+  <target>Ouvrez le lien copié dans Safari</target>
+</trans-unit>
+<trans-unit id="se72fc3a84f9b51c3">
+  <source>Tap here to Copy App Link</source>
+  <target>Touchez pour copier le lien</target>
+</trans-unit>
+<trans-unit id="sfb78526365796a41">
+  <source>Press "View More" in Share menu</source>
+  <target>Appuyez sur "Afficher plus" dans le menu Partager</target>
+</trans-unit>
+<trans-unit id="sa2d71bfd9525168d">
+  <source>Press "Add to Dock"</source>
+  <target>Appuyez sur "Ajouter au Dock"</target>
+</trans-unit>
+<trans-unit id="s9c63a79ffcc2a3a3">
+  <source>Press "Add to Home Screen"</source>
+  <target>Appuyez sur "Ajouter à l'écran d'accueil"</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

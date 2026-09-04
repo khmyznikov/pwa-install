@@ -30,10 +30,6 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>Thêm nó vào màn hình chính của bạn để có trải nghiệm phong phú hơn và truy cập dễ dàng hơn.</target>
 </trans-unit>
-<trans-unit id="s8114bd55cae5a22b">
-  <source>Press Add to Dock</source>
-  <target>Nhấp vào "Thêm vào Dock"</target>
-</trans-unit>
 <trans-unit id="s922329d6f6213590">
   <source>Add to Dock</source>
   <target>Thêm vào Dock</target>
@@ -62,21 +58,29 @@
   <source>Show Gallery</source>
   <target>Hiển thị thư viện</target>
 </trans-unit>
-<trans-unit id="se0e473adfda8066c">
-  <source>Open in your main browser</source>
-  <target>Mở trình duyệt chính của bạn</target>
-</trans-unit>
 <trans-unit id="s224cbcec014ef6b5">
   <source>Press Share in Navigation bar</source>
   <target>Nhấp vào nút "Chia sẻ" trên thanh điều hướng</target>
 </trans-unit>
-<trans-unit id="s9af56bf005b49c74">
-  <source>Scroll down to "Add to Home Screen"</source>
-  <target>Kéo đến mục "Thêm vào Màn hình chính"</target>
+<trans-unit id="sd18a5b85f599ff3c">
+  <source>Open Copied Link in Safari</source>
+  <target>Mở liên kết đã sao chép trong Safari</target>
 </trans-unit>
-<trans-unit id="s7f0591f08e318eda">
-  <source>Press More in Share menu</source>
-  <target>Nhấn Thêm trong menu Chia sẻ</target>
+<trans-unit id="se72fc3a84f9b51c3">
+  <source>Tap here to Copy App Link</source>
+  <target>Nhấn để sao chép liên kết</target>
+</trans-unit>
+<trans-unit id="sfb78526365796a41">
+  <source>Press "View More" in Share menu</source>
+  <target>Nhấn "Xem thêm" trong menu Chia sẻ</target>
+</trans-unit>
+<trans-unit id="sa2d71bfd9525168d">
+  <source>Press "Add to Dock"</source>
+  <target>Nhấn "Thêm vào Dock"</target>
+</trans-unit>
+<trans-unit id="s9c63a79ffcc2a3a3">
+  <source>Press "Add to Home Screen"</source>
+  <target>Nhấn "Thêm vào Màn hình chính"</target>
 </trans-unit>
 </body>
 </file>
