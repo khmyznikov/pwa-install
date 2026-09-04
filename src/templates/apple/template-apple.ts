@@ -12,6 +12,9 @@ export interface AppleTemplateOptions extends InstallTemplateOptions {
     isApple26Plus: boolean;
     isDesktop: boolean;
     customStyles: Record<string, string>;
+    linkCopied: boolean;
+    safariUrl: string;
+    copyCurrentUrl: EventListenerOrEventListenerObject;
 }
 
 const template = ({
@@ -33,21 +36,15 @@ const template = ({
     isRTL,
     isApple26Plus,
     isDesktop,
-    customStyles
+    customStyles,
+    linkCopied,
+    safariUrl,
+    copyCurrentUrl
 }: AppleTemplateOptions) => {
+    const inAppBrowser = Utils.isInAppBrowser() || !Utils.isServiceWorkerSupported();
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
     const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
     let styles = { '--tint-color': Utils.getPageBackgroundColor(), ...customStyles };
-    const currentUrl = location.href;
-    const safariUrl = currentUrl.replace(/^https?:/, 'x-safari-https:');
-    const copyCurrentUrl = (event: MouseEvent) => {
-        const link = event.currentTarget as HTMLAnchorElement;
-        link.classList.add('copied');
-        const action = link.querySelector('.copy-link-action');
-        if (action)
-            action.textContent = msg('Open in Safari');
-        void Utils.copyTextToClipboard(currentUrl);
-    };
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
@@ -68,19 +65,19 @@ const template = ({
                     ${installDescription? installDescription: `${msg('This site has app functionality.')} ${isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.')}`}</div>` 
                 : '' }
                 <div class="how-to-body">
-                    <div class="how-to-description">
-                        ${!isDesktop && (Utils.isInAppBrowser() || !Utils.isServiceWorkerSupported())? html`
-                        <a class="description-step copy-link" href=${safariUrl} @click=${copyCurrentUrl}>
+                    <div class="how-to-description ${classMap({ 'in-app-browser': inAppBrowser })}">
+                        ${!isDesktop && inAppBrowser? html`
+                        <a class="description-step copy-link ${classMap({copied: linkCopied})}" href=${safariUrl} @click=${copyCurrentUrl}>
                             <span class="svg-wrap" aria-hidden="true">
-                                <svg id="pwa-copy-document" viewBox="0 0 19.9665 24.5911" width="24" height="24">
-                                    <path d="M14.0596 0.974571L18.992 5.98767C19.7198 6.73835 19.9665 7.5053 19.9665 8.69895L19.9665 16.6214C19.9665 18.6574 18.9494 19.685 16.934 19.685L15.2335 19.685L15.2335 18.1143L16.8573 18.1143C17.8637 18.1143 18.3855 17.5717 18.3855 16.5965L18.3855 8.24925L13.817 8.24925C12.7047 8.24925 12.1528 7.7079 12.1528 6.57475L12.1528 1.57069L7.84226 1.57069C6.82559 1.57069 6.30374 2.12169 6.30374 3.08851L6.30374 4.87293L4.73305 4.87293L4.73305 3.06359C4.73305 1.02753 5.74409 0 7.75523 0L11.5036 0C12.5544 0 13.3628 0.257059 14.0596 0.974571ZM13.5683 6.34915C13.5683 6.69443 13.7055 6.83382 14.0508 6.83382L17.9789 6.83382L13.5683 2.33825Z"/>
-                                    <path d="M0 21.4943C0 23.5407 1.00683 24.5579 3.02218 24.5579L12.201 24.5579C14.2163 24.5579 15.2335 23.5325 15.2335 21.4943L15.2335 13.8737C15.2335 12.6171 15.0882 12.0779 14.3086 11.2775L8.91993 5.79786C8.18172 5.03895 7.57214 4.87293 6.46874 4.87293L3.02218 4.87293C1.01105 4.87293 0 5.90046 0 7.93652ZM1.57069 21.4694L1.57069 7.96144C1.57069 6.99462 2.09254 6.44363 3.10921 6.44363L6.30895 6.44363L6.30895 12.105C6.30895 13.3417 6.9335 13.9432 8.14714 13.9432L13.6525 13.9432L13.6525 21.4694C13.6525 22.4447 13.1306 22.9872 12.1243 22.9872L3.09886 22.9872C2.09254 22.9872 1.57069 22.4447 1.57069 21.4694ZM8.32733 12.476C7.93833 12.476 7.77613 12.3138 7.77613 11.9248L7.77613 6.79886L13.3498 12.476Z"/>
+                                <svg id="pwa-copy-document" width="24" height="24" viewBox="0 0 19.966 24.591">
+                                    <path d="m14.06.975 4.932 5.013c.728.75.974 1.517.974 2.71v7.923c0 2.036-1.017 3.064-3.032 3.064h-1.7v-1.57h1.623c1.007 0 1.529-.543 1.529-1.518V8.248h-4.569c-1.112 0-1.664-.541-1.664-1.674V1.57h-4.31c-1.017 0-1.54.55-1.54 1.518v1.784h-1.57v-1.81C4.733 1.029 5.744 0 7.755 0h3.749c1.05 0 1.859.257 2.556.975m-.492 5.374c0 .345.138.485.483.485h3.928l-4.41-4.496Z"/>
+                                    <path d="M0 21.494c0 2.047 1.007 3.064 3.022 3.064h9.179c2.015 0 3.032-1.026 3.032-3.064v-7.62c0-1.257-.145-1.796-.924-2.597l-5.39-5.48c-.737-.758-1.347-.924-2.45-.924H3.022C1.011 4.873 0 5.9 0 7.937Zm1.57-.025V7.961c0-.966.523-1.517 1.54-1.517h3.199v5.661c0 1.237.625 1.838 1.838 1.838h5.506v7.526c0 .976-.522 1.518-1.529 1.518H3.1c-1.006 0-1.528-.542-1.528-1.518m6.757-8.993c-.389 0-.55-.162-.55-.551V6.799l5.573 5.677Z"/>
                                 </svg>
-                                <svg id="pwa-safari" viewBox="0 0 20.283 19.932" width="24" height="26">
-                                    <g fill="currentColor"><path d="M9.96 19.922c5.45 0 9.962-4.522 9.962-9.961C19.922 4.51 15.4 0 9.952 0 4.511 0 0 4.512 0 9.96c0 5.44 4.521 9.962 9.96 9.962Zm0-1.66A8.26 8.26 0 0 1 1.67 9.96c0-4.61 3.672-8.3 8.281-8.3 4.61 0 8.31 3.69 8.31 8.3 0 4.61-3.69 8.3-8.3 8.3Z"/><path d="m5.87 14.883 5.605-2.735a1.47 1.47 0 0 0 .683-.673l2.725-5.596c.312-.664-.166-1.182-.85-.84L8.447 7.764c-.302.136-.508.341-.674.673L5.03 14.043c-.312.645.196 1.152.84.84Zm4.09-3.72A1.19 1.19 0 0 1 8.77 9.97c0-.664.527-1.201 1.19-1.201a1.2 1.2 0 0 1 1.202 1.2c0 .655-.537 1.192-1.201 1.192Z"/></g>
+                                <svg id="pwa-safari" width="24" height="26" viewBox="0 0 20.283 19.932">
+                                    <g fill="currentColor"><path d="M9.96 19.922c5.45 0 9.962-4.522 9.962-9.961C19.922 4.51 15.4 0 9.952 0 4.511 0 0 4.512 0 9.96c0 5.44 4.521 9.962 9.96 9.962m0-1.66A8.26 8.26 0 0 1 1.67 9.96c0-4.61 3.672-8.3 8.281-8.3 4.61 0 8.31 3.69 8.31 8.3s-3.69 8.3-8.3 8.3Z"/><path d="m5.87 14.883 5.605-2.735a1.47 1.47 0 0 0 .683-.673l2.725-5.596c.312-.664-.166-1.182-.85-.84L8.447 7.764c-.302.136-.508.341-.674.673L5.03 14.043c-.312.645.196 1.152.84.84m4.09-3.72A1.19 1.19 0 0 1 8.77 9.97c0-.664.527-1.201 1.19-1.201a1.2 1.2 0 0 1 1.202 1.2c0 .655-.537 1.192-1.201 1.192Z"/></g>
                                 </svg>
                             </span>
-                            <span class="step-text"><span class="copy-link-action">${msg('Tap here to Copy App link')}</span></span>
+                            <span class="step-text"><span class="copy-link-action">${linkCopied? msg('Open Copied Link in Safari') : msg('Tap here to Copy App Link')}</span></span>
                         </a>`: ''}
                         ${!isDesktop && !Utils.isAppleMobileNonSafari() && !Utils.isIPad() && isApple26Plus? html`
                         <div class="description-step">
@@ -101,10 +98,10 @@ const template = ({
                             </div>
                             <div class="step-text">${msg('Press Share in Navigation bar')}</div>
                         </div>
-                        ${!isDesktop? html`
+                        ${!isDesktop && isApple26Plus? html`
                         <div class="description-step">
                             <div class="svg-wrap">
-                                <svg id="safari-chevron" viewBox="0 0 16.961 10.3951"><path d="M8.4846 10.3951C8.73131 10.3951 8.97169 10.2996 9.14172 10.1089L16.6978 2.37423C16.8615 2.20842 16.961 1.99718 16.961 1.74646C16.961 1.23887 16.5797 0.847251 16.0721 0.847251C15.8338 0.847251 15.5956 0.952868 15.4319 1.10622L7.95803 8.74005L9.00294 8.74005L1.52698 1.10622C1.36539 0.952868 1.14571 0.847251 0.899205 0.847251C0.389508 0.847251 0 1.23887 0 1.74646C0 1.99718 0.101597 2.21053 0.265299 2.37634L7.8296 10.111C8.00787 10.3017 8.22754 10.3951 8.4846 10.3951Z"/></svg>
+                                <svg id="safari-chevron" viewBox="0 0 16.961 10.395"><path d="M8.485 10.395a.87.87 0 0 0 .657-.286l7.556-7.735a.88.88 0 0 0 .263-.628c0-.507-.381-.899-.889-.899a.97.97 0 0 0-.64.26L7.958 8.74h1.045L1.527 1.106A.92.92 0 0 0 .899.847c-.51 0-.899.392-.899.9 0 .25.102.464.265.63L7.83 10.11q.268.284.655.284"/></svg>
                             </div>
                             <div class="step-text">${msg('Press "View More" in Share menu')}</div>
                         </div>`: ''}
@@ -120,7 +117,7 @@ const template = ({
                                 }
                             </div>
                             <div class="step-text">
-                                ${isDesktop? msg('Press Add to Dock'): msg('Press "Add to Home Screen"')}
+                                ${isDesktop? msg('Press "Add to Dock"'): msg('Press "Add to Home Screen"')}
                             </div>
                         </div>
                     </div>
@@ -130,7 +127,7 @@ const template = ({
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery} ontouchstart="">
                     <span class="button-text">
                             ${galleryRequested? html`<span>${msg('Back')}</span>
-                    <svg id="icon-back" viewBox="0 0 12.0379 16.9567"><path d="M0 8.47214C0 8.71674 0.0994872 8.9322 0.27776 9.11871L8.0166 16.6832C8.18031 16.8573 8.40611 16.9443 8.65684 16.9443C9.16232 16.9443 9.54569 16.5651 9.54569 16.0554C9.54569 15.8068 9.44832 15.5914 9.28672 15.4194L2.19003 8.47214L9.28672 1.52487C9.44832 1.35293 9.54569 1.12712 9.54569 0.888854C9.54569 0.379157 9.16232 0 8.65684 0C8.40611 0 8.18031 0.0870263 8.0166 0.261079L0.27776 7.82558C0.0994872 8.01209 0 8.22754 0 8.47214Z" fill="currentColor" fill-opacity="0.85"/>`
+                            <svg id="icon-back" viewBox="0 0 12.038 16.957"><path fill="currentColor" fill-opacity=".85" d="M0 8.472c0 .245.1.46.278.647l7.739 7.564c.163.174.39.261.64.261.505 0 .889-.379.889-.889a.91.91 0 0 0-.26-.636L2.19 8.472l7.097-6.947a.93.93 0 0 0 .259-.636.87.87 0 0 0-.89-.889.86.86 0 0 0-.64.261L.279 7.826A.92.92 0 0 0 0 8.472"/></svg>`
                     :
                             html`
                             <span>${msg('Show Gallery')}</span>
@@ -142,7 +139,7 @@ const template = ({
                     <button class="dialog-button button install" @click=${howToForApple} ontouchstart="">
                         <span class="button-text ${howToRequested? 'show': 'hide'}">
                             <span>${msg('Back')}</span>
-                            <svg id="icon-back" viewBox="0 0 12.0379 16.9567"><path d="M0 8.47214C0 8.71674 0.0994872 8.9322 0.27776 9.11871L8.0166 16.6832C8.18031 16.8573 8.40611 16.9443 8.65684 16.9443C9.16232 16.9443 9.54569 16.5651 9.54569 16.0554C9.54569 15.8068 9.44832 15.5914 9.28672 15.4194L2.19003 8.47214L9.28672 1.52487C9.44832 1.35293 9.54569 1.12712 9.54569 0.888854C9.54569 0.379157 9.16232 0 8.65684 0C8.40611 0 8.18031 0.0870263 8.0166 0.261079L0.27776 7.82558C0.0994872 8.01209 0 8.22754 0 8.47214Z" fill="currentColor" fill-opacity="0.85"/>
+                            <svg id="icon-back" viewBox="0 0 12.038 16.957"><path fill="currentColor" fill-opacity=".85" d="M0 8.472c0 .245.1.46.278.647l7.739 7.564c.163.174.39.261.64.261.505 0 .889-.379.889-.889a.91.91 0 0 0-.26-.636L2.19 8.472l7.097-6.947a.93.93 0 0 0 .259-.636.87.87 0 0 0-.89-.889.86.86 0 0 0-.64.261L.279 7.826A.92.92 0 0 0 0 8.472"/></svg>
                         </span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
                             <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>

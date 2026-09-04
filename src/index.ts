@@ -80,6 +80,8 @@ export class PWAInstallElement extends LitElement {
 	/** @internal */
 	private _galleryRequested = false;
 	/** @internal */
+	private _linkCopied = false;
+	/** @internal */
 	private _installLogic = new InstallLogic(this, () => this._manifest.id);
 
 	public install = async () => {
@@ -155,6 +157,15 @@ export class PWAInstallElement extends LitElement {
         },
         passive: true
     }
+	/** @internal */
+	private _copyCurrentUrl = {
+		handleEvent: () => {
+			this._linkCopied = true;
+			void Utils.copyTextToClipboard(location.href);
+			this.requestUpdate();
+		},
+		passive: true
+	}
 	/** @internal */
 	private async _checkPlatform() {
 		this.isUnderStandaloneMode = Utils.isStandalone();
@@ -263,7 +274,10 @@ export class PWAInstallElement extends LitElement {
 				howToRequested: this._howToRequested || this.manualHowTo,
 				isApple26Plus: this.isApple26Plus,
 				isDesktop: this.isAppleDesktopPlatform,
-				customStyles: this.styles
+				customStyles: this.styles,
+				linkCopied: this._linkCopied,
+				safariUrl: location.href.replace(/^https?:/, 'x-safari-https:'),
+				copyCurrentUrl: this._copyCurrentUrl
 			});
 		else
 			return template({

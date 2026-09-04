@@ -343,6 +343,12 @@
                 padding: 15px;
                 padding-bottom: 0;
 
+                &.in-app-browser{
+                    gap: 0;
+                    .description-step:not(:first-child){
+                        display: none;
+                    }
+                }
 
                 .description-step{
                     display: inline-flex;
