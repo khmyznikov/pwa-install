@@ -6,14 +6,6 @@
         <source>Install</source>
         <target>ติดตั้ง</target>
       </trans-unit>
-      <trans-unit id="sfea652f6580ff086">
-        <source>This site has app functionality.</source>
-        <target>เว็บไซต์นี้ใช้งานได้เหมือนแอป</target>
-      </trans-unit>
-      <trans-unit id="sba52286c21552a4e">
-        <source>Install it on your device for extensive experience and easy access.</source>
-        <target>ติดตั้งลงในอุปกรณ์ของคุณ เพื่อประสบการณ์ที่ครบถ้วนและเข้าถึงได้ง่าย</target>
-      </trans-unit>
       <trans-unit id="sa5ef80b4bb9b39f8">
         <source>Less</source>
         <target>ย่อ</target>
@@ -21,6 +13,14 @@
       <trans-unit id="s37a9e8aec5713460">
         <source>More</source>
         <target>เพิ่มเติม</target>
+      </trans-unit>
+      <trans-unit id="scdaf4bbff76674c8">
+        <source>Add to Home Screen</source>
+        <target>เพิ่มไปยังหน้าจอโฮม</target>
+      </trans-unit>
+      <trans-unit id="sfea652f6580ff086">
+        <source>This site has app functionality.</source>
+        <target>เว็บไซต์นี้ใช้งานได้เหมือนแอป</target>
       </trans-unit>
       <trans-unit id="se740f75b95a51807">
         <source>Add it to your Dock for extensive experience and easy access.</source>
@@ -30,17 +30,13 @@
         <source>Add it to your Home Screen for extensive experience and easy access.</source>
         <target>เพิ่มไปยังหน้าจอโฮมของคุณ เพื่อประสบการณ์ที่ครบถ้วนและเข้าถึงได้ง่าย</target>
       </trans-unit>
-      <trans-unit id="s8114bd55cae5a22b">
-        <source>Press Add to Dock</source>
-        <target>กด "เพิ่มไปยัง Dock"</target>
-      </trans-unit>
       <trans-unit id="s922329d6f6213590">
         <source>Add to Dock</source>
         <target>เพิ่มไปยัง Dock</target>
       </trans-unit>
-      <trans-unit id="scdaf4bbff76674c8">
-        <source>Add to Home Screen</source>
-        <target>เพิ่มไปยังหน้าจอโฮม</target>
+      <trans-unit id="sba52286c21552a4e">
+        <source>Install it on your device for extensive experience and easy access.</source>
+        <target>ติดตั้งลงในอุปกรณ์ของคุณ เพื่อประสบการณ์ที่ครบถ้วนและเข้าถึงได้ง่าย</target>
       </trans-unit>
       <trans-unit id="s633502f7cff4f847">
         <source>Open your browser menu</source>
@@ -66,22 +62,26 @@
         <source>Press Share in Navigation bar</source>
         <target>กด "แชร์" ในแถบนำทาง</target>
       </trans-unit>
-      <trans-unit id="s3b406fdd8bf75678">
-        <source>Open in Safari</source>
-        <target>เปิดใน Safari</target>
-      </trans-unit>
-      <trans-unit id="s6842c4af690d1aa3">
-        <source>Tap here to Copy App link</source>
-        <target>แตะที่นี่เพื่อคัดลอกลิงก์แอป</target>
-      </trans-unit>
-      <trans-unit id="sfb78526365796a41">
-        <source>Press "View More" in Share menu</source>
-        <target>กด "ดูเพิ่มเติม" ในเมนูแชร์</target>
-      </trans-unit>
-      <trans-unit id="s9c63a79ffcc2a3a3">
-        <source>Press "Add to Home Screen"</source>
-        <target>กด "เพิ่มไปยังหน้าจอโฮม"</target>
-      </trans-unit>
+<trans-unit id="sd18a5b85f599ff3c">
+  <source>Open Copied Link in Safari</source>
+  <target>เปิดลิงก์ที่คัดลอกใน Safari</target>
+</trans-unit>
+<trans-unit id="se72fc3a84f9b51c3">
+  <source>Tap here to Copy App Link</source>
+  <target>แตะที่นี่เพื่อคัดลอกลิงก์แอป</target>
+</trans-unit>
+<trans-unit id="sfb78526365796a41">
+  <source>Press "View More" in Share menu</source>
+  <target>กด "ดูเพิ่มเติม" ในเมนูแชร์</target>
+</trans-unit>
+<trans-unit id="sa2d71bfd9525168d">
+  <source>Press "Add to Dock"</source>
+  <target>กด "เพิ่มไปยัง Dock"</target>
+</trans-unit>
+<trans-unit id="s9c63a79ffcc2a3a3">
+  <source>Press "Add to Home Screen"</source>
+  <target>กด "เพิ่มไปยังหน้าจอโฮม"</target>
+</trans-unit>
     </body>
   </file>
 </xliff>
