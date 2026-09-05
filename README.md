@@ -106,14 +106,18 @@ import '@khmyznikov/pwa-install';
   description="Progressive web application"         
   icon="/icon.png">
 </pwa-install>
-<!-- 
-  manual-apple/chrome params means you want to show the Dialog manually by showDialog().
-  disable-chrome param is for completely disabling custom logic and interception for Chromium browsers (will work built-in browser logic).
-  use-local-storage will store the user's preference to ignore the prompt in long-lived storage (so they will not be prompted again unless they clear application data)
-  disable-android-fallback will disable instructions for non-Chrome browsers on Android
-  manual-how-to shows the instructions right away, disabling screenshots (Apple only)
---->
 ```
+
+### Parameter behavior
+
+- **`manual-apple` and `manual-chrome`**: Let you control the dialog manually with `showDialog()`.
+- **`manual-chrome`**: Applies to all non-Apple devices. Chrome on iPad and iOS is in the `manual-apple` category, while Firefox on Android is in the `manual-chrome` category.
+- **`disable-chrome`**: Completely disables custom logic and interception for Chromium browsers, allowing the browser's built-in logic to work.
+- **`disable-close`**: Makes the dialog impossible for the user to close.
+- **`use-local-storage`**: Stores the user's preference to ignore the prompt in long-lived storage, so they will not be prompted again unless they clear the application data.
+- **`disable-android-fallback`**: Disables the install instructions dialog for non-Chrome browsers on Android.
+- **`manual-how-to`**: Shows the instructions immediately and disables screenshots on Apple devices.
+
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
 
 On supported Chromium browsers, the component uses the Web Install API automatically after fetching the configured manifest. When `manifest-url` matches the current document's linked manifest, `manifest-id` is omitted, and the fetched manifest declares an `id`, the component uses the current-document `navigator.install()` signature. A different manifest or an explicit `manifest-id` uses `navigator.install({ manifest, manifestId })`. Relative manifest URLs are resolved against the current document. `manifest-id` is optional when the manifest declares a non-empty `id`.
