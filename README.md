@@ -22,11 +22,11 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 ## Gallery
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |-|-|-|
-|![iOS example default](https://github.com/user-attachments/assets/933a9669-2b1a-49e1-ad49-b4d8657bee8c)|![iOS example install instruction](https://github.com/user-attachments/assets/7f7bf553-8c7e-4840-a261-28b07534ca07)|![iOS example gallery](https://github.com/user-attachments/assets/be709716-bcc4-457c-a271-4e6696032f57)|
+|![iOS example default](https://github.com/user-attachments/assets/4791d412-93c4-4a0a-a471-b7a81671c257)|![iOS example install instruction](https://github.com/user-attachments/assets/b063d6db-3a6b-4f48-81be-36182799fb0f)|![iOS example gallery](https://github.com/user-attachments/assets/c88da8fc-020a-43b0-9a32-136954fc2e15)|
 
 | MacOS 14-26+ (Tahoe) |
 |---|
-|![macos_default](https://github.com/user-attachments/assets/c868fa2a-283e-4dcb-b6c5-b2bacdc1749e)|
+|![macos_default](https://github.com/user-attachments/assets/b8681288-95fd-40b7-9a9f-8d371ce4dc5c)|
 
 
 
