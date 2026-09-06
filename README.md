@@ -6,7 +6,9 @@
 
 Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers (Safari, Firefox, Opera, etc.). **28kB brotli** compressed bundle. Translation/localization is supported.
 
-✨ **Now with iOS/iPadOS/MacOS 26+ support** for native look and feel!
+✨ **Now with in-app browsers instruction support!**
+
+✨ **iOS/iPadOS/MacOS 26+ support** for native look and feel!
 
 Use it as [Web Component with any **modern** framework](https://custom-elements-everywhere.com/). No polyfill is required.
 - [React <= 18 sample](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
@@ -34,6 +36,9 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 |---|---|
 |![iPadOS example default](https://github.com/user-attachments/assets/35b9a349-f0c3-4053-bfd9-914142587946)|![iPadOS install instruction](https://github.com/user-attachments/assets/c690b169-d1c3-44d0-befb-5cc321885656)
 
+| In-App Detection | Instagram/etc |
+|---|---|
+|![iOS Instagramm browser](https://github.com/user-attachments/assets/a29d1b14-7adf-4c3b-a36b-1ee50e53b8d8)|![iOS Telegram browser](https://github.com/user-attachments/assets/3175dc1b-bb2f-4132-8f7b-ab973c95de5c)|
 
 
 | Android | Firefox/ Opera/ Others | &nbsp;&nbsp;App gallery&nbsp;&nbsp; |
