@@ -77,7 +77,7 @@ export default class Utils {
     }
 
     static isAppleMobileNonSafari(): boolean {
-        return this.isAppleMobile() && navigator.userAgent.match(/CriOS|EdgiOS/)? true : false;
+        return this.isAppleMobile() && navigator.userAgent.match(/CriOS|EdgiOS|FxiOS/)? true : false;
     }
 
     static isIPad(): boolean {
