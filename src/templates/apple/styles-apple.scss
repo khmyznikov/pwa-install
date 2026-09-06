@@ -1004,13 +1004,36 @@ $phone-small-landscape: 667px;
     }
 }
 
-// @media (max-width: 370px) {
-//     #pwa-install-element{
-//         .install-dialog.apple{
-//             max-width: 300px;
-//         }
-//     }
-// }
+@media (max-height: 450px) {
+    #pwa-install-element{
+        .install-dialog.apple.apple-mobile.dialog-body{
+            top: 5px;
+            max-height: calc(90vh - 20px - env(safe-area-inset-bottom, 0px));
+            &.how-to, &.gallery{
+                .welcome-to-install{
+                    display: none;
+                }
+            }
+            &.aqua{
+                .about{
+                    grid-template-rows: 56px 50px;
+                }
+                .welcome-to-install{
+                    font-size: 13px;
+                } 
+            }
+        }
+    }
+}
+@media (max-height: 360px) { 
+        #pwa-install-element{
+        .install-dialog.apple.apple-mobile.dialog-body{
+            .welcome-to-install{
+                display: none;
+            }
+        }
+    }
+}
 
 @media (prefers-color-scheme: dark) {
     #pwa-install-element{
