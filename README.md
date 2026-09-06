@@ -32,7 +32,7 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 
 | &nbsp;&nbsp;&nbsp;&nbsp;iPadOS&nbsp;&nbsp;&nbsp;&nbsp; | Instruction |
 |---|---|
-|![iPadOS example default](https://github.com/user-attachments/assets/a9b94313-7a88-4042-88c4-be7cc585e236)|![iPadOS install instruction](https://github.com/user-attachments/assets/0f62be23-ba2a-4bf9-b979-058487ccc238)
+|![iPadOS example default](https://github.com/user-attachments/assets/35b9a349-f0c3-4053-bfd9-914142587946)|![iPadOS install instruction](https://github.com/user-attachments/assets/c690b169-d1c3-44d0-befb-5cc321885656)
 
 
 
