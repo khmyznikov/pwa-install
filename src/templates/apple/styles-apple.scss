@@ -344,9 +344,11 @@
                 padding-bottom: 0;
 
                 &.in-app-browser{
-                    gap: 0;
+                    // gap: 0;
                     .description-step:not(:first-child){
-                        display: none;
+                        // display: none;
+                        opacity: .5;
+                        filter: saturate(50%);
                     }
                 }
 
