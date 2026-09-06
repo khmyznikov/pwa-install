@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Obriu l'enllaç copiat al Safari`,
 'se72fc3a84f9b51c3': `Toqueu per copiar l'enllaç`,
 'se740f75b95a51807': `Afegeix-lo al teu Dock per a una àmplia experiència i fàcil accés.`,
+'sfa6c42cdf48d93d2': `Però aquest navegador no ho admet. Obriu l'enllaç en un navegador extern per continuar.`,
 'sfb78526365796a41': `Premeu "Veure'n més" al menú Compartir`,
 'sfea652f6580ff086': `Aquest lloc té funcionalitats d'aplicació.`,
     };

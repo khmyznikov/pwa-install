@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Ouvrez le lien copié dans Safari`,
 'se72fc3a84f9b51c3': `Touchez pour copier le lien`,
 'se740f75b95a51807': `Ajoutez-le à votre Dock pour une expérience étendue et un accès facile.`,
+'sfa6c42cdf48d93d2': `Mais ce navigateur ne prend pas en charge cette fonctionnalité. Ouvrez le lien dans un navigateur externe pour continuer.`,
 'sfb78526365796a41': `Appuyez sur "Afficher plus" dans le menu Partager`,
 'sfea652f6580ff086': `Ce site possède des fonctionnalités d'application.`,
     };

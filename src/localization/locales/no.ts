@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Åpne den kopierte lenken i Safari`,
 'se72fc3a84f9b51c3': `Trykk for å kopiere lenken`,
 'se740f75b95a51807': `Legg den til i Docken din for å få en bedre brukeropplevelse og raskere tilgang.`,
+'sfa6c42cdf48d93d2': `Men denne nettleseren støtter ikke denne funksjonen. Åpne lenken i en ekstern nettleser for å fortsette.`,
 'sfb78526365796a41': `Trykk på «Vis mer» i delingsmenyen`,
 'sfea652f6580ff086': `Denne siden har app-funksjonalitet.`,
     };

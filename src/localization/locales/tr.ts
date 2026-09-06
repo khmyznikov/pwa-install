@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Kopyalanan bağlantıyı Safari'de açın`,
 'se72fc3a84f9b51c3': `Bağlantıyı kopyalamak için dokunun`,
 'se740f75b95a51807': `Daha iyi bir deneyim ve kolay erişim için Dock’a ekleyin.`,
+'sfa6c42cdf48d93d2': `Ancak bu tarayıcı bu özelliği desteklemiyor. Devam etmek için bağlantıyı harici bir tarayıcıda açın.`,
 'sfb78526365796a41': `Paylaş menüsünde "Daha Fazla Gör" seçeneğine basın`,
 'sfea652f6580ff086': `Bu site uygulama işlevselliğine sahiptir.`,
     };

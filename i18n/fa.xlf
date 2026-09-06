@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>روی «افزودن به صفحه اصلی» ضربه بزنید</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>اما این مرورگر از این قابلیت پشتیبانی نمی‌کند. برای ادامه، لینک را در یک مرورگر خارجی باز کنید.</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

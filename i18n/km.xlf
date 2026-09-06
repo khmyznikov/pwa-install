@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>ចុចលើ "បន្ថែមទៅកាន់ផ្ទាំងអេក្រង់ដើម"</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>ប៉ុន្តែកម្មវិធីរុករកនេះមិនគាំទ្រមុខងារនេះទេ។ ដើម្បីបន្ត សូមបើកតំណនៅក្នុងកម្មវិធីរុករកខាងក្រៅ។</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Deschide linkul copiat în Safari`,
 'se72fc3a84f9b51c3': `Atinge pentru a copia linkul`,
 'se740f75b95a51807': `Adaugă-l în Dock pentru o experiență extinsă și acces facil.`,
+'sfa6c42cdf48d93d2': `Dar acest browser nu acceptă această funcție. Pentru a continua, deschide linkul într-un browser extern.`,
 'sfb78526365796a41': `Apasă „Vezi mai multe” în meniul Partajare`,
 'sfea652f6580ff086': `Acest site are funcționalități de aplicație.`,
     };

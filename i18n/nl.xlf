@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Druk op "Zet op beginscherm"</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Maar deze browser ondersteunt deze functie niet. Open de link in een externe browser om door te gaan.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>"홈 화면에 추가" 누르기</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>하지만 이 브라우저는 이 기능을 지원하지 않습니다. 계속하려면 외부 브라우저에서 링크를 여세요.</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

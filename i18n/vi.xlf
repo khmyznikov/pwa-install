@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Nhấn "Thêm vào Màn hình chính"</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Nhưng trình duyệt này không hỗ trợ tính năng đó. Để tiếp tục, hãy mở liên kết trong một trình duyệt bên ngoài.</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

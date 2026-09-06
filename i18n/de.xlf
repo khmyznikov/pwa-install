@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Drücken Sie auf "Zum Startbildschirm hinzufügen"</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Dieser Browser unterstützt diese Funktion jedoch nicht. Öffnen Sie den Link in einem externen Browser, um fortzufahren.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

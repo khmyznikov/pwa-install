@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>点击“添加到主屏幕”</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>但此浏览器不支持该功能。请在外部浏览器中打开链接以继续。</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

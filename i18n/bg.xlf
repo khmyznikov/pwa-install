@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Натиснете „Добави към началния екран“</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Но този браузър не го поддържа. Отворете връзката във външен браузър, за да продължите.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

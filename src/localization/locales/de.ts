@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Kopierten Link in Safari öffnen`,
 'se72fc3a84f9b51c3': `Zum Kopieren des Links tippen`,
 'se740f75b95a51807': `Fügen Sie es zu Ihrem Dock hinzu, um eine umfassende Erfahrung und einen leichten Zugriff zu erhalten.`,
+'sfa6c42cdf48d93d2': `Dieser Browser unterstützt diese Funktion jedoch nicht. Öffnen Sie den Link in einem externen Browser, um fortzufahren.`,
 'sfb78526365796a41': `Drücken Sie auf "Mehr anzeigen" im Teilen-Menü`,
 'sfea652f6580ff086': `Diese Website verfügt über App-Funktionalität.`,
     };

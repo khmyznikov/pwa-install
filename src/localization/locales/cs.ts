@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Otevřete zkopírovaný odkaz v Safari`,
 'se72fc3a84f9b51c3': `Klepnutím zkopírujete odkaz`,
 'se740f75b95a51807': `Přidejte jej do svého Docku pro rozšířené využití a snadný přístup.`,
+'sfa6c42cdf48d93d2': `Tento prohlížeč to ale nepodporuje. Chcete-li pokračovat, otevřete odkaz v externím prohlížeči.`,
 'sfb78526365796a41': `Stiskněte "Zobrazit více" v nabídce Sdílet`,
 'sfea652f6580ff086': `Tento web má funkce aplikace.`,
     };

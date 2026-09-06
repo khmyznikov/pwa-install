@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Πατήστε "Προσθήκη στην οθόνη Αφετηρίας"</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Ωστόσο, αυτός ο περιηγητής δεν υποστηρίζει αυτήν τη λειτουργία. Ανοίξτε τον σύνδεσμο σε εξωτερικό περιηγητή για να συνεχίσετε.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

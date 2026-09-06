@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Nyomja meg a "Hozzáadás a kezdőképernyőhöz" lehetőséget</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Ez a böngésző azonban nem támogatja ezt a funkciót. A folytatáshoz nyissa meg a hivatkozást egy külső böngészőben.</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

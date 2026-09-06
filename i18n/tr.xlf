@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>"Ana Ekrana Ekle" seçeneğine basın</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Ancak bu tarayıcı bu özelliği desteklemiyor. Devam etmek için bağlantıyı harici bir tarayıcıda açın.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

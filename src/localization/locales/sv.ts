@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Öppna den kopierade länken i Safari`,
 'se72fc3a84f9b51c3': `Tryck för att kopiera länken`,
 'se740f75b95a51807': `Lägg till i Dock för att få en bättre användarupplevelse och enklare åtkomst.`,
+'sfa6c42cdf48d93d2': `Men den här webbläsaren stöder inte den här funktionen. Öppna länken i en extern webbläsare för att fortsätta.`,
 'sfb78526365796a41': `Tryck på "Visa mer" i delningsmenyn`,
 'sfea652f6580ff086': `Denna webbsajt har app-funktionalitet.`,
     };

@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Naciśnij "Dodaj do Ekranu Głównego"</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Ta przeglądarka nie obsługuje jednak tej funkcji. Aby kontynuować, otwórz link w zewnętrznej przeglądarce.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

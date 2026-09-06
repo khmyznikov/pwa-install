@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Mở liên kết đã sao chép trong Safari`,
 'se72fc3a84f9b51c3': `Nhấn để sao chép liên kết`,
 'se740f75b95a51807': `Thêm nó vào Dock của bạn để có trải nghiệm toàn diện hơn và truy cập dễ dàng hơn.`,
+'sfa6c42cdf48d93d2': `Nhưng trình duyệt này không hỗ trợ tính năng đó. Để tiếp tục, hãy mở liên kết trong một trình duyệt bên ngoài.`,
 'sfb78526365796a41': `Nhấn "Xem thêm" trong menu Chia sẻ`,
 'sfea652f6580ff086': `Trang web này có cả chức năng đặc trưng ứng dụng.`,
     };

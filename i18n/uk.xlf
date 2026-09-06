@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Натисніть «На початковий екран»</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Але цей браузер не підтримує цю функцію. Щоб продовжити, відкрийте посилання в зовнішньому браузері.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

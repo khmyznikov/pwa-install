@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>Trykk på «Legg til på Hjem-skjerm»</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>Men denne nettleseren støtter ikke denne funksjonen. Åpne lenken i en ekstern nettleser for å fortsette.</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

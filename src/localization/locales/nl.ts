@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Open de gekopieerde link in Safari`,
 'se72fc3a84f9b51c3': `Tik om de link te kopiëren`,
 'se740f75b95a51807': `Voeg het toe aan je Dock voor een uitgebreide ervaring en makkelijke toegang.`,
+'sfa6c42cdf48d93d2': `Maar deze browser ondersteunt deze functie niet. Open de link in een externe browser om door te gaan.`,
 'sfb78526365796a41': `Druk op "Bekijk meer" in het Deel-menu`,
 'sfea652f6580ff086': `Deze site heeft app-functionaliteit.`,
     };

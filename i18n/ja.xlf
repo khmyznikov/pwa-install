@@ -82,6 +82,10 @@
   <source>Press "Add to Home Screen"</source>
   <target>「ホーム画面に追加」を押す</target>
 </trans-unit>
+<trans-unit id="sfa6c42cdf48d93d2">
+  <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
+  <target>ただし、このブラウザはこの機能に対応していません。続行するには、リンクを外部ブラウザで開いてください。</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

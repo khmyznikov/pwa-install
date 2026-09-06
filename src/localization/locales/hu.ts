@@ -27,6 +27,7 @@
 'sd18a5b85f599ff3c': `Nyissa meg a másolt hivatkozást a Safariban`,
 'se72fc3a84f9b51c3': `Koppintson a link másolásához`,
 'se740f75b95a51807': `Adja hozzá a Dock-hoz a teljes élmény és a könnyű hozzáférés érdekében.`,
+'sfa6c42cdf48d93d2': `Ez a böngésző azonban nem támogatja ezt a funkciót. A folytatáshoz nyissa meg a hivatkozást egy külső böngészőben.`,
 'sfb78526365796a41': `Nyomja meg a "Továbbiak megtekintése" lehetőséget a Megosztás menüben`,
 'sfea652f6580ff086': `Ez az oldal alkalmazásfunkcióval rendelkezik.`,
     };
