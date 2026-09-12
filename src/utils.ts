@@ -77,11 +77,15 @@ export default class Utils {
     }
 
     static isAppleMobileNonSafari(): boolean {
-        return this.isAppleMobile() && navigator.userAgent.match(/CriOS|EdgiOS|FxiOS/)? true : false;
+        return this.isAppleMobile() && /CriOS|EdgiOS|FxiOS|Brave|Ddg|YaBrowser/.test(navigator.userAgent);
+    }
+
+    static isAppleMobileYaBrowser(): boolean {
+        return this.isAppleMobile() && /YaBrowser/.test(navigator.userAgent);
     }
 
     static isIPad(): boolean {
-        return navigator.userAgent.match(/iPad|Macintosh/) && this.isAppleMobile()? true : false;
+        return this.isAppleMobile() && /iPad|Macintosh/.test(navigator.userAgent);
     }
 
     static isApple26Plus(): boolean {

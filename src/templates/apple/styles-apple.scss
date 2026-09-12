@@ -674,6 +674,9 @@
                         width: 60px;
                         height: 60px;
                         background-color: color-mix(in srgb, var(--tint-color) 20%, color-mix(in srgb, var(--text-color-normal) 10%, transparent) 50%);
+                        &.ya #safari-dots{
+                            rotate: 90deg;
+                        }
                     }
                 }
             }

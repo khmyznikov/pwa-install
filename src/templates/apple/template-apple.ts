@@ -80,17 +80,18 @@ const template = ({
                             </span>
                             <span class="step-text"><span class="copy-link-action">${linkCopied? msg('Open Copied Link in Safari') : msg('Tap here to Copy App Link')}</span></span>
                         </a>`: ''}
-                        ${!isDesktop && !Utils.isAppleMobileNonSafari() && !Utils.isIPad() && isApple26Plus? html`
+                        ${!isDesktop && !(Utils.isAppleMobileNonSafari() && !Utils.isAppleMobileYaBrowser()) && !Utils.isIPad() && isApple26Plus? html`
                         <div class="description-step">
-                            <div class="svg-wrap">
+                            <div class="svg-wrap ${classMap({ya: Utils.isAppleMobileYaBrowser()})}">
                                 <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
                                     <circle cx="2" cy="12" r="2" fill="currentColor"/>
                                     <circle cx="12" cy="12" r="2" fill="currentColor"/>
                                     <circle cx="22" cy="12" r="2" fill="currentColor"/>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('Press More if no Share icon')}</div>
+                            <div class="step-text">${Utils.isAppleMobileYaBrowser()?  msg('Press More') : msg('Press More if no Share icon')}</div>
                         </div>`: ''}
+                        ${!Utils.isAppleMobileYaBrowser()? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="pwa-share" width="25" height="32" viewBox="0 0 17.695 26.475">
@@ -98,8 +99,8 @@ const template = ({
                                 </svg>
                             </div>
                             <div class="step-text">${msg('Press Share in Navigation bar')}</div>
-                        </div>
-                        ${!isDesktop && isApple26Plus? html`
+                        </div>`: ''}
+                        ${!isDesktop && isApple26Plus && !Utils.isAppleMobileYaBrowser()? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="safari-chevron" viewBox="0 0 16.961 10.395"><path d="M8.485 10.395a.87.87 0 0 0 .657-.286l7.556-7.735a.88.88 0 0 0 .263-.628c0-.507-.381-.899-.889-.899a.97.97 0 0 0-.64.26L7.958 8.74h1.045L1.527 1.106A.92.92 0 0 0 .899.847c-.51 0-.899.392-.899.9 0 .25.102.464.265.63L7.83 10.11q.268.284.655.284"/></svg>
