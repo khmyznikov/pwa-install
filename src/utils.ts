@@ -84,6 +84,10 @@ export default class Utils {
         return this.isAppleMobile() && /YaBrowser/.test(navigator.userAgent);
     }
 
+    static isAppleMobileEdge(): boolean {
+        return this.isAppleMobile() && /EdgiOS/.test(navigator.userAgent);
+    }
+
     static isIPad(): boolean {
         return this.isAppleMobile() && /iPad|Macintosh/.test(navigator.userAgent);
     }

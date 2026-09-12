@@ -80,7 +80,7 @@ const template = ({
                             </span>
                             <span class="step-text"><span class="copy-link-action">${linkCopied? msg('Open Copied Link in Safari') : msg('Tap here to Copy App Link')}</span></span>
                         </a>`: ''}
-                        ${!isDesktop && !(Utils.isAppleMobileNonSafari() && !Utils.isAppleMobileYaBrowser()) && !Utils.isIPad() && isApple26Plus? html`
+                        ${!isDesktop && !(Utils.isAppleMobileNonSafari() && !(Utils.isAppleMobileYaBrowser() || Utils.isAppleMobileEdge)) && !Utils.isIPad() && isApple26Plus? html`
                         <div class="description-step">
                             <div class="svg-wrap ${classMap({ya: Utils.isAppleMobileYaBrowser()})}">
                                 <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
