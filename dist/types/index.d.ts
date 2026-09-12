@@ -37,6 +37,7 @@ export declare class PWAInstallElement extends LitElement {
     private _manifest;
     private _howToRequested;
     private _galleryRequested;
+    private _linkCopied;
     private _installLogic;
     install: () => Promise<void>;
     private _hideDialog;
@@ -46,6 +47,7 @@ export declare class PWAInstallElement extends LitElement {
     getInstalledRelatedApps: () => Promise<IRelatedApp[]>;
     private _toggleHowTo;
     private _toggleGallery;
+    private _copyCurrentUrl;
     private _checkPlatform;
     private _triggerAppleDialog;
     private _checkInstallAvailable;

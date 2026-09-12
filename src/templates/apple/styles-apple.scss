@@ -343,6 +343,14 @@
                 padding: 15px;
                 padding-bottom: 0;
 
+                &.in-app-browser{
+                    // gap: 0;
+                    .description-step:not(:first-child){
+                        // display: none;
+                        opacity: .5;
+                        filter: saturate(50%);
+                    }
+                }
 
                 .description-step{
                     display: inline-flex;
@@ -666,6 +674,9 @@
                         width: 60px;
                         height: 60px;
                         background-color: color-mix(in srgb, var(--tint-color) 20%, color-mix(in srgb, var(--text-color-normal) 10%, transparent) 50%);
+                        &.ya #safari-dots{
+                            rotate: 90deg;
+                        }
                     }
                 }
             }
@@ -998,13 +1009,36 @@ $phone-small-landscape: 667px;
     }
 }
 
-// @media (max-width: 370px) {
-//     #pwa-install-element{
-//         .install-dialog.apple{
-//             max-width: 300px;
-//         }
-//     }
-// }
+@media (max-height: 450px) {
+    #pwa-install-element{
+        .install-dialog.apple.apple-mobile.dialog-body{
+            top: 5px;
+            max-height: calc(90vh - 20px - env(safe-area-inset-bottom, 0px));
+            &.how-to, &.gallery{
+                .welcome-to-install{
+                    display: none;
+                }
+            }
+            &.aqua{
+                .about{
+                    grid-template-rows: 56px 50px;
+                }
+                .welcome-to-install{
+                    font-size: 13px;
+                } 
+            }
+        }
+    }
+}
+@media (max-height: 360px) { 
+        #pwa-install-element{
+        .install-dialog.apple.apple-mobile.dialog-body{
+            .welcome-to-install{
+                display: none;
+            }
+        }
+    }
+}
 
 @media (prefers-color-scheme: dark) {
     #pwa-install-element{

@@ -35,6 +35,7 @@ import * as hu from "./locales/hu";
 import * as sk from "./locales/sk";
 import * as caEs from "./locales/ca-ES";
 import * as he from "./locales/he";
+import * as th from "./locales/th";
 
 const localizedTemplates = new Map([
   ['ar', ar],
@@ -67,7 +68,8 @@ const localizedTemplates = new Map([
   ['hu', hu],
   ['sk', sk],
   ['ca-ES', caEs],
-  ['he', he]
+  ['he', he],
+  ['th', th]
 ])
 
 export const { getLocale, setLocale } = configureLocalization({

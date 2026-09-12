@@ -6,7 +6,11 @@
 
 Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers (Safari, Firefox, Opera, etc.). **28kB brotli** compressed bundle. Translation/localization is supported.
 
-✨ **Now with iOS/iPadOS/MacOS 26+ support** for native look and feel!
+✨ **In-app browsers** instruction support!<br>
+✨ **iOS/iPadOS/MacOS 26+** support for native look and feel!<br>
+✨ **[Web Install API](https://chromestatus.com/feature/5183481574850560)** support for chromium browsers v155+
+
+
 
 Use it as [Web Component with any **modern** framework](https://custom-elements-everywhere.com/). No polyfill is required.
 - [React <= 18 sample](https://stackblitz.com/edit/vite-react-ts-2eeiak?file=src%2FApp.tsx)
@@ -22,18 +26,21 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 ## Gallery
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |-|-|-|
-|![iOS example default](https://github.com/user-attachments/assets/933a9669-2b1a-49e1-ad49-b4d8657bee8c)|![iOS example install instruction](https://github.com/user-attachments/assets/7f7bf553-8c7e-4840-a261-28b07534ca07)|![iOS example gallery](https://github.com/user-attachments/assets/be709716-bcc4-457c-a271-4e6696032f57)|
+|![iOS example default](https://github.com/user-attachments/assets/4791d412-93c4-4a0a-a471-b7a81671c257)|![iOS example install instruction](https://github.com/user-attachments/assets/b063d6db-3a6b-4f48-81be-36182799fb0f)|![iOS example gallery](https://github.com/user-attachments/assets/c88da8fc-020a-43b0-9a32-136954fc2e15)|
 
 | MacOS 14-26+ (Tahoe) |
 |---|
-|![macos_default](https://github.com/user-attachments/assets/c868fa2a-283e-4dcb-b6c5-b2bacdc1749e)|
+|![macos_default](https://github.com/user-attachments/assets/b8681288-95fd-40b7-9a9f-8d371ce4dc5c)|
 
 
 
 | &nbsp;&nbsp;&nbsp;&nbsp;iPadOS&nbsp;&nbsp;&nbsp;&nbsp; | Instruction |
 |---|---|
-|![iPadOS example default](https://github.com/user-attachments/assets/a9b94313-7a88-4042-88c4-be7cc585e236)|![iPadOS install instruction](https://github.com/user-attachments/assets/0f62be23-ba2a-4bf9-b979-058487ccc238)
+|![iPadOS example default](https://github.com/user-attachments/assets/35b9a349-f0c3-4053-bfd9-914142587946)|![iPadOS install instruction](https://github.com/user-attachments/assets/c690b169-d1c3-44d0-befb-5cc321885656)
 
+| In-App Detection | Instagram/etc |
+|---|---|
+|![iOS Instagramm browser](https://github.com/user-attachments/assets/a29d1b14-7adf-4c3b-a36b-1ee50e53b8d8)|![iOS Telegram browser](https://github.com/user-attachments/assets/3175dc1b-bb2f-4132-8f7b-ab973c95de5c)|
 
 
 | Android | Firefox/ Opera/ Others | &nbsp;&nbsp;App gallery&nbsp;&nbsp; |
@@ -106,14 +113,18 @@ import '@khmyznikov/pwa-install';
   description="Progressive web application"         
   icon="/icon.png">
 </pwa-install>
-<!-- 
-  manual-apple/chrome params means you want to show the Dialog manually by showDialog().
-  disable-chrome param is for completely disabling custom logic and interception for Chromium browsers (will work built-in browser logic).
-  use-local-storage will store the user's preference to ignore the prompt in long-lived storage (so they will not be prompted again unless they clear application data)
-  disable-android-fallback will disable instructions for non-Chrome browsers on Android
-  manual-how-to shows the instructions right away, disabling screenshots (Apple only)
---->
 ```
+
+### Parameter behavior
+
+- **`manual-apple` and `manual-chrome`**: Let you control the dialog manually with `showDialog()`.
+- **`manual-chrome`**: Applies to all non-Apple devices. Chrome on iPad and iOS is in the `manual-apple` category, while Firefox on Android is in the `manual-chrome` category.
+- **`disable-chrome`**: Completely disables custom logic and interception for Chromium browsers, allowing the browser's built-in logic to work.
+- **`disable-close`**: Makes the dialog impossible for the user to close.
+- **`use-local-storage`**: Stores the user's preference to ignore the prompt in long-lived storage, so they will not be prompted again unless they clear the application data.
+- **`disable-android-fallback`**: Disables the install instructions dialog for non-Chrome browsers on Android.
+- **`manual-how-to`**: Shows the instructions immediately and disables screenshots on Apple devices.
+
 *Make a good manifest file and don't use name/descr/icon params. Boolean attributes needs to be removed to act like "false"*
 
 On supported Chromium browsers, the component uses the Web Install API automatically after fetching the configured manifest. When `manifest-url` matches the current document's linked manifest, `manifest-id` is omitted, and the fetched manifest declares an `id`, the component uses the current-document `navigator.install()` signature. A different manifest or an explicit `manifest-id` uses `navigator.install({ manifest, manifestId })`. Relative manifest URLs are resolved against the current document. `manifest-id` is optional when the manifest declares a non-empty `id`.
@@ -235,7 +246,7 @@ document.getElementById("pwa-install").externalPromptEvent = window.promptEvent;
 ## Supported localization
 
 Translations available:
-*EN*, *RU*, *TR*, *DE*, *ES*, *NL*, *EL*, *FR*, *SR*, *PL*, *ZH-CN*/*ZH-HK*/*ZH-TW*, *IT*, *UK*, *CS*, *NO/NB*, *PT*, *JA*, *SV*, *KO*, *KM*, *DA*, *VI*, *FA*, *HU*, *SK*, *CA-ES*, *HE*, *BG*, *AR*, *RO*
+*EN*, *RU*, *TR*, *DE*, *ES*, *NL*, *EL*, *FR*, *SR*, *PL*, *ZH-CN*/*ZH-HK*/*ZH-TW*, *IT*, *UK*, *CS*, *NO/NB*, *PT*, *JA*, *SV*, *KO*, *KM*, *DA*, *VI*, *FA*, *HU*, *SK*, *CA-ES*, *HE*, *BG*, *AR*, *RO*, *TH*
 
 Language should change automatically based on browser settings. Please create the pull-request if you want to help with translation to your language. It's an easy process.
 
