@@ -86,6 +86,10 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>Ωστόσο, αυτός ο περιηγητής δεν υποστηρίζει αυτήν τη λειτουργία. Ανοίξτε τον σύνδεσμο σε εξωτερικό περιηγητή για να συνεχίσετε.</target>
 </trans-unit>
+<trans-unit id="s7e924b037b4f4ce5">
+  <source>Press More</source>
+  <target>Πατήστε Περισσότερα</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

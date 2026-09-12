@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Instalați`,
 's633502f7cff4f847': `Deschide meniul browserului tău`,
 's681e399d63311fba': `Afișează galeria`,
+'s7e924b037b4f4ce5': `Apasă Mai mult`,
 's922329d6f6213590': `Adaugă în Dock`,
 's9c63a79ffcc2a3a3': `Apasă pe „Adaugă pe ecranul principal”`,
 'sa2d71bfd9525168d': `Apasă pe „Adaugă în Dock”`,

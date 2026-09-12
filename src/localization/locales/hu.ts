@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Telepítés`,
 's633502f7cff4f847': `Nyissa meg a böngészője menüjét`,
 's681e399d63311fba': `Galéria megjelenítése`,
+'s7e924b037b4f4ce5': `Nyomja meg a Több gombot`,
 's922329d6f6213590': `Hozzáadás a Dock-hoz`,
 's9c63a79ffcc2a3a3': `Nyomja meg a "Hozzáadás a kezdőképernyőhöz" lehetőséget`,
 'sa2d71bfd9525168d': `Nyomja meg a "Hozzáadás a Dock-hoz" gombot`,

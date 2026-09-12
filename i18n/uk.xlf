@@ -86,6 +86,10 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>Але цей браузер не підтримує цю функцію. Щоб продовжити, відкрийте посилання в зовнішньому браузері.</target>
 </trans-unit>
+<trans-unit id="s7e924b037b4f4ce5">
+  <source>Press More</source>
+  <target>Натисніть «Більше»</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

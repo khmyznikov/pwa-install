@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Installer`,
 's633502f7cff4f847': `Ouvrez le menu de votre navigateur`,
 's681e399d63311fba': `Afficher la galerie`,
+'s7e924b037b4f4ce5': `Appuyez sur Plus`,
 's922329d6f6213590': `Ajouter au Dock`,
 's9c63a79ffcc2a3a3': `Appuyez sur "Ajouter à l'écran d'accueil"`,
 'sa2d71bfd9525168d': `Appuyez sur "Ajouter au Dock"`,

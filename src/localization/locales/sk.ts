@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Inštalovať`,
 's633502f7cff4f847': `Otvorte ponuku prehliadača`,
 's681e399d63311fba': `Zobraziť galériu`,
+'s7e924b037b4f4ce5': `Stlačte Viac`,
 's922329d6f6213590': `Pridať do Docku`,
 's9c63a79ffcc2a3a3': `Stlačte "Pridať na domovskú obrazovku"`,
 'sa2d71bfd9525168d': `Stlačte "Pridať do Docku"`,

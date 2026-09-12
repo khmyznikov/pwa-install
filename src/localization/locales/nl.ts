@@ -17,6 +17,7 @@
 's6196153c4b0c1ea0': `Installeren`,
 's633502f7cff4f847': `Open je browsermenu`,
 's681e399d63311fba': `Galerij tonen`,
+'s7e924b037b4f4ce5': `Druk op Meer`,
 's922329d6f6213590': `Toevoegen aan Dock`,
 's9c63a79ffcc2a3a3': `Druk op "Zet op beginscherm"`,
 'sa2d71bfd9525168d': `Druk op "Toevoegen aan Dock"`,
