@@ -116,7 +116,7 @@
                             </span>
                             <span class="step-text"><span class="copy-link-action">${U(k?"Open Copied Link in Safari":"Tap here to Copy App Link")}</span></span>
                         </a>`:""}
-                        ${(()=>{if(v||!u)return!1;if(ga.isYaBrowser()&&ga.isIPhoneSafari())return!0;if(ga.isAppleMobileNonSafari()&&!ga.isIPad()){if(ga.isEdge()||ga.isOpera())return!0;if(ga.isFox())return!1}return!1})()?F.html`
+                        ${(()=>{if(v||!u)return!1;if(ga.isYaBrowser()||ga.isIPhoneSafari())return!0;if(ga.isAppleMobileNonSafari()&&!ga.isIPad()){if(ga.isEdge()||ga.isOpera())return!0;if(ga.isFox())return!1}return!1})()?F.html`
                         <div class="description-step">
                             <div class="svg-wrap ${(0,Aa.classMap)({ya:ga.isYaBrowser()})}">
                                 ${!m||ga.isYaBrowser()||ga.isOpera()?F.html`

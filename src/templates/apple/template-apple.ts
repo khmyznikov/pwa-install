@@ -50,7 +50,7 @@ const template = ({
     const pressMoreNeeded = () => {
         if (isDesktop || !isApple26Plus)
             return false;
-        if (Utils.isYaBrowser() && Utils.isIPhoneSafari())
+        if (Utils.isYaBrowser() || Utils.isIPhoneSafari())
             return true;
         if (Utils.isAppleMobileNonSafari() && !Utils.isIPad()){
             if (Utils.isEdge() || Utils.isOpera())

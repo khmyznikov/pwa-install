@@ -116,7 +116,7 @@ import{LitElement as e,css as a,html as t}from"lit";import{property as i,state a
                             </span>
                             <span class="step-text"><span class="copy-link-action">${U(T?"Open Copied Link in Safari":"Tap here to Copy App Link")}</span></span>
                         </a>`:""}
-                        ${(()=>{if(k||!w)return!1;if(ha.isYaBrowser()&&ha.isIPhoneSafari())return!0;if(ha.isAppleMobileNonSafari()&&!ha.isIPad()){if(ha.isEdge()||ha.isOpera())return!0;if(ha.isFox())return!1}return!1})()?t`
+                        ${(()=>{if(k||!w)return!1;if(ha.isYaBrowser()||ha.isIPhoneSafari())return!0;if(ha.isAppleMobileNonSafari()&&!ha.isIPad()){if(ha.isEdge()||ha.isOpera())return!0;if(ha.isFox())return!1}return!1})()?t`
                         <div class="description-step">
                             <div class="svg-wrap ${o({ya:ha.isYaBrowser()})}">
                                 ${!y||ha.isYaBrowser()||ha.isOpera()?t`

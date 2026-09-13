@@ -116,7 +116,7 @@ var PWAInstallComponent;(()=>{"use strict";const e={d:(t,a)=>{for(var i in a)e.o
                             </span>
                             <span class="step-text"><span class="copy-link-action">${Ze(k?"Open Copied Link in Safari":"Tap here to Copy App Link")}</span></span>
                         </a>`:""}
-                        ${(()=>{if(v||!u)return!1;if(ya.isYaBrowser()&&ya.isIPhoneSafari())return!0;if(ya.isAppleMobileNonSafari()&&!ya.isIPad()){if(ya.isEdge()||ya.isOpera())return!0;if(ya.isFox())return!1}return!1})()?$e`
+                        ${(()=>{if(v||!u)return!1;if(ya.isYaBrowser()||ya.isIPhoneSafari())return!0;if(ya.isAppleMobileNonSafari()&&!ya.isIPad()){if(ya.isEdge()||ya.isOpera())return!0;if(ya.isFox())return!1}return!1})()?$e`
                         <div class="description-step">
                             <div class="svg-wrap ${Ea({ya:ya.isYaBrowser()})}">
                                 ${!m||ya.isYaBrowser()||ya.isOpera()?$e`
