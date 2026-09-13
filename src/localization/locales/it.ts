@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Aggiungilo alla schermata principale per un'esperienza più completa e un accesso facile.`,
 's224cbcec014ef6b5': `Premi Condividi nella barra di navigazione`,
+'s233af3b7eb5e0364': `Aggiungi alla Home`,
 's37a9e8aec5713460': `Più`,
 's386eca8362ff6155': `Premi Altro se non c'è l'icona Condividi`,
 's4e1e10a6ca408245': `Tocca "Aggiungi alla schermata principale"`,

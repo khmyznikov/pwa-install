@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Legg den til på Hjem-skjermen din for å få en bedre brukeropplevelse og raskere tilgang.`,
 's224cbcec014ef6b5': `Trykk på Del-knappen i navigasjonslinjen`,
+'s233af3b7eb5e0364': `Legg til på startsiden`,
 's37a9e8aec5713460': `Mer`,
 's386eca8362ff6155': `Trykk på Mer hvis det ikke er noe delingsikon`,
 's4e1e10a6ca408245': `Trykk på "Legg til på Hjem-skjerm"`,

@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Pridajte ju na domovskú obrazovku pre rozšírené využitie a jednoduchý prístup.`,
 's224cbcec014ef6b5': `Stlačte Zdieľať na navigačnom paneli`,
+'s233af3b7eb5e0364': `Pridať na domovskú stránku`,
 's37a9e8aec5713460': `Viac`,
 's386eca8362ff6155': `Stlačte Viac, ak nevidíte ikonu Zdieľať`,
 's4e1e10a6ca408245': `Klepnite na "Pridať na domovskú obrazovku"`,

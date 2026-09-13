@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Fügen Sie es zu Ihrem Startbildschirm hinzu, um eine umfassende Erfahrung und einen leichten Zugriff zu erhalten.`,
 's224cbcec014ef6b5': `Drücken Sie auf Teilen in der Navigationsleiste`,
+'s233af3b7eb5e0364': `Zur Startseite hinzufügen`,
 's37a9e8aec5713460': `Mehr`,
 's386eca8362ff6155': `Drücken Sie auf Mehr, wenn kein Teilen-Symbol vorhanden ist`,
 's4e1e10a6ca408245': `Tippen Sie auf "Zum Startbildschirm hinzufügen"`,

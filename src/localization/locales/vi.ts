@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Thêm nó vào màn hình chính của bạn để có trải nghiệm phong phú hơn và truy cập dễ dàng hơn.`,
 's224cbcec014ef6b5': `Nhấp vào nút "Chia sẻ" trên thanh điều hướng`,
+'s233af3b7eb5e0364': `Thêm vào trang chủ`,
 's37a9e8aec5713460': `Thêm`,
 's386eca8362ff6155': `Nhấn Thêm nếu không có biểu tượng Chia sẻ`,
 's4e1e10a6ca408245': `Nhấn vào "Thêm vào Màn hình chính"`,

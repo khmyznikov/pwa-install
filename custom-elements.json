@@ -236,6 +236,15 @@
             },
             {
               "kind": "field",
+              "name": "isApple27Plus",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "isAndroidFallback",
               "type": {
                 "text": "boolean"

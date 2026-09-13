@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Přidejte jej na plochu pro rozšířené využití a snadný přístup.`,
 's224cbcec014ef6b5': `Stiskněte tlačítko Sdílet na navigačním panelu`,
+'s233af3b7eb5e0364': `Přidat do košíku`,
 's37a9e8aec5713460': `Více`,
 's386eca8362ff6155': `Stiskněte Více, pokud není ikona Sdílet`,
 's4e1e10a6ca408245': `Klepněte na "Přidat na plochu"`,

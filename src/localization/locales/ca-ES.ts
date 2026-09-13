@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Afegeix-lo a la teva pantalla d'inici per a una àmplia experiència i fàcil accés.`,
 's224cbcec014ef6b5': `Premeu comparteix a la barra de navegació`,
+'s233af3b7eb5e0364': `Afegeix a la pàgina d'inici`,
 's37a9e8aec5713460': `Més`,
 's386eca8362ff6155': `Premeu "Més" si no hi ha icona de Compartir`,
 's4e1e10a6ca408245': `Toca "Afegeix a la pantalla d'inici"`,

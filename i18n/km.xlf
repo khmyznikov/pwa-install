@@ -90,6 +90,10 @@
   <source>Press More</source>
   <target>ចុចលើ បន្ថែម</target>
 </trans-unit>
+<trans-unit id="s233af3b7eb5e0364">
+  <source>Add to Home</source>
+  <target>បន្ថែមទៅទំព័រដើម</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

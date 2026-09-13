@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Lägg till på hemskärmen för att få en bättre användarupplevelse och enklare åtkomst.`,
 's224cbcec014ef6b5': `Tryck på Dela-knappen i verktygsfältet`,
+'s233af3b7eb5e0364': `Lägg till på startsidan`,
 's37a9e8aec5713460': `Mer`,
 's386eca8362ff6155': `Tryck på Mer om det inte finns någon delningsikon`,
 's4e1e10a6ca408245': `Tryck på "Lägg till på hemskärmen"`,

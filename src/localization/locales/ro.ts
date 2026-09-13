@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Adaugă-l pe Ecranul Principal pentru o experiență extinsă și acces facil.`,
 's224cbcec014ef6b5': `Apasă Partajare în bara de navigare`,
+'s233af3b7eb5e0364': `Adaugă la pagina principală`,
 's37a9e8aec5713460': `Mai mult`,
 's386eca8362ff6155': `Apasă Mai mult dacă nu există pictograma Partajare`,
 's4e1e10a6ca408245': `Atinge „Adaugă pe ecranul principal”`,

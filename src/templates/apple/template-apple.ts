@@ -117,7 +117,7 @@ const template = ({
                                     </g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('Add link to a phone')}</div>
+                            <div class="step-text">${msg('Add to Home')}</div>
                         </div>`}
                         ${!isDesktop && isApple26Plus && !Utils.isAppleMobileYaBrowser()? html`
                         <div class="description-step">

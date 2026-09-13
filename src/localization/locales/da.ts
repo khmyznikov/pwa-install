@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Tilføj den til din hjemmeskærm for en bedre oplevelse og nem adgang.`,
 's224cbcec014ef6b5': `Tryk på Del-knappen i navigationslinjen`,
+'s233af3b7eb5e0364': `Føj til startsiden`,
 's37a9e8aec5713460': `Mere`,
 's386eca8362ff6155': `Tryk på Mere, hvis der ikke er noget Del-ikon`,
 's4e1e10a6ca408245': `Tryk på "Tilføj til hjemmeskærm"`,

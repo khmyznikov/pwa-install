@@ -90,6 +90,10 @@
   <source>Press More</source>
   <target>더보기 누르기</target>
 </trans-unit>
+<trans-unit id="s233af3b7eb5e0364">
+  <source>Add to Home</source>
+  <target>홈에 추가</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

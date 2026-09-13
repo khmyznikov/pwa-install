@@ -90,6 +90,10 @@
   <source>Press More</source>
   <target>Stiskněte Více</target>
 </trans-unit>
+<trans-unit id="s233af3b7eb5e0364">
+  <source>Add to Home</source>
+  <target>Přidat do košíku</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

@@ -12,8 +12,10 @@ export default class Utils {
     static isAppleDesktop(): boolean;
     static isAppleMobileNonSafari(): boolean;
     static isAppleMobileYaBrowser(): boolean;
+    static isAppleMobileEdge(): boolean;
     static isIPad(): boolean;
     static isApple26Plus(): boolean;
+    static isApple27Plus(): boolean;
     static getPageBackgroundColor(): string | null;
     static isAndroid(): boolean;
     static isAndroidFallback(): boolean;

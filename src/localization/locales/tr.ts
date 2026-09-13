@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Daha iyi bir deneyim ve kolay erişim için Ana Ekranınıza ekleyin.`,
 's224cbcec014ef6b5': `Gezinme çubuğunda Paylaş'a basın`,
+'s233af3b7eb5e0364': `Telefona kısayol ekle`,
 's37a9e8aec5713460': `Daha Fazla`,
 's386eca8362ff6155': `Paylaş simgesi yoksa Daha Fazla'ya basın`,
 's4e1e10a6ca408245': `"Ana Ekrana Ekle"ye dokunun`,

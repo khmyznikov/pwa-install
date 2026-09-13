@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Zet het op je beginscherm voor een uitgebreide ervaring en gemakkelijke toegang.`,
 's224cbcec014ef6b5': `Druk op delen in de navigatiebalk`,
+'s233af3b7eb5e0364': `Toevoegen aan startpagina`,
 's37a9e8aec5713460': `Meer`,
 's386eca8362ff6155': `Druk op Meer als er geen Deel-icoon is`,
 's4e1e10a6ca408245': `Tik op "Zet op beginscherm"`,

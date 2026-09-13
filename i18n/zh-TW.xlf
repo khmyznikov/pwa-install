@@ -90,6 +90,10 @@
   <source>Press More</source>
   <target>請點擊「更多」</target>
 </trans-unit>
+<trans-unit id="s233af3b7eb5e0364">
+  <source>Add to Home</source>
+  <target>加入首頁</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

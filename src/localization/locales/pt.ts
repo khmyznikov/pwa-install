@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Adicione à Tela de Início para uma melhor experiência e mais fácil acesso.`,
 's224cbcec014ef6b5': `Pressione Compartilhar na barra de endereço`,
+'s233af3b7eb5e0364': `Adicionar à página inicial`,
 's37a9e8aec5713460': `Mais`,
 's386eca8362ff6155': `Pressione Mais se não houver ícone de Compartilhar`,
 's4e1e10a6ca408245': `Toque em "Adicionar à Tela de Início"`,

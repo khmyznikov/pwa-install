@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Dodaj do swojego Ekranu Głównego, aby uzyskać bogate doświadczenie i łatwy dostęp.`,
 's224cbcec014ef6b5': `Wybierz "Udostępnij"`,
+'s233af3b7eb5e0364': `Dodaj do strony głównej`,
 's37a9e8aec5713460': `Więcej`,
 's386eca8362ff6155': `Naciśnij Więcej, jeśli brak ikony Udostępnij`,
 's4e1e10a6ca408245': `Naciśnij "Dodaj do Ekranu Głównego"`,

@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Adja hozzá a kezdőképernyőjéhez a teljes élmény és a könnyű hozzáférés érdekében.`,
 's224cbcec014ef6b5': `Nyomja meg a Megosztás gombot a navigációs sávban`,
+'s233af3b7eb5e0364': `Hozzáadás a kezdőlaphoz`,
 's37a9e8aec5713460': `Több`,
 's386eca8362ff6155': `Nyomja meg a Több gombot, ha nincs Megosztás ikon`,
 's4e1e10a6ca408245': `Koppintson a "Hozzáadás a kezdőképernyőhöz" lehetőségre`,

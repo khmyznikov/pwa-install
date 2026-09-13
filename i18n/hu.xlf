@@ -90,6 +90,10 @@
   <source>Press More</source>
   <target>Nyomja meg a Több gombot</target>
 </trans-unit>
+<trans-unit id="s233af3b7eb5e0364">
+  <source>Add to Home</source>
+  <target>Hozzáadás a kezdőlaphoz</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

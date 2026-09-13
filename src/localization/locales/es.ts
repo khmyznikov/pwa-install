@@ -11,6 +11,7 @@
     export const templates = {
       's182ab2d6c997515f': `Añádelo a tu pantalla de inicio para una experiencia amplia y acceso fácil.`,
 's224cbcec014ef6b5': `Presionar Compartir en la barra de direcciones`,
+'s233af3b7eb5e0364': `Añadir al Carrito`,
 's37a9e8aec5713460': `Más`,
 's386eca8362ff6155': `Presiona Más si no hay icono de Compartir`,
 's4e1e10a6ca408245': `Toca "Añadir a pantalla de inicio"`,

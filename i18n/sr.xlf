@@ -88,6 +88,10 @@
   <source>Press More</source>
   <target>Притисните Више</target>
 </trans-unit>
+<trans-unit id="s233af3b7eb5e0364">
+  <source>Add to Home</source>
+  <target>Додај на почетну страницу</target>
+</trans-unit>
     </body>
   </file>
 </xliff>
