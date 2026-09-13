@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Fügen Sie es zu Ihrem Startbildschirm hinzu, um eine umfassende Erfahrung und einen leichten Zugriff zu erhalten.`,
+      's05b70c60d4ea8317': `Tippen Sie auf „Im Browser öffnen…“`,
+'s182ab2d6c997515f': `Fügen Sie es zu Ihrem Startbildschirm hinzu, um eine umfassende Erfahrung und einen leichten Zugriff zu erhalten.`,
 's224cbcec014ef6b5': `Drücken Sie auf Teilen in der Navigationsleiste`,
 's233af3b7eb5e0364': `Zur Startseite hinzufügen`,
 's37a9e8aec5713460': `Mehr`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Drücken Sie auf "Zum Startbildschirm hinzufügen"`,
 'sa2d71bfd9525168d': `Drücken Sie auf "Zum Dock hinzufügen"`,
 'sa5ef80b4bb9b39f8': `Weniger`,
+'sb527eca1c1d7e7be': `Öffnen Sie das Menü des In-App-Browsers`,
 'sba52286c21552a4e': `Installieren Sie es auf Ihrem Gerät für eine umfassende Erfahrung und einen leichten Zugriff.`,
 'sc16e00a7a8b2fde2': `Zurück`,
 'scdaf4bbff76674c8': `Hinzufügen zum Startbildschirm`,

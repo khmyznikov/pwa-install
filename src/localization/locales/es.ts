@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Añádelo a tu pantalla de inicio para una experiencia amplia y acceso fácil.`,
+      's05b70c60d4ea8317': `Toca «Abrir en el navegador…»`,
+'s182ab2d6c997515f': `Añádelo a tu pantalla de inicio para una experiencia amplia y acceso fácil.`,
 's224cbcec014ef6b5': `Presionar Compartir en la barra de direcciones`,
 's233af3b7eb5e0364': `Añadir al Carrito`,
 's37a9e8aec5713460': `Más`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Presiona "Añadir a pantalla de inicio"`,
 'sa2d71bfd9525168d': `Presiona "Añadir al Dock"`,
 'sa5ef80b4bb9b39f8': `Menos`,
+'sb527eca1c1d7e7be': `Abre el menú del navegador integrado`,
 'sba52286c21552a4e': `Instálalo en tu dispositivo para una experiencia amplia y acceso fácil.`,
 'sc16e00a7a8b2fde2': `Atrás`,
 'scdaf4bbff76674c8': `Añadir a pantalla de inicio`,

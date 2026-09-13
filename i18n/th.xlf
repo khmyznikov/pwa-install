@@ -94,6 +94,14 @@
   <source>Add to Home</source>
   <target>เพิ่มไปยังหน้าหลัก</target>
 </trans-unit>
+<trans-unit id="sb527eca1c1d7e7be">
+  <source>Open the in-app browser menu</source>
+  <target>เปิดเมนูเบราว์เซอร์ในแอป</target>
+</trans-unit>
+<trans-unit id="s05b70c60d4ea8317">
+  <source>Tap "Open in..." Browser</source>
+  <target>แตะ "เปิดในเบราว์เซอร์..."</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

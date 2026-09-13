@@ -92,6 +92,14 @@
   <source>Add to Home</source>
   <target>Додај на почетну страницу</target>
 </trans-unit>
+<trans-unit id="sb527eca1c1d7e7be">
+  <source>Open the in-app browser menu</source>
+  <target>Отворите мени уграђеног прегледача</target>
+</trans-unit>
+<trans-unit id="s05b70c60d4ea8317">
+  <source>Tap "Open in..." Browser</source>
+  <target>Додирните „Отвори у прегледачу…“</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

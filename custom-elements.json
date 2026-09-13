@@ -254,6 +254,15 @@
             },
             {
               "kind": "field",
+              "name": "isInAppBrowser",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "public",
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "isAndroid",
               "type": {
                 "text": "boolean"

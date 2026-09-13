@@ -94,6 +94,14 @@
   <source>Add to Home</source>
   <target>ホームに追加</target>
 </trans-unit>
+<trans-unit id="sb527eca1c1d7e7be">
+  <source>Open the in-app browser menu</source>
+  <target>アプリ内ブラウザのメニューを開く</target>
+</trans-unit>
+<trans-unit id="s05b70c60d4ea8317">
+  <source>Tap "Open in..." Browser</source>
+  <target>「ブラウザで開く…」をタップする</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

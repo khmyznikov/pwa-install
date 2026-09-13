@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Ajoutez-le à votre écran d'accueil pour une expérience étendue et un accès facile.`,
+      's05b70c60d4ea8317': `Touchez « Ouvrir dans le navigateur… »`,
+'s182ab2d6c997515f': `Ajoutez-le à votre écran d'accueil pour une expérience étendue et un accès facile.`,
 's224cbcec014ef6b5': `Appuyez sur Partager dans la barre de navigation`,
 's233af3b7eb5e0364': `Ajouter à la Maison`,
 's37a9e8aec5713460': `Plus`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Appuyez sur "Ajouter à l'écran d'accueil"`,
 'sa2d71bfd9525168d': `Appuyez sur "Ajouter au Dock"`,
 'sa5ef80b4bb9b39f8': `Moins`,
+'sb527eca1c1d7e7be': `Ouvrez le menu du navigateur intégré`,
 'sba52286c21552a4e': `Installez-le sur votre appareil pour une expérience complète et un accès facile.`,
 'sc16e00a7a8b2fde2': `Retour`,
 'scdaf4bbff76674c8': `Ajouter à l'écran d'accueil`,

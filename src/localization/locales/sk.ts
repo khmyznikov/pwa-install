@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Pridajte ju na domovskú obrazovku pre rozšírené využitie a jednoduchý prístup.`,
+      's05b70c60d4ea8317': `Klepnite na „Otvoriť v prehliadači…“`,
+'s182ab2d6c997515f': `Pridajte ju na domovskú obrazovku pre rozšírené využitie a jednoduchý prístup.`,
 's224cbcec014ef6b5': `Stlačte Zdieľať na navigačnom paneli`,
 's233af3b7eb5e0364': `Pridať na domovskú stránku`,
 's37a9e8aec5713460': `Viac`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Stlačte "Pridať na domovskú obrazovku"`,
 'sa2d71bfd9525168d': `Stlačte "Pridať do Docku"`,
 'sa5ef80b4bb9b39f8': `Menej`,
+'sb527eca1c1d7e7be': `Otvorte ponuku prehliadača v aplikácii`,
 'sba52286c21552a4e': `Nainštalujte si ju na svoje zariadenie pre rozšírené využitie a jednoduchý prístup.`,
 'sc16e00a7a8b2fde2': `Späť`,
 'scdaf4bbff76674c8': `Pridať na domovskú obrazovku`,

@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Legg den til på Hjem-skjermen din for å få en bedre brukeropplevelse og raskere tilgang.`,
+      's05b70c60d4ea8317': `Trykk på «Åpne i nettleser…»`,
+'s182ab2d6c997515f': `Legg den til på Hjem-skjermen din for å få en bedre brukeropplevelse og raskere tilgang.`,
 's224cbcec014ef6b5': `Trykk på Del-knappen i navigasjonslinjen`,
 's233af3b7eb5e0364': `Legg til på startsiden`,
 's37a9e8aec5713460': `Mer`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Trykk på «Legg til på Hjem-skjerm»`,
 'sa2d71bfd9525168d': `Trykk på «Legg til i Dock»`,
 'sa5ef80b4bb9b39f8': `Mindre`,
+'sb527eca1c1d7e7be': `Åpne nettlesermenyen i appen`,
 'sba52286c21552a4e': `Installer den på enheten din for å få en bedre brukeropplevelse og raskere tilgang.`,
 'sc16e00a7a8b2fde2': `Tilbake`,
 'scdaf4bbff76674c8': `Legg til på Hjem-skjerm`,

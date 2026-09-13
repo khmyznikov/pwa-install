@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Aggiungilo alla schermata principale per un'esperienza più completa e un accesso facile.`,
+      's05b70c60d4ea8317': `Tocca "Apri nel browser..."`,
+'s182ab2d6c997515f': `Aggiungilo alla schermata principale per un'esperienza più completa e un accesso facile.`,
 's224cbcec014ef6b5': `Premi Condividi nella barra di navigazione`,
 's233af3b7eb5e0364': `Aggiungi alla Home`,
 's37a9e8aec5713460': `Più`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Premi "Aggiungi alla schermata principale"`,
 'sa2d71bfd9525168d': `Premi "Aggiungi al Dock"`,
 'sa5ef80b4bb9b39f8': `Meno`,
+'sb527eca1c1d7e7be': `Apri il menu del browser integrato`,
 'sba52286c21552a4e': `Installalo sul tuo dispositivo per un'esperienza più completa e un accesso facile.`,
 'sc16e00a7a8b2fde2': `Indietro`,
 'scdaf4bbff76674c8': `Aggiungi alla schermata principale`,

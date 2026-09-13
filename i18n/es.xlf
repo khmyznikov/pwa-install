@@ -94,6 +94,14 @@
   <source>Add to Home</source>
   <target>Añadir al Carrito</target>
 </trans-unit>
+<trans-unit id="sb527eca1c1d7e7be">
+  <source>Open the in-app browser menu</source>
+  <target>Abre el menú del navegador integrado</target>
+</trans-unit>
+<trans-unit id="s05b70c60d4ea8317">
+  <source>Tap "Open in..." Browser</source>
+  <target>Toca «Abrir en el navegador…»</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

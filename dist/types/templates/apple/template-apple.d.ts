@@ -6,10 +6,11 @@ export interface AppleTemplateOptions extends InstallTemplateOptions {
     isApple26Plus: boolean;
     isApple27Plus: boolean;
     isDesktop: boolean;
+    inAppBrowser: boolean;
     customStyles: Record<string, string>;
     linkCopied: boolean;
     safariUrl: string;
     copyCurrentUrl: EventListenerOrEventListenerObject;
 }
-declare const template: ({ name, description, installDescription, disableDescription, disableScreenshots, disableClose, manualHowTo, icon, manifest, installAvailable, hideDialog, howToForApple, howToRequested, toggleGallery, galleryRequested, isRTL, isApple26Plus, isApple27Plus, isDesktop, customStyles, linkCopied, safariUrl, copyCurrentUrl }: AppleTemplateOptions) => import("lit-html").TemplateResult<1>;
+declare const template: ({ name, description, installDescription, disableDescription, disableScreenshots, disableClose, manualHowTo, icon, manifest, installAvailable, hideDialog, howToForApple, howToRequested, toggleGallery, galleryRequested, isRTL, isApple26Plus, isApple27Plus, isDesktop, inAppBrowser, customStyles, linkCopied, safariUrl, copyCurrentUrl }: AppleTemplateOptions) => import("lit-html").TemplateResult<1>;
 export default template;

@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Lägg till på hemskärmen för att få en bättre användarupplevelse och enklare åtkomst.`,
+      's05b70c60d4ea8317': `Tryck på ”Öppna i webbläsare…”`,
+'s182ab2d6c997515f': `Lägg till på hemskärmen för att få en bättre användarupplevelse och enklare åtkomst.`,
 's224cbcec014ef6b5': `Tryck på Dela-knappen i verktygsfältet`,
 's233af3b7eb5e0364': `Lägg till på startsidan`,
 's37a9e8aec5713460': `Mer`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Tryck på "Lägg till på hemskärmen"`,
 'sa2d71bfd9525168d': `Tryck på "Lägg till i Dock"`,
 'sa5ef80b4bb9b39f8': `Mindre`,
+'sb527eca1c1d7e7be': `Öppna menyn i appens webbläsare`,
 'sba52286c21552a4e': `Installera den på din enhet för att få en bättre användarupplevelse och enklare åtkomst.`,
 'sc16e00a7a8b2fde2': `Tillbaka`,
 'scdaf4bbff76674c8': `Lägg till på hemskärmen`,

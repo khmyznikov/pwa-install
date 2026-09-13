@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Thêm nó vào màn hình chính của bạn để có trải nghiệm phong phú hơn và truy cập dễ dàng hơn.`,
+      's05b70c60d4ea8317': `Nhấn vào "Mở bằng trình duyệt..."`,
+'s182ab2d6c997515f': `Thêm nó vào màn hình chính của bạn để có trải nghiệm phong phú hơn và truy cập dễ dàng hơn.`,
 's224cbcec014ef6b5': `Nhấp vào nút "Chia sẻ" trên thanh điều hướng`,
 's233af3b7eb5e0364': `Thêm vào trang chủ`,
 's37a9e8aec5713460': `Thêm`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Nhấn "Thêm vào Màn hình chính"`,
 'sa2d71bfd9525168d': `Nhấn "Thêm vào Dock"`,
 'sa5ef80b4bb9b39f8': `Thu gọn`,
+'sb527eca1c1d7e7be': `Mở menu trình duyệt trong ứng dụng`,
 'sba52286c21552a4e': `Cài đặt trên thiết bị của bạn để có trải nghiệm phong phú hơn và truy cập dễ dàng.`,
 'sc16e00a7a8b2fde2': `Quay lại`,
 'scdaf4bbff76674c8': `Thêm vào màn hình chính`,

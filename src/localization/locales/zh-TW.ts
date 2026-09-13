@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `將其加入主畫面，以獲得更完整的體驗並方便存取。`,
+      's05b70c60d4ea8317': `輕觸「在瀏覽器中開啟…」`,
+'s182ab2d6c997515f': `將其加入主畫面，以獲得更完整的體驗並方便存取。`,
 's224cbcec014ef6b5': `點擊導覽列中的「分享」按鈕`,
 's233af3b7eb5e0364': `加入首頁`,
 's37a9e8aec5713460': `更多`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `點擊「加入主畫面」`,
 'sa2d71bfd9525168d': `點擊「加入 Dock」`,
 'sa5ef80b4bb9b39f8': `收起`,
+'sb527eca1c1d7e7be': `開啟應用程式內的瀏覽器選單`,
 'sba52286c21552a4e': `在您的裝置上安裝，以獲得更完整的體驗並方便存取。`,
 'sc16e00a7a8b2fde2': `返回`,
 'scdaf4bbff76674c8': `加入主畫面`,

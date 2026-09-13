@@ -14,6 +14,7 @@ export default class PWABottomSheetElement extends LitElement {
     disableClose: boolean;
     fallback: boolean;
     howToRequested: boolean;
+    inAppBrowser: boolean;
     toggleHowTo: {
         handleEvent: () => void;
     };

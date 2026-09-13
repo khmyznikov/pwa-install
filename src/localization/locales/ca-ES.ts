@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Afegeix-lo a la teva pantalla d'inici per a una àmplia experiència i fàcil accés.`,
+      's05b70c60d4ea8317': `Toca «Obre al navegador…»`,
+'s182ab2d6c997515f': `Afegeix-lo a la teva pantalla d'inici per a una àmplia experiència i fàcil accés.`,
 's224cbcec014ef6b5': `Premeu comparteix a la barra de navegació`,
 's233af3b7eb5e0364': `Afegeix a la pàgina d'inici`,
 's37a9e8aec5713460': `Més`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Premeu "Afegeix a la pantalla d'inici"`,
 'sa2d71bfd9525168d': `Premeu "Afegeix al Dock"`,
 'sa5ef80b4bb9b39f8': `Menys`,
+'sb527eca1c1d7e7be': `Obre el menú del navegador integrat`,
 'sba52286c21552a4e': `Instal·la'l al teu dispositiu per a una àmplia experiència i fàcil accés.`,
 'sc16e00a7a8b2fde2': `Enrere`,
 'scdaf4bbff76674c8': `Afegeix a pantalla d'inici`,

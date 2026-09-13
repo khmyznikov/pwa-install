@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Přidejte jej na plochu pro rozšířené využití a snadný přístup.`,
+      's05b70c60d4ea8317': `Klepněte na „Otevřít v prohlížeči…“`,
+'s182ab2d6c997515f': `Přidejte jej na plochu pro rozšířené využití a snadný přístup.`,
 's224cbcec014ef6b5': `Stiskněte tlačítko Sdílet na navigačním panelu`,
 's233af3b7eb5e0364': `Přidat do košíku`,
 's37a9e8aec5713460': `Více`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Stiskněte "Přidat na plochu"`,
 'sa2d71bfd9525168d': `Stiskněte "Přidat do Docku"`,
 'sa5ef80b4bb9b39f8': `Méně`,
+'sb527eca1c1d7e7be': `Otevřete nabídku prohlížeče v aplikaci`,
 'sba52286c21552a4e': `Nainstalujte si jej na své zařízení pro rozšířené využití a snadný přístup.`,
 'sc16e00a7a8b2fde2': `Zpět`,
 'scdaf4bbff76674c8': `Přidat na plochu`,

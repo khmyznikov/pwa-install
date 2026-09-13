@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Dodaj do swojego Ekranu Głównego, aby uzyskać bogate doświadczenie i łatwy dostęp.`,
+      's05b70c60d4ea8317': `Naciśnij „Otwórz w przeglądarce…”`,
+'s182ab2d6c997515f': `Dodaj do swojego Ekranu Głównego, aby uzyskać bogate doświadczenie i łatwy dostęp.`,
 's224cbcec014ef6b5': `Wybierz "Udostępnij"`,
 's233af3b7eb5e0364': `Dodaj do strony głównej`,
 's37a9e8aec5713460': `Więcej`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Naciśnij "Dodaj do Ekranu Głównego"`,
 'sa2d71bfd9525168d': `Naciśnij "Dodaj do Docka"`,
 'sa5ef80b4bb9b39f8': `Mniej`,
+'sb527eca1c1d7e7be': `Otwórz menu przeglądarki w aplikacji`,
 'sba52286c21552a4e': `Zainstaluj na swoim urządzeniu, aby uzyskać bogate doświadczenie i łatwy dostęp.`,
 'sc16e00a7a8b2fde2': `Wstecz`,
 'scdaf4bbff76674c8': `Dodaj do Ekranu Głównego`,

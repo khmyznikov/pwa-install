@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Adicione à Tela de Início para uma melhor experiência e mais fácil acesso.`,
+      's05b70c60d4ea8317': `Toque em "Abrir no navegador..."`,
+'s182ab2d6c997515f': `Adicione à Tela de Início para uma melhor experiência e mais fácil acesso.`,
 's224cbcec014ef6b5': `Pressione Compartilhar na barra de endereço`,
 's233af3b7eb5e0364': `Adicionar à página inicial`,
 's37a9e8aec5713460': `Mais`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Pressione "Adicionar à Tela de Início"`,
 'sa2d71bfd9525168d': `Pressione "Adicionar ao Dock"`,
 'sa5ef80b4bb9b39f8': `Menos`,
+'sb527eca1c1d7e7be': `Abra o menu do navegador integrado`,
 'sba52286c21552a4e': `Instale no dispositivo para uma melhor experiência e mais fácil acesso.`,
 'sc16e00a7a8b2fde2': `Voltar`,
 'scdaf4bbff76674c8': `Adicionar à Tela de Início`,

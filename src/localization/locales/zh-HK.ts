@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `將其加入主屏幕，以獲得更豐富的體驗和便捷訪問。`,
+      's05b70c60d4ea8317': `點擊「在瀏覽器中打開…」`,
+'s182ab2d6c997515f': `將其加入主屏幕，以獲得更豐富的體驗和便捷訪問。`,
 's224cbcec014ef6b5': `點擊列表上的分享按鈕`,
 's233af3b7eb5e0364': `添加到主頁`,
 's37a9e8aec5713460': `詳細資訊`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `點擊「添加到主屏幕」`,
 'sa2d71bfd9525168d': `點擊「添加到Dock欄」`,
 'sa5ef80b4bb9b39f8': `簡短資訊`,
+'sb527eca1c1d7e7be': `打開應用程式內的瀏覽器菜單`,
 'sba52286c21552a4e': `在您的裝置上安裝它，以獲得更豐富的體驗和便捷訪問。`,
 'sc16e00a7a8b2fde2': `返回`,
 'scdaf4bbff76674c8': `將App加入主畫面`,

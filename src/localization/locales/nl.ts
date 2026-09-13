@@ -9,7 +9,8 @@
     /* eslint-disable @typescript-eslint/no-explicit-any */
 
     export const templates = {
-      's182ab2d6c997515f': `Zet het op je beginscherm voor een uitgebreide ervaring en gemakkelijke toegang.`,
+      's05b70c60d4ea8317': `Tik op "Openen in browser..."`,
+'s182ab2d6c997515f': `Zet het op je beginscherm voor een uitgebreide ervaring en gemakkelijke toegang.`,
 's224cbcec014ef6b5': `Druk op delen in de navigatiebalk`,
 's233af3b7eb5e0364': `Toevoegen aan startpagina`,
 's37a9e8aec5713460': `Meer`,
@@ -23,6 +24,7 @@
 's9c63a79ffcc2a3a3': `Druk op "Zet op beginscherm"`,
 'sa2d71bfd9525168d': `Druk op "Toevoegen aan Dock"`,
 'sa5ef80b4bb9b39f8': `Minder`,
+'sb527eca1c1d7e7be': `Open het menu van de in-appbrowser`,
 'sba52286c21552a4e': `Installeer het op je apparaat voor een uitgebreide ervaring en gemakkelijke toegang.`,
 'sc16e00a7a8b2fde2': `Terug`,
 'scdaf4bbff76674c8': `Zet op beginscherm`,
