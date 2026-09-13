@@ -10,6 +10,7 @@ export interface AppleTemplateOptions extends InstallTemplateOptions {
     howToForApple: EventListenerOrEventListenerObject;
     howToRequested: boolean;
     isApple26Plus: boolean;
+    isApple27Plus: boolean;
     isDesktop: boolean;
     customStyles: Record<string, string>;
     linkCopied: boolean;
@@ -35,6 +36,7 @@ const template = ({
     galleryRequested,
     isRTL,
     isApple26Plus,
+    isApple27Plus,
     isDesktop,
     customStyles,
     linkCopied,
@@ -83,11 +85,19 @@ const template = ({
                         ${!isDesktop && !(Utils.isAppleMobileNonSafari() && !(Utils.isAppleMobileYaBrowser() || Utils.isAppleMobileEdge)) && !Utils.isIPad() && isApple26Plus? html`
                         <div class="description-step">
                             <div class="svg-wrap ${classMap({ya: Utils.isAppleMobileYaBrowser()})}">
-                                <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
-                                    <circle cx="2" cy="12" r="2" fill="currentColor"/>
-                                    <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                                    <circle cx="22" cy="12" r="2" fill="currentColor"/>
-                                </svg>
+                                ${isApple27Plus && !Utils.isAppleMobileYaBrowser()? html`
+                                    <svg id="safari-menu" width="22" height="24" viewBox="0 0 18.427 13.386">
+                                        <g fill="currentColor">
+                                            <path d="M.785 13.387h10.9c.44 0 .786-.347.786-.784a.78.78 0 0 0-.785-.785H.786a.78.78 0 0 0-.786.785c0 .438.346.784.785.784M.785 7.485h16.856a.78.78 0 0 0 .786-.786.78.78 0 0 0-.786-.785H.785A.78.78 0 0 0 0 6.7a.78.78 0 0 0 .785.786M.785 1.581h16.856a.78.78 0 0 0 .786-.785.78.78 0 0 0-.786-.784H.785A.78.78 0 0 0 0 .796c0 .439.346.785.785.785"/>
+                                        </g>
+                                    </svg>
+                                `: html`
+                                    <svg id="safari-dots" width="22" height="24" viewBox="0 0 24 24">
+                                        <circle cx="2" cy="12" r="2" fill="currentColor"/>
+                                        <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                                        <circle cx="22" cy="12" r="2" fill="currentColor"/>
+                                    </svg>
+                                `}
                             </div>
                             <div class="step-text">${Utils.isAppleMobileYaBrowser()?  msg('Press More') : msg('Press More if no Share icon')}</div>
                         </div>`: ''}
@@ -99,7 +109,16 @@ const template = ({
                                 </svg>
                             </div>
                             <div class="step-text">${msg('Press Share in Navigation bar')}</div>
-                        </div>`: ''}
+                        </div>`: html`
+                        <div class="description-step">
+                            <div class="svg-wrap">
+                                <svg id="safari-ya" width="30" height="40" viewBox="0 0 23.592 25.886">
+                                    <g fill="currentColor"><path d="M18.073 5.132v8.225a5 5 0 0 0-.783-.055q-.406-.002-.798.057V5.391c0-.787-.457-1.221-1.285-1.221H8.375c-.818 0-1.285.434-1.285 1.22v15.084c0 .787.467 1.223 1.285 1.223h2.995c.196.568.476 1.095.828 1.569H8.174c-1.595 0-2.655-1.01-2.655-2.533V5.132c0-1.522 1.06-2.533 2.655-2.533h7.234c1.592 0 2.665 1.01 2.665 2.533m-7.926 6.091v.937c0 .21-.16.357-.382.357h-.922a.34.34 0 0 1-.357-.357v-.937c0-.22.147-.367.357-.367h.922c.222 0 .382.147.382.367m2.471 0v.937c0 .21-.16.357-.371.357h-.922a.34.34 0 0 1-.357-.357v-.937c0-.22.147-.367.357-.367h.922c.211 0 .371.147.371.367m-2.471-2.658v.937c0 .21-.16.357-.382.357h-.922a.34.34 0 0 1-.357-.357v-.937c0-.21.147-.357.357-.357h.922c.222 0 .382.148.382.357m2.471 0v.937c0 .21-.16.357-.371.357h-.922a.34.34 0 0 1-.357-.357v-.937c0-.21.147-.357.357-.357h.922c.211 0 .371.148.371.357m2.482 0v.937c0 .21-.16.357-.382.357h-.912a.34.34 0 0 1-.357-.357v-.937c0-.21.148-.357.357-.357h.912c.222 0 .382.148.382.357M10.147 5.92v.936c0 .208-.16.355-.382.355h-.922a.34.34 0 0 1-.357-.355V5.92c0-.21.147-.357.357-.357h.922c.222 0 .382.147.382.357m2.471 0v.936c0 .208-.16.355-.371.355h-.922a.34.34 0 0 1-.357-.355V5.92c0-.21.147-.357.357-.357h.922c.211 0 .371.147.371.357m2.482 0v.936c0 .208-.16.355-.382.355h-.912a.34.34 0 0 1-.357-.355V5.92c0-.21.148-.357.357-.357h.912c.222 0 .382.147.382.357"/><path d="M22.257 19.594c0 2.71-2.27 4.958-4.967 4.958-2.718 0-4.956-2.228-4.956-4.958 0-2.716 2.238-4.957 4.956-4.957 2.73 0 4.967 2.239 4.967 4.957m-5.558-2.507v1.907H14.79c-.355 0-.601.24-.601.6s.246.601.601.601H16.7v1.91c0 .355.23.6.591.6.371 0 .602-.245.602-.6v-1.91h1.905c.357 0 .602-.24.602-.601 0-.36-.245-.6-.602-.6h-1.905v-1.907c0-.355-.23-.592-.602-.592-.361 0-.591.237-.591.592"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="step-text">${msg('Add link to a phone')}</div>
+                        </div>`}
                         ${!isDesktop && isApple26Plus && !Utils.isAppleMobileYaBrowser()? html`
                         <div class="description-step">
                             <div class="svg-wrap">

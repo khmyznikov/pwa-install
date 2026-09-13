@@ -64,6 +64,7 @@ export class PWAInstallElement extends LitElement {
 	public isAppleMobilePlatform = false;
 	public isAppleDesktopPlatform = false;
 	public isApple26Plus = false;
+	public isApple27Plus = false;
 	public isAndroidFallback = false;
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
@@ -173,6 +174,7 @@ export class PWAInstallElement extends LitElement {
 		this.isAppleMobilePlatform = Utils.isAppleMobile();
 		this.isAppleDesktopPlatform = Utils.isAppleDesktop();
 		this.isApple26Plus = Utils.isApple26Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
+		this.isApple27Plus = Utils.isApple27Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
 		this.isAndroidFallback = Utils.isAndroidFallback();
 		this.isAndroid = Utils.isAndroid();
 		this.isWebInstallSupported = Utils.isWebInstallSupported();
@@ -273,6 +275,7 @@ export class PWAInstallElement extends LitElement {
 				howToForApple: this._toggleHowTo,
 				howToRequested: this._howToRequested || this.manualHowTo,
 				isApple26Plus: this.isApple26Plus,
+				isApple27Plus: this.isApple27Plus,
 				isDesktop: this.isAppleDesktopPlatform,
 				customStyles: this.styles,
 				linkCopied: this._linkCopied,

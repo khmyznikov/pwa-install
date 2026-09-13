@@ -93,10 +93,10 @@ export default class Utils {
     }
 
     static isApple26Plus(): boolean {
-        if (!CSS.supports('text-wrap', 'pretty')){
-            return false;
-        }
-        return true;
+        return CSS.supports('text-wrap', 'pretty');
+    }
+    static isApple27Plus(): boolean {
+        return CSS.supports('background', 'revert-rule');
     }
 
     static getPageBackgroundColor(): string | null {
@@ -106,9 +106,7 @@ export default class Utils {
     }
 
     static isAndroid(): boolean {
-        if (navigator.userAgent.toLowerCase().match(/android/))
-            return true;
-        return false;
+        return /android/.test(navigator.userAgent.toLowerCase());
     }
 
     static isAndroidFallback(): boolean {
