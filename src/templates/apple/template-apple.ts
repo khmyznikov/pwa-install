@@ -47,6 +47,19 @@ const template = ({
 }: AppleTemplateOptions) => {
     const useInAppBrowserInstructions = inAppBrowser || !Utils.isServiceWorkerSupported();
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
+    const pressMoreNeeded = () => {
+        if (isDesktop || !isApple26Plus)
+            return false;
+        if (Utils.isYaBrowser() && Utils.isIPhoneSafari())
+            return true;
+        if (Utils.isAppleMobileNonSafari() && !Utils.isIPad()){
+            if (Utils.isEdge() || Utils.isOpera())
+                return true;
+            if (Utils.isFox())
+                return false;
+        }
+        return false;
+    }
     const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, aqua27: isApple27Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
     let styles = { '--tint-color': Utils.getPageBackgroundColor(), ...customStyles };
 
@@ -84,10 +97,11 @@ const template = ({
                             </span>
                             <span class="step-text"><span class="copy-link-action">${linkCopied? msg('Open Copied Link in Safari') : msg('Tap here to Copy App Link')}</span></span>
                         </a>`: ''}
-                        ${!isDesktop && !(Utils.isAppleMobileNonSafari() && !(Utils.isAppleMobileYaBrowser() || Utils.isAppleMobileEdge)) && !Utils.isIPad() && isApple26Plus? html`
+                        ${pressMoreNeeded() ? 
+                        html`
                         <div class="description-step">
-                            <div class="svg-wrap ${classMap({ya: Utils.isAppleMobileYaBrowser()})}">
-                                ${isApple27Plus && !Utils.isAppleMobileYaBrowser()? html`
+                            <div class="svg-wrap ${classMap({ya: Utils.isYaBrowser()})}">
+                                ${isApple27Plus && !Utils.isYaBrowser() && !Utils.isOpera()? html`
                                     <svg id="safari-menu" width="22" height="24" viewBox="0 0 18.427 13.386">
                                         <g fill="currentColor">
                                             <path d="M.785 13.387h10.9c.44 0 .786-.347.786-.784a.78.78 0 0 0-.785-.785H.786a.78.78 0 0 0-.786.785c0 .438.346.784.785.784M.785 7.485h16.856a.78.78 0 0 0 .786-.786.78.78 0 0 0-.786-.785H.785A.78.78 0 0 0 0 6.7a.78.78 0 0 0 .785.786M.785 1.581h16.856a.78.78 0 0 0 .786-.785.78.78 0 0 0-.786-.784H.785A.78.78 0 0 0 0 .796c0 .439.346.785.785.785"/>
@@ -101,9 +115,9 @@ const template = ({
                                     </svg>
                                 `}
                             </div>
-                            <div class="step-text">${Utils.isAppleMobileYaBrowser()?  msg('Press More') : msg('Press More if no Share icon')}</div>
+                            <div class="step-text">${Utils.isYaBrowser()?  msg('Press More') : msg('Press More if no Share icon')}</div>
                         </div>`: ''}
-                        ${!Utils.isAppleMobileYaBrowser()? html`
+                        ${!Utils.isYaBrowser()? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="pwa-share" width="25" height="32" viewBox="0 0 17.695 26.475">
@@ -121,7 +135,7 @@ const template = ({
                             </div>
                             <div class="step-text">${msg('Add to Home')}</div>
                         </div>`}
-                        ${!isDesktop && isApple26Plus && !Utils.isAppleMobileYaBrowser()? html`
+                        ${!isDesktop && isApple26Plus && !Utils.isYaBrowser() && !Utils.isDuck()? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="safari-chevron" viewBox="0 0 16.961 10.395"><path d="M8.485 10.395a.87.87 0 0 0 .657-.286l7.556-7.735a.88.88 0 0 0 .263-.628c0-.507-.381-.899-.889-.899a.97.97 0 0 0-.64.26L7.958 8.74h1.045L1.527 1.106A.92.92 0 0 0 .899.847c-.51 0-.899.392-.899.9 0 .25.102.464.265.63L7.83 10.11q.268.284.655.284"/></svg>

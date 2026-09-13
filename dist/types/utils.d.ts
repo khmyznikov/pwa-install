@@ -11,9 +11,13 @@ export default class Utils {
     static copyTextToClipboard(text: string): Promise<boolean>;
     static isAppleDesktop(): boolean;
     static isAppleMobileNonSafari(): boolean;
-    static isAppleMobileYaBrowser(): boolean;
-    static isAppleMobileEdge(): boolean;
+    static isYaBrowser(): boolean;
+    static isDuck(): boolean;
+    static isOpera(): boolean;
+    static isFox(): boolean;
+    static isEdge(): boolean;
     static isIPad(): boolean;
+    static isIPhoneSafari(): boolean;
     static isApple26Plus(): boolean;
     static isApple27Plus(): boolean;
     static getPageBackgroundColor(): string | null;

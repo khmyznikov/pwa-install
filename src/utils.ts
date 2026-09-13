@@ -77,19 +77,35 @@ export default class Utils {
     }
 
     static isAppleMobileNonSafari(): boolean {
-        return this.isAppleMobile() && /CriOS|EdgiOS|FxiOS|Brave|Ddg|YaBrowser/.test(navigator.userAgent);
+        return this.isAppleMobile() && /CriOS|EdgiOS|FxiOS|Brave|Ddg|OPT|YaBrowser/.test(navigator.userAgent);
     }
 
-    static isAppleMobileYaBrowser(): boolean {
-        return this.isAppleMobile() && /YaBrowser/.test(navigator.userAgent);
+    static isYaBrowser(): boolean {
+        return /YaBrowser/.test(navigator.userAgent);
     }
 
-    static isAppleMobileEdge(): boolean {
-        return this.isAppleMobile() && /EdgiOS/.test(navigator.userAgent);
+    static isDuck(): boolean {
+        return /Ddg/.test(navigator.userAgent);
+    }
+
+    static isOpera(): boolean {
+        return /OPT/.test(navigator.userAgent);
+    }
+
+    static isFox(): boolean {
+        return /FxiOS/.test(navigator.userAgent);
+    }
+
+    static isEdge(): boolean {
+        return /EdgiOS/.test(navigator.userAgent);
     }
 
     static isIPad(): boolean {
         return this.isAppleMobile() && /iPad|Macintosh/.test(navigator.userAgent);
+    }
+
+    static isIPhoneSafari(): boolean {
+        return this.isAppleMobile() && !this.isIPad() && !this.isAppleMobileNonSafari();
     }
 
     static isApple26Plus(): boolean {
