@@ -507,7 +507,6 @@
             background: color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 70%) 80%);
             box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 25%) 80%), 
                             inset 0px 0px 1px 1px color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 50%) 80%);
-            backdrop-filter: blur(3px);
 
             .about{
                 margin-right: 26px;
