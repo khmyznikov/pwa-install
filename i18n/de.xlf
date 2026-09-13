@@ -46,10 +46,6 @@
         <source>Tap "Add to Home screen"</source>
         <target>Tippen Sie auf "Zum Startbildschirm hinzufügen"</target>
       </trans-unit>
-      <trans-unit id="s386eca8362ff6155">
-        <source>Press More if no Share icon</source>
-        <target>Drücken Sie auf Mehr, wenn kein Teilen-Symbol vorhanden ist</target>
-      </trans-unit>
       <trans-unit id="sc16e00a7a8b2fde2">
         <source>Back</source>
         <target>Zurück</target>
@@ -86,10 +82,6 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>Dieser Browser unterstützt diese Funktion jedoch nicht. Öffnen Sie den Link in einem externen Browser, um fortzufahren.</target>
 </trans-unit>
-<trans-unit id="s7e924b037b4f4ce5">
-  <source>Press More</source>
-  <target>Drücken Sie auf Mehr</target>
-</trans-unit>
 <trans-unit id="s233af3b7eb5e0364">
   <source>Add to Home</source>
   <target>Zur Startseite hinzufügen</target>
@@ -101,6 +93,14 @@
 <trans-unit id="s05b70c60d4ea8317">
   <source>Tap "Open in..." Browser</source>
   <target>Tippen Sie auf „Im Browser öffnen…“</target>
+</trans-unit>
+<trans-unit id="s4c3161035f3a1413">
+  <source>Press Menu</source>
+  <target>Drücken Sie auf Menü</target>
+</trans-unit>
+<trans-unit id="s6d14a4f70ba4e3cf">
+  <source>Press Menu if no Share icon</source>
+  <target>Drücken Sie auf Menü, wenn kein Teilen-Symbol vorhanden ist</target>
 </trans-unit>
     </body>
   </file>

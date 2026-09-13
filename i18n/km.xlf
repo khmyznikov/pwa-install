@@ -46,10 +46,6 @@
   <source>Tap "Add to Home screen"</source>
   <target>ចុចលើ "បន្ថែមទៅកាន់ផ្ទាំងអេក្រង់ដើម"</target>
 </trans-unit>
-<trans-unit id="s386eca8362ff6155">
-  <source>Press More if no Share icon</source>
-  <target>ចុចលើ បន្ថែម ប្រសិនបើគ្មានរូបសញ្ញា ចែករំលែក</target>
-</trans-unit>
 <trans-unit id="sc16e00a7a8b2fde2">
   <source>Back</source>
   <target>ត្រឡប់ក្រោយ</target>
@@ -86,10 +82,6 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>ប៉ុន្តែកម្មវិធីរុករកនេះមិនគាំទ្រមុខងារនេះទេ។ ដើម្បីបន្ត សូមបើកតំណនៅក្នុងកម្មវិធីរុករកខាងក្រៅ។</target>
 </trans-unit>
-<trans-unit id="s7e924b037b4f4ce5">
-  <source>Press More</source>
-  <target>ចុចលើ បន្ថែម</target>
-</trans-unit>
 <trans-unit id="s233af3b7eb5e0364">
   <source>Add to Home</source>
   <target>បន្ថែមទៅទំព័រដើម</target>
@@ -101,6 +93,14 @@
 <trans-unit id="s05b70c60d4ea8317">
   <source>Tap "Open in..." Browser</source>
   <target>ចុចលើ "បើកក្នុងកម្មវិធីរុករក..."</target>
+</trans-unit>
+<trans-unit id="s4c3161035f3a1413">
+  <source>Press Menu</source>
+  <target>ចុចលើ ម៉ឺនុយ</target>
+</trans-unit>
+<trans-unit id="s6d14a4f70ba4e3cf">
+  <source>Press Menu if no Share icon</source>
+  <target>ចុចលើ ម៉ឺនុយ ប្រសិនបើគ្មានរូបសញ្ញា ចែករំលែក</target>
 </trans-unit>
 </body>
 </file>

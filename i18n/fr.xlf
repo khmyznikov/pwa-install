@@ -46,10 +46,6 @@
         <source>Tap "Add to Home screen"</source>
         <target>Touchez "Ajouter à l'écran d'accueil"</target>
       </trans-unit>
-      <trans-unit id="s386eca8362ff6155">
-        <source>Press More if no Share icon</source>
-        <target>Appuyez sur Plus s'il n'y a pas d'icône Partager</target>
-      </trans-unit>
       <trans-unit id="sc16e00a7a8b2fde2">
         <source>Back</source>
         <target>Retour</target>
@@ -86,10 +82,6 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>Mais ce navigateur ne prend pas en charge cette fonctionnalité. Ouvrez le lien dans un navigateur externe pour continuer.</target>
 </trans-unit>
-<trans-unit id="s7e924b037b4f4ce5">
-  <source>Press More</source>
-  <target>Appuyez sur Plus</target>
-</trans-unit>
 <trans-unit id="s233af3b7eb5e0364">
   <source>Add to Home</source>
   <target>Ajouter à la Maison</target>
@@ -101,6 +93,14 @@
 <trans-unit id="s05b70c60d4ea8317">
   <source>Tap "Open in..." Browser</source>
   <target>Touchez « Ouvrir dans le navigateur… »</target>
+</trans-unit>
+<trans-unit id="s4c3161035f3a1413">
+  <source>Press Menu</source>
+  <target>Appuyez sur Menu</target>
+</trans-unit>
+<trans-unit id="s6d14a4f70ba4e3cf">
+  <source>Press Menu if no Share icon</source>
+  <target>Appuyez sur Menu s'il n'y a pas d'icône Partager</target>
 </trans-unit>
     </body>
   </file>

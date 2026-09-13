@@ -10,10 +10,6 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>將其加入主畫面，以獲得更完整的體驗並方便存取。</target>
 </trans-unit>
-<trans-unit id="s386eca8362ff6155">
-  <source>Press More if no Share icon</source>
-  <target>若未看見「分享」圖示，請點擊「更多」</target>
-</trans-unit>
 <trans-unit id="s224cbcec014ef6b5">
   <source>Press Share in Navigation bar</source>
   <target>點擊導覽列中的「分享」按鈕</target>
@@ -86,10 +82,6 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>但此瀏覽器不支援此功能。請在外部瀏覽器中開啟連結以繼續。</target>
 </trans-unit>
-<trans-unit id="s7e924b037b4f4ce5">
-  <source>Press More</source>
-  <target>請點擊「更多」</target>
-</trans-unit>
 <trans-unit id="s233af3b7eb5e0364">
   <source>Add to Home</source>
   <target>加入首頁</target>
@@ -101,6 +93,14 @@
 <trans-unit id="s05b70c60d4ea8317">
   <source>Tap "Open in..." Browser</source>
   <target>輕觸「在瀏覽器中開啟…」</target>
+</trans-unit>
+<trans-unit id="s4c3161035f3a1413">
+  <source>Press Menu</source>
+  <target>請點擊「選單」</target>
+</trans-unit>
+<trans-unit id="s6d14a4f70ba4e3cf">
+  <source>Press Menu if no Share icon</source>
+  <target>若未看見「分享」圖示，請點擊「選單」</target>
 </trans-unit>
 </body>
 </file>

@@ -47,7 +47,7 @@ const template = ({
 }: AppleTemplateOptions) => {
     const useInAppBrowserInstructions = inAppBrowser || !Utils.isServiceWorkerSupported();
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-    const pressMoreNeeded = () => {
+    const pressMenuNeeded = () => {
         if (isDesktop || !isApple26Plus)
             return false;
         if (Utils.isYaBrowser() || Utils.isIPhoneSafari())
@@ -57,6 +57,10 @@ const template = ({
                 return true;
             if (Utils.isFox())
                 return false;
+        }
+        if (Utils.isAppleMobileNonSafari() && Utils.isIPad()){
+            if (Utils.isOpera())
+                return true;
         }
         return false;
     }
@@ -97,10 +101,10 @@ const template = ({
                             </span>
                             <span class="step-text"><span class="copy-link-action">${linkCopied? msg('Open Copied Link in Safari') : msg('Tap here to Copy App Link')}</span></span>
                         </a>`: ''}
-                        ${pressMoreNeeded() ? 
+                        ${pressMenuNeeded() ? 
                         html`
                         <div class="description-step">
-                            <div class="svg-wrap ${classMap({ya: Utils.isYaBrowser()})}">
+                            <div class="svg-wrap ${classMap({ya: Utils.isYaBrowser() || Utils.isOpera()})}">
                                 ${isApple27Plus && !Utils.isYaBrowser() && !Utils.isOpera()? html`
                                     <svg id="safari-menu" width="22" height="24" viewBox="0 0 18.427 13.386">
                                         <g fill="currentColor">
@@ -115,7 +119,7 @@ const template = ({
                                     </svg>
                                 `}
                             </div>
-                            <div class="step-text">${Utils.isYaBrowser()?  msg('Press More') : msg('Press More if no Share icon')}</div>
+                            <div class="step-text">${Utils.isYaBrowser()?  msg('Press Menu') : msg('Press Menu if no Share icon')}</div>
                         </div>`: ''}
                         ${!Utils.isYaBrowser()? html`
                         <div class="description-step">

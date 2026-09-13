@@ -10,10 +10,6 @@
   <source>Add it to your Home Screen for extensive experience and easy access.</source>
   <target>أضفه إلى شاشتك الرئيسية للحصول على تجربة شاملة ووصول سهل.</target>
 </trans-unit>
-<trans-unit id="s386eca8362ff6155">
-  <source>Press More if no Share icon</source>
-  <target>اضغط على المزيد إذا لم يكن هناك رمز مشاركة</target>
-</trans-unit>
 <trans-unit id="s224cbcec014ef6b5">
   <source>Press Share in Navigation bar</source>
   <target>اضغط على مشاركة في الشريط العلوي</target>
@@ -86,10 +82,6 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>لكن هذا المتصفح لا يدعم ذلك. افتح الرابط في متصفح خارجي للمتابعة.</target>
 </trans-unit>
-<trans-unit id="s7e924b037b4f4ce5">
-  <source>Press More</source>
-  <target>اضغط على المزيد</target>
-</trans-unit>
 <trans-unit id="s233af3b7eb5e0364">
   <source>Add to Home</source>
   <target>إضافة إلى الصفحة الرئيسية</target>
@@ -101,6 +93,14 @@
 <trans-unit id="s05b70c60d4ea8317">
   <source>Tap "Open in..." Browser</source>
   <target>انقر على «فتح في متصفح…»</target>
+</trans-unit>
+<trans-unit id="s4c3161035f3a1413">
+  <source>Press Menu</source>
+  <target>اضغط على القائمة</target>
+</trans-unit>
+<trans-unit id="s6d14a4f70ba4e3cf">
+  <source>Press Menu if no Share icon</source>
+  <target>اضغط على القائمة إذا لم يكن هناك رمز مشاركة</target>
 </trans-unit>
 </body>
 </file>

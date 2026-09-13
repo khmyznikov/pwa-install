@@ -46,10 +46,6 @@
   <source>Tap "Add to Home screen"</source>
    <target>Naciśnij "Dodaj do Ekranu Głównego"</target>
 </trans-unit>
-<trans-unit id="s386eca8362ff6155">
-  <source>Press More if no Share icon</source>
-  <target>Naciśnij Więcej, jeśli brak ikony Udostępnij</target>
-</trans-unit>
 <trans-unit id="sc16e00a7a8b2fde2">
   <source>Back</source>
   <target>Wstecz</target>
@@ -86,10 +82,6 @@
   <source>But this browser doesn't support it. Open the link in a standalone browser to continue.</source>
   <target>Ta przeglądarka nie obsługuje jednak tej funkcji. Aby kontynuować, otwórz link w zewnętrznej przeglądarce.</target>
 </trans-unit>
-<trans-unit id="s7e924b037b4f4ce5">
-  <source>Press More</source>
-  <target>Naciśnij Więcej</target>
-</trans-unit>
 <trans-unit id="s233af3b7eb5e0364">
   <source>Add to Home</source>
   <target>Dodaj do strony głównej</target>
@@ -101,6 +93,14 @@
 <trans-unit id="s05b70c60d4ea8317">
   <source>Tap "Open in..." Browser</source>
   <target>Naciśnij „Otwórz w przeglądarce…”</target>
+</trans-unit>
+<trans-unit id="s4c3161035f3a1413">
+  <source>Press Menu</source>
+  <target>Naciśnij Menu</target>
+</trans-unit>
+<trans-unit id="s6d14a4f70ba4e3cf">
+  <source>Press Menu if no Share icon</source>
+  <target>Naciśnij Menu, jeśli brak ikony Udostępnij</target>
 </trans-unit>
     </body>
   </file>
