@@ -12,6 +12,7 @@ export interface AppleTemplateOptions extends InstallTemplateOptions {
     isApple26Plus: boolean;
     isApple27Plus: boolean;
     isDesktop: boolean;
+    inAppBrowser: boolean;
     customStyles: Record<string, string>;
     linkCopied: boolean;
     safariUrl: string;
@@ -38,12 +39,13 @@ const template = ({
     isApple26Plus,
     isApple27Plus,
     isDesktop,
+    inAppBrowser,
     customStyles,
     linkCopied,
     safariUrl,
     copyCurrentUrl
 }: AppleTemplateOptions) => {
-    const inAppBrowser = Utils.isInAppBrowser() || !Utils.isServiceWorkerSupported();
+    const useInAppBrowserInstructions = inAppBrowser || !Utils.isServiceWorkerSupported();
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
     const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, aqua27: isApple27Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
     let styles = { '--tint-color': Utils.getPageBackgroundColor(), ...customStyles };
@@ -65,11 +67,11 @@ const template = ({
                 </button>` : ''}
                 ${!disableDescription? html`<div class="welcome-to-install">
                     ${installDescription? installDescription: 
-                        `${msg('This site has app functionality.')} ${inAppBrowser && howToRequested? msg("But this browser doesn't support it. Open the link in a standalone browser to continue."):''} ${!inAppBrowser || !howToRequested? isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.'): ''}`}</div>`
+                        `${msg('This site has app functionality.')} ${useInAppBrowserInstructions && howToRequested? msg("But this browser doesn't support it. Open the link in a standalone browser to continue."):''} ${!useInAppBrowserInstructions || !howToRequested? isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.'): ''}`}</div>`
                 : '' }
                 <div class="how-to-body">
-                    <div class="how-to-description ${classMap({ 'in-app-browser': inAppBrowser })}">
-                        ${!isDesktop && inAppBrowser? html`
+                    <div class="how-to-description ${classMap({ 'in-app-browser': useInAppBrowserInstructions })}">
+                        ${!isDesktop && useInAppBrowserInstructions? html`
                         <a class="description-step copy-link ${classMap({copied: linkCopied})}" href=${safariUrl} @click=${copyCurrentUrl}>
                             <span class="svg-wrap" aria-hidden="true">
                                 <svg id="pwa-copy-document" width="24" height="24" viewBox="0 0 19.966 24.591">

@@ -9,6 +9,7 @@ export interface ChromeTemplateOptions extends InstallTemplateOptions {
     toggleHowTo: EventListenerOrEventListenerObject;
     howToRequested: boolean;
     isAndroidFallback: boolean;
+    inAppBrowser: boolean;
 }
 
 const template = ({
@@ -28,6 +29,7 @@ const template = ({
     toggleHowTo,
     howToRequested,
     isAndroidFallback,
+    inAppBrowser,
     isRTL
 }: ChromeTemplateOptions) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
@@ -62,7 +64,7 @@ const template = ({
                 </div>
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
-                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback}>
+                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser}>
                     ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}"></pwa-gallery>`: ''}
                 </pwa-bottom-sheet>
             </div>

@@ -31,6 +31,7 @@ export default class PWABottomSheetElement extends LitElement {
 
 	@property({type: Boolean}) fallback = false;
 	@property({type: Boolean}) howToRequested = false;
+	@property({type: Boolean}) inAppBrowser = false;
 	@property({type: Object}) toggleHowTo = {handleEvent: () => {}};
 
 	private _callInstall = () => {
@@ -199,7 +200,15 @@ export default class PWABottomSheetElement extends LitElement {
 	}
 
 	render() {
-        return html`${template(this.props.name, this.props.description, this.props.icon, this._callInstall, this.fallback, this.howToRequested)}`;
+        return html`${template({
+			name: this.props.name,
+			description: this.props.description,
+			icon: this.props.icon,
+			install: this._callInstall,
+			fallback: this.fallback,
+			howToRequested: this.howToRequested,
+			inAppBrowser: this.inAppBrowser
+		})}`;
 	}
 }
 

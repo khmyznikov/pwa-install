@@ -2,11 +2,29 @@ import { html } from 'lit';
 import { msg } from '@lit/localize';
 import { classMap } from 'lit/directives/class-map.js';
 
+export interface BottomSheetTemplateOptions {
+    name: string;
+    description: string;
+    icon: string;
+    install: EventListenerOrEventListenerObject;
+    fallback: boolean;
+    howToRequested: boolean;
+    inAppBrowser: boolean;
+}
+
 const fallbackClass = (isAndroidFallback: boolean = false, howToRequested: boolean = false) => {
     return {fallback: isAndroidFallback, 'how-to': howToRequested};
 }
 
-const template = (name: string, description: string, icon: string, install: any, fallback?: boolean, howToRequested?: boolean) => {
+const template = ({
+    name,
+    description,
+    icon,
+    install,
+    fallback,
+    howToRequested,
+    inAppBrowser
+}: BottomSheetTemplateOptions) => {
     return html`
     <div class="dialog-body ${classMap(fallbackClass(fallback, howToRequested))}">
         <div class="touch-header" id="touch-header"></div>
@@ -30,16 +48,20 @@ const template = (name: string, description: string, icon: string, install: any,
                 <div class="svg-wrap">
                     <svg height="24" viewBox="0 -960 960 960" width="24" fill=""><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
                 </div>
-                <div class="step-text">${msg('Open your browser menu')}</div>
+                <div class="step-text">${inAppBrowser ? msg('Open the in-app browser menu') : msg('Open your browser menu')}</div>
             </div>
             <div class="description-step">
                 <div class="svg-wrap add-icon">
                     <svg height="24" viewBox="0 -960 960 960" width="24"><path d="M320-40q-33 0-56.5-23.5T240-120v-160h80v40h400v-480H320v40h-80v-160q0-33 23.5-56.5T320-920h400q33 0 56.5 23.5T800-840v720q0 33-23.5 56.5T720-40H320Zm0-120v40h400v-40H320ZM176-280l-56-56 224-224H200v-80h280v280h-80v-144L176-280Zm144-520h400v-40H320v40Zm0 0v-40 40Zm0 640v40-40Z"/></svg>
                 </div>
-                <div class="step-text">${msg('Tap "Add to Home screen"')}</div>
+                <div class="step-text">${inAppBrowser ? msg('Tap "Open in..." Browser') : msg('Tap "Add to Home screen"')}</div>
             </div>
         </div>
-        ${description ? html `<div class="description">${description}</div>`: ''}
+        ${inAppBrowser
+            ? html`<div class="description">${msg('This site has app functionality.')} ${msg("But this browser doesn't support it. Open the link in a standalone browser to continue.")}</div>`
+        : description
+            ? html`<div class="description">${description}</div>`
+        : ''}
         <slot></slot>
     </div>
     `;
