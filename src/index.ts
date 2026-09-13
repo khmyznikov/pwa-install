@@ -66,6 +66,7 @@ export class PWAInstallElement extends LitElement {
 	public isApple26Plus = false;
 	public isApple27Plus = false;
 	public isAndroidFallback = false;
+	public isInAppBrowser = false;
 	public isAndroid = false;
 	public isUnderStandaloneMode = false;
 	public isRelatedAppsInstalled = false;
@@ -176,6 +177,7 @@ export class PWAInstallElement extends LitElement {
 		this.isApple26Plus = Utils.isApple26Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
 		this.isApple27Plus = Utils.isApple27Plus() && (this.isAppleMobilePlatform || this.isAppleDesktopPlatform);
 		this.isAndroidFallback = Utils.isAndroidFallback();
+		this.isInAppBrowser = Utils.isInAppBrowser();
 		this.isAndroid = Utils.isAndroid();
 		this.isWebInstallSupported = Utils.isWebInstallSupported();
 	}
@@ -277,6 +279,7 @@ export class PWAInstallElement extends LitElement {
 				isApple26Plus: this.isApple26Plus,
 				isApple27Plus: this.isApple27Plus,
 				isDesktop: this.isAppleDesktopPlatform,
+				inAppBrowser: this.isInAppBrowser,
 				customStyles: this.styles,
 				linkCopied: this._linkCopied,
 				safariUrl: location.href.replace(/^https?:/, 'x-safari-https:'),
@@ -288,7 +291,8 @@ export class PWAInstallElement extends LitElement {
 				install: this._installLogic,
 				toggleHowTo: this._toggleHowTo,
 				howToRequested: this._howToRequested,
-				isAndroidFallback: this.isAndroidFallback
+				isAndroidFallback: this.isAndroidFallback,
+				inAppBrowser: this.isInAppBrowser
 			});
 	}
 }
