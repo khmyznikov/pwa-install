@@ -11,16 +11,12 @@
 
         font-family: system-ui, -apple-system, 'HelveticaNeue', BlinkMacSystemFont, "Roboto", "Segoe UI";
 
-        // display: inline-grid;
-        // grid-template-rows: 1fr auto;
-        // grid-gap: 15px;
-
+                        
         max-width: 380px;
         width: auto;
 
         margin: 0 auto;
-        // padding: 15px;
-
+        
         right: 0;
         left: 0;
 
@@ -54,8 +50,7 @@
             border-radius: 10px;
 
             border-bottom: 1px solid transparent;
-            // transition: border .35s ease-in-out;
-
+            
             background-color:var(--background-color);
             filter: drop-shadow(0 5px 15px rgba(0,0,0,.5));
             backdrop-filter: blur(5px);
@@ -150,8 +145,7 @@
 
             .welcome-to-install{
                 font-size: 15px;
-                // grid-area: title;
-                grid-area: welcome;
+                                grid-area: welcome;
 
                 text-align: start;
                 font-weight: 400;
@@ -173,9 +167,7 @@
         }
 
         .action-buttons{
-                // flex-direction: column;
-                // overflow: hidden;
-            .button-text{
+                                            .button-text{
                 display: flex;
                 flex-direction: row-reverse;
                 align-items: center;
@@ -191,15 +183,8 @@
                     margin: 0;
                 }
             }
-            // #icon-back{
-            //     width: 23px;
-            //     rotate: 90deg;
-            // }
-
-            // svg{
-            //     fill: var(--text-color-normal);
-            // }
-        }
+                                                
+                                            }
         .action-buttons{
             margin: 16px;
             flex-direction: column;
@@ -221,10 +206,7 @@
                 height: 19px;
             }
 
-            // svg{
-            //     fill: var(--text-color-normal);
-            // }
-        }
+                                            }
         .dialog-button{
             display: grid;
 
@@ -247,9 +229,7 @@
                 user-select: none;
                 font-weight: 400;
                 font-size: 17px;
-                // padding: 0;
-                // margin: 0;
-
+                                
                 background-color: var(--background-color-button);
 
                 -webkit-tap-highlight-color: transparent;
@@ -260,18 +240,14 @@
                 }
 
                 &.install{
-                    // padding: 0 15px;
-                    // text-align: start;
-
-                    // display: inline-flex;
-
+                                        
+                    
                     .button-text{
                         opacity: 0;
 
                         display: flex;
                         align-items: center;
-                        // justify-content: space-between;
-
+                        
                         transition: opacity .4s ease-in-out 0.1s;
 
                         overflow: hidden;
@@ -344,10 +320,8 @@
                 padding-bottom: 0;
 
                 &.in-app-browser{
-                    // gap: 0;
-                    .description-step:not(:first-child){
-                        // display: none;
-                        opacity: .5;
+                                        .description-step:not(:first-child){
+                                                opacity: .5;
                         filter: saturate(50%);
                     }
                 }
@@ -434,8 +408,7 @@
                         }
                     }
                     .step-text{
-                        // margin-top: 5px;
-                        font-weight: 600;
+                                                font-weight: 600;
                         text-align: start;
                     }
                 }
@@ -451,8 +424,7 @@
             overflow: hidden;
             & + .action-buttons{
                 display: flex;
-                // grid-template-columns: 64px auto;
-            }
+                            }
         }
         &.available {
             opacity: 1;
@@ -688,31 +660,15 @@
             --background-color: rgb(246 246 246 / 85%);
             --background-color-button: #c6c1c6;
             --background-color-button-active: linear-gradient(0deg, rgba(64,121,250,1) 0%, rgba(84,144,251,1) 100%);
-            // --background-color-button-active: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(255, 255, 255, 0.00) 100%), #007AFF;
             --border-bottom-color: rgb(185 185 185);
-            // grid-template-columns: 1fr;
-            // grid-template-rows: 1fr auto;
-            // grid-template-areas:
-            //     "icon"
-            //     "description"
-            //     "welcome"
-            //     "how-to"
-            //     "gallery"
-            //     "button";
-            // gap: 0px;
-            // column-gap: 0px;
             grid-template-columns: 65px 1fr;
             padding: 10px;
 
             max-width: 282px;
-            // background: var(--background-color);
             border: 1px solid var(--border-bottom-color);
 
             .icon {
-                // height: 64px;
-                // padding-bottom: 16px;
                 margin-left: 0;
-                // padding-left: 8px;
                 align-items: flex-start;
                     padding-bottom: 12px;
                 .icon-image{
@@ -720,15 +676,12 @@
                     width: 52px;
                     height: 52px;
                     margin-left: 0;
-                    // box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.1);
                     filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.15));
                 }
             }
             .close{
-                // grid-area: icon;
-                background: var(--background-color-button);
-                // opacity: 1;
-                height: 20px;
+                                background: var(--background-color-button);
+                                height: 20px;
                 min-width: 20px;
                 margin-inline-end: -5px;
                 margin-top: -5px;
@@ -753,17 +706,12 @@
                     margin: 0;
                 }
                 .description{
-                    // padding: 16px 0px;
                     margin: 0;
-                    
-                    // padding-top: 10px;
-                    // border-bottom: 1px solid var(--border-bottom-color);
                     min-width: 100%;
                 }
             }
             .welcome-to-install, .about .description{
-                // text-align: center;
-                font-size: 11px;
+                                font-size: 11px;
                 line-height: 14px;
             }
             .description{
@@ -789,29 +737,16 @@
                     background-color: transparent;
                     
                     &.install{
-                        // color: #FFF;
-                        // background: var(--background-color-button-active);
-                        // transition: background .3s ease-in-out  0.1s, color .3s ease-in-out;
                         svg{
                             transform: none;
                             width: 18px;
-                            // align-self: center;
-                            // margin-top: -4px;
                         }
                     }
                     &.gallery{
-                    //     width: 30px;
-                    //     min-width: 30px;
-                    //     margin-inline-end: 10px;
-                    //     background: var(--background-color-button);
                         #pwa-gallery{
                             width: 18px;
                             height: 14px;
                         }
-                    //     // border-radius: 5px;
-                    //     // background: #FFF;
-                    //     // box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
-                    //     // padding: 5px;
                     }
                     .button-text{
                         gap: 10px;
@@ -860,21 +795,11 @@
                 }
             }
 
-            pwa-gallery{
-                // margin: 0 -10px;
-            }
-
             &.gallery{
                 #pwa-gallery{
                     transform: rotate(180deg);
                 }
             }
-            // &.how-to{
-            //     .action-buttons .dialog-button.button.install{
-            //         color: var(--text-color-normal);
-            //         background: var(--background-color-button);
-            //     }
-            // }
 
             &.aqua{
                 --border-bottom-color: rgb(95 95 95 / 50%);
@@ -913,6 +838,20 @@
                 .how-to-body .how-to-description .description-step .svg-wrap{
                     color: unset;
                 }
+
+                &.aqua27{ 
+                    border-radius: 22px;
+
+                    .action-buttons{
+                        .button:active{
+                            background: color-mix(in srgb, var(--tint-color) 20%, color-mix(in srgb, var(--text-color-normal) 10%, transparent) 50%);
+                        }
+                        &:last-child{
+                            border-bottom-left-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -934,11 +873,7 @@ $phone-small-landscape: 667px;
                 top: 28px;
                 bottom: auto;
                 max-height: calc(95vh - 28px);
-                // &.desktop{
-                //     max-height: min(calc(95vh - 28px), );
-                // }
-                // transition: top .5s ease-in-out, opacity .8s ease-in-out, max-height .35s ease-in-out;
-            }
+                                                                            }
         }
     }
 }
@@ -978,8 +913,7 @@ $phone-small-landscape: 667px;
             border-bottom-right-radius: 0;
 
             .action-buttons{
-                // padding-bottom: max(15px, env(safe-area-inset-bottom));
-                margin-bottom: max(16px, env(safe-area-inset-bottom));
+                                margin-bottom: max(16px, env(safe-area-inset-bottom));
             }
             &.available {
                 bottom: 0px;

@@ -45,7 +45,7 @@ const template = ({
 }: AppleTemplateOptions) => {
     const inAppBrowser = Utils.isInAppBrowser() || !Utils.isServiceWorkerSupported();
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
-    const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
+    const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, aqua27: isApple27Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
     let styles = { '--tint-color': Utils.getPageBackgroundColor(), ...customStyles };
 
     return html`
