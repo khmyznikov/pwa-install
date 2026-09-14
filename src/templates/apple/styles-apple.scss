@@ -167,7 +167,7 @@
         }
 
         .action-buttons{
-                                            .button-text{
+            .button-text{
                 display: flex;
                 flex-direction: row-reverse;
                 align-items: center;
@@ -184,7 +184,7 @@
                 }
             }
                                                 
-                                            }
+        }
         .action-buttons{
             margin: 16px;
             flex-direction: column;
@@ -206,7 +206,7 @@
                 height: 19px;
             }
 
-                                            }
+        }
         .dialog-button{
             display: grid;
 
@@ -240,8 +240,6 @@
                 }
 
                 &.install{
-                                        
-                    
                     .button-text{
                         opacity: 0;
 
@@ -320,8 +318,8 @@
                 padding-bottom: 0;
 
                 &.in-app-browser{
-                                        .description-step:not(:first-child){
-                                                opacity: .5;
+                    .description-step:not(:first-child){
+                        opacity: .5;
                         filter: saturate(50%);
                     }
                 }
@@ -408,7 +406,7 @@
                         }
                     }
                     .step-text{
-                                                font-weight: 600;
+                        font-weight: 600;
                         text-align: start;
                     }
                 }
@@ -424,7 +422,7 @@
             overflow: hidden;
             & + .action-buttons{
                 display: flex;
-                            }
+            }
         }
         &.available {
             opacity: 1;
@@ -485,8 +483,6 @@
                 }
             }
         }
-
-
 
         &.aqua{
             --border-bottom-color: rgb(95 95 95 / 30%);
@@ -563,11 +559,11 @@
             }
 
             .action-buttons{
-                    margin: 16px;
-                    flex-direction: column;
-                    border-radius: 26px;
-                    overflow: hidden;
-                    padding: 0;
+                margin: 16px;
+                flex-direction: column;
+                border-radius: 26px;
+                overflow: hidden;
+                padding: 0;
                 .button-text{
                     display: flex;
                     flex-direction: row-reverse;
@@ -679,8 +675,8 @@
                 }
             }
             .close{
-                                background: var(--background-color-button);
-                                height: 20px;
+                background: var(--background-color-button);
+                height: 20px;
                 min-width: 20px;
                 margin-inline-end: -5px;
                 margin-top: -5px;
@@ -710,7 +706,7 @@
                 }
             }
             .welcome-to-install, .about .description{
-                                font-size: 11px;
+                font-size: 11px;
                 line-height: 14px;
             }
             .description{
@@ -872,7 +868,7 @@ $phone-small-landscape: 667px;
                 top: 28px;
                 bottom: auto;
                 max-height: calc(95vh - 28px);
-                                                                            }
+            }
         }
     }
 }
@@ -912,7 +908,7 @@ $phone-small-landscape: 667px;
             border-bottom-right-radius: 0;
 
             .action-buttons{
-                                margin-bottom: max(16px, env(safe-area-inset-bottom));
+                margin-bottom: max(16px, env(safe-area-inset-bottom));
             }
             &.available {
                 bottom: 0px;
