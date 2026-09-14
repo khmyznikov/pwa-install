@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/dt/@khmyznikov/pwa-install)](https://www.npmjs.com/package/@khmyznikov/pwa-install)
 ## \<pwa-install\>
 
-**New to PWAs? Unsure how to create a Web App? Check out these resources for a quick start: [PWA Intro](https://docs.pwabuilder.com/#/home/pwa-intro), [PWA Starter](https://docs.pwabuilder.com/#/starter/quick-start), [PWA Builder](https://www.pwabuilder.com/)**
+**New to PWAs? Unsure how to create a Web App? Check out these resources for a quick start: [PWA Mozilla Docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps), [PWA Google Docs](https://web.dev/explore/progressive-web-apps), [PWA Builder - test and publish your PWA](https://www.pwabuilder.com/)**
 
 Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers (Safari, Firefox, Opera, etc.). **39kB brotli** compressed bundle. Translation/localization is supported.
 
