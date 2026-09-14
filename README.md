@@ -7,7 +7,7 @@
 Installation dialog for Progressive Web Application (PWA) and Add to Home Screen/Dock dialog for Web Apps. This offers an enhanced user experience and addresses the absence of native dialogs in certain browsers (Safari, Firefox, Opera, etc.). **28kB brotli** compressed bundle. Translation/localization is supported.
 
 ✨ **In-app browsers** instruction support!<br>
-✨ **iOS/iPadOS/MacOS 26+** support for native look and feel!<br>
+✨ **iOS/iPadOS/MacOS 27+** support for native look and feel!<br>
 ✨ **[Web Install API](https://chromestatus.com/feature/5183481574850560)** support for chromium browsers v155+
 
 
@@ -26,17 +26,17 @@ Use it as [Web Component with any **modern** framework](https://custom-elements-
 ## Gallery
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iOS default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Install instruction | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;App gallery&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |-|-|-|
-|![iOS example default](https://github.com/user-attachments/assets/4791d412-93c4-4a0a-a471-b7a81671c257)|![iOS example install instruction](https://github.com/user-attachments/assets/b063d6db-3a6b-4f48-81be-36182799fb0f)|![iOS example gallery](https://github.com/user-attachments/assets/c88da8fc-020a-43b0-9a32-136954fc2e15)|
+|![iOS example default](https://github.com/user-attachments/assets/19252c36-4ad5-47f5-85d8-260a807e1688)|![iOS example install instruction](https://github.com/user-attachments/assets/4c86b9f1-4259-4029-9e6d-994e2da8611c)|![iOS example gallery](https://github.com/user-attachments/assets/f56e1f4d-1969-4372-9ed9-0bc4c5ce8f9f)|
 
-| MacOS 14-26+ (Tahoe) |
+| MacOS 14-27+ |
 |---|
-|![macos_default](https://github.com/user-attachments/assets/b8681288-95fd-40b7-9a9f-8d371ce4dc5c)|
+|![macos_default](https://github.com/user-attachments/assets/18911df4-c97e-464d-967c-b167ae707e3d)|
 
 
 
 | &nbsp;&nbsp;&nbsp;&nbsp;iPadOS&nbsp;&nbsp;&nbsp;&nbsp; | Instruction |
 |---|---|
-|![iPadOS example default](https://github.com/user-attachments/assets/35b9a349-f0c3-4053-bfd9-914142587946)|![iPadOS install instruction](https://github.com/user-attachments/assets/c690b169-d1c3-44d0-befb-5cc321885656)
+|![iPadOS example default](https://github.com/user-attachments/assets/6162c6ec-aae8-406b-b464-2e0e3807127f)|![iPadOS install instruction](https://github.com/user-attachments/assets/5d716be3-0914-4af2-9984-fbcc9b9d99fb)|
 
 | In-App Detection | Instagram/etc |
 |---|---|
