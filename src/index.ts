@@ -61,6 +61,11 @@ export class PWAInstallElement extends LitElement {
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
 	@state() private _compactSheet = false;
 
+	constructor() {
+		super();
+		this.setAttribute('exportparts', 'install-button');
+	}
+
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
 
@@ -290,6 +295,26 @@ export class PWAInstallElement extends LitElement {
 		};
 	}
 
+	/** @internal */
+	private _surfaceStyles(defaultPageTint: boolean): Record<string, string> {
+		const styles: Record<string, string> = {};
+		for (const [key, value] of Object.entries(this.styles || {})) {
+			if (value != null && value !== '')
+				styles[key] = String(value);
+		}
+		if (!styles['--tint-color'] && this.isConnected) {
+			const inherited = getComputedStyle(this).getPropertyValue('--tint-color').trim();
+			if (inherited)
+				styles['--tint-color'] = inherited;
+		}
+		if (!styles['--tint-color'] && defaultPageTint) {
+			const page = Utils.getPageBackgroundColor();
+			if (page)
+				styles['--tint-color'] = page;
+		}
+		return styles;
+	}
+
 	render() {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform)
 			return templateApple({
@@ -301,7 +326,7 @@ export class PWAInstallElement extends LitElement {
 				isApple27Plus: this.isApple27Plus,
 				isDesktop: this.isAppleDesktopPlatform,
 				inAppBrowser: this.isInAppBrowser,
-				customStyles: this.styles,
+				customStyles: this._surfaceStyles(true),
 				linkCopied: this._linkCopied,
 				safariUrl: location.href.replace(/^https?:/, 'x-safari-https:'),
 				copyCurrentUrl: this._copyCurrentUrl
@@ -314,6 +339,7 @@ export class PWAInstallElement extends LitElement {
 				howToRequested: this._howToRequested,
 				isAndroidFallback: this.isAndroidFallback,
 				inAppBrowser: this.isInAppBrowser,
+				customStyles: this._surfaceStyles(false),
 				compactSheet: this._compactSheet
 			});
 	}

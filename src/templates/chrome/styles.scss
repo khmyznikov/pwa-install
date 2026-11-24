@@ -6,8 +6,8 @@
     user-select: none;
 
     .install-dialog{
-        --text-color-normal: #212121;
-        --background-color: #fff;
+        --text-color-normal: var(--pwa-install-text, #212121);
+        --background-color: var(--pwa-install-background, #fff);
         --border-bottom-color: #DBDCDE;
         --scrollbar-background-color: #fff;
 
@@ -101,8 +101,8 @@
 
 @include when-dark {
     #pwa-install-element .install-dialog{
-        --text-color-normal: #eee;
-        --background-color: #1e1e1e;
+        --text-color-normal: var(--pwa-install-text, #eee);
+        --background-color: var(--pwa-install-background, #1e1e1e);
         --border-bottom-color: #404140;
         --scrollbar-background-color: #424242;
 

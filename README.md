@@ -133,7 +133,7 @@ The component continues to intercept and retain `beforeinstallprompt` as a legac
 
 ## Theme
 
-`theme="light" | "dark" | "system"`. The default is `system`, which follows the device. Set `light` or `dark` when the app locks a color scheme and the dialog would otherwise follow the operating system.
+`theme="light" | "dark" | "system"`. Default is `system`, which follows the device. Set `light` or `dark` when the app locks a color scheme and the dialog would otherwise follow the operating system.
 
 ```html
 <pwa-install theme="dark"></pwa-install>
@@ -141,7 +141,7 @@ The component continues to intercept and retain `beforeinstallprompt` as a legac
 
 ## Copy
 
-`install-description` still replaces the whole pitch. `messages` overrides individual strings and leaves the rest on the active translation. Pass only the keys you need. An empty string is a valid override.
+`install-description` still replaces the whole pitch. `messages` overrides individual strings and leaves the rest on the active translation. Keys are fixed; pass only the ones you need. An empty string is a valid override.
 
 ```html
 <pwa-install messages='{"install":"Get the app","more":"Details"}'></pwa-install>
@@ -155,7 +155,7 @@ Keys: `install`, `more`, `less`, `back`, `showGallery`, `appFunctionality`, `ins
 
 ## Extra slot
 
-`slot="extra"` sits between the pitch and the action buttons. On the Android sheet the install button stays in the header, and this slot sits under the description. Use it for a short benefit or privacy note.
+`slot="extra"` sits between the pitch and the action buttons. On the Android sheet the install button stays in the header, and this slot sits under the description. Use it for a short benefit or privacy note. The shell stays native.
 
 ```html
 <pwa-install>
@@ -163,21 +163,24 @@ Keys: `install`, `more`, `less`, `back`, `showGallery`, `appFunctionality`, `ins
 </pwa-install>
 ```
 
-## Custom Styles
+## Custom styles
 
-*Only the Apple template supports styling, and only the tint color option is available as of today. More to come.*
+Four optional variables, set on the element or through the `styles` property. Leave them unset to keep the system look. `--tint-color` tints the Apple glass and the Chromium, Android, and Firefox primary button. `--pwa-install-button` overrides that button. `--pwa-install-background` and `--pwa-install-text` override the card. On Apple 26+ glass, a background value replaces the glass with a flat color.
+
+`::part(dialog)` is the card. `::part(install-button)` is the primary button, including the one inside the Android sheet.
+
 ```html
-<!-- As attribute (JSON string) -->
-<pwa-install styles='{"--tint-color": "#6366f1"}'></pwa-install>
+<pwa-install style="--tint-color: #6366f1"></pwa-install>
+```
+
+```css
+pwa-install::part(install-button) {
+  border-radius: 999px;
+}
 ```
 
 ```javascript
-// As property (object)
-const pwaInstall = document.querySelector('pwa-install');
 pwaInstall.styles = { '--tint-color': '#6366f1' };
-
-// Or as attribute via JavaScript
-pwaInstall.setAttribute('styles', JSON.stringify({ '--tint-color': '#6366f1' }));
 ```
 
 <br>

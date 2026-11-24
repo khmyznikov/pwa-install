@@ -68,11 +68,11 @@ const template = ({
         return false;
     }
     const installDialogClassesApple = () => { return {available: installAvailable, aqua: isApple26Plus, aqua27: isApple27Plus, 'how-to': howToRequested, 'how-to-manual': manualHowTo, gallery: galleryRequested, desktop: isDesktop, "apple-mobile": !isDesktop}; };
-    let styles = { '--tint-color': Utils.getPageBackgroundColor(), ...customStyles };
+    let styles = { ...customStyles };
 
     return html`
         <aside id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
-            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body" style="${styleMap(styles)}">
+            <article class="install-dialog apple ${classMap(installDialogClassesApple())} dialog-body" part="dialog" style="${styleMap(styles)}">
                 <div class="icon">
                     <img src="${icon}" alt="icon" class="icon-image" draggable="false">
                 </div>
@@ -181,7 +181,7 @@ const template = ({
                         </span>
                         
                     </button>`:''}
-                    <button class="dialog-button button install" @click=${howToForApple} ontouchstart="">
+                    <button class="dialog-button button install" part="install-button" @click=${howToForApple} ontouchstart="">
                         <span class="button-text ${howToRequested? 'show': 'hide'}">
                             <span>${t(messages, 'back', msg('Back'))}</span>
                             <svg id="icon-back" viewBox="0 0 12.038 16.957"><path fill="currentColor" fill-opacity=".85" d="M0 8.472c0 .245.1.46.278.647l7.739 7.564c.163.174.39.261.64.261.505 0 .889-.379.889-.889a.91.91 0 0 0-.26-.636L2.19 8.472l7.097-6.947a.93.93 0 0 0 .259-.636.87.87 0 0 0-.89-.889.86.86 0 0 0-.64.261L.279 7.826A.92.92 0 0 0 0 8.472"/></svg>

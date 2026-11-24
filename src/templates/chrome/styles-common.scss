@@ -177,7 +177,7 @@
 		transition: box-shadow 0.2s;
 		&.primary{
 			color: var(--text-color-primary);
-			background-color: var(--background-color-primary);
+			background-color: var(--pwa-install-button, var(--tint-color, var(--background-color-primary)));
 		}
 		&.secondary{
 			background-color: transparent;

@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { msg } from '@lit/localize';
 import { t } from '../../messages';
 import type { ManifestScreenshot } from '../../types/types';
@@ -11,6 +12,7 @@ export interface ChromeTemplateOptions extends InstallTemplateOptions {
     howToRequested: boolean;
     isAndroidFallback: boolean;
     inAppBrowser: boolean;
+    customStyles: Record<string, string>;
     compactSheet: boolean;
 }
 
@@ -35,15 +37,17 @@ const template = ({
     isRTL,
     messages,
     scheme,
+    customStyles,
     compactSheet
 }: ChromeTemplateOptions) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
+    const descriptionText = installDescription || `${t(messages, 'appFunctionality', msg('This site has app functionality.'))} ${t(messages, 'installForExperience', msg('Install it on your device for extensive experience and easy access.'))}`;
     const extraSlot = html`<slot class="extra" name="extra"></slot>`;
 
     return html`
         <div id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
-            <div class="install-dialog chrome ${classMap(installDialogClasses())}">
+            <div class="install-dialog chrome ${classMap(installDialogClasses())}" part="dialog" style="${styleMap(customStyles)}">
                 <div class="dialog-body">
                     <div class="icon">
                         <img src="${icon}" alt="icon" class="icon-image" draggable="false">
@@ -60,18 +64,18 @@ const template = ({
                     </div>
                     ${description ? html `<div class="description app-description">${description}</div>`: ''}
                     ${!disableDescription? 
-                        html`<hr><div class="description install-description">${installDescription? installDescription: `${t(messages, 'appFunctionality', msg('This site has app functionality.'))} ${t(messages, 'installForExperience', msg('Install it on your device for extensive experience and easy access.'))}`}</div>` 
+                        html`<hr><div class="description install-description">${descriptionText}</div>` 
                         : ''}
                     ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                     ${compactSheet ? '' : extraSlot}
                     <div class="action-buttons">
                         ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested? t(messages, 'less', msg('Less')) : t(messages, 'more', msg('More'))}</button>`:''}
-                        <button class="material-button primary install" @click='${install}'>${t(messages, 'install', msg('Install'))}</button>
+                        <button class="material-button primary install" part="install-button" @click='${install}'>${t(messages, 'install', msg('Install'))}</button>
                     </div>
                 </div>
             </div>
-            <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
-                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser} .messages=${messages} .scheme="${scheme}">
+            <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}" part="dialog" style="${styleMap(customStyles)}">
+                <pwa-bottom-sheet exportparts="install-button" .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser} .messages=${messages} .scheme="${scheme}">
                     ${compactSheet ? html`<slot class="extra" name="extra" slot="extra"></slot>` : ''}
                     ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                 </pwa-bottom-sheet>

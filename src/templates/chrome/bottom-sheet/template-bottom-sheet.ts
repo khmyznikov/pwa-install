@@ -41,7 +41,7 @@ const template = ({
                 </div>
                 <div class="hostname">${location.hostname}</div>
             </div>
-            <button class="material-button primary install" @click='${install}'>
+            <button class="material-button primary install" part="install-button" @click='${install}'>
                 <svg class="check-icon" height="24px" viewBox="0 -960 960 960" width="24px" fill=""><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
                 <span class="button-text">${t(messages, 'install', msg('Install'))}</span>
             </button>
