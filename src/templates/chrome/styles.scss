@@ -1,9 +1,13 @@
+@use '../../styles/scheme' as *;
+
+@include scheme-host;
+
 #pwa-install-element{
     user-select: none;
 
     .install-dialog{
-        --text-color-normal: #212121;
-        --background-color: #fff;
+        --text-color-normal: var(--pwa-install-text, #212121);
+        --background-color: var(--pwa-install-background, #fff);
         --border-bottom-color: #DBDCDE;
         --scrollbar-background-color: #fff;
 
@@ -41,6 +45,27 @@
             opacity: 1;
             top: 28px;
             visibility: visible;
+        }
+
+        &:not(.mobile) .dialog-body{
+            padding: 16px 14px 6px;
+
+            .icon{
+                align-self: start;
+
+                .icon-image{
+                    margin-top: 0;
+                }
+            }
+
+            .about{
+                align-self: start;
+
+                .name{
+                    margin-top: 0;
+                    align-items: center;
+                }
+            }
         }
 
         .dialog-body{
@@ -95,10 +120,10 @@
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@include when-dark {
     #pwa-install-element .install-dialog{
-        --text-color-normal: #eee;
-        --background-color: #1e1e1e;
+        --text-color-normal: var(--pwa-install-text, #eee);
+        --background-color: var(--pwa-install-background, #1e1e1e);
         --border-bottom-color: #404140;
         --scrollbar-background-color: #424242;
 

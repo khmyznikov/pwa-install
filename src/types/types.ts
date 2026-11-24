@@ -38,6 +38,7 @@ export interface PWAInstallAttributes {
     name?: string;
     description?: string;
     icon?: string;
+    theme?: 'light' | 'dark' | 'system';
 }
 
 export interface ManifestScreenshot extends ImageResource {

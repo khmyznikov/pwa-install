@@ -1,8 +1,10 @@
+@use '../../styles/scheme' as *;
+
 #pwa-install-element{
     .install-dialog.apple{
-        --text-color-normal: #333;
+        --text-color-normal: var(--pwa-install-text, #333);
         --text-color-description: #333;
-        --background-color: rgba(255, 255, 255, 0.8);
+        --background-color: var(--pwa-install-background, rgba(255, 255, 255, 0.8));
         --text-color-button:#fff;
         --background-color-button:#fff;
         --background-color-button-active: rgb(181,181,187);
@@ -45,6 +47,7 @@
               "welcome welcome"
               "how-to how-to"
               "gallery gallery"
+              "extra extra"
               "button button";
 
             border-radius: 10px;
@@ -87,7 +90,7 @@
                 opacity: .5;
                 outline: none;
 
-                color: var(--text-color-normal);
+                color: var(--pwa-install-close, var(--text-color-normal));
 
                 border: none;
                 background-color: transparent;
@@ -99,7 +102,7 @@
                 grid-area: description;
 
                 svg{
-                    fill: var(--text-color-normal);
+                    fill: currentColor;
                     width: 18px;
                 }
 
@@ -153,6 +156,10 @@
                 width: auto;
 
                 border-bottom: 1px solid var(--border-bottom-color);
+            }
+
+            slot.extra{
+                grid-area: extra;
             }
         }
         .action-buttons{
@@ -240,6 +247,8 @@
                 }
 
                 &.install{
+                    background-color: var(--pwa-install-button, var(--background-color-button));
+
                     .button-text{
                         opacity: 0;
 
@@ -292,6 +301,9 @@
                 }
                 &:active{
                     background-color: var(--background-color-button-active);
+                }
+                &.install:active{
+                    background-color: var(--pwa-install-button, var(--background-color-button-active));
                 }
             }
         }
@@ -487,9 +499,9 @@
         &.aqua{
             --border-bottom-color: rgb(95 95 95 / 30%);
             --divider-buttons-color: #85858580;
-            --background-color: rgba(255, 255, 255, 0.5);
+            --background-color: var(--pwa-install-background, rgba(255, 255, 255, 0.5));
             --background-color-button: rgb(211 211 211 / 60%);
-            --text-color-normal: #000;
+            --text-color-normal: var(--pwa-install-text, #000);
             --text-color-description: rgba(75, 75, 75, 0.9);
             --base-color: 255 255 255;
             --tint-color: rgb(var(--base-color));
@@ -500,7 +512,7 @@
             border-radius: 35px;
             grid-template-columns: 100px 1fr;
 
-            background: color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 70%) 80%);
+            background: var(--pwa-install-background, color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 70%) 80%));
             box-shadow: inset 1px 1px 1px 0 color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 25%) 80%), 
                             inset 0px 0px 1px 1px color-mix(in srgb, var(--tint-color) 20%, rgb(var(--base-color) / 50%) 80%);
 
@@ -649,10 +661,10 @@
             }
         }
         &.desktop{
-            --text-color-normal: rgba(0, 0, 0, 0.85);
+            --text-color-normal: var(--pwa-install-text, rgba(0, 0, 0, 0.85));
             --text-color-description: rgba(0, 0, 0, 0.85);
             --icon-how-to-color: rgba(0, 0, 0, 0.50);
-            --background-color: rgb(246 246 246 / 85%);
+            --background-color: var(--pwa-install-background, rgb(246 246 246 / 85%));
             --background-color-button: #c6c1c6;
             --background-color-button-active: linear-gradient(0deg, rgba(64,121,250,1) 0%, rgba(84,144,251,1) 100%);
             --border-bottom-color: rgb(185 185 185);
@@ -761,6 +773,9 @@
                         filter:brightness(90%)
                     }
                 }
+                &.install:active{
+                    background: var(--pwa-install-button, var(--background-color-button));
+                }
             }
 
             .how-to-body{
@@ -798,7 +813,7 @@
 
             &.aqua{
                 --border-bottom-color: rgb(95 95 95 / 50%);
-                --background-color: rgb(246 246 246 / 50%);
+                --background-color: var(--pwa-install-background, rgb(246 246 246 / 50%));
                 padding: 16px;
 
                 .icon {
@@ -969,12 +984,12 @@ $phone-small-landscape: 667px;
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@include when-dark {
     #pwa-install-element{
         .install-dialog.apple.dialog-body {
-            --text-color-normal: #fff;
+            --text-color-normal: var(--pwa-install-text, #fff);
             --text-color-description: #9E9AA1;
-            --background-color: rgb(25 25 25 / 90%);
+            --background-color: var(--pwa-install-background, rgb(25 25 25 / 90%));
             --background-color-button:#353535;
             --background-color-button-active: #454545;
             --border-bottom-color: #353535;
@@ -991,7 +1006,7 @@ $phone-small-landscape: 667px;
             &.desktop{
                 --text-color-description: var(--text-color-normal);
                 --icon-how-to-color: #bcb8b6; 
-                --background-color: rgb(45 45 45 / 90%);
+                --background-color: var(--pwa-install-background, rgb(45 45 45 / 90%));
                 --border-bottom-color: #5b5b5b;
                 --background-color-button:#6d6765;
                 --background-color-button-active: linear-gradient(0deg, rgba(59,108,200,1) 0%, rgba(66,123,250,1) 100%);
@@ -1004,7 +1019,7 @@ $phone-small-landscape: 667px;
             }
 
             &.aqua {
-                --text-color-normal: #fff;
+                --text-color-normal: var(--pwa-install-text, #fff);
                 --text-color-description: rgb(189 177 175 / 80%);
                 --background-color-button: rgb(54 56 54 / 60%);
                 --divider-buttons-color: #4e4e51;

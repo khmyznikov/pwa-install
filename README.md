@@ -131,21 +131,56 @@ On supported Chromium browsers, the component uses the Web Install API automatic
 
 The component continues to intercept and retain `beforeinstallprompt` as a legacy fallback. If both `manifest-id` and the fetched manifest's `id` are missing, the component skips Web Install and uses the retained prompt on the same click. If no compatible legacy prompt exists, `pwa-install-fail-event` reports a `DataError`. Other technical Web Install failures still require the next user click to use the retained prompt. A legacy prompt cannot install a different app.
 
-## Custom Styles
+## Theme
 
-*Only the Apple template supports styling, and only the tint color option is available as of today. More to come.*
+`theme="light" | "dark" | "system"`. Default is `system`, which follows the device. Set `light` or `dark` when the app locks a color scheme and the dialog would otherwise follow the operating system.
+
 ```html
-<!-- As attribute (JSON string) -->
-<pwa-install styles='{"--tint-color": "#6366f1"}'></pwa-install>
+<pwa-install theme="dark"></pwa-install>
+```
+
+## Copy
+
+`install-description` still replaces the whole pitch. `messages` overrides individual strings and leaves the rest on the active translation. Keys are fixed; pass only the ones you need. An empty string is a valid override.
+
+```html
+<pwa-install messages='{"install":"Get the app","more":"Details"}'></pwa-install>
 ```
 
 ```javascript
-// As property (object)
-const pwaInstall = document.querySelector('pwa-install');
-pwaInstall.styles = { '--tint-color': '#6366f1' };
+pwaInstall.messages = { install: 'Get the app', addToHomeScreen: 'Add to Home Screen' };
+```
 
-// Or as attribute via JavaScript
-pwaInstall.setAttribute('styles', JSON.stringify({ '--tint-color': '#6366f1' }));
+Keys: `install`, `more`, `less`, `back`, `showGallery`, `appFunctionality`, `installForExperience`, `addToDockForExperience`, `addToHomeScreenForExperience`, `unsupportedBrowser`, `openInAppBrowserMenu`, `openBrowserMenu`, `tapOpenInBrowser`, `tapAddToHomeScreen`, `copyAppLink`, `openCopiedLink`, `pressMenu`, `pressMenuIfNoShare`, `pressShare`, `addToHome`, `pressViewMore`, `pressAddToDock`, `pressAddToHomeScreen`, `addToDock`, `addToHomeScreen`.
+
+## Extra slot
+
+`slot="extra"` sits between the pitch and the action buttons. On the Android sheet the install button stays in the header, and this slot sits under the description. Use it for a short benefit or privacy note. The shell stays native.
+
+```html
+<pwa-install>
+  <p slot="extra">Works offline. No account required.</p>
+</pwa-install>
+```
+
+## Custom styles
+
+Five optional variables, set on the element or through the `styles` property. Leave them unset to keep the system look. `--tint-color` tints the Apple glass and the Chromium, Android, and Firefox primary button. `--pwa-install-button` overrides that button. `--pwa-install-background` and `--pwa-install-text` override the card. `--pwa-install-close` overrides the close icon. On Apple 26+ glass, a background value replaces the glass with a flat color.
+
+`::part(dialog)` is the card. `::part(install-button)` is the primary button, including the one inside the Android sheet. `::part(close-button)` is the close button.
+
+```html
+<pwa-install style="--tint-color: #6366f1"></pwa-install>
+```
+
+```css
+pwa-install::part(install-button) {
+  border-radius: 999px;
+}
+```
+
+```javascript
+pwaInstall.styles = { '--tint-color': '#6366f1' };
 ```
 
 <br>
@@ -253,10 +288,6 @@ Language should change automatically based on browser settings. Please create th
 [Contribution Guidelines](./CONTRIBUTING.md)
 
 <br>
-
-## ROADMAP
-- manual theme
-
 
 [<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
 [<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)

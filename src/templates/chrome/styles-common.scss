@@ -1,3 +1,7 @@
+@use '../../styles/scheme' as *;
+
+@include scheme-host;
+
 .dialog-body{
 
 
@@ -124,6 +128,10 @@
 		// }
 	}
 
+	slot.extra{
+		grid-column: 1 / 3;
+	}
+
 	.action-buttons{
 		display: grid;
 		grid-template-columns: 50% auto;
@@ -169,7 +177,7 @@
 		transition: box-shadow 0.2s;
 		&.primary{
 			color: var(--text-color-primary);
-			background-color: var(--background-color-primary);
+			background-color: var(--pwa-install-button, var(--tint-color, var(--background-color-primary)));
 		}
 		&.secondary{
 			background-color: transparent;
@@ -193,10 +201,11 @@
 				padding: 0;
 
 				border-radius: 50%;
+				color: var(--pwa-install-close, var(--text-color-secondary));
 
 				svg{
 					width: 16px;
-					fill:  var(--text-color-secondary);
+					fill: currentColor;
 				}
 
 				&::after{
@@ -266,7 +275,15 @@
 	}
 }
 
-@media (prefers-color-scheme: dark) {
+::slotted([slot="extra"]){
+	display: block;
+	padding: 0 16px 12px;
+	font: inherit;
+	color: inherit;
+	text-align: start;
+}
+
+@include when-dark {
 	.dialog-body{ 
 		.material-button{
 			--text-color-primary: #1B222C;

@@ -1,4 +1,7 @@
 import type { WebAppManifest } from 'web-app-manifest';
+import type { PwaInstallMessages } from '../messages';
+
+export type PwaInstallTheme = 'light' | 'dark' | 'system';
 
 export interface InstallTemplateOptions {
 	name: string;
@@ -14,4 +17,6 @@ export interface InstallTemplateOptions {
 	toggleGallery: EventListenerOrEventListenerObject;
 	galleryRequested: boolean;
 	isRTL: boolean;
+	messages: Partial<PwaInstallMessages>;
+	scheme: PwaInstallTheme;
 }

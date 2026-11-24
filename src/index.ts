@@ -2,6 +2,8 @@ import { LitElement, PropertyValues } from 'lit';
 import { localized } from '@lit/localize';
 import { property, state } from 'lit/decorators.js';
 import { changeLocale, isRTL } from './localization';
+import type { PwaInstallMessages } from './messages';
+import type { PwaInstallTheme } from './templates/types';
 
 import { Manifest } from './types/types';
 import type { IRelatedApp, PWAInstallAttributes } from './types/types';
@@ -49,12 +51,15 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'disable-android-fallback', type: Boolean}) disableFallback = false;
 	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 	@property({attribute: 'styles', type: Object}) styles: Record<string, string> = {};
+	@property({ reflect: true }) theme: PwaInstallTheme = 'system';
+	@property({ attribute: 'messages', type: Object }) messages: Partial<PwaInstallMessages> = {};
 
 	static get styles() {
 		return [ styles, stylesCommon, stylesApple ];
 	}
 
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
+	@state() private _compactSheet = false;
 
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
@@ -85,6 +90,12 @@ export class PWAInstallElement extends LitElement {
 	private _linkCopied = false;
 	/** @internal */
 	private _installLogic = new InstallLogic(this, () => this._manifest.id);
+	/** @internal */
+	private _compactSheetQuery: MediaQueryList | null = null;
+	/** @internal */
+	private _onCompactSheet = (event: MediaQueryListEvent) => {
+		this._compactSheet = event.matches;
+	};
 
 	public install = async () => {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
@@ -225,6 +236,10 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	async connectedCallback() {
+		this.setAttribute('exportparts', 'install-button');
+		this._compactSheetQuery = window.matchMedia('(max-width: 767px) and (min-height: 495px)');
+		this._compactSheet = this._compactSheetQuery.matches;
+		this._compactSheetQuery.addEventListener('change', this._onCompactSheet);
 		this._installLogic.connect();
 		await changeLocale(navigator.language);
 		this._isRTL = isRTL();
@@ -235,11 +250,16 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	disconnectedCallback() {
+		this._compactSheetQuery?.removeEventListener('change', this._onCompactSheet);
 		this._installLogic.disconnect();
 		super.disconnectedCallback();
 	}
 
 	willUpdate(changedProperties: PropertyValues<this>) {
+		if (this.theme !== 'light' && this.theme !== 'dark' && this.theme !== 'system')
+			this.theme = 'system';
+		if (this.messages == null || typeof this.messages !== 'object' || Array.isArray(this.messages))
+			this.messages = {};
 		if (changedProperties.has('manifestUrl') || changedProperties.has('manifestId'))
 			this._installLogic.reset();
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
@@ -265,8 +285,30 @@ export class PWAInstallElement extends LitElement {
 			hideDialog: this._hideDialogUser,
 			toggleGallery: this._toggleGallery,
 			galleryRequested: this._galleryRequested,
-			isRTL: this._isRTL
+			isRTL: this._isRTL,
+			messages: this.messages,
+			scheme: this.theme
 		};
+	}
+
+	/** @internal */
+	private _surfaceStyles(defaultPageTint: boolean): Record<string, string> {
+		const styles: Record<string, string> = {};
+		for (const [key, value] of Object.entries(this.styles || {})) {
+			if (value != null && value !== '')
+				styles[key] = String(value);
+		}
+		if (!styles['--tint-color'] && this.isConnected) {
+			const inherited = getComputedStyle(this).getPropertyValue('--tint-color').trim();
+			if (inherited)
+				styles['--tint-color'] = inherited;
+		}
+		if (!styles['--tint-color'] && defaultPageTint) {
+			const page = Utils.getPageBackgroundColor();
+			if (page)
+				styles['--tint-color'] = page;
+		}
+		return styles;
 	}
 
 	render() {
@@ -280,7 +322,7 @@ export class PWAInstallElement extends LitElement {
 				isApple27Plus: this.isApple27Plus,
 				isDesktop: this.isAppleDesktopPlatform,
 				inAppBrowser: this.isInAppBrowser,
-				customStyles: this.styles,
+				customStyles: this._surfaceStyles(true),
 				linkCopied: this._linkCopied,
 				safariUrl: location.href.replace(/^https?:/, 'x-safari-https:'),
 				copyCurrentUrl: this._copyCurrentUrl
@@ -292,7 +334,9 @@ export class PWAInstallElement extends LitElement {
 				toggleHowTo: this._toggleHowTo,
 				howToRequested: this._howToRequested,
 				isAndroidFallback: this.isAndroidFallback,
-				inAppBrowser: this.isInAppBrowser
+				inAppBrowser: this.isInAppBrowser,
+				customStyles: this._surfaceStyles(false),
+				compactSheet: this._compactSheet
 			});
 	}
 }
@@ -302,4 +346,5 @@ if (!customElements.get('pwa-install')) {
 }
 
 export type { PWAInstallAttributes };
+export type { PwaInstallMessages } from './messages';
 export type { PWAInstallProps } from './types/jsx';
