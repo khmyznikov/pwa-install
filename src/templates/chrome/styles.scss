@@ -47,6 +47,27 @@
             visibility: visible;
         }
 
+        &:not(.mobile) .dialog-body{
+            padding: 16px 14px 6px;
+
+            .icon{
+                align-self: start;
+
+                .icon-image{
+                    margin-top: 0;
+                }
+            }
+
+            .about{
+                align-self: start;
+
+                .name{
+                    margin-top: 0;
+                    align-items: center;
+                }
+            }
+        }
+
         .dialog-body{
             display: grid;
 

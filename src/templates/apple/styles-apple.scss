@@ -90,7 +90,7 @@
                 opacity: .5;
                 outline: none;
 
-                color: var(--text-color-normal);
+                color: var(--pwa-install-close, var(--text-color-normal));
 
                 border: none;
                 background-color: transparent;
@@ -102,7 +102,7 @@
                 grid-area: description;
 
                 svg{
-                    fill: var(--text-color-normal);
+                    fill: currentColor;
                     width: 18px;
                 }
 

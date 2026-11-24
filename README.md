@@ -165,9 +165,9 @@ Keys: `install`, `more`, `less`, `back`, `showGallery`, `appFunctionality`, `ins
 
 ## Custom styles
 
-Four optional variables, set on the element or through the `styles` property. Leave them unset to keep the system look. `--tint-color` tints the Apple glass and the Chromium, Android, and Firefox primary button. `--pwa-install-button` overrides that button. `--pwa-install-background` and `--pwa-install-text` override the card. On Apple 26+ glass, a background value replaces the glass with a flat color.
+Five optional variables, set on the element or through the `styles` property. Leave them unset to keep the system look. `--tint-color` tints the Apple glass and the Chromium, Android, and Firefox primary button. `--pwa-install-button` overrides that button. `--pwa-install-background` and `--pwa-install-text` override the card. `--pwa-install-close` overrides the close icon. On Apple 26+ glass, a background value replaces the glass with a flat color.
 
-`::part(dialog)` is the card. `::part(install-button)` is the primary button, including the one inside the Android sheet.
+`::part(dialog)` is the card. `::part(install-button)` is the primary button, including the one inside the Android sheet. `::part(close-button)` is the close button.
 
 ```html
 <pwa-install style="--tint-color: #6366f1"></pwa-install>

@@ -201,10 +201,11 @@
 				padding: 0;
 
 				border-radius: 50%;
+				color: var(--pwa-install-close, var(--text-color-secondary));
 
 				svg{
 					width: 16px;
-					fill:  var(--text-color-secondary);
+					fill: currentColor;
 				}
 
 				&::after{
