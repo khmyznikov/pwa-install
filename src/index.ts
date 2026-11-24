@@ -61,11 +61,6 @@ export class PWAInstallElement extends LitElement {
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
 	@state() private _compactSheet = false;
 
-	constructor() {
-		super();
-		this.setAttribute('exportparts', 'install-button');
-	}
-
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
 
@@ -241,6 +236,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	async connectedCallback() {
+		this.setAttribute('exportparts', 'install-button');
 		this._compactSheetQuery = window.matchMedia('(max-width: 767px) and (min-height: 495px)');
 		this._compactSheet = this._compactSheetQuery.matches;
 		this._compactSheetQuery.addEventListener('change', this._onCompactSheet);
