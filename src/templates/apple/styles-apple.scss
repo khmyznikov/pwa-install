@@ -47,6 +47,7 @@
               "welcome welcome"
               "how-to how-to"
               "gallery gallery"
+              "extra extra"
               "button button";
 
             border-radius: 10px;
@@ -155,6 +156,10 @@
                 width: auto;
 
                 border-bottom: 1px solid var(--border-bottom-color);
+            }
+
+            slot.extra{
+                grid-area: extra;
             }
         }
         .action-buttons{

@@ -153,6 +153,16 @@ pwaInstall.messages = { install: 'Get the app', addToHomeScreen: 'Add to Home Sc
 
 Keys: `install`, `more`, `less`, `back`, `showGallery`, `appFunctionality`, `installForExperience`, `addToDockForExperience`, `addToHomeScreenForExperience`, `unsupportedBrowser`, `openInAppBrowserMenu`, `openBrowserMenu`, `tapOpenInBrowser`, `tapAddToHomeScreen`, `copyAppLink`, `openCopiedLink`, `pressMenu`, `pressMenuIfNoShare`, `pressShare`, `addToHome`, `pressViewMore`, `pressAddToDock`, `pressAddToHomeScreen`, `addToDock`, `addToHomeScreen`.
 
+## Extra slot
+
+`slot="extra"` sits between the pitch and the action buttons. On the Android sheet the install button stays in the header, and this slot sits under the description. Use it for a short benefit or privacy note.
+
+```html
+<pwa-install>
+  <p slot="extra">Works offline. No account required.</p>
+</pwa-install>
+```
+
 ## Custom Styles
 
 *Only the Apple template supports styling, and only the tint color option is available as of today. More to come.*

@@ -65,6 +65,7 @@ const template = ({
         : description
             ? html`<div class="description">${description}</div>`
         : ''}
+        <slot class="extra" name="extra"></slot>
         <slot></slot>
     </div>
     `;

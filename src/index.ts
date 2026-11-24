@@ -59,6 +59,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	@state() externalPromptEvent: BeforeInstallPromptEvent | null = null;
+	@state() private _compactSheet = false;
 
 	public platforms: BeforeInstallPromptEvent['platforms'] = [];
 	public userChoiceResult = '';
@@ -89,6 +90,12 @@ export class PWAInstallElement extends LitElement {
 	private _linkCopied = false;
 	/** @internal */
 	private _installLogic = new InstallLogic(this, () => this._manifest.id);
+	/** @internal */
+	private _compactSheetQuery: MediaQueryList | null = null;
+	/** @internal */
+	private _onCompactSheet = (event: MediaQueryListEvent) => {
+		this._compactSheet = event.matches;
+	};
 
 	public install = async () => {
 		if (this.isAppleMobilePlatform || this.isAppleDesktopPlatform) {
@@ -229,6 +236,9 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	async connectedCallback() {
+		this._compactSheetQuery = window.matchMedia('(max-width: 767px) and (min-height: 495px)');
+		this._compactSheet = this._compactSheetQuery.matches;
+		this._compactSheetQuery.addEventListener('change', this._onCompactSheet);
 		this._installLogic.connect();
 		await changeLocale(navigator.language);
 		this._isRTL = isRTL();
@@ -239,6 +249,7 @@ export class PWAInstallElement extends LitElement {
 	}
 
 	disconnectedCallback() {
+		this._compactSheetQuery?.removeEventListener('change', this._onCompactSheet);
 		this._installLogic.disconnect();
 		super.disconnectedCallback();
 	}
@@ -302,7 +313,8 @@ export class PWAInstallElement extends LitElement {
 				toggleHowTo: this._toggleHowTo,
 				howToRequested: this._howToRequested,
 				isAndroidFallback: this.isAndroidFallback,
-				inAppBrowser: this.isInAppBrowser
+				inAppBrowser: this.isInAppBrowser,
+				compactSheet: this._compactSheet
 			});
 	}
 }

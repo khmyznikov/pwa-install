@@ -11,6 +11,7 @@ export interface ChromeTemplateOptions extends InstallTemplateOptions {
     howToRequested: boolean;
     isAndroidFallback: boolean;
     inAppBrowser: boolean;
+    compactSheet: boolean;
 }
 
 const template = ({
@@ -33,10 +34,12 @@ const template = ({
     inAppBrowser,
     isRTL,
     messages,
-    scheme
+    scheme,
+    compactSheet
 }: ChromeTemplateOptions) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
+    const extraSlot = html`<slot class="extra" name="extra"></slot>`;
 
     return html`
         <div id="pwa-install-element" dir="${isRTL ? 'rtl' : 'ltr'}">
@@ -60,6 +63,7 @@ const template = ({
                         html`<hr><div class="description install-description">${installDescription? installDescription: `${t(messages, 'appFunctionality', msg('This site has app functionality.'))} ${t(messages, 'installForExperience', msg('Install it on your device for extensive experience and easy access.'))}`}</div>` 
                         : ''}
                     ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
+                    ${compactSheet ? '' : extraSlot}
                     <div class="action-buttons">
                         ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested? t(messages, 'less', msg('Less')) : t(messages, 'more', msg('More'))}</button>`:''}
                         <button class="material-button primary install" @click='${install}'>${t(messages, 'install', msg('Install'))}</button>
@@ -68,6 +72,7 @@ const template = ({
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
                 <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser} .messages=${messages} .scheme="${scheme}">
+                    ${compactSheet ? html`<slot class="extra" name="extra" slot="extra"></slot>` : ''}
                     ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                 </pwa-bottom-sheet>
             </div>

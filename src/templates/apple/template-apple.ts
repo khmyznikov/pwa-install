@@ -167,6 +167,7 @@ const template = ({
                     </div>
                 </div>
                 ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}" .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
+                <slot class="extra" name="extra"></slot>
                 <div class="action-buttons">
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery} ontouchstart="">
                     <span class="button-text">
