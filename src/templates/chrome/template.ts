@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { msg } from '@lit/localize';
+import { t } from '../../messages';
 import type { ManifestScreenshot } from '../../types/types';
 import type { InstallTemplateOptions } from '../types';
 
@@ -31,6 +32,7 @@ const template = ({
     isAndroidFallback,
     inAppBrowser,
     isRTL,
+    messages,
     scheme
 }: ChromeTemplateOptions) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
@@ -55,17 +57,17 @@ const template = ({
                     </div>
                     ${description ? html `<div class="description app-description">${description}</div>`: ''}
                     ${!disableDescription? 
-                        html`<hr><div class="description install-description">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
+                        html`<hr><div class="description install-description">${installDescription? installDescription: `${t(messages, 'appFunctionality', msg('This site has app functionality.'))} ${t(messages, 'installForExperience', msg('Install it on your device for extensive experience and easy access.'))}`}</div>` 
                         : ''}
                     ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                     <div class="action-buttons">
-                        ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
-                        <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
+                        ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested? t(messages, 'less', msg('Less')) : t(messages, 'more', msg('More'))}</button>`:''}
+                        <button class="material-button primary install" @click='${install}'>${t(messages, 'install', msg('Install'))}</button>
                     </div>
                 </div>
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
-                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser} .scheme="${scheme}">
+                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser} .messages=${messages} .scheme="${scheme}">
                     ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                 </pwa-bottom-sheet>
             </div>

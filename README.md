@@ -139,6 +139,20 @@ The component continues to intercept and retain `beforeinstallprompt` as a legac
 <pwa-install theme="dark"></pwa-install>
 ```
 
+## Copy
+
+`install-description` still replaces the whole pitch. `messages` overrides individual strings and leaves the rest on the active translation. Pass only the keys you need. An empty string is a valid override.
+
+```html
+<pwa-install messages='{"install":"Get the app","more":"Details"}'></pwa-install>
+```
+
+```javascript
+pwaInstall.messages = { install: 'Get the app', addToHomeScreen: 'Add to Home Screen' };
+```
+
+Keys: `install`, `more`, `less`, `back`, `showGallery`, `appFunctionality`, `installForExperience`, `addToDockForExperience`, `addToHomeScreenForExperience`, `unsupportedBrowser`, `openInAppBrowserMenu`, `openBrowserMenu`, `tapOpenInBrowser`, `tapAddToHomeScreen`, `copyAppLink`, `openCopiedLink`, `pressMenu`, `pressMenuIfNoShare`, `pressShare`, `addToHome`, `pressViewMore`, `pressAddToDock`, `pressAddToHomeScreen`, `addToDock`, `addToHomeScreen`.
+
 ## Custom Styles
 
 *Only the Apple template supports styling, and only the tint color option is available as of today. More to come.*

@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { msg } from '@lit/localize';
+import { t } from '../../messages';
 import Utils from '../../utils';
 import type { InstallTemplateOptions } from '../types';
 
@@ -44,6 +45,7 @@ const template = ({
     linkCopied,
     safariUrl,
     copyCurrentUrl,
+    messages,
     scheme
 }: AppleTemplateOptions) => {
     const useInAppBrowserInstructions = inAppBrowser || !Utils.isServiceWorkerSupported();
@@ -85,7 +87,7 @@ const template = ({
                 </button>` : ''}
                 ${!disableDescription? html`<div class="welcome-to-install">
                     ${installDescription? installDescription: 
-                        `${msg('This site has app functionality.')} ${useInAppBrowserInstructions && howToRequested? msg("But this browser doesn't support it. Open the link in a standalone browser to continue."):''} ${!useInAppBrowserInstructions || !howToRequested? isDesktop? msg('Add it to your Dock for extensive experience and easy access.') : msg('Add it to your Home Screen for extensive experience and easy access.'): ''}`}</div>`
+                        `${t(messages, 'appFunctionality', msg('This site has app functionality.'))} ${useInAppBrowserInstructions && howToRequested? t(messages, 'unsupportedBrowser', msg("But this browser doesn't support it. Open the link in a standalone browser to continue.")):''} ${!useInAppBrowserInstructions || !howToRequested? isDesktop? t(messages, 'addToDockForExperience', msg('Add it to your Dock for extensive experience and easy access.')) : t(messages, 'addToHomeScreenForExperience', msg('Add it to your Home Screen for extensive experience and easy access.')): ''}`}</div>`
                 : '' }
                 <div class="how-to-body">
                     <div class="how-to-description ${classMap({ 'in-app-browser': useInAppBrowserInstructions })}">
@@ -100,7 +102,7 @@ const template = ({
                                     <g fill="currentColor"><path d="M9.96 19.922c5.45 0 9.962-4.522 9.962-9.961C19.922 4.51 15.4 0 9.952 0 4.511 0 0 4.512 0 9.96c0 5.44 4.521 9.962 9.96 9.962m0-1.66A8.26 8.26 0 0 1 1.67 9.96c0-4.61 3.672-8.3 8.281-8.3 4.61 0 8.31 3.69 8.31 8.3s-3.69 8.3-8.3 8.3Z"/><path d="m5.87 14.883 5.605-2.735a1.47 1.47 0 0 0 .683-.673l2.725-5.596c.312-.664-.166-1.182-.85-.84L8.447 7.764c-.302.136-.508.341-.674.673L5.03 14.043c-.312.645.196 1.152.84.84m4.09-3.72A1.19 1.19 0 0 1 8.77 9.97c0-.664.527-1.201 1.19-1.201a1.2 1.2 0 0 1 1.202 1.2c0 .655-.537 1.192-1.201 1.192Z"/></g>
                                 </svg>
                             </span>
-                            <span class="step-text"><span class="copy-link-action">${linkCopied? msg('Open Copied Link in Safari') : msg('Tap here to Copy App Link')}</span></span>
+                            <span class="step-text"><span class="copy-link-action">${linkCopied? t(messages, 'openCopiedLink', msg('Open Copied Link in Safari')) : t(messages, 'copyAppLink', msg('Tap here to Copy App Link'))}</span></span>
                         </a>`: ''}
                         ${pressMenuNeeded() ? 
                         html`
@@ -120,7 +122,7 @@ const template = ({
                                     </svg>
                                 `}
                             </div>
-                            <div class="step-text">${Utils.isYaBrowser()?  msg('Press Menu') : msg('Press Menu if no Share icon')}</div>
+                            <div class="step-text">${Utils.isYaBrowser()?  t(messages, 'pressMenu', msg('Press Menu')) : t(messages, 'pressMenuIfNoShare', msg('Press Menu if no Share icon'))}</div>
                         </div>`: ''}
                         ${!Utils.isYaBrowser()? html`
                         <div class="description-step">
@@ -129,7 +131,7 @@ const template = ({
                                     <g fill="currentColor"><path d="M17.334 10.762v9.746c0 2.012-1.025 3.027-3.066 3.027H3.066C1.026 23.535 0 22.52 0 20.508v-9.746C0 8.75 1.025 7.734 3.066 7.734h2.94v1.573h-2.92c-.977 0-1.514.527-1.514 1.543v9.57c0 1.015.537 1.543 1.514 1.543h11.152c.967 0 1.524-.527 1.524-1.543v-9.57c0-1.016-.557-1.543-1.524-1.543h-2.91V7.734h2.94c2.04 0 3.066 1.016 3.066 3.028Z"/><path d="M8.662 15.889c.42 0 .781-.352.781-.762V5.097l-.058-1.464.654.693 1.484 1.582a.698.698 0 0 0 .528.235c.4 0 .713-.293.713-.694 0-.205-.088-.361-.235-.508l-3.3-3.183c-.196-.196-.362-.264-.567-.264-.195 0-.361.069-.566.264L4.795 4.94a.681.681 0 0 0-.225.508c0 .4.293.694.703.694.186 0 .4-.079.538-.235l1.474-1.582.664-.693-.058 1.465v10.029c0 .41.351.762.771.762Z"/></g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('Press Share in Navigation bar')}</div>
+                            <div class="step-text">${t(messages, 'pressShare', msg('Press Share in Navigation bar'))}</div>
                         </div>`: html`
                         <div class="description-step">
                             <div class="svg-wrap">
@@ -138,14 +140,14 @@ const template = ({
                                     </g>
                                 </svg>
                             </div>
-                            <div class="step-text">${msg('Add to Home')}</div>
+                            <div class="step-text">${t(messages, 'addToHome', msg('Add to Home'))}</div>
                         </div>`}
                         ${!isDesktop && isApple26Plus && !Utils.isYaBrowser() && !Utils.isDuck()? html`
                         <div class="description-step">
                             <div class="svg-wrap">
                                 <svg id="safari-chevron" viewBox="0 0 16.961 10.395"><path d="M8.485 10.395a.87.87 0 0 0 .657-.286l7.556-7.735a.88.88 0 0 0 .263-.628c0-.507-.381-.899-.889-.899a.97.97 0 0 0-.64.26L7.958 8.74h1.045L1.527 1.106A.92.92 0 0 0 .899.847c-.51 0-.899.392-.899.9 0 .25.102.464.265.63L7.83 10.11q.268.284.655.284"/></svg>
                             </div>
-                            <div class="step-text">${msg('Press "View More" in Share menu')}</div>
+                            <div class="step-text">${t(messages, 'pressViewMore', msg('Press "View More" in Share menu'))}</div>
                         </div>`: ''}
                         <div class="description-step">
                             <div class="svg-wrap">
@@ -159,7 +161,7 @@ const template = ({
                                 }
                             </div>
                             <div class="step-text">
-                                ${isDesktop? msg('Press "Add to Dock"'): msg('Press "Add to Home Screen"')}
+                                ${isDesktop? t(messages, 'pressAddToDock', msg('Press "Add to Dock"')): t(messages, 'pressAddToHomeScreen', msg('Press "Add to Home Screen"'))}
                             </div>
                         </div>
                     </div>
@@ -168,11 +170,11 @@ const template = ({
                 <div class="action-buttons">
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery} ontouchstart="">
                     <span class="button-text">
-                            ${galleryRequested? html`<span>${msg('Back')}</span>
+                            ${galleryRequested? html`<span>${t(messages, 'back', msg('Back'))}</span>
                             <svg id="icon-back" viewBox="0 0 12.038 16.957"><path fill="currentColor" fill-opacity=".85" d="M0 8.472c0 .245.1.46.278.647l7.739 7.564c.163.174.39.261.64.261.505 0 .889-.379.889-.889a.91.91 0 0 0-.26-.636L2.19 8.472l7.097-6.947a.93.93 0 0 0 .259-.636.87.87 0 0 0-.89-.889.86.86 0 0 0-.64.261L.279 7.826A.92.92 0 0 0 0 8.472"/></svg>`
                     :
                             html`
-                            <span>${msg('Show Gallery')}</span>
+                            <span>${t(messages, 'showGallery', msg('Show Gallery'))}</span>
                             <svg id="pwa-gallery" width="26" height="26" viewBox="0 0 23.538 18.022"><path d="M2.79 18.022h17.958c1.834 0 2.79-.969 2.79-2.778V2.791C23.538.969 22.582 0 20.748 0H2.791C.956 0 0 .956 0 2.79v12.454c0 1.835.956 2.778 2.79 2.778zM.879 2.83C.878 1.55 1.55.88 2.816.88h17.906c1.228 0 1.938.671 1.938 1.95v12.067L16.756 9.47c-.517-.414-.995-.685-1.615-.685-.607 0-1.085.22-1.576.672L8.927 13.59l-1.938-1.796c-.426-.387-.853-.607-1.382-.607-.504 0-.879.207-1.305.594L.878 14.986zm6.46 6.356a2.39 2.39 0 002.377-2.39c0-1.304-1.072-2.39-2.377-2.39a2.401 2.401 0 00-2.39 2.39 2.393 2.393 0 002.39 2.39z"/>
                             </svg>`}
                         </span>
@@ -180,11 +182,11 @@ const template = ({
                     </button>`:''}
                     <button class="dialog-button button install" @click=${howToForApple} ontouchstart="">
                         <span class="button-text ${howToRequested? 'show': 'hide'}">
-                            <span>${msg('Back')}</span>
+                            <span>${t(messages, 'back', msg('Back'))}</span>
                             <svg id="icon-back" viewBox="0 0 12.038 16.957"><path fill="currentColor" fill-opacity=".85" d="M0 8.472c0 .245.1.46.278.647l7.739 7.564c.163.174.39.261.64.261.505 0 .889-.379.889-.889a.91.91 0 0 0-.26-.636L2.19 8.472l7.097-6.947a.93.93 0 0 0 .259-.636.87.87 0 0 0-.89-.889.86.86 0 0 0-.64.261L.279 7.826A.92.92 0 0 0 0 8.472"/></svg>
                         </span>
                         <span class="button-text ${howToRequested? 'hide': 'show'}">
-                            <span>${isDesktop? msg('Add to Dock'): msg('Add to Home Screen')}</span>
+                            <span>${isDesktop? t(messages, 'addToDock', msg('Add to Dock')): t(messages, 'addToHomeScreen', msg('Add to Home Screen'))}</span>
                             <svg viewBox="0 0 25 25">
                                 <use href="#pwa-add"></use>
                             </svg>

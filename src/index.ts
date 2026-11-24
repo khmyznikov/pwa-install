@@ -2,6 +2,7 @@ import { LitElement, PropertyValues } from 'lit';
 import { localized } from '@lit/localize';
 import { property, state } from 'lit/decorators.js';
 import { changeLocale, isRTL } from './localization';
+import type { PwaInstallMessages } from './messages';
 import type { PwaInstallTheme } from './templates/types';
 
 import { Manifest } from './types/types';
@@ -51,6 +52,7 @@ export class PWAInstallElement extends LitElement {
 	@property({attribute: 'use-local-storage', type: Boolean}) useLocalStorage = false;
 	@property({attribute: 'styles', type: Object}) styles: Record<string, string> = {};
 	@property({ reflect: true }) theme: PwaInstallTheme = 'system';
+	@property({ attribute: 'messages', type: Object }) messages: Partial<PwaInstallMessages> = {};
 
 	static get styles() {
 		return [ styles, stylesCommon, stylesApple ];
@@ -244,6 +246,8 @@ export class PWAInstallElement extends LitElement {
 	willUpdate(changedProperties: PropertyValues<this>) {
 		if (this.theme !== 'light' && this.theme !== 'dark' && this.theme !== 'system')
 			this.theme = 'system';
+		if (this.messages == null || typeof this.messages !== 'object' || Array.isArray(this.messages))
+			this.messages = {};
 		if (changedProperties.has('manifestUrl') || changedProperties.has('manifestId'))
 			this._installLogic.reset();
 		if (this.externalPromptEvent && changedProperties.has('externalPromptEvent') && typeof this.externalPromptEvent == 'object') {
@@ -270,6 +274,7 @@ export class PWAInstallElement extends LitElement {
 			toggleGallery: this._toggleGallery,
 			galleryRequested: this._galleryRequested,
 			isRTL: this._isRTL,
+			messages: this.messages,
 			scheme: this.theme
 		};
 	}
@@ -307,4 +312,5 @@ if (!customElements.get('pwa-install')) {
 }
 
 export type { PWAInstallAttributes };
+export type { PwaInstallMessages } from './messages';
 export type { PWAInstallProps } from './types/jsx';

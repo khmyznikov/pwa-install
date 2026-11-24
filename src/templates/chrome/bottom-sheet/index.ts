@@ -14,6 +14,7 @@ type IProps = {
 
 import template from './template-bottom-sheet';
 import Utils from '../../../utils';
+import type { PwaInstallMessages } from '../../../messages';
 import type { PwaInstallTheme } from '../../types';
 
 export default class PWABottomSheetElement extends LitElement {
@@ -34,6 +35,7 @@ export default class PWABottomSheetElement extends LitElement {
 	@property({type: Boolean}) howToRequested = false;
 	@property({type: Boolean}) inAppBrowser = false;
 	@property({type: Object}) toggleHowTo = {handleEvent: () => {}};
+	@property({type: Object}) messages: Partial<PwaInstallMessages> = {};
 	@property({reflect: true}) scheme: PwaInstallTheme = 'system';
 
 	private _callInstall = () => {
@@ -209,7 +211,8 @@ export default class PWABottomSheetElement extends LitElement {
 			install: this._callInstall,
 			fallback: this.fallback,
 			howToRequested: this.howToRequested,
-			inAppBrowser: this.inAppBrowser
+			inAppBrowser: this.inAppBrowser,
+			messages: this.messages
 		})}`;
 	}
 }
