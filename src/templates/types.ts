@@ -1,5 +1,7 @@
 import type { WebAppManifest } from 'web-app-manifest';
 
+export type PwaInstallTheme = 'light' | 'dark' | 'system';
+
 export interface InstallTemplateOptions {
 	name: string;
 	description: string;
@@ -14,4 +16,5 @@ export interface InstallTemplateOptions {
 	toggleGallery: EventListenerOrEventListenerObject;
 	galleryRequested: boolean;
 	isRTL: boolean;
+	scheme: PwaInstallTheme;
 }

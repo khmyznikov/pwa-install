@@ -1,3 +1,5 @@
+@use '../../styles/scheme' as *;
+
 #pwa-install-element{
     .install-dialog.apple{
         --text-color-normal: #333;
@@ -969,7 +971,7 @@ $phone-small-landscape: 667px;
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@include when-dark {
     #pwa-install-element{
         .install-dialog.apple.dialog-body {
             --text-color-normal: #fff;

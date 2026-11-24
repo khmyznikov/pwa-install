@@ -1,3 +1,7 @@
+@use '../styles/scheme' as *;
+
+@include scheme-host;
+
 .gallery {
 	position: relative;
 
@@ -188,7 +192,7 @@
 		display: none;
 	}
 }
-@media (prefers-color-scheme: dark) {
+@include when-dark {
     .gallery{
         --scrollbar-background-color: #424242;
 		--nav-btn-background-color: #555555;

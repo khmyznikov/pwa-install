@@ -4,10 +4,12 @@ import { ManifestScreenshot } from '../types/types';
 
 import styles from './styles-gallery.scss';
 import template from './template-gallery';
+import type { PwaInstallTheme } from '../templates/types';
 
 export default class PWAGalleryElement extends LitElement {
 	@property({ type: Array }) screenshots: ManifestScreenshot[] = [];
 	@property() theme: 'default' | 'apple_desktop' | 'apple_mobile' = 'default';
+	@property({ reflect: true }) scheme: PwaInstallTheme = 'system';
 	@property({ type: Boolean }) rtl: boolean = false;
 
 	static get styles() {

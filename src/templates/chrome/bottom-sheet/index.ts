@@ -14,6 +14,7 @@ type IProps = {
 
 import template from './template-bottom-sheet';
 import Utils from '../../../utils';
+import type { PwaInstallTheme } from '../../types';
 
 export default class PWABottomSheetElement extends LitElement {
 	static get styles() {
@@ -33,6 +34,7 @@ export default class PWABottomSheetElement extends LitElement {
 	@property({type: Boolean}) howToRequested = false;
 	@property({type: Boolean}) inAppBrowser = false;
 	@property({type: Object}) toggleHowTo = {handleEvent: () => {}};
+	@property({reflect: true}) scheme: PwaInstallTheme = 'system';
 
 	private _callInstall = () => {
 		if (this.fallback) {

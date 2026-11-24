@@ -43,7 +43,8 @@ const template = ({
     customStyles,
     linkCopied,
     safariUrl,
-    copyCurrentUrl
+    copyCurrentUrl,
+    scheme
 }: AppleTemplateOptions) => {
     const useInAppBrowserInstructions = inAppBrowser || !Utils.isServiceWorkerSupported();
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
@@ -163,7 +164,7 @@ const template = ({
                         </div>
                     </div>
                 </div>
-                ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}" .rtl="${isRTL}"></pwa-gallery>`: ''}
+                ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots} .theme="${isDesktop? 'apple_desktop': 'apple_mobile'}" .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                 <div class="action-buttons">
                     ${screenshotsAvailable? html`<button class="dialog-button button gallery" @click=${toggleGallery} ontouchstart="">
                     <span class="button-text">

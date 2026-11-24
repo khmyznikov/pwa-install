@@ -131,6 +131,14 @@ On supported Chromium browsers, the component uses the Web Install API automatic
 
 The component continues to intercept and retain `beforeinstallprompt` as a legacy fallback. If both `manifest-id` and the fetched manifest's `id` are missing, the component skips Web Install and uses the retained prompt on the same click. If no compatible legacy prompt exists, `pwa-install-fail-event` reports a `DataError`. Other technical Web Install failures still require the next user click to use the retained prompt. A legacy prompt cannot install a different app.
 
+## Theme
+
+`theme="light" | "dark" | "system"`. The default is `system`, which follows the device. Set `light` or `dark` when the app locks a color scheme and the dialog would otherwise follow the operating system.
+
+```html
+<pwa-install theme="dark"></pwa-install>
+```
+
 ## Custom Styles
 
 *Only the Apple template supports styling, and only the tint color option is available as of today. More to come.*
@@ -253,10 +261,6 @@ Language should change automatically based on browser settings. Please create th
 [Contribution Guidelines](./CONTRIBUTING.md)
 
 <br>
-
-## ROADMAP
-- manual theme
-
 
 [<img alt="buy me a coffee QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/5168f0db-2317-4ec2-8362-d828ffa2a8bf" width="200">](https://www.buymeacoffee.com/khmyznikov)
 [<img alt="PayPal QR" src="https://github.com/khmyznikov/pwa-install/assets/6115884/6290b136-d525-4f8e-95fe-4729ea4c6414" width="200">](https://paypal.me/hmyznikov)

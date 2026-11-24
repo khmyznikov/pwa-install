@@ -1,0 +1,28 @@
+@mixin scheme-host {
+	:host {
+		color-scheme: light dark;
+	}
+
+	:host([theme="light"]),
+	:host([scheme="light"]) {
+		color-scheme: only light;
+	}
+
+	:host([theme="dark"]),
+	:host([scheme="dark"]) {
+		color-scheme: only dark;
+	}
+}
+
+@mixin when-dark {
+	@media (prefers-color-scheme: dark) {
+		:host(:not([theme="light"]):not([scheme="light"])) {
+			@content;
+		}
+	}
+
+	:host([theme="dark"]),
+	:host([scheme="dark"]) {
+		@content;
+	}
+}

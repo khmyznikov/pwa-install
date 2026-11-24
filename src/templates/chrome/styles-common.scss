@@ -1,3 +1,7 @@
+@use '../../styles/scheme' as *;
+
+@include scheme-host;
+
 .dialog-body{
 
 
@@ -266,7 +270,7 @@
 	}
 }
 
-@media (prefers-color-scheme: dark) {
+@include when-dark {
 	.dialog-body{ 
 		.material-button{
 			--text-color-primary: #1B222C;

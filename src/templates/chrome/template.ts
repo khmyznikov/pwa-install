@@ -30,7 +30,8 @@ const template = ({
     howToRequested,
     isAndroidFallback,
     inAppBrowser,
-    isRTL
+    isRTL,
+    scheme
 }: ChromeTemplateOptions) => {
     const installDialogClasses = () => { return {available: installAvailable, gallery: galleryRequested }};
     const screenshotsAvailable = !disableScreenshots && manifest.screenshots && manifest.screenshots.length;
@@ -56,7 +57,7 @@ const template = ({
                     ${!disableDescription? 
                         html`<hr><div class="description install-description">${installDescription? installDescription: `${msg('This site has app functionality.')} ${msg('Install it on your device for extensive experience and easy access.')}`}</div>` 
                         : ''}
-                    ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}"></pwa-gallery>`: ''}
+                    ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                     <div class="action-buttons">
                         ${screenshotsAvailable? html`<button class="material-button secondary" @click='${toggleGallery}'>${galleryRequested?msg('Less'):msg('More')}</button>`:''}
                         <button class="material-button primary install" @click='${install}'>${msg('Install')}</button>
@@ -64,8 +65,8 @@ const template = ({
                 </div>
             </div>
             <div class="install-dialog chrome mobile ${classMap(installDialogClasses())}">
-                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser}>
-                    ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}"></pwa-gallery>`: ''}
+                <pwa-bottom-sheet .props=${{name, icon, description}} .disableClose=${disableClose} .install=${install} .hideDialog=${hideDialog} .toggleHowTo=${toggleHowTo} .howToRequested=${howToRequested} .fallback=${isAndroidFallback} .inAppBrowser=${inAppBrowser} .scheme="${scheme}">
+                    ${screenshotsAvailable && installAvailable? html`<pwa-gallery .screenshots=${manifest.screenshots as ManifestScreenshot[]} .rtl="${isRTL}" .scheme="${scheme}"></pwa-gallery>`: ''}
                 </pwa-bottom-sheet>
             </div>
         </div>`;

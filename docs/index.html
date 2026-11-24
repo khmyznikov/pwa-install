@@ -72,6 +72,15 @@
 			<button onclick="forceStyle('liquid-glass-mobile')">iOS/iPadOS 26+</button><br>
 			
 			<label>
+				Theme:
+				<select onchange="pwaInstall.theme = this.value">
+					<option value="system" selected>System</option>
+					<option value="light">Light</option>
+					<option value="dark">Dark</option>
+				</select>
+			</label>
+			<hr>
+			<label>
 				Tint override:
 				<input type="color" id="tint-color-picker" onchange="setStyles(this.value)">
 				<button onclick="setStyles('')">Reset</button>

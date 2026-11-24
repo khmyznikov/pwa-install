@@ -1,3 +1,7 @@
+@use '../../styles/scheme' as *;
+
+@include scheme-host;
+
 #pwa-install-element{
     user-select: none;
 
@@ -95,7 +99,7 @@
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@include when-dark {
     #pwa-install-element .install-dialog{
         --text-color-normal: #eee;
         --background-color: #1e1e1e;
